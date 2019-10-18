@@ -33,12 +33,12 @@ private keys of the blockchain.
 
 [TransferWithChange](README.md#transferwithchange)
 
+[ReceiveWithChange](README.md#receivewithchange)
+
 # Donation Services
 Allows the user to donate money to the change system or to the RAIDA itself (to help the RAIDA fund itself).
 
 [DonateToRaida](README.md#donatetoraida)
-
-[DonateChange](README.md#donatechange)
 
 # The Change Maker Services
 
@@ -964,9 +964,15 @@ RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
 ```
 
 
+## ReceiveWithChange
+
+Not implemented yet. Expected to be finnished by Nov 15, 2020. This will look a lot like Receive but with the same extras as SendWithChange. 
 
 
-## DonateToRAIDA (We can implement this later)
+
+## DonateToRAIDA
+Not Implement yet. Not on development schedule.  
+
 This allows people to donate CloudCoins to pay the costs of running the servers. 
 
 People can donate as much as 400 coins. 
@@ -1170,6 +1176,7 @@ RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
 
 
 ## Exchange
+Not implemented yet. Not on development scheudle. 
 This takes many smaller notes and exchanges them for one big note. 
 The number of notes provided must add up to either 250, 100, 25 or 5.
 This is almost exactly like Receive except that instead of providing authentication, coins are provided instead. 
