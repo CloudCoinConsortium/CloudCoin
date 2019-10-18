@@ -2,31 +2,29 @@
 
 Explains how to send messages to the Redundant Array of Independent Detection Agents and the responses that can be expected.
 
-Sections: 
+Notes: 
 
 [RAIDA Requirments](README.md#raida-requirments)
 
 [Notes](README.md#notes)
 
-[Echo service](README.md#echo-service)
+Services
 
-[Echo DA service](README.md#echo-da-service)
+[Echo](README.md#echo-service)
 
-[Detect service](README.md#raida-detect-service)
+[Echo DA](README.md#echo-da-service)
 
-[Multi-Detect Service](README.md#raida-multi-detect-service)
+[Multi-Detect](README.md#raida-multi-detect-service)
 
-[Multi-Ticket Protocol](README.md#raida-multi-ticket-protocol)
+[Multi-Ticket](README.md#raida-multi-ticket-protocol)
 
-[Multi-Hints Protocol](README.md#raida-multi-hints-protocol)
+[Multi-Hints](README.md#raida-multi-hints-protocol)
 
-[Multi Fix Protocol](README.md#raida-multi-fix-protocol)
+[Multi Fix](README.md#raida-multi-fix-protocol)
 
 [Fix Lost](README.md#raida-fix_lost-service)
 
 [Report Lost](README.md#report-lost) 
-
-[Multi Extend](README.md#multi-extend-service-for-paying-for-raida-to-prolonge-expiration-date)
 
 -----------------------------------------
 
@@ -632,74 +630,5 @@ Response if input arrays are not the same length
         "time": "2019-05-06 00:29:11"
     }
 ]
-```
-
-----------------------------------------------
-
-## MULTI EXTEND: Service for paying for RAIDA to Prolonge Expiration date
-
-The RAIDA Pay allows users to extend the expiration dates of the CloudCoin. This is done by moving the "MonthsFromStart" column 12 months ahead of its existing MonthsFromStart value. Keep in mind that MonthFromStart is an integer that represents the number of months after August 2016 (zero month).This will make it so that the CloudCoin will not expire after two years of use like it usally does but instead will have extra year or years to expire. Suppose a coin is set to expire in one year. Each extra year costs 12 CloudCoin (or 1 CloudCoin for each RAIDA). So the user will upload either a 25, 100 or 250 CloudCoin note. Then the 12 will be added to the current MonthsFromStart for every 25 CloudCoins uploaded.  There is a rule that the CloudCoins must come from the same network that the services are being paid for. 
-25 = + 1 years. 
-100 = + 4 years.
-250 = + 10 years. 
-
-Example GET Paying 25 CloudCoin into the RAIDA to extend the CloudCoin sn 145895 for two year. 
-
-nn = Network number of coin used to buy the space.
-
-sn = Serial number of coin used to buy the space.
-
-an = The Authenticity number of the Coin  used to buy the space
-
-sne = the serial number of the CloudCoin whose expiration date is to be exetened (on the same network as the paid coins)
-
-denomination = The denomination of the coin being used to make the purchased (such as 25, 100, 250)
-
-
-This sample shows CloudCoin SN 145895 being extended one year. Uses POST
-```
- 
-
-https://RAIDA0.CloudCoin.Global/service/multi_extend
-
-nns[]=1&nns[]=1&nns[]=1&
-sns[]=16589554&sns[]=16589554&sns[]=16589554&
-ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
-sne[]=334&sne[]=335&sne[]=336&
-denomination[]=250&denomination[]=250&denomination[]=250
-
- 
-```
-
-RESPONSE NOTES: Errors returned are the same as multi detect
-RESPONSE IF SUCCESS
-```
-[{
-  "server":"RAIDA1",
-  "status":"extended",
-  "sn":"145895",
-  "sne":"345",
-  "nn":"1",
-  "message":"12 months added to expiration date.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "sn":"66585",
-  "sne":"346",
-  "nn":"1",
-  "message":"CloudCoin was not authentic.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA1",
-  "status":"extended",
-  "sn":"16589554",
-  "sne":"343",
-  "nn":"1",
-  "message":"12 months added to expiration date.",
-  "time":"2016-44-19 7:44:PM"
-}]
 ```
 
