@@ -1,11 +1,14 @@
 # RAIDA Protocol
 
-# RAIDA
-Redundant Array of Independent Detection Agents  Software
+Explains how to send messages to the Redundant Array of Independent Detection Agents and the responses that can be expected.
 
 Sections: 
 
-[Common Notes on RAIDA Protocols](README.md#common-notes-on-raida-protocols)
+[RAIDA Requirments](README.md#raida-requirments)
+
+[Notes](README.md#notes)
+----------------------------------------------
+['Echo' service](README.md#echo-service)
 
 ['Echo DA' service](README.md#echo-da-service)
 
@@ -29,13 +32,13 @@ Sections:
 
 ## RAIDA Requirments
 
-1. Have Data Supremacy (25 Sentinels and 800 Detection Agents)
+1. Have Data Supremacy. Cannot be brought down by hackers, governments or even its creators.
 
 2. 100% Privacy. No user accounts, passwords, logins or transactions tracked. 
 
 3. Handle entire worlds traffic. (Simular to the DNS).
 
-4. Transaction Speeds: Less than 2 seconds for 400 notes (up to CloudCoins. 
+4. Transaction Speeds: Less than 2 seconds for 400 notes. 
 
 5. Cannot be permanently lost.
 
@@ -47,9 +50,11 @@ Sections:
 
 9. Fixed supply - no counterfeits or inflation.
 
-10. Quantum-Safe.
+10. Quantum Safe.
 
 11. Be completed by March 2022.
+
+## Notes
 
 ### Network Number
 
@@ -132,6 +137,41 @@ Every response has a 'status' field. Generally, three statuses are common and ob
 | fail | Main operation failed |
 
 \* for backward compatibility some services still use the 'historically inherited' statuses. See details in the services' descriptions.
+
+
+## Echo Service
+
+### Purpose:
+The purpose of the echo API is to allow a program (or user) to establish that a RAIDA is ready to detect the authenticity of CloudCoins and how many milliseconds the contact requires.
+
+The client sends the RAIDA an Echo Request and the RAIDA will respond with a Echo Response.
+
+
+Echo Request Example:
+```
+https://RAIDA0.CloudCoin.Global/service/echo
+```
+Note: Client uses HTTPS and GET method for the echo url located in the service folder on the RAIDA server.
+
+
+Echo Response Example:
+```
+{
+ "server":"RAIDA0",
+ "status":"ready",
+ "message":"Execution Time (milliseconds) = 2.3751258850098",
+ "time":"2018-03-28 02:14:43"
+}
+```
+The execution time is the number of milliseconds that the RAIDA needed to complete a detection request of six loop back coins. This tells us how well the RAIDA is performing internally. 
+
+### Rules:
+The RAIDA may not respond if it is unavailable.
+All Return Objects' key values are case in-sensitive and should be compared accordingly.
+The names of the servers on Network 1 will always be one of 25 servers: RAIDA0 through RAIDA24. Note: server names are case-insensitive and should be compared accordingly.
+The status will always be ready otherwise it will return an error. See General Errors.
+The subject of the echo response will always be "Up" and the details will always be "Detection agent ready to detect authenticity." otherwise it will return an error. See General Errors.
+The time is in GMT.
 
 ## Echo DA Service
 
