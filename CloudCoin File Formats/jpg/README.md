@@ -12,7 +12,11 @@ Example Filename:
 Denomination "CloudCoin", NN, SN, a user tag and ".jpg" separated by dots.
 
 
-![JPEG Format](jpegformat.jpg)
+![JPEG Format](jpegformat.jpg
+NOTE: The first byte of the AOID tells if the coin is encrypted. EE means it is encrypted. 
+If it is encrypted, then the next 25 hex numbers will represent if the parts of the AN are positive or negative. 
+0000b or 0x0 means they are all positive. 1111b or 0xf means they are all negative. There are 16 possible combinations. 
+for example 1010b or 0x9 means that the first and third AN parts are negative. See the vaulter for more information about this. 
 
 ## Explanation of Bytes
 
