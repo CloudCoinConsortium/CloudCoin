@@ -39,7 +39,7 @@ Example: 56448594525
 ```
 Example: 3
 ```
-8.Put all the numbers together with the most random ones first to create the Master Seed. 
+8. Put all the numbers together with the most random ones first to create the Master Seed. 
 ```
 Card Numbers, Parity Number, CCV, PIN
  Example: 56448594525,3,851,5377
@@ -63,8 +63,10 @@ etc.
 ```
 11. Now pown the coins with the new ANs. 
 
-13. Use the Password to encrypt the ANs. 
+12. OPTIONAL: Use the Password to encrypt the ANs. 
+This is for future use if it proves to be neccessary. 
 Use the Vaulter spec here: https://cloudcoinconsortium.org/software.html
+(You will need to write some extra aoid info in the jpeg)
 
 14. Download the template of the front of the card and back of the card. From here.
 
@@ -73,9 +75,7 @@ Use the Vaulter spec here: https://cloudcoinconsortium.org/software.html
 
 ![Card Front](card-back.jpg)
 
-Sample of what it should look like when done: 
 
-![Card Front](card.jpg)
 
 15. Use HTML5 Canvas to write text on the file use the fonts:
 
@@ -85,13 +85,14 @@ See the otf fonds in this repo.
 
 See this: http://jsfiddle.net/zMKge/
 
-The image should look like this: 
+Sample of what it should look like when done: 
 
-16. Write the coin to the PNG credit card template using this spec:
+![Card Front](card.jpg)
+NOTE: There will be two jpg images, not one. 
 
-https://github.com/CloudCoinConsortium/PNG_Console/blob/master/standards/pngformat.png
+16. Write the coin to the JPG credit card template using this spec:
 
-Note some coins will have negative values and need () around the ANs.
+https://github.com/CloudCoinConsortium/CloudCoin/tree/master/CloudCoin%20File%20Formats/jpg
 
 You will need to add 9001 to the random 11 digit card number and the parity number like this from the example above:
 ```
