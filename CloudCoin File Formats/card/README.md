@@ -102,7 +102,7 @@ Add the name of the user's Skywallet account like "John.Skywallet.cc"
 ```
 17.
 
-Give the PNGs of the Front and Back to the user on the web page. With instruction on how to right click them to download. 
+Give the JPGs of the Front and Back to the user on the web page. With instruction on how to right click them to download. 
  
 
 
