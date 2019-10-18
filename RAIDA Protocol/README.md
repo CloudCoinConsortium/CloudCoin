@@ -7,14 +7,15 @@ Sections:
 [RAIDA Requirments](README.md#raida-requirments)
 
 [Notes](README.md#notes)
+
 ----------------------------------------------
-['Echo' service](README.md#echo-service)
+[Echo service](README.md#echo-service)
 
-['Echo DA' service](README.md#echo-da-service)
+[Echo DA service](README.md#echo-da-service)
 
-['Detect' service](README.md#raida-detect-service)
+[Detect service](README.md#raida-detect-service)
 
-['Multi-Detect' Service](README.md#raida-multi-detect-service)
+[Multi-Detect Service](README.md#raida-multi-detect-service)
 
 [Multi-Ticket Protocol](README.md#raida-multi-ticket-protocol)
 
@@ -31,6 +32,8 @@ Sections:
 -----------------------------------------
 
 ## RAIDA Requirments
+
+----------------------------------------------
 
 1. Have Data Supremacy. Cannot be brought down by hackers, governments or even its creators.
 
@@ -54,7 +57,11 @@ Sections:
 
 11. Be completed by March 2022.
 
+----------------------------------------------
+
 ## Notes
+
+----------------------------------------------
 
 ### Network Number
 
@@ -138,8 +145,11 @@ Every response has a 'status' field. Generally, three statuses are common and ob
 
 \* for backward compatibility some services still use the 'historically inherited' statuses. See details in the services' descriptions.
 
+----------------------------------------------
 
 ## Echo Service
+
+----------------------------------------------
 
 ### Purpose:
 The purpose of the echo API is to allow a program (or user) to establish that a RAIDA is ready to detect the authenticity of CloudCoins and how many milliseconds the contact requires.
@@ -173,7 +183,11 @@ The status will always be ready otherwise it will return an error. See General E
 The subject of the echo response will always be "Up" and the details will always be "Detection agent ready to detect authenticity." otherwise it will return an error. See General Errors.
 The time is in GMT.
 
+----------------------------------------------
+
 ## Echo DA Service
+
+----------------------------------------------
 
 Sample *GET* request:
 ```http
