@@ -7,10 +7,6 @@ Sections:
 
 [Common Notes on RAIDA Protocols](README.md#common-notes-on-raida-protocols)
 
-['About' service](README.md#raida-about-service)
-
-['Help' service](README.md#raida-help-service)
-
 ['Echo DA' service](README.md#echo-da-service)
 
 ['Detect' service](README.md#raida-detect-service)
@@ -137,79 +133,6 @@ Every response has a 'status' field. Generally, three statuses are common and ob
 
 \* for backward compatibility some services still use the 'historically inherited' statuses. See details in the services' descriptions.
 
-## RAIDA 'About' service
-Shows the list of services that are implemented and available
-```
-Usage: https://raida0.cloudcoin.global/service/about
-```
-Response:
-```json
-{
-    "server": "RAIDA0",
-    "status": "help",
-    "brief": "Summary of services provided by RAIDA Server.",
-    "help usage": "https://raida0.galaxynet/service/help?name=<service_name>",
-    "services": [
-        "echo",
-        "version",
-        "detect",
-        "multi_detect",
-        "get_ticket",
-        "multi_get_ticket",
-        "hints",
-        "multi_hints",
-        "fix",
-        "multi_fix",
-        "send",
-        "receive",
-        "show"
-    ],
-    "version": "2019-05-02",
-    "time": "2019-05-05 23:42:42"
-}
-```
-
-## RAIDA 'Help' service
-May be used for reference. Displays brief and long service description, usage rules and possible return statuses.
-```
-Usage: https://raida0.cloudcoin.global/service/help?name=multi_fix
-```
-Normal response:
-```json
-{
-    "server": "RAIDA0",
-    "status": "help",
-    "brief": "Fix the bunch of units",
-    "long": "Put the new ANs to the DB in case the provided sets of trusted servers numbers and their tickets are valid. Usage of the fix4 protocol is mandatory. In case of fail message contains comma separated list of failed node numbers.",
-    "request type": "POST",
-    "parameters": {
-        "nn": "Network Number, int, optional",
-        "fromserver1": "First server in trust quad (corner), int",
-        "fromserver2": "Second server in trust quad (corner), int",
-        "fromserver3": "Third server in trust quad (corner), int",
-        "fromserver4": "Fourth server in trust quad (corner), int",
-        "message1[]": "Array of tickets from fromserver1, string, char(44)",
-        "message2[]": "Array of tickets from fromserver2, string, char(44)",
-        "message3[]": "Array of tickets from fromserver3, string, char(44)",
-        "message4[]": "Array of tickets from fromserver4, string, char(44)",
-        "pans[]": "Array of Proposed Authentication Numbers, string, char(32)"
-    },
-    "result": "Array of JSON strings.",
-    "significant statuses": "pass, fail, dud",
-    "version": "2019-05-02",
-    "time": "2019-05-05 23:50:40"
-}
-```
-Response if the service name is not recognised
-```json
-{
-    "server": "RAIDA0",
-    "status": "dud",
-    "message": "Help: Requested Service Name is either missed or misspelled or does not exist.",
-    "version": "2019-05-02",
-    "time": "2019-05-05 23:51:44"
-}
-```
 ## Echo DA Service
 
 Sample *GET* request:
