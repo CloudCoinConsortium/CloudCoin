@@ -22,7 +22,7 @@ Denomination "CloudCoin", NN, SN, a user tag and ".jpg" separated by dots.
 | 4 & 5  | Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
 
 
-## Offcial CloudCoin Templates
+## Offical CloudCoin Templates
 
 ![1 Template](jpeg1.jpg)
 ![5 Template](jpeg5.jpg)
