@@ -8,7 +8,6 @@ Sections:
 
 [Notes](README.md#notes)
 
-----------------------------------------------
 [Echo service](README.md#echo-service)
 
 [Echo DA service](README.md#echo-da-service)
@@ -33,7 +32,6 @@ Sections:
 
 ## RAIDA Requirments
 
-----------------------------------------------
 
 1. Have Data Supremacy. Cannot be brought down by hackers, governments or even its creators.
 
@@ -61,7 +59,6 @@ Sections:
 
 ## Notes
 
-----------------------------------------------
 
 ### Network Number
 
@@ -149,8 +146,6 @@ Every response has a 'status' field. Generally, three statuses are common and ob
 
 ## Echo Service
 
-----------------------------------------------
-
 ### Purpose:
 The purpose of the echo API is to allow a program (or user) to establish that a RAIDA is ready to detect the authenticity of CloudCoins and how many milliseconds the contact requires.
 
@@ -237,6 +232,9 @@ Sample Response if the RAIDA does not use Sentinel/DAs:
 }
 ```
 
+
+----------------------------------------------
+
 ## RAIDA 'Detect' Service
 
 Detect service authenticates single CloudCoin. In case of success the AN is replaced with PAN which in turn should be replaced in the local CloudCoin file (stack).
@@ -279,6 +277,9 @@ Response if the coin is not authenticated
 ```
 For historical reasons the 'detect' service supports the b= parameter (which can be either 't' or 'true').
 This denotes the so-called 'brief' mode. It means that the response is a single word 'pass' or 'fail'.
+
+
+----------------------------------------------
 
 ## RAIDA 'Multi-Detect' Service
 
@@ -353,6 +354,9 @@ Response if input arrays are not the same length
     }
 ]
 ```
+
+----------------------------------------------
+
 ## RAIDA Multi-Ticket Protocol
 
 The RAIDA Multi Ticket Protocol allows many tickets to be generated at the same time.
@@ -431,6 +435,8 @@ Example Response if all tickets failed:
 The last byte of each ticket (returned in the 'message' field) in the response holds the Detection Agent number. This number can be used by RAIDA server to forward the request to the corresponding Detection Agent.
 
 
+----------------------------------------------
+
 ## RAIDA Multi-Hints Protocol
 
 The RAIDA Multi Hints Protocol allows many tickets to be fetched
@@ -447,6 +453,8 @@ Example Response if two of the three tickets are failed:
 [-2:9223372036854775807,-2:9223372036854775807,1:6447]
 ```
 
+
+----------------------------------------------
 
 ## RAIDA Multi Fix Protocol
 
@@ -544,6 +552,8 @@ RESPONSE IF ARRAY LENGTHS NOT THE SAME
 ```
 
 
+----------------------------------------------
+
 ## RAIDA 'fix_lost' Service
 
 The RAIDA Fix Lost Protocol allows many coins that are considered lost to be found.
@@ -623,6 +633,8 @@ Response if input arrays are not the same length
     }
 ]
 ```
+
+----------------------------------------------
 
 ## MULTI EXTEND: Service for paying for RAIDA to Prolonge Expiration date
 
