@@ -14,9 +14,9 @@ Denomination "CloudCoin", NN, SN, a user tag and ".jpg" separated by dots.
 
 ![JPEG Format](jpegformat.jpg)
 
-| yte Numbers Starting with Zero   | Second Header |First Header  | Second Header |First Header  | Second Header |
+| Byte Numbers Starting with Zero | Name  | Bytes | File Bytes  | Mandatory Hex Valuer | Values vary? | Second Header |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Content Cell  | Content Cell  |Content Cell  | Content Cell  |Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
 
 
