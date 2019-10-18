@@ -12,7 +12,7 @@ Example Filename:
 Denomination "CloudCoin", NN, SN, a user tag and ".jpg" separated by dots.
 
 
-![JPEG Format](jpegformat.jpg
+![JPEG Format](jpegformat.jpg)
 
 NOTE: The first byte of the AOID tells if the coin is encrypted. EE means it is encrypted. 
 If it is encrypted, then the next 25 hex numbers will represent if the parts of the AN are positive or negative. 
