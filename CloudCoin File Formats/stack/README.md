@@ -1,6 +1,6 @@
 # Stack files
 
-Stack files have a ".stack" extention. 
+Stack files have a ".stack" extention. They represent a stack of coins. They may hold many coins. 
 
 ## Naming Convention
 
@@ -49,7 +49,8 @@ Here is a sample JSON file with two CloudCoins in it:
 	}, {
 		"nn": "1",
 		"sn": "24589",
-		"an": ["aeab4ff7(113c0871)252a56d249e19bb4", "34847b78a16680f45b0188a1378359e1", "9bf4f0fd441c3fc826dd07f2907bbd7f", "9e4a1a3f371955db(0ecee5c4)54c6327d", "68d49a2e0ae642fd34aea4c169d1d20e",
+		"an": [
+			"aeab4ff7(113c0871)252a56d249e19bb4", "34847b78a16680f45b0188a1378359e1", "9bf4f0fd441c3fc826dd07f2907bbd7f", "9e4a1a3f371955db(0ecee5c4)54c6327d", "68d49a2e0ae642fd34aea4c169d1d20e",
 			"ebb14c3c0c8e898262b11056686fce31", "fe948b05(1e58ab9f)98481e5cb27d7228", "9a9bda52a965ffc2(02c7406c)50e30f05", "ea9c3f42(1d203678)44ea11fee166da00", "9d263c13a3ce498f(3d9221ff)c05f7c4d",
 			"da880eb9(07212c18)73592ebe7aa38907", "8c7164cea9456fcf(085f8100)e59089a2", "071dcc9c755e2acc3b5493ac8dc4a57a", "46163edf(0adeee1a)9990fd4fef4ae443", "1a4d1834(237ffe38)(484c881d)baac3ef0",
 			"91760a5e0ce5fed94a23017ed8f77e40", "1ddf3387bd32f7ab(29e4fef7)89faeb5f", "91cb6bfda9b0ce2472d0e56a893b0ee2", "af4da2752ee288b5ad263200aa2509fa", "e94bbf83(36fbfd39)(3c014fb2)61c8ba5a",
@@ -82,7 +83,8 @@ With Carraiga retrns and tabs
 →},∙{¶
 →→"nn":∙"1",¶
 →→"sn":∙"24589",¶
-→→"an":∙["aeab4ff7(113c0871)252a56d249e19bb4",∙"34847b78a16680f45b0188a1378359e1",∙"9bf4f0fd441c3fc826dd07f2907bbd7f",∙"9e4a1a3f371955db(0ecee5c4)54c6327d",∙"68d49a2e0ae642fd34aea4c169d1d20e",¶
+→→"an":∙[¶
+→→→"aeab4ff7(113c0871)252a56d249e19bb4",∙"34847b78a16680f45b0188a1378359e1",∙"9bf4f0fd441c3fc826dd07f2907bbd7f",∙"9e4a1a3f371955db(0ecee5c4)54c6327d",∙"68d49a2e0ae642fd34aea4c169d1d20e",¶
 →→→"ebb14c3c0c8e898262b11056686fce31",∙"fe948b05(1e58ab9f)98481e5cb27d7228",∙"9a9bda52a965ffc2(02c7406c)50e30f05",∙"ea9c3f42(1d203678)44ea11fee166da00",∙"9d263c13a3ce498f(3d9221ff)c05f7c4d",¶
 →→→"da880eb9(07212c18)73592ebe7aa38907",∙"8c7164cea9456fcf(085f8100)e59089a2",∙"071dcc9c755e2acc3b5493ac8dc4a57a",∙"46163edf(0adeee1a)9990fd4fef4ae443",∙"1a4d1834(237ffe38)(484c881d)baac3ef0",¶
 →→→"91760a5e0ce5fed94a23017ed8f77e40",∙"1ddf3387bd32f7ab(29e4fef7)89faeb5f",∙"91cb6bfda9b0ce2472d0e56a893b0ee2",∙"af4da2752ee288b5ad263200aa2509fa",∙"e94bbf83(36fbfd39)(3c014fb2)61c8ba5a",¶
@@ -108,5 +110,5 @@ With Carraiga retrns and tabs
 4. an means authenticity numbers. These are 32 hexidecimal characters. We put them in rows of five with a carrage return at the end of each row. If the coin is encrypted, some of the parts of the ANs will be surrounded with parenthesis. You can tell if the coin is encrypted by looking for parenthesis in the ANs. 
 5. pown shows the status of the last pown. There are 25 letters in a row. The only letters that are use are p, f, e, n and u. (pass, fail, error, no reply and untried or unknown). The default is all 'u's.
 6. ed is the expiration date. Five years from the last month it was authenticated. month seperated by year with a hyphen. No zeros before the month. 
-7. aoid is the all other info dump. It can hold an array of strings seperated by commas. By default, it is empty. 
+7. aoid is the All Other Info Dump. It can hold an array of strings. By default, it is empty. 
 
