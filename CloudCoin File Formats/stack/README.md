@@ -4,7 +4,29 @@ Stack files have a ".stack" extention.
 
 ## Naming Convention
 
+Stack files names start with the amount of coins in the file. Then the name of the coins in the file. Then the network number. and then the tag. The tag may be an unguessable guid if the stack is to be placed on a web server. Or it may have some interesting information. 
 
+Examples of stack file names. 
+```
+12750.cloudcoin.mytag.stack
+
+800.cloudcoin.d735e4d16ff54eda8019e1a59ad33032.stack
+
+5000.cloudcoin.ForBillyJenkins.stack
+
+```
+If the coin is used as an ID coin the name will be the DNS named followed by the .stack
+```
+Sean.CloudCoin.Global.stack
+
+Billy.Skywallet.cc.stack
+
+
+```
+
+
+
+NOTE: It is ok to Capitalize in the stack file. 
 
 Many CloudCoins can be stored in one text file as JSON (Java Script Object Notation).
 
@@ -74,16 +96,16 @@ With Carraiga retrns and tabs
 ```
 
 ### Use of JSON. This coin is designed to be parsed without special json software. It must be exactly like this with the same order and whitespace. 
-### Spaces: There are spaces, tabs and carriage returns. 
+### Spaces: There are spaces, tabs and carriage returns. Keep them exactly the same as above. 
 ### Order of elements. The order of key value pairs must not be changed. 
-### Capitalization. Everything is lowercaps. 
+### Capitalization. Everything is lowercase. 
 
 ### Components
 
 1. cloudcoin is the name of the coin. CloudCoin can have sub coins like celebrium, eossteath.
 2. nn is the Network Number or the Network Name. The root is "1". THIS MUST BE TREATED LIKE A STRING AND BE SURROUNDED BY QUOTES. 
 3. sn is the Serial Number but it may not be a number. THIS MUST BE TREATED LIKE A STRING AND BE SURROUNDED BY QUOTES. 
-4. an means authenticity numbers. These are 32 hexidecimal characters. We put them in rows of five with a carrage return at the end of each row
+4. an means authenticity numbers. These are 32 hexidecimal characters. We put them in rows of five with a carrage return at the end of each row. If the coin is encrypted, some of the parts of the ANs will be surrounded with parenthesis. You can tell if the coin is encrypted by looking for parenthesis in the ANs. 
 5. pown shows the status of the last pown. There are 25 letters in a row. The only letters that are use are p, f, e, n and u. (pass, fail, error, no reply and untried or unknown). The default is all 'u's.
 6. ed is the expiration date. Five years from the last month it was authenticated. month seperated by year with a hyphen. No zeros before the month. 
 7. aoid is the all other info dump. It can hold an array of strings seperated by commas. By default, it is empty. 
