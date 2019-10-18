@@ -87,8 +87,6 @@ Services that always return arrays are:
 - multi_get_ticket
 - multi_hints
 - multi_fix
-- send
-- receive
 
 In all other cases the single JSON message (dictionary) is returned
 ```json
@@ -437,19 +435,32 @@ The last byte of each ticket (returned in the 'message' field) in the response h
 
 ## RAIDA Multi-Hints Protocol
 
-The RAIDA Multi Hints Protocol allows many tickets to be fetched
+Hints is part of the Kerberos system that allow you to see what serial number is associated with a ticket. I allows you to confirm an identity of a person who is making a request.
+
+Someone gives you a ticket claiming to be SN 2092. You send the ticket to the RAIDA. The RAIDA will response with either
+
+1. The serial number that you can use to check the cliam. e.g. 2092 
+
+2. A ticket not found code: -2
+
+3. A database error code: -3
+
 
 Example POST authenticating three coins
 ```
 https://RAIDA0.CloudCoin.Global/service/multi_hints
 rns[]=c8b7a96e7cf1961587977cfb3847b2ba7c7a308a3fd2&rns[]=61fd09083302bb3eb8350dfeb1d7bf6c125b13e560bf&rns[]=dcea173685e387f7007bf2e578917cbdd10750088c29
 ```
+The rns are the tickets that the client received from a multi-ticket response. 
 
 Example Response if two of the three tickets are failed:
-
 ```html
-[-2:9223372036854775807,-2:9223372036854775807,1:6447]
+[ -2:9223372036854775807:1, 16777215:232:1, 2092:6447:1]
 ```
+The above response shows the results of three tickets.
+The first one shows that the ticket was not found and the time it took was max and the network was 1.
+The second response shows that the ticket belongs to SN 16777215 and it was made 232 milliseconds ago. It was on network 1. 
+
 
 
 ----------------------------------------------
