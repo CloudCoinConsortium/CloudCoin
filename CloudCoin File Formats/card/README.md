@@ -55,35 +55,42 @@ Seed for RAIDA 3: 35644859452538515377
 Seed for RAIDA 23: 235644859452538515377
 Seed for RAIDA 24: 245644859452538515377
 ```
-8. Generate ANs by running each of the sees through an MD5 Hash. 
+10. Generate ANs by running each of the sees through an MD5 Hash. 
 ```
 AN for RAIDA 0 using seed 056448594525385180125456: 0f0bbc82ce84d80d1345525961ef32f7
 AN for RAIDA 1 using seed 156448594525385180125456: 40dc9bc4fe9904fcf3bebd9aab62ff1b
 etc. 
 ```
-9. Now pown the coins with the new ANs. 
+11. Now pown the coins with the new ANs. 
 
-10.Use the Password to encrypt the ANs. 
+13. Use the Password to encrypt the ANs. 
 Use the Vaulter spec here: https://cloudcoinconsortium.org/software.html
 
-11. Download the template of the front of the card and back of the card. From here.
-http://pownesium.com/img/templates/CloudCoin-Card-back.png
-http://pownesium.com/img/templates/CloudCoin-Card-Front.png
-Sample of what it should look like when done: 
-http://pownesium.com/img/templates/CloudCoin-Card-Front-Sample.png
+14. Download the template of the front of the card and back of the card. From here.
 
-13. Use HTML5 Canvas to write text on the file use the fonts:
+![Card Front](card-front.jpg)
+
+
+![Card Front](card-back.jpg)
+
+Sample of what it should look like when done: 
+
+![Card Front](card.jpg)
+
+15. Use HTML5 Canvas to write text on the file use the fonts:
+
 See this: http://jsfiddle.net/zMKge/
-http://pownesium.com/fonts/OCRAStd.otf
-http://pownesium.com/fonts/ProximaNova-Semibold.otf
-http://pownesium.com/fonts/ProximaNova-Regular.otf
+
+See the otf fonds in this repo.
 
 See this: http://jsfiddle.net/zMKge/
 
 The image should look like this: 
 
-14. Write the coin to the PNG credit card template using this spec:
+16. Write the coin to the PNG credit card template using this spec:
+
 https://github.com/CloudCoinConsortium/PNG_Console/blob/master/standards/pngformat.png
+
 Note some coins will have negative values and need () around the ANs.
 
 You will need to add 9001 to the random 11 digit card number and the parity number like this from the example above:
@@ -92,7 +99,7 @@ You will need to add 9001 to the random 11 digit card number and the parity numb
 Add an expiration date that is five years from last month. 
 Add the name of the user's Skywallet account like "John.Skywallet.cc"
 ```
-15.
+17.
 
 Give the PNGs of the Front and Back to the user on the web page. With instruction on how to right click them to download. 
  
