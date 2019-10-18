@@ -1,14 +1,14 @@
 # RAIDA Protocol
 
 Explains how to send messages to the Redundant Array of Independent Detection Agents and the responses that can be expected.
-
-Notes: 
+You will need to send messages to all 25 RAIDA in parallel. 
+### Notes: 
 
 [RAIDA Requirments](README.md#raida-requirments)
 
 [Notes](README.md#notes)
 
-Services
+### Services:
 
 [Echo](README.md#echo-service)
 
