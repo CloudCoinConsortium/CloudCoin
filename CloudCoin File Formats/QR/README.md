@@ -54,4 +54,6 @@ Code used to make the QR Code:
 
 ![Without Logo](qr-code.png)
 
+# Sample QR Code with Logo
+
 ![QR code with a log0](qr-code-logo.png)
