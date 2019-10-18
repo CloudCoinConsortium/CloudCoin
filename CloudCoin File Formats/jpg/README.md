@@ -1,0 +1,1 @@
+# JPEG or JPG
