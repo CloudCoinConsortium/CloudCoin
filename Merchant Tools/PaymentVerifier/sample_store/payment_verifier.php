@@ -59,8 +59,8 @@ $product_998823	  = $_GET['product_998823'];
 
 //pretend this is a database of products and prices:
 //------Item ----+---Price----//
-$price_book_88719 = 24;//in CloudCoins
-$price_art_99882 = 240;
+$price_book_88719 = 1;//in CloudCoins
+$price_art_99882 = 1;
 $price_product_998823 = 1;
 
 //Calculate Total due:
