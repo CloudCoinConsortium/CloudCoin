@@ -12,11 +12,11 @@ There are three types of QR Codes:
 
 3. Subdomain Tokken
 
-## Entrire Coin
+# Format 1. Stack file as text on the QR.  
 
-This is very simple, you just take a stack file and insert it into a QR code like it was text. 
+This is very simple, you just take a stack file and insert it into a QR code like it was text. However, it creates a large QR that may be difficult for some phones to read and will be difficult to put on packaging. 
 
-## New Compressed CloudCoin Format
+# Format 2. Compressed CloudCoin Format
 
 The compressed CloudCoin Format has three parts:
 1. Serial Number
@@ -63,7 +63,7 @@ Code used to make the QR Code:
 16777216ABCDEFGHIK2
 ```
 
-## Tokens that are not CloudCoins. (NOT FULLY DEVELOPED)
+# Format 3. Tokens that are not CloudCoins. (NOT FULLY DEVELOPED)
 
 Tokens based on CloudCoin may used GUIDs instead of numbers for their serial number. 
 
