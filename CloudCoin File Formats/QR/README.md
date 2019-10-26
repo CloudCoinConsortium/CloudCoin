@@ -63,6 +63,21 @@ Code used to make the QR Code:
 16777216ABCDEFGHIK2
 ```
 
+## Storing the codes before turning them into PNGs. 
+
+The codes can be stored in one file called CompressedQR.txt. One code per line. Like:
+```
+compressedQR.txt
+
+16777216ABCDEFGHIK1
+9988433EFGHIKABCD1
+1300923GHIKABCDEF1
+
+
+```
+
+
+
 # Format 3. Tokens that are not CloudCoins. (NOT FULLY DEVELOPED)
 
 Tokens based on CloudCoin may used GUIDs instead of numbers for their serial number. 
