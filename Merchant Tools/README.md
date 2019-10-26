@@ -1,4 +1,4 @@
-# Accepting Payments Automatically
+# Accepting CloudCoins Automatically
 
 You can quickly and reliably receive CloudCoins and automatically fill orders. 
 
