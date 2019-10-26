@@ -1,19 +1,20 @@
-<!-- this page collects data from a customer and posts it to the php page so that the payment can be verified -->
+
+
 <html class="no-js" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Buy Products Example</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" href="http://cloudcoinconsortium.com/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="http://cloudcoinconsortium.comfavicon-16x16.png" sizes="16x16" />
-  <meta name="theme-color" content="#ffffff" />
-  <link rel="stylesheet" href="http://cloudcoinconsortium.com/css/foundation.css" type="text/css" />
-  <link rel="stylesheet" href="http://cloudcoinconsortium.com/css/app.css" type="text/css" />
-  <link href="http://fonts.googleapis.com/css?family=Roboto:400,300" rel='stylesheet' type='text/css' />
-  <style type="text/css">
+<meta name="generator" content="HTML Tidy for Linux (vers 25 March 2009), see www.w3.org" />
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Buy CloudCoins</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" href="https://cloudcoinconsortium.com/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://cloudcoinconsortium.comfavicon-16x16.png" sizes="16x16" />
+<meta name="theme-color" content="#ffffff" />
+<link rel="stylesheet" href="https://cloudcoinconsortium.com/css/foundation.css" type="text/css" />
+<link rel="stylesheet" href="https://cloudcoinconsortium.com/css/app.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,300" rel='stylesheet' type='text/css' />
+<style type="text/css">
  
     h1, h2, h3, h4, h5, h6 
 	{
@@ -51,7 +52,6 @@
 	background-color:#338FFF;
   }
   </style>
-
 <style>
         body {font-family: Arial, Helvetica, sans-serif;}
         
@@ -99,7 +99,6 @@
           
         }
         </style>
-
 <style>
         #CloudCoinPay {
             border: 2px solid #338FFF;
@@ -166,98 +165,65 @@
      text-shadow: 2px 2px 4px #aaaaaa;
      }
     </style>
-    
-
-	
-	
-	
 </head>
-
 <body>
-  <div class="top-bar" style=
-  " font-family: 'Roboto', sans-serif; font-size: 1.6vw; font-weight: bold; text-size-adjust:800;">
-  <div class="row">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu="" style=
-        " font-family: 'Roboto', sans-serif; background-color:white;">
-          <li class="menu-text"><a href="index.html"><img src=
-          "https://cloudcoinconsortium.com/img/cloudcointop.png" alt="CloudCoin logo"
-          width="200" /></a></li>
-
-          <li>Our Store Accepts CloudCoin</li>
-        </ul>
-      </div>
-
-      <div class="top-bar-right">
-        <ul class="menu" style=
-        " font-family: 'Roboto', sans-serif; background-color:white;"></ul>
-      </div>
-    </div>
-  </div><br />
-
-  <div class="row">
-    <div class="large-12 columns">
-      <h1 style=
-      " font-size: 3.2vw; color:white; font-weight: bold; text-shadow: 10px 10px 25px #333333; text-size-adjust:1005"
-      class="white text-center">Pure HTML Example</h1><!--
-          <ol>
-          
-           <li>These CloudCoins will be delivered to your skywallet account instantly.</li>
-
-             <li>CloudCoins come in different denominations (1,5,25,100 and 250).</li>
- 
-          </ol>
-                  -->
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-6 medium-8 medium-centered large-centered columns">
-      <form id="cloudcoinform" action="payment_verifier.php" method="GET" onsubmit="return instruct_customer(this);">
-        <table>
-
-          <tr>
-            <th colspan="4">Pay Instantly with CloudCoin.<br /></th>
-          </tr>
-
-          <tr>
-            <th id="tableMessage" colspan="4">What products do you want to buy?</th>
-          </tr>
-
-          <tr>
-            <td><a href="book.jpg" target="_blank" class="thumbnail"><img alt="book_88719" src="book.jpg" width="150" /></a></td>
-            <th>Book #88719</th>
-            <td><input type="number" name="book_88719" id="book" value="0" onchange="changeTotal()" min="0" /></td>
-
-            <td id="total_books">25 CloudCoins Each</td>
-          </tr>
-
-          <tr>
-            <td><a href="art.png" target="_blank"class="thumbnail"><img alt="art" src="art.png" width="150" /></a></td>
-            <th>Art #99882</th>
-            <td><input type="number" name="art_99882" id="art" value="0" onchange="changeTotal()" min="0" /></td>
-            <td id="total_art">250 CloudCoins Each</td>
-          </tr>
-
-          <tr>
-            <td><a href="product.jpg" target="_blank" class="thumbnail"><img alt="product_998823" src="product.jpg" width="150" /></a></td>
-            <th>product S#998823</th>
-            <td><input type="number" name="product_998823" id="product" value="0" onchange="changeTotal()" min="0"  /></td>
-            <td id="total_products">1 CloudCoin Each</td>
-          </tr>
-
-          <tr>
-            <th id="grandTotal" colspan="4">Grand Total: 0 CloudCoin</th>
-          </tr>
-
-          <tr>
-            <th colspan="4" >
-                <input type="hidden" id="hidden_total" name="total_coins_sent" value="0" />
-                
-               <style>
+<div class="top-bar" style=" font-family: 'Roboto', sans-serif; font-size: 1.6vw; font-weight: bold; text-size-adjust:800;">
+<div class="row">
+<div class="top-bar-left">
+<ul class="dropdown menu" data-dropdown-menu="" style=" font-family: 'Roboto', sans-serif; background-color:white;">
+<li class="menu-text"><a href="index.html"><img src="https://cloudcoinconsortium.com/img/cloudcointop.png" alt="CloudCoin logo" width="200" /></a></li>
+<li>Our Store Accepts CloudCoin</li>
+</ul>
+</div>
+<div class="top-bar-right">
+<ul class="menu" style=" font-family: 'Roboto', sans-serif; background-color:white;"></ul>
+</div>
+</div>
+</div><br />
+<div class="row">
+<div class="large-12 columns">
+<h1 style=" font-size: 3.2vw; color:white; font-weight: bold; text-shadow: 10px 10px 25px #333333; text-size-adjust:1005" class="white text-center">Pure HTML Example</h1>
+</div>
+</div>
+<div class="row">
+<div class="large-6 medium-8 medium-centered large-centered columns">
+<form id="cloudcoinform" action="checkout.php" method="GET" onsubmit="return instruct_customer(this);">
+<table style="border-collapse: collapse;">
+<tr>
+<th colspan="4">Pay Instantly with CloudCoin.<br /></th>
+</tr>
+<tr>
+<th id="tableMessage" colspan="4">What products do you want to buy?</th>
+</tr>
+<tr>
+<td><a href="book.jpg" target="_blank" class="thumbnail"><img alt="book_88719" src="book.jpg" width="150" /></a></td>
+<th>Book #88719</th>
+<td><input type="number" name="book_88719" id="book" value="0" onchange="changeTotal()" min="0" /></td>
+<td id="total_books">25 CloudCoins Each</td>
+</tr>
+<tr>
+<td><a href="art.png" target="_blank" class="thumbnail"><img alt="art" src="art.png" width="150" /></a></td>
+<th>Art #99882</th>
+<td><input type="number" name="art_99882" id="art" value="0" onchange="changeTotal()" min="0" /></td>
+<td id="total_art">250 CloudCoins Each</td>
+</tr>
+<tr>
+<td><a href="product.jpg" target="_blank" class="thumbnail"><img alt="product_998823" src="product.jpg" width="150" /></a></td>
+<th>product S#998823</th>
+<td><input type="number" name="product_998823" id="product" value="0" onchange="changeTotal()" min="0" /></td>
+<td id="total_products">1 CloudCoin Each</td>
+</tr>
+<tr>
+<th id="grandTotal" colspan="4">Grand Total: 0 CloudCoin</th>
+</tr>
+<tr>
+<th colspan="4">
+<input type="hidden" id="hidden_total" name="total_coins_sent" value="0" />
+<style>
                    #myBtn:hover{
-                       background-image:url(https://cloudcoinconsortium.com/img/cloudcointop.png); 
-                       background-size: 160px 25px;
+				     
+                       background-image:url(payhover.png); 
+                        background-size: 192px 67px;
                        background-color:white;
                        color:transparent;
                        background-repeat: no-repeat;
@@ -265,87 +231,79 @@
 
                    } 
                    #myBtn{
-                       width:160px;
+				   border: 0;
+				   background-color:white;
+				   background-image:url(pay.png); 
+				   background-size: 192px 67px;
+                       width:192px;
+					   height:67;
                    }
                </style>
-                 <button id="myBtn" class="button" >Pay With:</button>
-                <!-- The Modal -->
+<button id="myBtn" class="button"></button>
 
+<div id="myModal" class="modal">
 
-                <div id="myModal" class="modal">
+<div class="modal-content">
+<span class="close">&times;</span>
+<div id="CloudCoinPay">
+<table style="border-collapse: collapse;">
+<tr style="background-color: #FFFFFF">
+<td colspan="2">
+<img src="https://cloudcoinconsortium.com/img/cloudcointop.png" alt="CloudCoin Logo"><br>
+<span style="color: #338FFF">Use CloudCoin Wallet to send your payment:</span>
 
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                          <span class="close">&times;</span>
-                     
-           <div id="CloudCoinPay">               
-		<table   style="border-collapse: collapse;">
-		   <tr style="background-color: #FFFFFF">
-			  <td colspan="2">
-				 <img src="https://cloudcoinconsortium.com/img/cloudcointop.png" alt="CloudCoin Logo"><br>	
-				 <span style="color: #338FFF">Use CloudCoin Wallet to send your payment:</span>
-				 <!--<h1>CloudCoin Pay</h1>-->
-			  </td>
-		   </tr>
-		   <tr>
-			  <td>Transfer To:</td>
-			  <td><input type="text" id="from" name="from" value="sample.Skywallet.cc"  readonly />
-			  </td>
-		   </tr>
-		   <tr>
-			  <td>Amount:</td>
-			  <td><span id="CloudCoinsDue">0</span></td>
-		   </tr>
-		   <tr>
-			  <td> Memo:</td>
-			  <td><input type="text" id="invoice" name="invoice" value="0"  readonly/>
-		   <tr>
-			  <td>Return To:</td>
-			  <td><input type="text" id="skywallet_id" name="from" placeholder="Your.Skywallet.cc" required />
-			  </td>
-		   </tr>
-		   </td></tr>        
-		   <tr>
-			  <td colspan="2" style="text-align: center">
-			
-							  <progress id="spinner" style="visibility: hidden" value="22" max="100"></progress>
-				 <input id="cloudcoinsubmit" type="button" class="button"  value="Click Here After Sending" onclick="beforeSubmit();" />
-			  </td>
-		   </tr>
-		</table>
-    </div>
-    </form>      
-                        </div>
-                      
-                </div>
-                 
-            </th>
-          </tr>
-
-        </table>
-      </form>
-      
-      <address>
-        Contact Seller Directly: <a href="Jerry@Protonmail.com" style=
-        "color:darkblue">Jerry@Protonmail.com</a>.<br />
-        530-590-5038<br />
-        www.JerryExample.com<br />
-        Box 564, Disneyland<br />
-        USA
-      </address>
-    </div>
-  </div>
-
-
-
-
-  <script>
+</td>
+</tr>
+<tr>
+<td>Transfer To:</td>
+<td>Sample.Skywallet.cc<input type="hidden" id="from" name="from" value="sample.Skywallet.cc" readonly />
+</td>
+</tr>
+<tr>
+<td>Amount:</td>
+<td><span id="CloudCoinsDue">0</span></td>
+</tr>
+<tr>
+<td> Memo:</td>
+<td><span id="memo">0</span><input type="hidden" id="invoice" name="invoice" value="0" readonly />
+<tr>
+<td>Return To:</td>
+<td><input type="text" id="skywallet_id" name="from" placeholder="Your.Skywallet.cc" required />
+</td>
+</tr>
+</td></tr>
+<tr>
+<td colspan="2" style="text-align: center">
+<progress id="spinner" style="visibility: hidden" value="22" max="100"></progress>
+<input id="cloudcoinsubmit" type="button" class="button" value="Click Here After Sending" onclick="beforeSubmit();" />
+</td>
+</tr>
+</table>
+</div>
+</form>
+</div>
+</div>
+</th>
+</tr>
+</table>
+</form>
+<address>
+Contact Seller Directly: <a href="Jerry@Protonmail.com" style="color:darkblue"><span class="__cf_email__" data-cfemail="e6ac8394949fa6b694899289888b878f8ac885898b">[email&#160;protected]</span></a>.<br />
+530-590-5038<br />
+www.JerryExample.com<br />
+Box 564, Disneyland<br />
+USA
+</address>
+</div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
 
 
     var total = 0;
     var invoice_id = make_invoice_id(4);
     invoice.value = invoice_id.toUpperCase();
+	memo.innerHTML = invoice_id.toUpperCase();
 
 
 
@@ -414,7 +372,6 @@
     }//end make_invoice_id
 
      </script>
-
 <script>
       //Modal Script
         // Get the modal
@@ -460,7 +417,5 @@
 				 }//end if is valid sky wallet           
 			}//end function before submit
 		</script>
-  
-
 </body>
 </html>
