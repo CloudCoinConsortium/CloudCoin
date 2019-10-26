@@ -1,4 +1,6 @@
-# Here is an example website that shows how to you may receive CloudCoins as payment and howe the payment verifier works. 
+# Sample Store
+
+Here is an example website that shows how to you may receive CloudCoins as payment and howe the payment verifier works. 
 
 It includes the index.html that serves as the store front. 
 
