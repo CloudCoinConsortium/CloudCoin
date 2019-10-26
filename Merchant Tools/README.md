@@ -16,8 +16,13 @@ The Payment Verifier is here in this Github folder.
 
 # Sending CloudCoins Automatically
 
-You can send Cloudcoins quickly and reliably to your customer's Skywallet address. 
+You can send Cloudcoins quickly and reliably to your customer's Skywallet address by transferring them from your Skywallet account. 
 
-You can call on our Sender executable to send the coins.  
+You can call on our Transferrer executable to send the coins.  
 
-The Sender is here in this Github folder. 
+The Transferrer is here in this Github folder. 
+
+# Echoing the RAIDA
+
+Before you verify payments or transfer funds, you may want to echo the RAIDA to make sure you hae connectivity. 
+
