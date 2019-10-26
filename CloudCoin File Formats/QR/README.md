@@ -65,7 +65,7 @@ Code used to make the QR Code:
 
 ## Storing the codes before turning them into PNGs. 
 
-The codes can be stored in one file called CompressedQR.txt. One code per line. Like:
+The codes can be stored in one file called CompressedQR.txt that is created in a folder called "CompressedQR" that is a sub folder of the "Export" folder. One code per line. Like:
 ```
 compressedQR.txt
 
