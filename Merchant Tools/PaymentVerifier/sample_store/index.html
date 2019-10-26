@@ -199,13 +199,13 @@
 <td><a href="book.jpg" target="_blank" class="thumbnail"><img alt="book_88719" src="book.jpg" width="150" /></a></td>
 <th>Book #88719</th>
 <td><input type="number" name="book_88719" id="book" value="0" onchange="changeTotal()" min="0" /></td>
-<td id="total_books">25 CloudCoins Each</td>
+<td id="total_books">1 CloudCoins Each</td>
 </tr>
 <tr>
 <td><a href="art.png" target="_blank" class="thumbnail"><img alt="art" src="art.png" width="150" /></a></td>
 <th>Art #99882</th>
 <td><input type="number" name="art_99882" id="art" value="0" onchange="changeTotal()" min="0" /></td>
-<td id="total_art">250 CloudCoins Each</td>
+<td id="total_art">1 CloudCoins Each</td>
 </tr>
 <tr>
 <td><a href="product.jpg" target="_blank" class="thumbnail"><img alt="product_998823" src="product.jpg" width="150" /></a></td>
@@ -309,7 +309,7 @@ USA
 
      function changeTotal()
      {
-         total = (art.value * 250) +  (book.value * 25) + (product.value * 1) ;
+         total = (art.value * 1) +  (book.value * 1) + (product.value * 1) ;
          grandTotal.innerHTML = "Check Out Total: " + total + " CloudCoin"; 
 		 if( total == 1){
 			CloudCoinsDue.innerHTML = total + " CloudCoin";
