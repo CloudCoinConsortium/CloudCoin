@@ -1,36 +1,31 @@
 # Accepting Payments
 
-We want you to be able to quickly and relyably receive CloudCoins so you can automatically fill your orders. 
+You can quickly and reliably receive CloudCoins so you can automatically fill your orders. 
 
-Your customers will send CloudCoins to your Skywallet address using the CloudCoin Wallet or one of our web payment systems. 
+Your customers will send CloudCoins to your Skywallet address using the CloudCoin Wallet software or one of our web payment systems. 
 
-All you must do is confirm that you have recieved the payment. 
+The customer will send your servers a message specifying what they bought, how many CloudCoins they sent you, and what "memo" was included. 
 
-The tool we use for this is called "Payment Verifier."
+Your servers with then go to your Skywallet account and see if a transfer has been received with the memo and amount specified by the customer. 
 
-Payment Verifier is a executable program that runs on either Windows of Linux. 
+For this, your server can call on the Payment Verifier to do that work. The Payment Verifier will return a true or false. 
 
-
-There are two types of APIs. 
-1. Message Orientated
-
-2. Object Orientated
-
-The Message Orientated APIs are what we call "Servants." These are console based programs that you can call on with command line arguments and 
-they will do their specific job and report back. These can be run by any program that can execute an executable. 
-
-The Object Orientated are the 
-
-More to come soon. 
+Payment Verifier is a executable program that runs on either Windows of Linux. It can be called from any langague that is able to call executable. So, you can call the Payment Verifier from PHP, C#, JAVA, C++, Ruby, almost anything! 
 
 # Payment Verifier
 
-The Payment Verifier sees if a payment has been received based on the tag name. Then, if the payment has been receieved, it will rename the 
-the envelope that the payment was made in. If the sender sent too many of too few CloudCoins, the Payment Verifier will
-return the coins to the sender. 
+The Payment Verifier sees if a payment has been received based on the memo (aka "tag" or "envelope"). Then, if the payment has been receieved, it will rename the memo so you will not that it has been handled. If the customer sent too many or too few CloudCoins, the Payment Verifier will return the coins to the sender. 
 
+You can download the compiled Payment Verifier at: https://cloudcoinconsortium.com/exe/paymentverifier.exe
 
-## Flags
+When you call the Payment Verifier, you will need to include some command line arguments also called "flags". 
+
+## Sample Call to the Payment Verifier Executable:
+```
+paymentVerifier.exe -timeout=5 -payment_memo=sean4 -payment=100 -refundto=1371486 -logpath="C:\Logs\PaymentVerifier" -idpath="C:\cc\Accounts\Change\ID\1.CloudCoin.1.2..stack" -transactionlogpath="C:\user\bill\CloudCoin\Skywallet\bill.skywallet.cc"
+
+```
+## Flags Required by the Payment Verifier Executable. 
 * payment_memo: A string that specifies the tag/envelope/memo that the sender provided
 * payment:  A string that is an integer showing how many CloudCoins the user claimed to have sent. 
 * newtag: A string tag that will be given to the coins that have been receieved.  
@@ -39,12 +34,6 @@ return the coins to the sender.
 * idpath: A string specifying the path to the coin that will be used to access the receiver's account. 
 * timeout A string that describes the number of seconds that the program will wait for RAIDA to respond. 
 * refundto: A string that is a Serial number, IP or Account Name of the receiver. So 16777216 or 1.255.255.255 or Sean.CloudCoin.global
-
-## Sample Usage:
-```
-paymentVerifier.exe -timeout=5 -payment_memo=sean4 -payment=100 -refundto=1371486 -logpath="C:\Logs\PaymentVerifier" -idpath="C:\cc\Accounts\Change\ID\1.CloudCoin.1.2..stack" -transactionlogpath="C:\user\bill\CloudCoin\Skywallet\bill.skywallet.cc"
-
-```
 
 ## How it works
 Before the PaymentVerifier is called, the caller should check that the RAIDA Echo works and that enough RAIDA are available.
