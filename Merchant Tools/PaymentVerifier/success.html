@@ -1,0 +1,184 @@
+<!-- This page shows how a merchant may tell the customers that their payment succeeded.
+This page goes along with the sample page verifier. 
+-->
+<html class="no-js" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Buy CloudCoins</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="http://cloudcoinconsortium.com/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="http://cloudcoinconsortium.comfavicon-16x16.png" sizes="16x16" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="http://cloudcoinconsortium.com/css/foundation.css" type="text/css" />
+  <link rel="stylesheet" href="http://cloudcoinconsortium.com/css/app.css" type="text/css" />
+  <link href="http://fonts.googleapis.com/css?family=Roboto:400,300" rel='stylesheet' type='text/css' />
+  <style type="text/css">
+ 
+    h1, h2, h3, h4, h5, h6 
+	{
+		font-family: 'Roboto', sans-serif;
+		color: #252c34;
+	}
+  
+  table tbody th, table tbody td 
+  {
+    padding: 0.5rem 0.625rem 0.625rem 0.5rem;
+  }
+  .button
+  {
+	background-color:#338FFF;
+  }
+  
+  [type='number']
+  {
+   margin:0 0 0;
+  }
+  .thumbnail
+  {
+  margin-bottom:0;
+  }
+  
+  a
+  {
+	  color:#338FFF;
+	  font-family: 'Roboto', sans-serif;
+	  font-weight:  bold;
+  }
+  
+  body
+  {
+	background-color:#338FFF;
+  }
+  </style>
+
+
+	
+	
+	
+</head>
+
+<body>
+  <div class="top-bar" style=   " font-family: 'Roboto', sans-serif; font-size: 1.6vw; font-weight: bold; text-size-adjust:800;">
+  <div class="row">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu="" style=
+        " font-family: 'Roboto', sans-serif; background-color:white;">
+          <li class="menu-text"><a href="index.html"><img src=
+          "https://cloudcoinconsortium.com/img/cloudcointop.png" alt="CloudCoin logo"
+          width="200" /></a></li>
+
+          <li>Our Store Accepts CloudCoin</li>
+        </ul>
+      </div>
+
+      <div class="top-bar-right">
+        <ul class="menu" style=
+        " font-family: 'Roboto', sans-serif; background-color:white;"></ul>
+      </div>
+    </div>
+  </div><br />
+
+  <div class="row">
+    <div class="large-12 columns">
+      <h1 style=
+      " font-size: 3.2vw; color:white; font-weight: bold; text-shadow: 10px 10px 25px #333333; text-size-adjust:1005"
+      class="white text-center">Here are your products!</h1>
+    
+    </div>
+  </div>
+
+    <div class="row">
+	
+	 
+    <div id="images" class="center large-12 columns" style="display:table-cell; vertical-align:middle; text-align:center" >
+   
+    
+    </div>
+  </div>
+  
+  
+  
+  <!-- Footer -->
+  <div class="row">
+    <div class="large-6 medium-8 medium-centered large-centered columns">
+      
+      <address>
+        Contact Seller Directly: <a href="Jerry@Protonmail.com" style=
+        "color:darkblue">Jerry@Protonmail.com</a>.<br />
+        530-590-5038<br />
+        www.JerryExample.com<br />
+        Box 564, Disneyland<br />
+        USA
+      </address>
+    </div>
+  </div>
+
+<script>
+var $_GET = {};
+if(document.location.toString().indexOf('?') !== -1) {
+    var query = document.location
+                   .toString()
+                   // get the query string
+                   .replace(/^.*?\?/, '')
+                   // and remove any existing hash string (thanks, @vrijdenker)
+                   .replace(/#.*$/, '')
+                   .split('&');
+
+    for(var i=0, l=query.length; i<l; i++) {
+       var aux = decodeURIComponent(query[i]).split('=');
+       $_GET[aux[0]] = aux[1];
+    }
+}
+//get the 'index' query parameter
+
+//place images on page
+for(var i =0; i < parseInt($_GET['book']); i++){
+var x = document.createElement("IMG");
+  x.setAttribute("src", "book.jpg");
+  x.setAttribute("width", "304");
+  x.setAttribute("height", "228");
+  x.setAttribute("alt", "Book");
+  var img = document.getElementById("images");
+  img.appendChild(x);
+  var br1 = document.createElement("BR");
+  img.appendChild(br1)
+}
+
+
+
+for(var i =0; i < parseInt($_GET['art']); i++){
+var x = document.createElement("IMG");
+  x.setAttribute("src", "art.png");
+  x.setAttribute("width", "304");
+  x.setAttribute("height", "228");
+  x.setAttribute("alt", "Book");
+  var img = document.getElementById("images");
+  img.appendChild(x);
+  var br1 = document.createElement("BR");
+  img.appendChild(br1)
+}
+
+for(var i =0; i < parseInt($_GET['product']); i++){
+var x = document.createElement("IMG");
+  x.setAttribute("src", "product.jpg");
+  x.setAttribute("width", "304");
+  x.setAttribute("height", "228");
+  x.setAttribute("alt", "Book");
+  var img = document.getElementById("images");
+  img.appendChild(x);
+  var br1 = document.createElement("BR");
+  img.appendChild(br1)
+}
+
+
+</script>
+
+
+
+</body>
+</html>
