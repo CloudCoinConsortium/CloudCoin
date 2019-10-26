@@ -2,25 +2,28 @@
 /*Made by Sean worthington 7/9/2019
 This script shows you how to implement the "Payment Verifier" executable so that you can accept payments automatically.
 
-This page works with the simply_payment_sample.html. The html page has a form and posts its data to this page. 
+This page works with the advanced_use_of_payment_verifier.html. That page has a form and posts its data to this page. 
 
-Note: Before the user submits the form on the html page, they should send one CloudCoin to your skywallet account 
-with a invoice number that you specify. The exact amount is required. The payment verifies send the customer a refund immediatly
+The html page allows the user to choose how many books, art and products they want. This page will accept that order and check 
+the the merchants Skywallet to see if the coins were received. If yes, this page will give the user the goods. 
+
+
+Note: Before the user submits the html form on the html page, they should send CloudCoins to your skywallet account using their
+CloudCoin Wallet. 
+
+The client will generate an invoice number randomly. The exact amount is required. The payment verifies send the customer a refund immediatly
 if the amount is inccorrect.
 
-In this example, we pretend that the merchant 
-
-Sample GET Request 
- https://raida18.cloudcoin.global/service/verify_payment?from=billy@Skywallet.cc&invoice=b26b&total_coins_sent=250
-  *The "from" is the account that the requester wants to receive their refund if one is due (like the sender sends the wrong amount).
-  *The "Invoice" is a random number that the sender made up so that you could recognize their payment.
-  *The "total_coins_sent" is the number of coins the customer claims to have sent you. This may or may not be the correct amount. 
 
 Extended GET Request that includes your merchant fields
  https://raida18.cloudcoin.global/service/verify_payment?from=billy@Skywallet.cc&invoice=b26b&total_coins_sent=250&book_88729=1&art_99882=2&product_998823=4
-	*The book_88719 would be one of your books with its id (like if you were selling books). The =1 means the customer is buying one of these. 
-	*The art_99882 would be if you were selling art product number 99882. The =2 means the customer is buying two of these. 
-	*The product_998823 would be one of your products with its product ID. The =4 means the customer is buying four of these. 
+
+*The "from" is the account that the requester wants to receive their refund if one is due (like the sender sends the wrong amount).
+*The "Invoice" is a random number that the sender made up so that you could recognize their payment.
+*The "total_coins_sent" is the number of coins the customer claims to have sent you. This may or may not be the correct amount. 
+*The book_88719 would be one of your books with its id (like if you were selling books). The =1 means the customer is buying one of these. 
+*The art_99882 would be if you were selling art product number 99882. The =2 means the customer is buying two of these. 
+*The product_998823 would be one of your products with its product ID. The =4 means the customer is buying four of these. 
  
 */
 
@@ -76,31 +79,24 @@ $move_to = "Received_from_".$from;
 //Put the "paymentverifier.exe" program in a place and start it. Note that we use the $total_due that we calculated
 $command = "C:\\xampp\htdocs\production_go\PaymentVerifier\paymentverifier.exe -getfrom=\"$invoice\" -payment=$total_due -refundto=$to_sn -rootpath=\"$Log_path\" -idpath=\"$Path_to_ID_coin\" -timeout=\"$timeout\" -newtag=\"$move_to\"";
 
-//die( $command );
-$Results = exec($command);
-//$Results = "fail";
-//The PaymentVerifier will now check to see if you have recieved payment. If the amount is wrong, it will refund the money.
-//If the amount is true it will keep the money and create a sub account with the Move To name you specified. 
+//die( $command );//Uncomment if you just want to see the command and you don't want to execute the command
+
+$Results = exec($command); //This actually executes the command. 
 
 //Check results to see if the payment was verified.
 if (strpos($Results, 'success') !== false) 
 {
-	//The payment send to your invoice matched the total due. 
+	//The payment sent to your invoice matched the total due. 
 	//You may now send the customer their product
 	//Tell the customer that the payment has been verified:
-	
-	
-
-	//Redirect to Success Page or Send JSON
-	
 	
 	//Success Page
 		header('Location: success.html?book=' . $book_88719 . '&art=' . $art_99882 . '&product=' . $product_998823 );
 		
 	
-	//JSON: use if you are just goig to reply the outcome. 
+	//JSON: Uncomment if you are going to reply the outcome to AJAX. 
 	//$formattedRename= str_replace("[","",$Results);//Format the JSON without the square brakets. 
-    //echo str_replace("]","",$formattedRename);
+       //echo str_replace("]","",$formattedRename);
 
 }
 else
