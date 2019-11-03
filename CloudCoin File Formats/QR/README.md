@@ -63,7 +63,7 @@ Code used to make the QR Code:
 16777216ABCDEFGHIK2
 ```
 
-## Storing the codes before turning them into PNGs. 
+## Storing the codes before turning them into QR codes. 
 
 The codes can be stored in one file called CompressedQR.txt that is created in a folder called "CompressedQR" that is a sub folder of the "Export" folder. One code per line. Like:
 ```
