@@ -69,9 +69,9 @@ The codes can be stored in one file called CompressedQR.txt that is created in a
 ```
 compressedQR.txt
 
-16777216ABCDEFGHIK1
-9988433EFGHIKABCD1
-1300923GHIKABCDEF1
+16777216ABCDEFGHIK1 //Represents coin SN 16777216
+9988433EFGHIKABCD1  //Represents coin SN 9988433
+1300923GHIKABCDEF1  //Represents coin SN 1300923
 
 
 ```
