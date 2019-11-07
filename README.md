@@ -29,7 +29,7 @@ CloudCoin is a digital currency based on the Theory of Perfect Money. Like Crypt
 
 
 ## RAIDA
-The Redundant Array of Independent Detection Agents is a data structure that authenticates CloudCoins. The owner of the CloudCoin can also fix any problems that occure making the RAIDA self healing. Should any of the RAIDA go down, new RAIDA can be brought in to replace them. 
+The Redundant Array of Independent Detection Agents is a data structure that runs the new GRS (Global RAIDA System) that authenticates people, digital items, collectibles and currencies such as CloudCoins. The owner of the CloudCoin can fix any synchronization problems that occure making the RAIDA self-healing. Should any of the RAIDA go down, new RAIDA can be brought in to replace them. 
 
 ## Sky Wallet
 
