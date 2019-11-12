@@ -1,7 +1,65 @@
-# Card format
-Stores a seed of a CloudCoin on the front of a graphic that looks like a credit card. The ANs are embedded inside the card: 
+
+## CLOUDCOIN CARD STANDARD
+This is the standard for creating a CloudCoin "Credit Card" that contains a serial number and ANs of
+a CloudCoin that looks like the familiar Credit Card and can be used to access a Skywallet account. 
+
+Example CARD:
+```
+Sean.CloudCoin.Global
+9011 5985 4567 8522
+EXP 09/22
+CVV 5485
+```
+
+### GENERATING THE CARD BASED ON A SKYWALLET ID
+
+* The SN comes from a resolving the SkyWallet name to IP then to decimal. 
+
+* First number must be '9'. Nine means CloudCoin
+
+* The Next two digits are the NN (Network Number) and now it will be 01. 
+
+* The next 12 digits are the first part of the PAN-Generator called 'R' for Random. 
+
+* The last digit is the mod10 Check sum. Add up all the previous numbers. Then figure out what number is necessary for the number to be divisible by 10. Luhn Algorithm
+
+* Exp Month 01-12 ( 2 digit month - one month before the real exp month).
+
+* Exp Year ( 2 digit year of coin expiration).
+
+* CVV (A 4 digit number ). Part of the PAN-Generator coded as 'C'. 
+
+### PAN-Generator 
+The PAN-Generator parts are 12 digit random number and a the 4 digit CVV. R(andom) and C(VV). 
+Here is an example with 452459836515 being random and 8925 being the CVV:
+```
+Pattern: RRRRRRRRRRRRCCCC
+
+PAN-Generator: 4524598365158925
+```
+### Generating PANs from the PAN-Generator
+Add the RAIDA number in front of the PAN-Generator and run an MD5 Hash:
+```
+PAN for RAIDA 0: 04524598365158925 MD5 Hash c5eea8d38295aa8a60e766091e55b816
+PAN for RAIDA 1: 14524598365158925 MD5 Hash e385cc046dd21eb1c05c00fea43ffea4
+PAN for RAIDA2 through RAIDA22 left out for brevity..
+PAN for RAIDA23 234524598365158925 MD5 Hash 424563309BF5D153C2209412BBC95DF8
+PAN for RAIDA24 244524598365158925 MD5 Hash  8C55ABEAFEDA28A9F875BE816C7BE1EB
+```
+Now you have the PANs. These PANs must be put in the RAIDA by calling a detect service and using the original ANs. 
+
+## Saving the coins to file:
+The Coins can then be saved in a CSV credit Card file. The fields are the PAN-G, Exp. Date, CVV, SN and the QR. (all of them put together in one string that can be used to create a QR code).
+"Credit Cards 12 11 2019 04 04 12.csv"
+```
+4524598365158925,02/25,8925,16777200,45245983651589250225892516777200
+8563189457264505,02/25,0505,16777201,85631894572605050225050516777201
+6521695249265289,02/25,1289,16777202,65216952492512890225128916777202
+```
 
 # CREDIT CREATION CARD PROTOCOL
+Here is anotherway that Credit Cards can be created dynamically with the help of the user who uses their own CloudCoin. 
+
 This gives a person a "Skywallet" credit card that they can use as a key to manipulate money on the Sky Wallet. They can also use it as an ID for other applications. The Sky Wallet ID is embedded in a PNG image and can also be entered manually from the numbers on the card.
 
 How to make a Sky Wallet Card. 
@@ -23,17 +81,17 @@ Example Skywallet ID: Jerry.Skywallet.cc
 Example PIN: 5377
 ```
 
-4. Generate a random three number CCV
+4. The PIN is the CCV
 ```
-Example CCV: 851
+Example CCV: 5377
 ```
-5. Generate a random eleven number card number:
+5. Generate a random twelve number card number:
 ```
-Example: 56448594525
+Example: 564485945250
 ```
 6. Add up all the numbers in the card number:
 ```
-5+6+4+4+8+5+9+4+5+2+5=57  
+5+6+4+4+8+5+9+4+5+2+5+0=57  
 ```
 7. Find the parity. Find out how much you must add to make the number dividable by 10. If the number is 57, then we would need to add 3 to make 60. If the number was 43, then we would need to add 7 to make the number 50. This will be a number between 0 and 9 inclusive. 
 ```
@@ -42,8 +100,8 @@ Example: 3
 8. Put all the numbers together with the most random ones first to create the Master Seed. 
 ```
 Card Numbers, Parity Number, CCV, PIN
- Example: 56448594525,3,851,5377
-Combined: 5644859452538515377
+ Example: 564485945250,3,5377
+Combined: 56448594525035377
 ```
 9. Use the number to create a see for each of the 25 RAIDA's AN. Do this by adding the RAIDA number to the front of the combined. 
 ```
