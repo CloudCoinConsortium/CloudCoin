@@ -392,3 +392,15 @@ TO BE DEVELOPED LATER
 ## Exchange
 Exchanges allows a user to send a bunch of smaller notes and either get a CloudCoin or a bigger denomination
 To BE Developed
+
+## Client Images
+
+![Screenshot 1](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c1.png)
+
+![Screenshot 2](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c2.png)
+
+![Screenshot 3](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c3.png)
+
+![Screenshot 4](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c4.png)
+
+![Screenshot 5](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c5.png)
