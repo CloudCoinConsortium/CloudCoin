@@ -395,12 +395,12 @@ To BE Developed
 
 ## Client Images
 
-![Screenshot 1](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c1.png)
+![Screenshot 1](https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Celebrium/c1.png?raw=false)
 
-![Screenshot 2](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c2.png)
+![Screenshot 2](https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Celebrium/c2.png?raw=true)
 
-![Screenshot 3](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c3.png)
+![Screenshot 3](https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Celebrium/c3.png?raw=true)
 
-![Screenshot 4](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c4.png)
+![Screenshot 4](https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Celebrium/c4.png?raw=true)
 
-![Screenshot 5](https://github.com/CloudCoinConsortium/CloudCoin/edit/master/Celebrium/c5.png)
+![Screenshot 5](https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Celebrium/c5.png?raw=true)
