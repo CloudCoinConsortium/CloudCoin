@@ -327,8 +327,8 @@ The Detect Denomination service is like detect except it returns the data associ
 
 EXAMPLE OF READ GET REQUEST:
 ```
-https://RAIDA20.cloudcoin.global/service/detect_denom?nn=2&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5
-https://RAIDA20.cloudcoin.global/service/detect_denom?nn=2&sn=1&an=1836843d9283&pan=1836843d9283
+https://RAIDA18.raida.tech/service/detect_denom?nn=2&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5
+
 ```
 EXAMPLE RESPONSE IF GOOD:
 ```
