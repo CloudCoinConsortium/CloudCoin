@@ -129,10 +129,11 @@ Use the Vaulter spec here: https://cloudcoinconsortium.org/software.html
 
 14. Download the template of the front of the card and back of the card. From here.
 
-![Card Front](card-front.jpg)
+
+![Card Front](card-front.png)
 
 
-![Card Front](card-back.jpg)
+![Card Front](card-back.png)
 
 
 
