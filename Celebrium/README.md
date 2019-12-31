@@ -273,7 +273,7 @@ WHERE DATA WILL BE STORED
 
 EXAMPLE GET REQUEST:
 ```
-https://raida9.celebrium.com/service/mint_new?
+https://raida9.raida.tech/service/mint?
 test=false&
 mint_password=c1b79398cb5f74891a1218012aeaeb4e&
 denomination_id=4&
