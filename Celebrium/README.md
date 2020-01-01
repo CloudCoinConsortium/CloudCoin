@@ -285,6 +285,7 @@ metadata=id=4<br>title=The End<br>
 base64data=uUm5wro7urS7LbunvCG8mr0UvY++Cb6Evv6/eb/
 
 ```
+NOTE: If test=true, the service will test to see if all parameters are correct on the RAIDA. You should run it in test mode before minting for real. 
 
 EXAMPLE OF SUCCESS
 ```
