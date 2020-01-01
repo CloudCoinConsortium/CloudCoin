@@ -68,7 +68,7 @@ The caller must have a domain network number first.
 
 Example POST requesting three referals
 ```
-Usage: https://RAIDA13.CloudCoin.Global/service/refer
+Usage: https://RAIDA13.cloudcoin.global/service/refer
 domain_name=RAIDATechStock
 domain_nn=3
 sns[]=16777001&sns[]=16777002&sns[]=16777003&
@@ -134,7 +134,7 @@ It will look at the last update of the file and send that too.
 
 EXAMPLE GET:
 ```
-https://raida9.celebrium.com/service/audit_domain?domain=celebrium
+https://raida9.cloudcoin.global/service/audit_domain?domain=celebrium
 
 ```
 EXAMPLE RESPONSE:
@@ -198,7 +198,7 @@ This allows the client to coordinat the RAIDA so that new coins created will be 
 
 EXAMPLE GET TOP:
 ```
-https://raida9.celebrium.com/service/top?count_password=j3jkod8ikokfs&
+https://raida9.raida.tech/service/top?count_password=j3jkod8ikokfs&
 ```
 EXAMPLE JSON RESPONSE IF SUCCESS:
 ```
@@ -220,7 +220,7 @@ This allows the auditing of coins to make sure the sub raida has no more than al
 
 EXAMPLE GET COUNT:
 ```
-https://raida9.celebrium.com/service/count?password=j3jkod8ikokfs&
+https://raida9.raida.tech/service/count?password=j3jkod8ikokfs&
 ```
 EXAMPLE JSON RESPONSE IF SUCCESS:
 ```
@@ -271,7 +271,7 @@ WHERE DATA WILL BE STORED
 |RAODA011|S23|S24|S0|S1|S2|S3|S4|S5|S6|S7|S8|S9|S10|S11|S12|S13|S14|S15|S16|S17|S18|S19|S20|S21|S22|
 
 
-EXAMPLE GET REQUEST:
+EXAMPLE POST REQUEST:
 ```
 https://raida9.raida.tech/service/mint?
 test=false&
@@ -325,7 +325,7 @@ EXAMPLE OF ERRORS
 
 The Detect Denomination service is like detect except it returns the data associated with the denomination along with a pass
 
-EXAMPLE OF READ GET REQUEST:
+EXAMPLE GET REQUEST:
 ```
 https://RAIDA18.raida.tech/service/detect_denom?nn=2&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5
 
@@ -346,9 +346,9 @@ EXAMPLE RESPONSE IF GOOD:
 ## Show Denominations 
 Shows a list of all the names of the denominations on a domain.
 
-EXAMPLE REQUEST
+EXAMPLE GET REQUEST
 ```
-http://raida5.celebrium.com/service/show_denominations"?read_password=0e9iios8ose
+http://raida5.raida.tech/service/show_denominations?read_password=0e9iios8ose
 
 ```
 Sample Response if successful:
@@ -366,9 +366,9 @@ Sample Response if successful:
 ## Show Denomination
 Shows the details about the specified domain
 
-EXAMPLE REQUEST
+EXAMPLE GET REQUEST
 ```
-http://raida5.celebrium.com/service/show_denomination"?password=0e9iios8ose&id=1
+http://raida5.raida.tech/service/show_denomination"?password=0e9iios8ose&id=1
 ```
 EXAMPLE RESPONSE IF GOOD
 ```
