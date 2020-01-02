@@ -11,7 +11,7 @@ EXP 09/22
 
 Back of Card:
 CVV 5485
-PIN four didgit number that may or may not be written on card. 
+
 ```
 
 ### GENERATING THE CARD BASED ON A SKYWALLET ID
