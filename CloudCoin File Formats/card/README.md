@@ -8,7 +8,10 @@ Example CARD:
 Sean.CloudCoin.Global
 9011 5985 4567 8522
 EXP 09/22
+
+Back of Card:
 CVV 5485
+PIN four didgit number that may or may not be written on card. 
 ```
 
 ### GENERATING THE CARD BASED ON A SKYWALLET ID
@@ -21,13 +24,15 @@ CVV 5485
 
 * The next 12 digits are the first part of the PAN-Generator called 'R' for Random. 
 
-* The last digit is the mod10 Check sum. Add up all the previous numbers. Then figure out what number is necessary for the number to be divisible by 10. Luhn Algorithm
+* The last digit is the mod10 Check sum. Add up all the 15 numbers in the card number and the CVV. Then figure out what number is necessary for the number to be divisible by 10. Luhn Algorithm. Since we include the cvv, it is not a true Luhn Algorith:
+Sample Card Number: 9010 0307 2080 301*  CVV 5131
+Add the numbers up and it equals 44. Devide by 10 any you get 6 remainer. You must add 6 to make it divisable by 10. So you make the last number of the card =6. The card number becomes: 9010 0307 2080 3016 CVV 5101
 
 * Exp Month 01-12 ( 2 digit month - one month before the real exp month).
 
 * Exp Year ( 2 digit year of coin expiration).
 
-* CVV (A 4 digit number ). Part of the PAN-Generator coded as 'C'. 
+* CVV (Must be at least 4 digit in length ). Part of the PAN-Generator coded as 'C'. 
 
 ### PAN-Generator 
 The PAN-Generator parts are 12 digit random number and a the 4 digit CVV. R(andom) and C(VV). 
