@@ -11,10 +11,11 @@ This code must be customized for your domain.
 
 You will need to get a ticket from one of the RAIDA to prove that you own the coin using the get_ticket service on your RAIDA. 
 
+Note: The nn (network number) parameter is 1 for the root RAIDA and 2 for Celebrium. 
 EXAMPLE GET REQUEST: 
 
 ```
-https://raida18.cloudcoin.global/ddns/ddns_delete.php?sn=1358923&raidanumber=2&username=b&ticket=12345678901234567890123456789012345678901234
+https://yourhost.com/ddns.php?nn=1&sn=1358923&raidanumber=2&ticket=12345678901234567890123456789012345678901234username=Billy1234&
 
 ```
 
@@ -30,6 +31,7 @@ You will need to get a ticket from one of the RAIDA to prove that you own the co
 
 EXAMPLE GET REQUEST: 
 ```
-https://raida18.cloudcoin.global/ddns/ddns_delete.php?sn=1358923&raidanumber=2&username=b&ticket=12345678901234567890123456789012345678901234
+https://yourhost.com/ddns_delete.php?nn=1&sn=1358923&raidanumber=2&ticket=12345678901234567890123456789012345678901234username=Billy1234&
+
 
 ```
