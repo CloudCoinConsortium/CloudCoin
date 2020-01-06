@@ -1,10 +1,10 @@
-# Transferrer
+# Transferer
 
 The Transfere moves coins from your account to the account of your customer. 
 
 It assumes that the RAIDA is ready and echoer was checked by the caller. 
 
-The Transferrer needs access to the ID key so it can use the account. 
+The Transferer needs access to the ID key so it can use the account. 
 
 The Transferrer is an execuatble program that can run on Windows, Linux or Mac by any programming language that can call an executable. 
 
