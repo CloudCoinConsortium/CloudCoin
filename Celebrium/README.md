@@ -270,20 +270,42 @@ WHERE DATA WILL BE STORED
 |RAID 10|S1|S2|S3|S4|S5|S6|S7|S8|S9|S10|S11|S12|S13|S14|S15|S16|S17|S18|S19|S20|S21|S22|S23|S24|S0|
 |RAID 110|S2|S3|S4|S5|S6|S7|S8|S9|S10|S11|S12|S13|S14|S15|S16|S17|S18|S19|S20|S21|S22|S23|S24|S0|S1|
 
+EXAMPLE OF HOW THE STRIPES ARE PUT TOGETHER AFTER THE CLIENT DOWNLOADS THEM
+```
+//Put all the stripes together. mparts is an array of stripes
+function unstripeData(mparts) {
+
+   var unstriped ="";
+   
+  for(var j = 0; j< mparts[1].length; j++){ 
+       for(var i=0; i<25; i++){
+           unstriped +=mparts[i].charAt(j);
+       }//for all 25 servers
+  }//end for every character
+   
+    // Trim padding at the end
+    unstriped = unstriped.replace(/-/g, "");//remove all - padding. 
+    return unstriped
+}
+
+```
 
 EXAMPLE POST REQUEST:
 ```
-https://raida9.raida.tech/service/mint?
-test=false&
-mint_password=c1b79398cb5f74891a1218012aeaeb4e&
+https://raida9.celebrium.com/service/mint_new?
+test=true&
 denomination_id=4&
 title=Kelly Goes To Hollywood&
 first_sn=44558&
 an_seed=e07550ccfff748d091388c00f44ea5fd&
 coins_to_mint=10000&
-metadata=id=4<br>title=The End<br>
-base64data=uUm5wro7urS7LbunvCG8mr0UvY++Cb6Evv6/eb/
-
+mint_password=j3jkod8ikokfs&
+meta_stripe=kfdkflkd&
+meta_mirror=89834&
+meta_mirror2=9384983
+data_stripe=kfdkflkd&
+data_mirror=89834&
+data_mirror2=9384983
 ```
 NOTE: If test=true, the service will test to see if all parameters are correct on the RAIDA. You should run it in test mode before minting for real. 
 
@@ -324,11 +346,19 @@ EXAMPLE OF ERRORS
 
 ## Detect Denom
 
-The Detect Denomination service is like detect except it returns the data associated with the denomination along with a pass
+The Detect Denomination service is like detect except it returns the data associated with the denomination. 
+
+You can request three types of data:
+
+1. Stripe:   data=stripe
+2. Mirror: data=mirror
+3. mirror2: data=mirror2
+
+
 
 EXAMPLE GET REQUEST:
 ```
-https://RAIDA18.raida.tech/service/detect_denom?nn=2&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5
+https://RAIDA18.raida.tech/service/detect_denom?nn=2&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&data=stripe
 
 ```
 EXAMPLE RESPONSE IF GOOD:
@@ -338,7 +368,7 @@ EXAMPLE RESPONSE IF GOOD:
 			"status":"pass",
 			"message": "The attached data belongs to the item",
 			"title","Kelly Drinks Milk"
-			"meta":"Hkj colorl position",
+			"meta":"Hkjro7urS7LbunvCG",
 			"base64data":"Um5wro7urS7LbunvCG8mr0UvY",
 			"time":"2019-11-08 05:56:32" 
 		}
@@ -347,9 +377,16 @@ EXAMPLE RESPONSE IF GOOD:
 ## Show Denominations 
 Shows a list of all the names of the denominations on a domain.
 
+You can request three types of data:
+
+1. Stripe:   data=stripe
+2. Mirror: data=mirror
+3. mirror2: data=mirror2
+
+
 EXAMPLE GET REQUEST
 ```
-http://raida5.raida.tech/service/show_denominations?read_password=0e9iios8ose
+http://raida5.raida.tech/service/show_denominations?read_password=0e9iios8ose&data=stripe
 
 ```
 Sample Response if successful:
@@ -369,7 +406,7 @@ Shows the details about the specified domain
 
 EXAMPLE GET REQUEST
 ```
-http://raida5.raida.tech/service/show_denomination"?password=0e9iios8ose&id=1
+http://raida0.raida.tech/service/show_denomination.php?id=5&password=746193b6dc5249c0bbaa282414aedff0&data=stripe
 ```
 EXAMPLE RESPONSE IF GOOD
 ```
