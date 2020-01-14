@@ -55,12 +55,12 @@ PAN for RAIDA24 24167772164524598365158925 MD5 Hash  8C55ABEAFEDA28A9F875BE816C7
 Now you have the PANs. These PANs must be put in the RAIDA by calling a detect service and using the original ANs. 
 
 ## Saving the coins to file:
-The Coins can then be saved in a CSV credit Card file. The fields are the PAN-G, Exp. Date, CVV, SN and the QR. (all of them put together in one string that can be used to create a QR code).
+The Coins can then be saved in a CSV credit Card file. The fields are the PAN-G, Exp. Date, CVV, SN and the QR. (all of them put together in one string that can be used to create a URL for a QR code).
 "Credit Cards 12 11 2019 04 04 12.csv"
 ```
-4524598365158925,02/25,8925,16777200,45245983651589250225892516777200
-8563189457264505,02/25,0505,16777201,85631894572605050225050516777201
-6521695249265289,02/25,1289,16777202,65216952492512890225128916777202
+4524598365158925, 02/25, 8925, 16777200, r=4524598365158925&c=8925&s=16777200 
+8563189457264505, 02/25, 0505, 16777201, r=8563189457264505&c=0505&s=16777201 
+6521695249265289, 02/25, 1289, 16777202, r=6521695249265289&c=1289&s=16777202 
 ```
 
 # CREDIT CREATION CARD PROTOCOL
