@@ -112,7 +112,7 @@ Example: 1
 ```
 8. Put all the numbers together with the most random ones first to create the Master Seed. 
 ```
-15 Card Numbers, Parity Number, CCV/PIN, SN
+15 Card Numbers, Luhn Algorithm Number, CCV/PIN, SN
  Example: 901564485945250,1,5377,16777200
 Combined: 9015644859452501537716777200
 ```
