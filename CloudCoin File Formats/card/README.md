@@ -55,12 +55,12 @@ PAN for RAIDA24 24167772164524598365158925 MD5 Hash  8C55ABEAFEDA28A9F875BE816C7
 Now you have the PANs. These PANs must be put in the RAIDA by calling a detect service and using the original ANs. 
 
 ## Saving the coins to file:
-The Coins can then be saved in a CSV credit Card file. The fields are the PAN-G, Exp. Date, CVV, SN and the QR. (all of them put together in one string that can be used to create a URL for a QR code).
+The Coins can then be saved in a CSV credit Card file. The fields are the PAN-G, Exp. Date, CVV, NN, SN and the QR. (all of them put together in one string that can be used to create a URL for a QR code).
 "Credit Cards 12 11 2019 04 04 12.csv"
 ```
-4524598365158925, 02-25, 8925, 1, 16777200, n=1&r=452459836515&d=02-25&c=8925&s=16777200 
-8563189457264505, 02-25, 0505, 1, 16777201, n=1&r=856318945726&d=02-25&c=0505&s=16777201 
-6521695249265289, 02-25, 1289, 1, 16777202, n=1&r=652169524926&d=02-25&c=1289&s=16777202 
+4524598365158925, 02-25, 8925, 1, 16777200, n=1&s=16777200&r=452459836515&d=02-25&c=8925& 
+8563189457264505, 02-25, 0505, 1, 16777201, n=1&s=16777201&r=856318945726&d=02-25&c=0505& 
+6521695249265289, 02-25, 1289, 1, 16777202, n=1&s=16777202&r=652169524926&d=02-25&c=1289& 
 ```
 
 # CREDIT CREATION CARD PROTOCOL
@@ -95,29 +95,36 @@ Example CCV: 5377
 ```
 Example: 564485945250
 ```
+5.5. Concatinate a 9 in front and the network number like '01'. Then add the ccv on the end:
+```
+Example: 9015644859452505377
+```
+
 6. Add up all the numbers in the card number:
 ```
-5+6+4+4+8+5+9+4+5+2+5+0=57  
+
+
+9+0+1+5+6+4+4+8+5+9+4+5+2+5+0+5+3+7+7=89  
 ```
 7. Find the parity. Find out how much you must add to make the number dividable by 10. If the number is 57, then we would need to add 3 to make 60. If the number was 43, then we would need to add 7 to make the number 50. This will be a number between 0 and 9 inclusive. 
 ```
-Example: 3
+Example: 1
 ```
 8. Put all the numbers together with the most random ones first to create the Master Seed. 
 ```
-Card Numbers, Parity Number, CCV, PIN
- Example: 564485945250,3,5377
-Combined: 56448594525035377
+15 Card Numbers, Parity Number, CCV/PIN, SN
+ Example: 901564485945250,1,5377,16777200
+Combined: 9015644859452501537716777200
 ```
 9. Use the number to create a see for each of the 25 RAIDA's AN. Do this by adding the RAIDA number to the front of the combined. 
 ```
-Seed for RAIDA 0: 05644859452538515377
-Seed for RAIDA 1: 15644859452538515377
-Seed for RAIDA 2: 25644859452538515377
-Seed for RAIDA 3: 35644859452538515377
+Seed for RAIDA 0: 09015644859452501537716777200
+Seed for RAIDA 1: 19015644859452501537716777200
+Seed for RAIDA 2: 29015644859452501537716777200
+Seed for RAIDA 3: 39015644859452501537716777200
 ----------------------4 though 22 left out
-Seed for RAIDA 23: 235644859452538515377
-Seed for RAIDA 24: 245644859452538515377
+Seed for RAIDA 23: 239015644859452501537716777200
+Seed for RAIDA 24: 249015644859452501537716777200
 ```
 10. Generate ANs by running each of the sees through an MD5 Hash. 
 ```
