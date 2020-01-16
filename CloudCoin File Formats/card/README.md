@@ -66,9 +66,9 @@ Now you have the PANs. These PANs must be put in the RAIDA by calling a detect s
 The Coins can then be saved in a CSV credit Card file. The fields are the PAN-G, Exp. Date, CVV, NN, SN and the QR. (all of them put together in one string that can be used to create a URL for a QR code).
 "Credit Cards 12 11 2019 04 04 12.csv"
 ```
-4524598365158925, 02-25, 8925, 1, 16777200, n=1&s=16777200&r=452459836515&d=02-25&c=8925& 
-8563189457264505, 02-25, 0505, 1, 16777201, n=1&s=16777201&r=856318945726&d=02-25&c=0505& 
-6521695249265289, 02-25, 1289, 1, 16777202, n=1&s=16777202&r=652169524926&d=02-25&c=1289& 
+9014 5245 9836 5154, 02-25, 8925, 1, 16777200, n=1&s=16777200&r=9014524598365154&d=02-25&c=8925& 
+9014 8563 1894 5726, 02-25, 0505, 1, 16777201, n=1&s=16777201&r=90148563189457266&d=02-25&c=0505& 
+9016 5216 9524 9265, 02-25, 1289, 1, 16777202, n=1&s=16777202&r=9016521695249265&d=02-25&c=1289& 
 ```
 
 # CREDIT CREATION CARD PROTOCOL
