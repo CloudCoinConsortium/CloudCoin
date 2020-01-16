@@ -35,22 +35,30 @@ Add the numbers up and it equals 44. Devide by 10 any you get 6 remainer. You mu
 * CVV (Must be at least 4 digit in length ). Part of the PAN-Generator coded as 'C'. 
 
 ### PAN-Generator 
-The PAN-Generator parts are 12 digit random number and a the 4 digit CVV. R(andom) and C(VV). 
+The PAN-Generator parts are "9" for the CloudCoin sysem, N(two digit network number), 12 digit random number, Luhn number, and a the 4 digit CVV. 9, N(Nework Number, R(andom), L(Luhn Number) and C(VV). 
 Here is an example with 452459836515 being random and 8925 being the CVV:
 ```
-Pattern: RRRRRRRRRRRRCCCC
+Pattern: 9NNR RRRR RRRR RRRL CCCC (Spaces have been added for easy reading).
 
-PAN-Generator: 4524598365158925
+Random number: 452459836515 
+
+Pin/ccv: 8925
+
+Luhn:
+
+9+0+1+4+5+2+4+5+9+8+3+6+5+1+5+8+9+2+5=86 We must add 4 to make the card number and pin number divisable by 10. So the Luhn number is 
+4. 
+PAN-Generator: 9014 5245 9836 5154 8925
 ```
 ### Generating PANs from the PAN-Generator
 Add the RAIDA number and the SN in front of the PAN-Generator and run an MD5 Hash:
 NOTE: Here the SN is 16,777,216.
 ```
-PAN for RAIDA 0: 0167772164524598365158925 MD5 Hash c5eea8d38295aa8a60e766091e55b816
-PAN for RAIDA 1: 1167772164524598365158925 MD5 Hash e385cc046dd21eb1c05c00fea43ffea4
+PAN for RAIDA 0: 090145245983651548925 MD5 Hash c5eea8d38295aa8a60e766091e55b816
+PAN for RAIDA 1: 190145245983651548925 MD5 Hash e385cc046dd21eb1c05c00fea43ffea4
 PAN for RAIDA2 through RAIDA22 left out for brevity..
-PAN for RAIDA23 23167772164524598365158925 MD5 Hash 424563309BF5D153C2209412BBC95DF8
-PAN for RAIDA24 24167772164524598365158925 MD5 Hash  8C55ABEAFEDA28A9F875BE816C7BE1EB
+PAN for RAIDA23 2390145245983651548925 MD5 Hash 424563309BF5D153C2209412BBC95DF8
+PAN for RAIDA24 2490145245983651548925 MD5 Hash  8C55ABEAFEDA28A9F875BE816C7BE1EB
 ```
 Now you have the PANs. These PANs must be put in the RAIDA by calling a detect service and using the original ANs. 
 
@@ -106,7 +114,7 @@ Example: 9015644859452505377
 
 9+0+1+5+6+4+4+8+5+9+4+5+2+5+0+5+3+7+7=89  
 ```
-7. Find the parity. Find out how much you must add to make the number dividable by 10. If the number is 57, then we would need to add 3 to make 60. If the number was 43, then we would need to add 7 to make the number 50. This will be a number between 0 and 9 inclusive. 
+7. Find the Luhn. Find out how much you must add to make the number dividable by 10. If the number is 57, then we would need to add 3 to make 60. If the number was 43, then we would need to add 7 to make the number 50. This will be a number between 0 and 9 inclusive. 
 ```
 Example: 1
 ```
