@@ -65,11 +65,21 @@ Now you have the PANs. These PANs must be put in the RAIDA by calling a detect s
 ## Saving the coins to file:
 The Coins can then be saved in a CSV credit Card file. The fields are the PAN-G, Exp. Date, CVV, NN, SN and the QR. (all of them put together in one string that can be used to create a URL for a QR code).
 "Credit Cards 12 11 2019 04 04 12.csv"
+
+### This CSV File cointains one coin or card per line.
 ```
 9014 5245 9836 5154, 02-25, 8925, 1, 16777200, n=1&s=16777200&r=9014524598365154&d=02-25&c=8925& 
 9014 8563 1894 5726, 02-25, 0505, 1, 16777201, n=1&s=16777201&r=90148563189457266&d=02-25&c=0505& 
 9016 5216 9524 9265, 02-25, 1289, 1, 16777202, n=1&s=16777202&r=9016521695249265&d=02-25&c=1289& 
 ```
+
+### This CSV file is for multi-urls because all the coins have the same Card Number. This cannot be used for creating cards but it can be used to create multiple coins. Like when you want to send a lot of coins to one person. 
+
+```
+9014 5245 9836 5154, 02-25, 8925, 1, 16777200, n=1&r=9014524598365154&d=02-25&c=8925&s[]=16777200&s[]=485225&s[]=3895484&s[]=184554&s[]=96544
+
+```
+
 
 ![Card Front](card-front.png)
 
@@ -78,35 +88,12 @@ The Coins can then be saved in a CSV credit Card file. The fields are the PAN-G,
 
 ![Card Templet](card.png)
 
-15. Use HTML5 Canvas to write text on the file use the fonts:
-
-See this: http://jsfiddle.net/zMKge/
-
-See the otf fonds in this repo.
-
-See this: http://jsfiddle.net/zMKge/
 
 Sample of what it should look like when done: 
 
 ![Card Front](card.jpg)
 
-NOTE: There will be two jpg images, not one. 
-
-16. Write the coin to the JPG credit card template using this spec:
-
 https://github.com/CloudCoinConsortium/CloudCoin/tree/master/CloudCoin%20File%20Formats/jpg
-
-You will need to add 9001 to the random 11 digit card number and the parity number like this from the example above:
-```
-9001 5644 8594 5253
-Add an expiration date that is five years from last month. 
-Add the name of the user's Skywallet account like "John.Skywallet.cc"
-```
-17.
-
-Give the JPGs of the Front and Back to the user on the web page. With instruction on how to right click them to download. 
- 
-
 
 
 
