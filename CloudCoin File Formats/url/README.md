@@ -24,7 +24,9 @@ https://cloudcoin.global/cashout?nn=1&sn=16777216&an0=a795533814144f2d9f4e86bfc3
 ```
 The GET parameters are:
 ```html
-nn,sn,an0,an1,an2,an3,an4,an5,an6,an7,an8,an9,an10,an11,an12,an13,an14,an15,an16,an17,an18,an19,an20,an21,an22,an23,an24,ed,pown
+nn,sn,an0,an1,an2,an3,an4,an5,an6,an7,an8,an9,an10,
+an11,an12,an13,an14,an15,an16,an17,an18,an19,an20,
+an21,an22,an23,an24,ed,pown
 ```
 ## Compressed URL
 
@@ -37,8 +39,28 @@ https://myDomain.com/coinclean?n=1&s=16777200&r=9014524598365154&d=02-25&c=8925
 ```
 The GET parameters are:
 ```html
-'n' is the network number, 's' is the serial number, 'r' is the card number, 'd' is the expiration date. 'c' is the CVV or PIN number. 
+'n' is the network number, 
+'s' is the serial number, 
+'r' is the card number, 
+'d' is the expiration date. 
+'c' is the CVV or PIN number. 
 ```
 
 ## Mulit Compressed URL
+Multi compressed URL format allows you to send many coins with one link. All the coins wil use the same seed.
+
+EXAMPLE Multi Compress URL:
+```http
+
+https://myDomain.com/coinclean?n=1&r=9014524598365154&d=02-25&c=8925&s[]=16777200&s[]=485225&s[]=3895484&s[]=184554&s[]=96544
+
+```
+The GET parameters are:
+```html
+Same as compress URL except the Serial Numbers are in an array. 
+'s[]' are the serial numbers, 
+
+```
+
+
 
