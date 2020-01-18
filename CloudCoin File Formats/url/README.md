@@ -35,7 +35,7 @@ https://github.com/CloudCoinConsortium/CloudCoin/tree/master/CloudCoin%20File%20
 
 EXAMPLE OF A COMPRESSED URL using GET:
 ```http
-https://myDomain.com/coinclean?n=1&s=16777200&r=9014524598365154&d=02-25&c=8925
+https://myDomain.com/coinclaim?n=1&s=16777200&r=9014524598365154&d=02-25&c=8925
 ```
 The GET parameters are:
 ```html
@@ -52,7 +52,7 @@ Multi compressed URL format allows you to send many coins with one link. All the
 EXAMPLE Multi Compress URL:
 ```http
 
-https://myDomain.com/coinclean?n=1&r=9014524598365154&d=02-25&c=8925&s[]=16777200&s[]=485225&s[]=3895484&s[]=184554&s[]=96544
+https://myDomain.com/coinclaim?n=1&r=9014524598365154&d=02-25&c=8925&s[]=16777200&s[]=485225&s[]=3895484&s[]=184554&s[]=96544
 
 ```
 The GET parameters are:
