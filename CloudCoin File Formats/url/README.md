@@ -46,7 +46,7 @@ The GET parameters are:
 'c' is the CVV or PIN number. 
 ```
 
-## Mulit Compressed URL
+## Muli Compressed URL
 Multi compressed URL format allows you to send many coins with one link. All the coins wil use the same seed.
 
 EXAMPLE Multi Compress URL:
