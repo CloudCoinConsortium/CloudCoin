@@ -28,6 +28,17 @@ nn,sn,an0,an1,an2,an3,an4,an5,an6,an7,an8,an9,an10,an11,an12,an13,an14,an15,an16
 ```
 ## Compressed URL
 
+The compressed url format is designed to allow the user to either quickly create a debit card or use the seed included to create a coin that can be downloaded froma website or send to a SkyWallet account. The algorithm for creating these urls is in the Card format: 
+https://github.com/CloudCoinConsortium/CloudCoin/tree/master/CloudCoin%20File%20Formats/card
+
+EXAMPLE OF A COMPRESSED URL using GET:
+```http
+https://myDomain.com/coinclean?n=1&s=16777200&r=9014524598365154&d=02-25&c=8925
+```
+The GET parameters are:
+```html
+'n' is the network number, 's' is the serial number, 'r' is the card number, 'd' is the expiration date. 'c' is the CVV or PIN number. 
+```
 
 ## Mulit Compressed URL
 
