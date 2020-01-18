@@ -1,5 +1,5 @@
 
-## CLOUDCOIN CARD STANDARD
+## CLOUDCOIN CARD & COMPRESSION STANDARD
 This is the standard for creating a CloudCoin "Credit Card" that contains a serial number and ANs of
 a CloudCoin that looks like the familiar Credit Card and can be used to access a Skywallet account. 
 
