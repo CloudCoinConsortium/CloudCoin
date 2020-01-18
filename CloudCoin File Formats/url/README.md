@@ -6,7 +6,7 @@ There are three standards of creating URLs:
 
 [Compressed URL](README.md#compressed-url)
 
-[Mulit Compressed URL](README.md#multi-compressed-url)
+[Multi Compressed URL](README.md#multi-compressed-url)
 
 
 CloudCoins can be stored as URLs in order for them to be sent to webpages that can change them into other files. 
