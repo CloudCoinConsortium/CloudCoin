@@ -198,7 +198,7 @@ This allows the client to coordinat the RAIDA so that new coins created will be 
 
 EXAMPLE GET TOP:
 ```
-https://raida9.raida.tech/service/top?count_password=j3jkod8ikokfs&
+https://raida9.raida.tech/service/top?password=j3jkod8ikokfs&
 ```
 EXAMPLE JSON RESPONSE IF SUCCESS:
 ```
