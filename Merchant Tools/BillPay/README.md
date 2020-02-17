@@ -11,3 +11,17 @@ Requirements:
 
 ## Create the Email Template file
 
+You must have a file called etemp.txt located in your username CloudCoinWallet:
+```
+C:\Users\sean\CloudCoinWallet\EmailTemplates\etemp.txt
+```
+SAMPLE etemp.txt contents:
+```txt
+Hello,
+Find your %amountToSend% coins attached below
+Sean
+```
+## Make the email list .csv file. 
+
+CSV means comma seperated values. It can be opened in any spreadsheet program such as google sheets and Micorosoft Excel. 
+
