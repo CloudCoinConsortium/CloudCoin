@@ -266,27 +266,78 @@ WHERE DATA WILL BE STORED
 
 |CLASS|R0|R1|R2|R3|R4|R5|R6|R7|R8|R9|R10|R11|R12|R13|R14|R15|R16|R17|R18|R19|R20|R21|R22|R23|R24|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|RAID 0|S0|S1|S2|S3|S4|S5|S6|S7|S8|S9|S10|S11|S12|S13|S14|S15|S16|S17|S18|S19|S20|S21|S22|S23|S24|
-|RAID 10|S1|S2|S3|S4|S5|S6|S7|S8|S9|S10|S11|S12|S13|S14|S15|S16|S17|S18|S19|S20|S21|S22|S23|S24|S0|
-|RAID 110|S2|S3|S4|S5|S6|S7|S8|S9|S10|S11|S12|S13|S14|S15|S16|S17|S18|S19|S20|S21|S22|S23|S24|S0|S1|
+|STRIPE|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|
+|MIRROR 1|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|0|
+|MIRROR 2|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|0|1|
+
+EXAMPLE OF HOW THE STRIPES ARE CREATED:
+```javascript
+
+
+function splitMessage(message) {
+
+	// Pad the message to have it multily of 25
+	let remainder = message.length % 25
+	
+	if( remainder !=0)
+	{
+    		padding = 25 - remainder;
+    		for (let i = 0; i < padding; i++)
+    		{
+    			message += "-"
+    		}//end for each 
+	}//end if remainder not zero
+	
+	// Break the message
+	let base64_array = message.split('')
+
+	// Init array
+	let returnArray = []
+	
+	for (let i = 0; i < 25; i++)
+	{
+		returnArray[i] = "";
+	}
+	
+	//Stripe meta data into an array of 25 
+	
+	let counter = 0;
+	for (let i = 0; i < base64_array.length; i++) 
+	{	
+		returnArray[counter] += base64_array[i]
+		counter++;
+		if(counter > 24){
+			counter = 0;
+		}
+
+	}// end for
+
+	return returnArray
+}//End function 
+```
+
+
+
 
 EXAMPLE OF HOW THE STRIPES ARE PUT TOGETHER AFTER THE CLIENT DOWNLOADS THEM
-```
+
+```javascript
 //Put all the stripes together. mparts is an array of stripes
 function unstripeData(mparts) {
 
    var unstriped ="";
    
-  for(var j = 0; j< mparts[1].length; j++){ 
-       for(var i=0; i<25; i++){
-           unstriped +=mparts[i].charAt(j);
-       }//for all 25 servers
-  }//end for every character
+  	for(var j = 0; j< mparts[1].length; j++)
+	{ 
+       		for(var i=0; i<25; i++){
+           		unstriped +=mparts[i].charAt(j);
+       		}//for all 25 servers
+  	}//end for every character
    
     // Trim padding at the end
     unstriped = unstriped.replace(/-/g, "");//remove all - padding. 
     return unstriped
-}
+}//End function
 
 ```
 
