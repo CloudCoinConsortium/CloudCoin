@@ -323,14 +323,14 @@ EXAMPLE OF HOW THE STRIPES ARE PUT TOGETHER AFTER THE CLIENT DOWNLOADS THEM
 
 ```javascript
 //Put all the stripes together. mparts is an array of stripes
-function unstripeData(mparts) {
+function unstripeData(array_of_stripes) {
 
    var unstriped ="";
    
-  	for(var j = 0; j< mparts[1].length; j++)
+  	for(var j = 0; j< array_of_stripes[1].length; j++)
 	{ 
        		for(var i=0; i<25; i++){
-           		unstriped +=mparts[i].charAt(j);
+           		unstriped += array_of_stripes[i].charAt(j);
        		}//for all 25 servers
   	}//end for every character
    
