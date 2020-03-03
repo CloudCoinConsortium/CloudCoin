@@ -32,6 +32,20 @@ package main
 // 20 error getting body response
 // 0 Passing
 
+/*
+Send error back if raida could not be contaced. THen the progrm can try another RAIDA. 
+Transfer with change not just transfer
+SHould require location of the ID coin. 
+Error if no ID coin. 
+Change RAIDA for showing coins, if the Raida Proided si bd. 
+Don't ask them for the RAIDA id. Just randomny guess one. 
+
+Add Documentation
+Add a PHP page as an example
+
+*/
+
+
 import (
 	"encoding/json"
 	"errors"
