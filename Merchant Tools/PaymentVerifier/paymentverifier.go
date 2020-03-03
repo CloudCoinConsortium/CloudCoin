@@ -15,6 +15,15 @@ import (
 	"strconv"
 )
 
+/*
+1. they cannot use 
+Clean up the "getffrom" Langauge. (oldTag, SenderTag, )
+getFrom or senderTag cannot be "change" or "public change" or "public_change"
+Add more documentation to better explain things. THis will need to be done on the README. md file to. 
+*/
+
+
+
 // Author: Samuel Leary & Sean Worthington
 //Version 8-12-19
 // This code is property of RAIDA Tech.
@@ -167,7 +176,6 @@ func main() {
 		fmt.Printf("{\"server\":\"Change\",\"status\":\"fail\",\"message\":\"Could not make verifie payment. Did not Receive Coins. Execution Time  = %s\",\"time\":\"%s\"}", time.Since(t), now.Format("2006-1-2 15:04:05"))
 		os.Exit(12)
 	}
-
 }
 
 //ErrStop takes an error, and if it is not null will exit the program
