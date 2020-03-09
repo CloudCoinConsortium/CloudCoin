@@ -46,8 +46,8 @@ The mailing list can be located any where on your computer, clouddirves
 |Protonmail	|debitcard|	0|	1|	0|	0|	0|	0|	Jenny@protonmail.com	|Your Skywallet ID card.	|Cardholder=jen.skywallet.cc& |body=c:\letter.html|	ready|
 |SendToSkywallet	|(ignored)	|238000|	0|	0	|0	|0	|0	|larry.skywallet.cc|	Thanks for the work you did.|	cloudbank=Skywallet.cc|	sent|
 |TransferToSkywallet	|(ignored)|	238000	|0	|0	|0	|0	|0	|larry.skywallet.cc|	Thanks for the work you did.|	cloudbank=Skywallet.cc|	ready|
-|ExportFolder	single	|card-data	|1	|0	|0	|0	|0	|c:\users\production\	Welcome to our club!|	domain=https://my.com/claim.html?& |body=c:\template.html|	skip|
-|ExportFolder|	single|	multiurl	|url|	0	|5	|4	|2	|C:\list\	Invoice 34565|	https://domain.com/mypage.html?|	ready|
+|ExportFolder|	single	|card-data	|1	|0	|0	|0	|0	|c:\users\production\	|Welcome to our club!|	domain=https://my.com/claim.html?&body=c:\template.html|	skip|
+|ExportFolder|	single|	multiurl | 35	|0|	0	|5	|4	|2	|C:\list\	Invoice 34565|	https://domain.com/mypage.html?|	ready|
 
 Sample of tile contents (Scheduled to change in fuuture editions)
 ```
@@ -61,6 +61,83 @@ exportFolder,12500,0,0,0,0,0,Michadlkeinnis@protonmail.com,feb.txt
 
 ```
 
+
+
+### Column Details
+
+#### Send Method
+
+Possible methods include:
+* Protonmail (Sends encrypted mail using Protonmail Bridge)
+* SendToSkywallet (From local bank folder to Skywallet)
+Phase 2:
+* Gmail (Sends plain text email)
+* TransferToSwyallet (From Skywallet to Skywallet)
+* ExportFolder (From Bank to local file system)
+
+#### Format
+
+Formates used in Bill Pay include:
+* Raw URL ( To Embed One Coin in an Email )
+* Compressed URL ( Uses the Compression Standard to Embed One Coin in an Email )
+* Multi Compressed URL ( To Embed Many Coins in an Email )
+* Compressed CSV ( To write many compressed coins to a csv file so it can be accessed later. )
+Future Use:
+* ID Coin PNG ( One PNG file attached to an Email )
+* stack ( One '.stack' file attached to Email )
+* QR Code File ( Saves codes to the local drive. These codes can generate graphical QR codes. )
+* jpeg ( A few jpeg files attached to email )
+* The Send and Transfer send methods do not need a format as they are sent directly to a CloudBank. See details about file formats.
+
+#### Amount
+The amount of CloudCoins to be sent. If this column is used the following five columns will be ignored.
+
+
+#### 1s	
+The number of 1 note CloudCoins to be sent.
+
+#### 5s	
+The number of 5 note CloudCoins to be sent.
+
+#### 25s	
+The number of 25 note CloudCoins to be sent.
+
+#### 100s	
+The number of 100 note CloudCoins to be sent.
+
+#### 250s	
+The number of 250 note CloudCoins to be sent.
+
+#### To Address
+
+1. For Protonmail or Gmail, use an email address
+2. For Send and Transfer, use a skywallet account ID
+3. For Export Folder, the path to the folder. Leave blank for the Default Folder.
+
+
+#### Subject, Memo or Filename	
+1. Subject: For Protonmail or Gmail
+2. Memo: For Send and Transfer
+3. Tag: For jpegs or stack files that are put on file system
+4. File Name: For other files placed on the file system
+
+
+
+#### Special Instructions
+These are key value pairs seperated by "&" ampersams
+1. Body: For Protonmail or Gmail, this is location of the template for the body of the email like: "Body=c:\body.txt&priority=high"
+2. AttachmentUnique: For Protonmail or Gmail, this is location of a folder full of coins. The program will remove one coin from this folder and attach it to the email. One: 3. "AttachmentUnique=C:\Celebrium\Gallery"
+4. For Send and Transfer do not need special instructions and can be left blank.
+URL: For URLs this is the URL of the webpage that the process the coin like "url=https://cloudcoin.global/public/claimcoin.html
+
+
+
+#### Status
+The statuses are:
+1. ready: Ready to be sent
+2. skip: Bill Pay shoud skip this payment and not pay it.
+3. sent: Payment was sent
+4. error: Error means something whent wrong and the BillPay log files should be examined.
 
 
 
