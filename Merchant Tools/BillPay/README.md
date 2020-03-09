@@ -1,5 +1,5 @@
-#Bill Pay
-Distributing CloudCoins in Mass
+# Bill Pay
+## Distributing CloudCoins in Mass
 CloudCoin maybe the only currency in the world that can be distributed without fees. The cost of sending Bitcoin and other crypto currencies, to massive amounts of users can be extreemly expensive. For most payment systems, it is less expensive to send cash via the plain old mail than electonically. The only advantage of payment systems over regular mail is the speed, accountability and dependability. With CloudCoin, you can pay thousands of people within minutes and pay no fees. You also have the addition of privacy which is not possible with most payment systems such as PayPal, Western Union, Bank Transfer and others.
 
 If you want to be able to get CloudCoins out to a lot fo people quickly, use the CloudCoin Wallet's Bill Pay.
@@ -37,7 +37,8 @@ CSV means comma seperated values. It can be opened in any spreadsheet program su
 The mailing list can be located any where on your computer, clouddirves
 
 | Send Method | Format | Amoung | 1 | 5 | 25 | 100 | 250 | To Address | Subject, Memo or FileName | Special Instructions | status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
 |Protonmail	| stack |	238000|	0	|0	|0	|0	|0	|Billy@Protonmail.com	|January Pay. Thank you!|	body=c:\templates\monthlypay.html	|Ready|
 |Gmail	|stack	|100|	0	|0	|0	|0	|0	|Billy@gmail.com	|Thanks for signing up!	|body=c:\templates\monthlypay.html	|Ready|
 |Protonmail	|debitcard|	0|	1|	0|	0|	0|	0|	Jenny@protonmail.com	|Your Skywallet ID card.	|Cardholder=jen.skywallet.cc& |body=c:\letter.html|	ready|
