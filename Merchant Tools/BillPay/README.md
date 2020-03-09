@@ -42,9 +42,7 @@ The mailing list can be located any where on your computer, clouddirves
 | Gmail	| stack	| 100 |	0 |0|0	|0	|0	|Billy@gmail.com	|Thanks for signing up!	|body=c:\templates\monthlypay.html	|Ready|
 |Protonmail	| stack |	238000|	0	|0	|0	|0	|0	|Billy@Protonmail.com	|January Pay. Thank you!|	body=c:\templates\monthlypay.html	|Ready|
 |Gmail	|stack	|100|	0	|0	|0	|0	|0	|Billy@gmail.com	|Thanks for signing up!	|body=c:\templates\monthlypay.html	|Ready|
-
 |Protonmail	|debitcard|	0|	1|	0|	0|	0|	0|	Jenny@protonmail.com	|Your Skywallet ID card.	|Cardholder=jen.skywallet.cc& |body=c:\letter.html|	ready|
-
 |SendToSkywallet	|(ignored)	|238000|	0|	0	|0	|0	|0	|larry.skywallet.cc|	Thanks for the work you did.|	cloudbank=Skywallet.cc|	sent|
 |TransferToSkywallet	|(ignored)|	238000	|0	|0	|0	|0	|0	|larry.skywallet.cc|	Thanks for the work you did.|	cloudbank=Skywallet.cc|	ready|
 |ExportFolder|	single	|card-data	|1	|0	|0	|0	|0	|c:\users\production\	|Welcome to our club!|	domain=https://my.com/claim.html?&body=c:\template.html|	skip|
