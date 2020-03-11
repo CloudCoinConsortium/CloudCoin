@@ -11,7 +11,6 @@
   same directory. 
 */
 
-
 $timeout = 5; //Amount of times in seconds that the payment verifier will wait for response from the RAIDA.
 $invoice = "test"; //The CloudCoin Wallet allows the user to specify a memo. This is important and used to identify the sender. 
 $from = "change.skywallet.cc";//If your payments fail, the coins will be refunded here. So if you want your money back, replace this with your own address. 
@@ -31,7 +30,7 @@ $total_due = 1;//How many coins the customer should have sent.
   $move_to = "Received_from_".$from; 
 
 //Put the "paymentverifier.exe" program in a place and start it. Note that we use the $total_due that we calculated
-  $command = "C:\xampp\htdocs\paymentverifier.exe -getfrom=\"$invoice\" -payment=$total_due -refundto=$to_sn -rootpath=\"$Log_path\" -idpath=\"$Path_to_ID_coin\" -timeout=\"$timeout\" -newtag=\"$move_to\"";
+  $command = "C:\xampp\htdocs\paymentverifier.exe -getfrom=\"$invoice\" -payment=$total_due -refundto=$to_sn -logpath=\"$Log_path\" -idpath=\"$Path_to_ID_coin\"  -oldtag=\"$invoice\" -timeout=\"$timeout\" -newtag=\"$move_to\"";
 
   $results = exec($command); //This executes the command and puts the results in the results variable. 
 

@@ -31,7 +31,7 @@ Add more documentation to better explain things. THis will need to be done on th
 // This code is property of RAIDA Tech.
 // No permission to be used outside of RAIDA Tech.
 // Sample use
-//C:\CloudCoin\paymentVerifier.exe -timeout=5 -olodtag=sean4 -payment=100 -refundto=1371486 -logpath="C:\CloudCoin\Accounts\Change" -idpath="C:\CloudCoin\Accounts\Change\ID\1.CloudCoin.1.2..stack"
+//C:\CloudCoin\paymentVerifier.exe -timeout=5 -oldtag=sean4 -payment=100 -refundto=1371486 -logpath="C:\CloudCoin\Accounts\Change" -idpath="C:\CloudCoin\Accounts\Change\ID\1.CloudCoin.1.2..stack"
 // EXIT CODES:
 // 1  error with command line argument 3 cannot split 1 coins
 // 2  error with command line argument 3 invalid amount of coins
@@ -83,6 +83,7 @@ func init() {
 
 func main() {
 	flag.Parse()
+
 	loc := time.FixedZone("UTC", 0)
 	now := time.Now().In(loc)
 	t := time.Now()
@@ -125,6 +126,7 @@ func main() {
 	}
 	var nn = cloudcoin.CloudCoin[0].NN
 	var sn = cloudcoin.CloudCoin[0].SN
+	//	fmt.Printf("%s=sn, %s=id\r\n", sn, refundTo)
 	//create channels to receive responses
 	done := make(chan string)
 	requests := make(chan string)
@@ -169,7 +171,7 @@ func main() {
 		})
 
 		if 3 < len(stringreader) {
-			fmt.Println(stringreader[3] + " " + stringreader[6])
+			//	fmt.Println(stringreader[3] + " " + stringreader[6])
 
 			if stringreader[3] == "\"pass\"" {
 				goodReplies++
@@ -185,7 +187,7 @@ func main() {
 		WriteTransactionLog(logPath, refundTo, totalCoinsSent, tag, newtag, "Verified", sn)
 	} else {
 		//	fmt.Println(goodReplies)
-		fmt.Printf("{\"server\":\"Change\",\"status\":\"fail\",\"message\":\"Could not make verifie payment. Did not Receive Coins. Execution Time  = %s\",\"time\":\"%s\"}", time.Since(t), now.Format("2006-1-2 15:04:05"))
+		fmt.Printf("{\"server\":\"Change\",\"status\":\"fail\",\"message\":\"Could not verify payment. Did not Receive Coins. Execution Time  = %s\",\"time\":\"%s\"}", time.Since(t), now.Format("2006-1-2 15:04:05"))
 		WriteTransactionLog(logPath, refundTo, totalCoinsSent, tag, newtag, "Could Not Verify", sn)
 		os.Exit(12)
 	}
@@ -202,7 +204,6 @@ func ErrStop(num int, err error, t time.Time) {
 
 //SendURL sends data to the corresponding url, and sends back a response.
 func SendURL(nn string, sn string, timeout int, done chan string, request chan string, refund string, keys []string, coinsSent string, tag string, newtag string, index int, t time.Time) {
-
 	sendURL := fmt.Sprintf("https://RAIDA%d.cloudcoin.global/service/rename_tag", index)
 	URLData := url.Values{}
 	URLData.Set("nn", nn)
@@ -220,7 +221,8 @@ func SendURL(nn string, sn string, timeout int, done chan string, request chan s
 	u, _ := url.Parse(sendURL)
 	u.RawQuery = URLData.Encode()
 	Request := fmt.Sprintf("%v", u)
-	body := "RAIDA " + strconv.Itoa(index) + " timed out." //set it as a fail to beging with
+	//fmt.Println(Request)
+	body := "RAIDA " + strconv.Itoa(index) + " timed out." //set it as a fail to begin with
 	//start := time.Now()
 
 	//use get to recieve response from RAIDA
