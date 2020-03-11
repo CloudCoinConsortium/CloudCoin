@@ -4,32 +4,34 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"io/ioutil"
+	"log"
+	"math/big"
+	"net"
 	"net/http"
 	"net/url"
 	"os"
+	"strconv"
 	"strings"
 	"time"
-	"strconv"
 )
 
 /*
-1. they cannot use 
+1. they cannot use
 Clean up the "getffrom" Langauge. (oldTag, SenderTag, )
 getFrom or senderTag cannot be "change" or "public change" or "public_change"
-Add more documentation to better explain things. THis will need to be done on the README. md file to. 
+Add more documentation to better explain things. THis will need to be done on the README. md file to.
 */
-
-
 
 // Author: Samuel Leary & Sean Worthington
 //Version 8-12-19
 // This code is property of RAIDA Tech.
 // No permission to be used outside of RAIDA Tech.
 // Sample use
-//C:\CloudCoin\paymentVerifier.exe -timeout=5 -getfrom=sean4 -payment=100 -refundto=1371486 -rootpath="C:\CloudCoin\Accounts\Change" -idpath="C:\CloudCoin\Accounts\Change\ID\1.CloudCoin.1.2..stack"
+//C:\CloudCoin\paymentVerifier.exe -timeout=5 -olodtag=sean4 -payment=100 -refundto=1371486 -logpath="C:\CloudCoin\Accounts\Change" -idpath="C:\CloudCoin\Accounts\Change\ID\1.CloudCoin.1.2..stack"
 // EXIT CODES:
 // 1  error with command line argument 3 cannot split 1 coins
 // 2  error with command line argument 3 invalid amount of coins
@@ -40,6 +42,7 @@ Add more documentation to better explain things. THis will need to be done on th
 // 7  error cannot create log request
 // 12 error Not Enough Good Replies
 // 15 error with command line flags: missing flags
+// 20 error with command line flags: invalid Oldtag Supplied. Oldtag cannot contain the words "change" or "public_change"
 
 //CloudCoin struct for type cloudcoin
 type CloudCoin struct {
@@ -53,50 +56,59 @@ type Stack struct {
 	CloudCoin []CloudCoin `json:"cloudcoin"`
 }
 
-
-
-var Receive string
+var tag string
 var totalCoinsSent string
 var refundTo string
-var rootPath string
+var logPath string
 var idPath string
 var timeout string
 var newtag string
+var err error
 
-
+var raidahttp = &http.Client{
+	Timeout: time.Duration(10) * time.Second,
+}
 
 func init() {
 	//get argument flags
-	flag.StringVar(&Receive, "getfrom", "", "The receiver envelope id")
+	flag.StringVar(&tag, "oldtag", "", "The envelope that the coins were sent to")
 	flag.StringVar(&totalCoinsSent, "payment", "", "A total amount of the coins sent")
 	flag.StringVar(&refundTo, "refundto", "", "The account that would receive a refund")
-	flag.StringVar(&rootPath, "rootpath", "", "The path to the Root Directory")
+	flag.StringVar(&logPath, "logpath", "", "The path to the Root Directory")
 	flag.StringVar(&idPath, "idpath", "", "Path to the ID Coin")
 	flag.StringVar(&timeout, "timeout", "", "Time allowed to call on the RAIDA.")
 	flag.StringVar(&newtag, "newtag", "", "The envelope that the sent money will be moved to.")
+
 }
 
-
-
 func main() {
+	flag.Parse()
 	loc := time.FixedZone("UTC", 0)
 	now := time.Now().In(loc)
 	t := time.Now()
 
-
-	flag.Parse()
+	if strings.Contains(tag, "public_change") || strings.Contains(tag, "change") {
+		err = errors.New("invalid Oldtag Supplied. Oldtag cannot contain the words \"change\",\"public change\",or \"public_change\"")
+		ErrStop(20, err, t)
+	}
+	//convert the refund ID to the a valid serial number
+	ParseID(refundTo, t)
 
 	//set up default variables
-	var err error
 	goodReplies := 0
 
 	//open File and use its data to create URLKeys array
 	var cloudcoin Stack
-	//fmt.Println(idPath)
 
-	timeout_int, err := strconv.Atoi(timeout)
+	//convert the timeout to the proper type
+	timeoutInt, err := strconv.Atoi(timeout)
 	ErrStop(25, err, t)
 
+	raidahttp = &http.Client{
+		Timeout: time.Duration(timeoutInt) * time.Second,
+	}
+
+	//open and read the supplied ID Coin
 	jsonfile, err := os.Open(idPath)
 	ErrStop(3, err, t)
 
@@ -111,8 +123,8 @@ func main() {
 		currentKey := cloudcoin.CloudCoin[0].ANs[i]
 		urlKeys[i] = currentKey
 	}
- var nn = cloudcoin.CloudCoin[0].NN
- var sn = cloudcoin.CloudCoin[0].SN
+	var nn = cloudcoin.CloudCoin[0].NN
+	var sn = cloudcoin.CloudCoin[0].SN
 	//create channels to receive responses
 	done := make(chan string)
 	requests := make(chan string)
@@ -120,7 +132,7 @@ func main() {
 	//create all 25 requests
 	for i := 0; i < 25; i++ {
 		//create go routines to Send Url Data
-		go SendURL(nn, sn, timeout_int, done, requests, refundTo, urlKeys, totalCoinsSent, Receive, newtag, i, t)
+		go SendURL(nn, sn, timeoutInt, done, requests, refundTo, urlKeys, totalCoinsSent, tag, newtag, i, t)
 	}
 	logRequest := ""
 	logResponse := ""
@@ -142,11 +154,11 @@ func main() {
 		}
 	} // end for loop
 
-	err = WriteToLog(rootPath, "response.txt", logResponse, Receive)
-	ErrStop(6, err, t)
+	//	err = WriteToLog(logPath, "response.txt", logResponse, tag)
+	//	ErrStop(6, err, t)
 
-	err = WriteToLog(rootPath, "request.txt", logRequest, Receive)
-	ErrStop(7, err, t)
+	//	err = WriteToLog(logPath, "request.txt", logRequest, tag)
+	//	ErrStop(7, err, t)
 
 	for i := 0; i < len(returnResponse); i++ {
 		stringreader := strings.FieldsFunc(returnResponse[i], func(r rune) bool {
@@ -157,7 +169,7 @@ func main() {
 		})
 
 		if 3 < len(stringreader) {
-			fmt.Println(stringreader[3] +" " + stringreader[6])
+			fmt.Println(stringreader[3] + " " + stringreader[6])
 
 			if stringreader[3] == "\"pass\"" {
 				goodReplies++
@@ -170,10 +182,11 @@ func main() {
 	if goodReplies > 19 {
 		//print success
 		fmt.Printf("{\"status\":\"success\",\"message\":\"%d good replies. Execution Time = %s\",\"time\":\"%s\"}", goodReplies, time.Since(t), now.Format("2006-1-2 15:04:05"))
-
+		WriteTransactionLog(logPath, refundTo, totalCoinsSent, tag, newtag, "Verified", sn)
 	} else {
-	//	fmt.Println(goodReplies)
+		//	fmt.Println(goodReplies)
 		fmt.Printf("{\"server\":\"Change\",\"status\":\"fail\",\"message\":\"Could not make verifie payment. Did not Receive Coins. Execution Time  = %s\",\"time\":\"%s\"}", time.Since(t), now.Format("2006-1-2 15:04:05"))
+		WriteTransactionLog(logPath, refundTo, totalCoinsSent, tag, newtag, "Could Not Verify", sn)
 		os.Exit(12)
 	}
 }
@@ -197,8 +210,8 @@ func SendURL(nn string, sn string, timeout int, done chan string, request chan s
 	URLData.Add("an", keys[index])
 	URLData.Add("pan", keys[index])
 	intSN, _ := strconv.Atoi(sn)
-	intD := Denomination( intSN )
-	URLData.Add("denomination", strconv.Itoa(intD) )
+	intD := Denomination(intSN)
+	URLData.Add("denomination", strconv.Itoa(intD))
 	URLData.Add("if_total", coinsSent)
 	URLData.Add("tag", tag)
 	URLData.Add("if_total_wrong_return_to_number", refund)
@@ -207,39 +220,33 @@ func SendURL(nn string, sn string, timeout int, done chan string, request chan s
 	u, _ := url.Parse(sendURL)
 	u.RawQuery = URLData.Encode()
 	Request := fmt.Sprintf("%v", u)
-	body :="RAIDA " + strconv.Itoa(index) + " timed out." //set it as a fail to beging with
+	body := "RAIDA " + strconv.Itoa(index) + " timed out." //set it as a fail to beging with
 	//start := time.Now()
 
 	//use get to recieve response from RAIDA
 	//tout := int64(timeout)
-	var client = &http.Client{
-	  Timeout: time.Duration(timeout) * time.Second,
-	}
-  response, err := 	client.Get(Request)
-	if err == nil {
-		bodybytes, _ :=ioutil.ReadAll(response.Body)
-		body  = string(bodybytes)
-	}// end if
-//	response, err := http.Get(Request)
-	//ErrStop(3, err, t)
-	//defer response.Body.Close()
 
-	//print send times to console
-	//elapsed := time.Since(start)
-	//fmt.Printf(" Sending took %s\n", elapsed)
+	response, err := raidahttp.Get(Request)
+	if err == nil {
+		bodybytes, _ := ioutil.ReadAll(response.Body)
+		body = string(bodybytes)
+	} // end if
+
 	var responseText = fmt.Sprintf("%s\r\n", string(body))
 	done <- responseText
 	request <- Request
-}//end send url
+} //end send url
 
 //WriteToLog Writes the text to a file
 func WriteToLog(Path string, filepath string, text string, tag string) error {
-	logPath := fmt.Sprintf("%s\\Logs\\%s", Path, tag)
+
+	logPath := fmt.Sprintf("%s\\%s", Path, tag)
 	err := os.MkdirAll(logPath, 0666)
 	logPath = fmt.Sprintf("%s\\%s_%s", logPath, tag, filepath)
 	err = ioutil.WriteFile(logPath, []byte(text), 0666)
 	return err
 }
+
 //Denomination determines the denomination of the coin
 func Denomination(sn int) int {
 	var returnInt int
@@ -259,3 +266,61 @@ func Denomination(sn int) int {
 	return returnInt
 
 } //end func denomination
+
+//ParseID parses the supplied id into a usable serial number
+func ParseID(parseID string, t time.Time) int {
+
+	if _, err := strconv.Atoi(parseID); err == nil {
+
+		result, _ := strconv.Atoi(parseID)
+		return result
+
+	} else {
+
+		addr := net.ParseIP(parseID)
+		if addr == nil {
+			ips, err := net.LookupIP(parseID)
+			ErrStop(12, err, t)
+			parseID = strings.Replace(ips[0].String(), "1.", "0.", 1)
+			input := net.ParseIP(parseID)
+			ipOut := IP4toInt(input, t)
+			return int(ipOut)
+
+		} else {
+			if strings.HasPrefix(parseID, "1.") {
+				parseID = strings.Replace(parseID, "1.", "0.", 1)
+				input := net.ParseIP(parseID)
+				ipOut := IP4toInt(input, t)
+
+				return int(ipOut)
+			}
+		}
+		return 0
+	}
+	return 0
+}
+
+//IP4toInt converts an IP4 to a valid integer
+func IP4toInt(input net.IP, t time.Time) int64 {
+	IPv4Int := big.NewInt(0)
+	IPv4Int.SetBytes(input.To4())
+	return IPv4Int.Int64()
+}
+
+//WriteTransactionLog(logpath, refundto, amount, oldtag, tag, "Verified")
+func WriteTransactionLog(logpath string, sendID string, amount string, oldtag string, newtag string, result string, ID string) {
+	dt := time.Now()
+	formatDate := dt.Format("02.January.2006")
+	formatTime := dt.Format("15:04")
+	OutputString := fmt.Sprintf("%s %s %s %s sent %s coins to the tag \"%s\". The new tag is %s\r\n", formatTime, ID, result, sendID, amount, oldtag, newtag)
+	filePath := fmt.Sprintf("%s\\%s.paymentVerifier.txt", logpath, formatDate)
+
+	if f, err := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644); err == nil {
+		if _, err := f.Write([]byte(OutputString)); err != nil {
+			log.Fatal(err)
+		}
+
+	} else if os.IsNotExist(err) {
+
+	}
+}

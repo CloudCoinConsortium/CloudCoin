@@ -14,33 +14,31 @@ return the coins to the sender. The Payment Verifier expects the exact amount. I
 
 ## Sample Usage:
 ```
-paymentVerifier.exe -timeout=5 -payment_memo=general_fund_e51c28025eb44caa82c77f85d69fe0f9 -payment=100 -refundto=1371486 -logpath="C:\Logs\PaymentVerifier" -idpath="C:\cc\Accounts\Change\ID\1.CloudCoin.1.2..stack" -transactionlogpath="C:\user\bill\CloudCoin\Skywallet\bill.skywallet.cc"
+paymentVerifier.exe -timeout=5 -oldtag=general_fund_e51c28025eb44caa82c77f85d69fe0f9 -payment=100 -refundto=1371486 -logpath="C:\user\bill\CloudCoin\Skywallet\bill.skywallet.cc" -idpath="C:\cc\Accounts\Change\ID\1.CloudCoin.1.2..stack" 
 ```
 
 The Payment Verifier is a command line program written in GO that can be executed by other languages including php, Java, C# and almost all others. The comand line arguments include flags.  
 
 
 ## Flags
-* payment_memo: A string that specifies memo that the sender provided. The Payment Verifier will search to see if a payment with this memo is in your SkyWallet. You can often give this memo to the customer ahead of time to make sure it is a random number and to automatically be on the look out for it. Or you can wait for the customer to tell you that they have sent a payment and what the memo is. 
+* oldtag: A string that specifies the memo that the sender provided. The Payment Verifier will search to see if a payment with this memo is in your SkyWallet. You can often give this memo to the customer ahead of time to make sure it is a random number and to automatically be on the look out for it. Or you can wait for the customer to tell you that they have sent a payment and what the memo is. 
 
 * payment:  A string that is an integer showing how many CloudCoins the user was required to send. Once the Payment Verifier finds a payment that matches the memo, it will check to see if the amount of the payment matches the amount that was suppose to be received.
 
 * newtag: A string that specifies the fund or subaccount the payment will go into. Once you recieve a payment, you will want to change the memo so that the person cannot claim they sent the payment twice. We suggest that you combine fixed information and add a random number at the end of your tag such as: "general_fund_c77f85d69fee51c28025eb44caa820f9. Your new tag can be up to 255 characters of Unicode. 
 
-* logpath: A string specifiying the path to the folder where you want the event log to be stored. This show all errors. See logging below. 
-
-* transactionlogpath: A string specifiying the path to the Transaction Log files. The Transaction Log is more like a report than a log. 
+* logpath: A string specifiying the path to the folder where you want the event log to be stored. This shows all errors. See logging below. 
 
 * idpath: A string specifying the path to the "ID coin" that will be used to access the receiver's account. You must have a CloudCoin that is used as your authentication with the SkyWallet. The Serial Number of this coin will become your account number. You must place this somewhere secure so that the Payment Verifier can use it to access your Skywallet. 
 
-* timeout A string that describes the number of seconds that the program will wait for RAIDA to respond. The program will attempt to contact 25 RAIDA. In general, they will all respond within 2 seconds. However, there may be one or two slow ones. You do not need all 25 to respond. You only need 20 reponses. So you can cut off the slowest five. Generally, we recoment 5 seconds. If your Internet connection is slow, then you may need to increase this. If your Internet connection is very fast, you may decrease this.
+* timeout A string that describes the number of seconds that the program will wait for RAIDA to respond. The program will attempt to contact 25 RAIDA. In general, they will all respond within 2 seconds. However, there may be one or two slow ones. You do not need all 25 to respond. You only need 20 reponses. So you can cut off the slowest five. Generally, we recommendt 5 seconds. If your Internet connection is slow, then you may need to increase this. If your Internet connection is very fast, you may decrease this.
 
 * refundto: A string that is a Serial number, IP or Account Name of the receiver. e.g. 16777216, 1.255.255.255 or Sean.CloudCoin.global. When your customer sends you a payment, they have an option of including their address. This allows you to reject payments that are too large or too small and refund them instantly. 
 
 ## How it works
-You will place the paymentVerifier.exe on your computer/server and point your software to it. You will include a command in your software that calls the paymentVerifier.ext to be executed with flags. Before the PaymentVerifier is called, the caller should check to make sure they can connect to the RAIDA. The "Echoer" servant can do this. Echo ensures that enough RAIDA can be contacted. Sometimes, local routers will block connection to the RAIDA. Also, sometimes computers are too underpowered to create the 25 threads that the Payment Verifier uses to contact the SkyWallet. If you have an old computer over 7 years old or are contacting from work, you may be concered about the availabilty. You can skip calling echoer is you have a reliable connection and good computer that has been proven to work. You can test if it works by downloading the CloudCoin Wallet and running the echo command from the tools menu. The CloudCoin Wallet can be found at https://CloudCoinConsortium.com/use.html  You will need the CloudCoin Wallet to create a SkyWallet account for yourself. 
+You will place the paymentVerifier.exe on your computer/server and point your software to it. You will include a command in your software that calls the paymentVerifier.exe to be executed with flags. Before the PaymentVerifier is called, the caller should check to make sure they can connect to the RAIDA. The "Echoer" servant can do this. Echo ensures that enough RAIDA can be contacted. Sometimes, local routers will block connection to the RAIDA. Also, sometimes computers are too underpowered to create the 25 threads that the Payment Verifier uses to contact the SkyWallet. If you have an old computer over 7 years old or are connecting from work, you may be concerned about the availabilty. You can skip calling echoer if you have a reliable connection and good computer that has been proven to work. You can test if it works by downloading the CloudCoin Wallet and running the echo command from the tools menu. The CloudCoin Wallet can be found at https://CloudCoinConsortium.com/use.html  You will need the CloudCoin Wallet to create a SkyWallet account for yourself. 
 
-Your Payment Verifier will return a JSON message if successful.  
+Your Payment Verifier will return a JSON message if successful.     
 ```
 {"status":"success","message":"25 good replies. Execution Time = 25ms","time":"2006-1-2 15:04:0"}
 ```
@@ -58,12 +56,12 @@ Fail Errors may inclue:
 7  error cannot create log request
 12 error Not Enough Good Replies
 15 error with command line flags: missing flags
-
+20 error with command line flags: invalid Oldtag Supplied. Oldtag cannot contain the words "change" or "public_change"
 
 ## Logging
 There are two types of logs. The event log and the transaction log. They each have their own log locations. 
 
-There will be a differnt log file created for each day. The names of the log files will be formatted like:
+There will be a different log file created for each day. The names of the log files will be formatted like:
 
 ```
 Jan.25.2019.PaymentVerifier.txt
@@ -71,7 +69,7 @@ Jan.26.2019.PaymentVerifier.txt
 Jan.27.2019.PaymentVerifier.txt
 ```
 
-The records inside the log file will include the hour and minute, the SenderID, amount, receiverID, fromTag, tag. Like this: NOTE the use of millitary time.
+The records inside the log file will include the hour and minute, the SenderID, amount, receiverID, fromTag, tag. Like this: NOTE the use of military time.
 ```
 11:45 16777216 verified that billy.skywallet.cc sent 235 coins to tag "From Billy". New tag: "general_fund_e51c28025eb44caa82c77f85d69fe0f9"
 12:32 16777216 DID NOT verify that sara.skywallet.cc sent 235 coins to tag "From Sara". Too many coins sent.
