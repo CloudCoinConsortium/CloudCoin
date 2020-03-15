@@ -10,11 +10,11 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 ### Services:
 
-[Echo](README.md#echo-service)
-
-[Echo DA](README.md#echo-da-service)
+#### Authentication of Coins
 
 [Multi-Detect](README.md#raida-multi-detect-service)
+
+#### Synchronizing RAIDA
 
 [Multi-Ticket](README.md#raida-multi-ticket-protocol)
 
@@ -23,6 +23,12 @@ You will need to send messages to all 25 RAIDA in parallel.
 [Multi Fix](README.md#raida-multi-fix-protocol)
 
 [Fix Lost](README.md#raida-fix_lost-service)
+
+#### Utilities
+
+[Echo](README.md#echo-service)
+
+[Echo DA](README.md#echo-da-service)
 
 [Report Lost](README.md#report-lost) 
 
