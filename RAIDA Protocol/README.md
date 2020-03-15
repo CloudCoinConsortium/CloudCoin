@@ -475,6 +475,8 @@ The second response shows that the ticket belongs to SN 16777215 and it was made
 
 The RAIDA Multi Fix Protocol allows many coins with the same fracked RAIDA# to be fixed using the same "Corner" at the same. All the coins must be on the same network.
 
+![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fixit.jpg)
+
 This protocol only works with the "Four-Fix" protocol in which three trusted raida on one corner and one trusted raida on the oposite corner are required to fix. 
 
 The client would first scan the fracked folder and find all the CloudCoins that are fracked on RAIDA0.
