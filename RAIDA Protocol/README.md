@@ -10,11 +10,11 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 ### Services:
 
-[Echo](README.md#echo-service)
-
-[Echo DA](README.md#echo-da-service)
+#### Authentication of Coins
 
 [Multi-Detect](README.md#raida-multi-detect-service)
+
+#### Synchronizing RAIDA
 
 [Multi-Ticket](README.md#raida-multi-ticket-protocol)
 
@@ -23,6 +23,12 @@ You will need to send messages to all 25 RAIDA in parallel.
 [Multi Fix](README.md#raida-multi-fix-protocol)
 
 [Fix Lost](README.md#raida-fix_lost-service)
+
+#### Utilities
+
+[Echo](README.md#echo-service)
+
+[Echo DA](README.md#echo-da-service)
 
 [Report Lost](README.md#report-lost) 
 
@@ -468,6 +474,8 @@ The second response shows that the ticket belongs to SN 16777215 and it was made
 ## RAIDA Multi Fix Protocol
 
 The RAIDA Multi Fix Protocol allows many coins with the same fracked RAIDA# to be fixed using the same "Corner" at the same. All the coins must be on the same network.
+
+![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fixit.jpg)
 
 This protocol only works with the "Four-Fix" protocol in which three trusted raida on one corner and one trusted raida on the oposite corner are required to fix. 
 
