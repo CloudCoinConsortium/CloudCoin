@@ -33,18 +33,17 @@ package main
 // 0 Passing
 
 /*
-Send error back if raida could not be contaced. THen the progrm can try another RAIDA. 
+Send error back if raida could not be contaced. THen the progrm can try another RAIDA.
 Transfer with change not just transfer
-SHould require location of the ID coin. 
-Error if no ID coin. 
-Change RAIDA for showing coins, if the Raida Proided si bd. 
-Don't ask them for the RAIDA id. Just randomny guess one. 
+SHould require location of the ID coin.
+Error if no ID coin.
+Change RAIDA for showing coins, if the Raida Proided si bd.
+Don't ask them for the RAIDA id. Just randomny guess one.
 
 Add Documentation
 Add a PHP page as an example
 
 */
-
 
 import (
 	"encoding/json"
@@ -52,14 +51,31 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
+	"math/big"
+	"math/rand"
+	"net"
 	"net/http"
 	"net/url"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
 // S T R U C T U R E S
+//jsonChange is the struct that defines the json response from the raida
+type jsonChange struct {
+	Server  string   `json:"server"`
+	Status  string   `json:"status"`
+	Owner   string   `json:"owner"`
+	D1      []string `json:"d1"`
+	D5      []string `json:"d5"`
+	D25     []string `json:"d25"`
+	D100    []string `json:"d100"`
+	Message string   `json:"message"`
+	Version string   `json:"version"`
+	Time    string   `json:"time"`
+}
 
 //Stack Defines a stack of cloudcoins
 type Stack struct {
@@ -112,6 +128,7 @@ func main() {
 	var receiveServer int           //example: Raida0.cloudcoin.global
 	var rootpath string             //Root Path
 	var receiverID int              //Serial number of the receiver
+	var receiverAccount string      //the account of the receiver
 	var intOnes int                 // number of ones to send
 	var intFives int                // number of fives to send
 	var intTwentyfives int          // number of twentyfives to send
@@ -124,7 +141,7 @@ func main() {
 	//Gather 13 flags
 	flag.BoolVar(&JustShow, "justshow", false, "Whether or not to transfer or just show the current skywallets coins (optional)") //optional
 	flag.IntVar(&receiveServer, "server", -1, "The Server ID")                                                                    //required
-	flag.IntVar(&receiverID, "receiversn", -1, "The receiver envelope id")                                                        //required
+	flag.StringVar(&receiverAccount, "receiversn", "", "The receiver envelope id")                                                //required
 	flag.StringVar(&rootpath, "rootpath", "", "The path to the Root Directory")                                                   //required
 	flag.IntVar(&intOnes, "1s", 0, "The total Number of ones sent")                                                               //optional
 	flag.IntVar(&intFives, "5s", 0, "The total Number of fives sent")                                                             //optional
@@ -137,6 +154,8 @@ func main() {
 	flag.StringVar(&tagFilter, "tagfilter", "", "Filter the coins used by tag (optional)")                                        //optional
 	//parse flags
 	flag.Parse()
+
+	receiverID = ParseID(receiverAccount, t)
 
 	total := intOnes + intFives*5 + intTwentyfives*25 + intHundreds*100 + intTwohundredfifties*250
 	if flag.NArg() > 6 {
@@ -158,7 +177,7 @@ func main() {
 
 	/* Validate inputs */
 	//Validate recieveServer
-	checkServer := fmt.Sprintf("https://Raida%d.cloudcoin.global", receiverID)
+	checkServer := fmt.Sprintf("https://Raida%d.cloudcoin.global", receiveServer)
 
 	if !isValidURL(checkServer, t) {
 		errURL := errors.New("Invalid URl" + checkServer)
@@ -173,6 +192,7 @@ func main() {
 		//	var message3 = "The reciever id was not an int."
 
 	}
+
 	//open and read the ID Coin
 	coinbyte, err := os.Open(idpath)
 	bytesRead, err := ioutil.ReadAll(coinbyte)
@@ -181,7 +201,7 @@ func main() {
 
 	showURL := fmt.Sprintf("https://raida%d.cloudcoin.global/service/show?nn=1&sn=%s&an=%s&pan=%s&denomination=1", receiveServer, idCoin.CloudCoin[0].SN, idCoin.CloudCoin[0].ANs[receiveServer], idCoin.CloudCoin[0].ANs[receiveServer])
 
-	fmt.Println("show URL: " + showURL + "\n")
+	//	fmt.Println("show URL: " + showURL + "\n")
 
 	resp, err := http.Get(showURL)
 	ErrStop(4, err, t)
@@ -198,7 +218,7 @@ func main() {
 	if len(ShowResponses.MESSAGES) == 0 {
 		ErrStop(6, errors.New("No coins in this skywallet"), t)
 	}
-	fmt.Println(tagFilter)
+	//fmt.Println(tagFilter)
 
 	if tagFilter == "" {
 		//build the arrays for the Send Request
@@ -247,10 +267,50 @@ func main() {
 	//Now get lists of all the coins that will be sent
 	//Loop through all coin names. If they are needed add them to the pile
 	//If they are not needed do not.
+	unusedFives := []string{}
+	unusedTwentyFives := []string{}
+	unusedHundreds := []string{}
+	unusedTwoFifties := []string{}
 	var snToSend = []string{}
 	var denominations = []int{}
 	for i, d := range values {
 		switch d {
+		case 250:
+			if intTwohundredfifties > 0 { //if a 250 note is needed
+				snToSend = append(snToSend, sn[i])
+				denominations = append(denominations, 250)
+				intTwohundredfifties-- //reduce the ones neeeded by one
+			} else {
+				unusedTwoFifties = append(unusedTwoFifties, sn[i])
+			} //end if needed greater than zero
+			break
+		case 100:
+			if intHundreds > 0 { //if a 100 note is needed
+				snToSend = append(snToSend, sn[i])
+				denominations = append(denominations, 100)
+				intHundreds-- //reduce the ones neeeded by one
+			} else {
+				unusedHundreds = append(unusedHundreds, sn[i])
+			} //end if needed greater than zero
+			break
+		case 25:
+			if intTwentyfives > 0 { //if a 25 note is needed
+				snToSend = append(snToSend, sn[i])
+				denominations = append(denominations, 25)
+				intTwentyfives-- //reduce the ones neeeded by one
+			} else {
+				unusedTwentyFives = append(unusedTwentyFives, sn[i])
+			} //end if needed greater than zero
+			break
+		case 5:
+			if intFives > 0 { //if a 5 note is needed
+				snToSend = append(snToSend, sn[i])
+				denominations = append(denominations, 5)
+				intFives-- //reduce the ones neeeded by one
+			} else {
+				unusedFives = append(unusedFives, sn[i])
+			} //end if needed greater than zero
+			break
 		case 1:
 			if intOnes > 0 { //if a one note is needed
 				snToSend = append(snToSend, sn[i])
@@ -258,72 +318,102 @@ func main() {
 				intOnes-- //reduce the ones neeeded by one
 			} //end if needed greater than zero
 			break
-		case 5:
-			if intFives > 0 { //if a one note is needed
-				snToSend = append(snToSend, sn[i])
-				denominations = append(denominations, 5)
-				intFives-- //reduce the ones neeeded by one
-			} //end if needed greater than zero
-			break
-		case 25:
-			if intTwentyfives > 0 { //if a one note is needed
-				snToSend = append(snToSend, sn[i])
-				denominations = append(denominations, 25)
-				intTwentyfives-- //reduce the ones neeeded by one
-			} //end if needed greater than zero
-			break
-		case 100:
-			if intHundreds > 0 { //if a one note is needed
-				snToSend = append(snToSend, sn[i])
-				denominations = append(denominations, 100)
-				intHundreds-- //reduce the ones neeeded by one
-			} //end if needed greater than zero
-			break
-		case 250:
-			if intTwohundredfifties > 0 { //if a one note is needed
-				snToSend = append(snToSend, sn[i])
-				denominations = append(denominations, 250)
-				intTwohundredfifties-- //reduce the ones neeeded by one
-			} //end if needed greater than zero
-			break
 		} // end switch
-		// Do we have al notes we need?
-		if intOnes == 0 && intFives == 0 && intTwentyfives == 0 && intHundreds == 0 && intTwohundredfifties == 0 {
-			break
-		} //End if all needs met
+
+		// Do we have all notes we need?
 
 	} //end for each file in the folder
-	if intOnes > 0 {
-		message3 := "There were not enough ones to fill the request."
-		err := fmt.Errorf("error with inventory: %v", message3)
-		ErrStop(8, err, t)
-	} //End if needs not met
 
-	if intFives > 0 {
-		message4 := "There were not enough fives to fill the request."
-		err := fmt.Errorf("error with inventory: %v", message4)
-		ErrStop(9, err, t)
-	} //End if needs not met
+	missingCoins := intOnes + (intFives * 5) + (intTwentyfives * 25) + (intHundreds * 100) + (intTwohundredfifties * 250)
+	//fmt.Print(missingCoins)
+	changeSns := []string{"empty"}
+	denom := 0
+	changeStack := []string{}
+	coin1, _ := strconv.Atoi(snToSend[0])
+	fmt.Println(denomination(coin1))
+	coin1, _ = strconv.Atoi(snToSend[1])
+	fmt.Println(denomination(coin1))
 
-	if intTwentyfives > 0 {
-		message5 := "There were not enough 25s to fill the request."
-		err := fmt.Errorf("error with inventory: %v", message5)
-		ErrStop(10, err, t)
-	} //End if needs not met
+	if missingCoins > 0 {
 
-	if intHundreds > 0 {
-		message6 := "There were not enough 100s to fill the request."
-		err := fmt.Errorf("error with inventory: %v", message6)
-		ErrStop(11, err, t)
-	} //End if needs not met
+		if missingCoins > 100 {
+			//snToSend[0] = unusedTwoFifties[0]
+			//removeIndex(snToSend, 0)
+			changeSns[0] = unusedTwoFifties[0]
+			denom = 250
+		} else if missingCoins > 25 {
+			//snToSend[0] = unusedHundreds[0]
+			changeSns[0] = unusedHundreds[0]
+			//removeIndex(snToSend, 0)
+			denom = 100
+		} else if missingCoins > 5 {
+			//snToSend[0] = unusedTwentyFives[0]
+			//removeIndex(snToSend, 0)
+			changeSns[0] = unusedTwentyFives[0]
+			denom = 25
 
-	if intTwohundredfifties > 0 {
-		message7 := "There were not enough 250s to fill the request."
-		err := fmt.Errorf("error with inventory: %v", message7)
-		ErrStop(12, err, t)
-	} //End if needs not met
+		} else {
+			denom = 5
+			//snToSend[0] = unusedFives[0]
+			//removeIndex(snToSend, 0)
+			changeSns[0] = unusedFives[0]
+			//	fmt.Printf("%v\r\n", snToSend)
+		}
+		coin1, _ = strconv.Atoi(snToSend[0])
+		fmt.Println(denomination(coin1))
+		coin1, _ = strconv.Atoi(snToSend[1])
+		fmt.Println(denomination(coin1))
 
-	//Now we have a list of coins that we can send. Read, send and delete.
+		change := showChange("2", denom, 0, 5, 10)
+
+		changeAmount := 0
+
+		//		fmt.Printf("needs: 1-%d 5-%d 25-%d 100-%d  ", intOnes, intFives, intTwentyfives, intHundreds)
+		for changeAmount < denom {
+
+			for intOnes > 0 {
+				changeStack = append(changeStack, change[0][rand.Intn(len(change[0]))])
+				changeAmount++
+				intOnes--
+			}
+			for intFives > 0 {
+				changeStack = append(changeStack, change[1][rand.Intn(len(change[1]))])
+				changeAmount += 5
+				intFives--
+			}
+
+			for intTwentyfives > 0 {
+				changeStack = append(changeStack, change[2][rand.Intn(len(change[2]))])
+				changeAmount += 25
+				intTwentyfives--
+			}
+			for intHundreds > 0 {
+				changeStack = append(changeStack, change[3][rand.Intn(len(change[3]))])
+				changeAmount += 100
+				intHundreds--
+			}
+
+			if denom-changeAmount > 100 {
+				changeStack = append(changeStack, change[3][rand.Intn(len(change[3]))])
+				changeAmount += 100
+			} else if denom-changeAmount > 25 {
+				changeStack = append(changeStack, change[2][rand.Intn(len(change[2]))])
+				changeAmount += 25
+			} else if denom-changeAmount > 5 {
+				changeStack = append(changeStack, change[1][rand.Intn(len(change[1]))])
+				changeAmount += 5
+			} else {
+				changeStack = append(changeStack, change[0][rand.Intn(len(change[0]))])
+				changeAmount++
+			}
+
+			//			fmt.Println("remaining needed", denom-changeAmount)
+		}
+		//		fmt.Println("change amount = ", changeAmount, "\r\n chang serialNumbers:", changeStack)
+	}
+
+	//	os.Exit(200)
+	//Now we have a list of coins that we can send.
 
 	/*TRANSFER COINS*/
 
@@ -336,7 +426,7 @@ func main() {
 
 		sendURL[i] = fmt.Sprintf("https://RAIDA%d.cloudcoin.global/service/transfer_with_change", i)
 		URLData = append(URLData, url.Values{})
-		URLData[i].Set("tag", tag)
+		//URLData[i].Set("tag", tag)
 		URLData[i].Set("nn", NN1)
 		URLData[i].Set("sn", idCoin.CloudCoin[0].SN)
 		URLData[i].Set("an", idCoin.CloudCoin[0].ANs[i])
@@ -346,14 +436,37 @@ func main() {
 
 		for j := 0; j < len(snToSend); j++ {
 			if j == 0 {
+				//	URLData[i].Set("paysns[]", snToSend[j])
 				URLData[i].Set("sns[]", snToSend[j])
 				URLData[i].Set("nns[]", "1")
+				//fmt.Println(snToSend[j])
 			} else {
+				//URLData[i].Add("paysns[]", snToSend[j])
 				URLData[i].Add("sns[]", snToSend[j])
 				URLData[i].Add("nns[]", "1")
+
 			}
 		} //end for each file
 
+		if missingCoins > 0 {
+
+			for j := 0; j < len(changeStack); j++ {
+				if j == 0 {
+					URLData[i].Set("chsns[]", changeStack[j])
+				} else {
+					URLData[i].Add("chsns[]", changeStack[j])
+				}
+
+			}
+		}
+		URLData[i].Set("paysns[]", changeSns[0])
+		totalString := fmt.Sprintf("%d", total)
+		URLData[i].Set("payment_required", totalString)
+		URLData[i].Set("public_change_maker", "2")
+		URLData[i].Set("payment_envelope", tag)
+		//URLData[i].Set("paysns[]", changeSns[0])
+
+		//	fmt.Printf("\r\ntest %s\r\n", changeSns[0])
 	} //end for each raida request
 
 	//Send our requests
@@ -423,7 +536,7 @@ func isValidURL(toTest string, t time.Time) bool {
 func Transfer(done chan [3]string, sendURL string, URLData url.Values, raidaID int, t time.Time) {
 	var responseText [3]string
 	start := time.Now()
-	//	fmt.Printf("\nSentUrl: %v\nUrlData:%v", sendURL, URLData)
+	//fmt.Printf("\nSentUrl: %v\nUrlData:%v\r\n\r\n", sendURL, URLData)
 	response, err := http.PostForm(sendURL, URLData)
 	ErrStop(20, err, t)
 
@@ -474,4 +587,195 @@ func ErrStop(i int, err error, t time.Time) {
 		fmt.Printf("{\"status\":\"fail\",\"message\":\"error %d. %s.  %v\"}", i, fmt.Sprintf("%s", err), time.Since(t))
 		os.Exit(i)
 	}
+}
+
+//ParseID parses the supplied id into a usable serial number
+func ParseID(parseID string, t time.Time) int {
+
+	if _, err := strconv.Atoi(parseID); err == nil {
+
+		result, _ := strconv.Atoi(parseID)
+		return result
+
+	} else {
+
+		addr := net.ParseIP(parseID)
+		if addr == nil {
+			ips, err := net.LookupIP(parseID)
+			ErrStop(12, err, t)
+			parseID = strings.Replace(ips[0].String(), "1.", "0.", 1)
+			input := net.ParseIP(parseID)
+			ipOut := IP4toInt(input, t)
+			return int(ipOut)
+
+		} else {
+			if strings.HasPrefix(parseID, "1.") {
+				parseID = strings.Replace(parseID, "1.", "0.", 1)
+				input := net.ParseIP(parseID)
+				ipOut := IP4toInt(input, t)
+
+				return int(ipOut)
+			}
+		}
+		return 0
+	}
+	return 0
+}
+
+//convert the Ip to a serial number
+func IP4toInt(input net.IP, t time.Time) int64 {
+	//ip := net.IP(input)
+
+	//ip, _, err := net.ParseCIDR(input)
+	//ErrStop(32, err, t)
+	IPv4Int := big.NewInt(0)
+	IPv4Int.SetBytes(input.To4())
+	return IPv4Int.Int64()
+}
+
+func showChange(sn string, denom int, server ...int) [4][]string {
+	rand.Seed(time.Now().UTC().UnixNano())
+	changeArray := [4][]string{}
+	serverArray := [3]int{}
+
+	if len(server) > 0 {
+		serverArray[0] = server[0]
+		fmt.Println("set server 1 to ", serverArray[0])
+	} else {
+		serverArray[0] = rand.Intn(24)
+	}
+
+	if len(server) > 1 {
+		serverArray[1] = server[1]
+		fmt.Println("set server 2 to ", serverArray[1])
+	} else {
+		serverArray[1] = rand.Intn(24)
+	}
+
+	if len(server) > 2 {
+		serverArray[2] = server[2]
+		fmt.Println("set server 3 to ", serverArray[2])
+	} else {
+		serverArray[2] = rand.Intn(24)
+	}
+
+	for serverArray[0] == serverArray[1] {
+		serverArray[1] = rand.Intn(24)
+
+		for serverArray[1] == serverArray[2] {
+			serverArray[2] = rand.Intn(24)
+
+			for serverArray[2] == serverArray[0] {
+				serverArray[0] = rand.Intn(24)
+			}
+
+		}
+
+	}
+
+	//	fmt.Printf("%v", serverArray)
+	done := make(chan [2]string)
+	//var changeURL string
+
+	for i := 0; i < 3; i++ {
+		go sendRequest(done, denom, sn, serverArray[i])
+		//		fmt.Printf("sent request %d\r\n", i)
+	}
+
+	var change []jsonChange
+
+	for i := 0; i < 3; i++ {
+		results := <-done
+		//fmt.Printf("time Elapsed for request %d: %v\r\n", i+1, results[1])
+		change = append(change, readChange(results[0]))
+
+	}
+
+	var d1 []string
+	var d5 []string
+	var d25 []string
+	var d100 []string
+
+	if len(change[0].D1) > 0 || len(change[1].D1) > 0 {
+		d1 = intersection(change[0].D1, change[1].D1)
+		d1 = intersection(change[2].D1, d1)
+	} else {
+		d1 = change[0].D1
+	}
+
+	if len(change[0].D5) > 0 || len(change[1].D5) > 0 {
+		d5 = intersection(change[0].D5, change[1].D5)
+		d5 = intersection(change[2].D5, d5)
+	} else {
+		d5 = change[0].D5
+	}
+
+	if len(change[0].D25) > 0 || len(change[1].D25) > 0 {
+		d25 = intersection(change[0].D25, change[1].D25)
+		d25 = intersection(change[2].D25, d25)
+	} else {
+		d25 = change[0].D25
+	}
+
+	if len(change[0].D100) > 0 || len(change[1].D100) > 0 {
+		d100 = intersection(change[0].D100, change[1].D100)
+		d100 = intersection(change[2].D100, d100)
+	} else {
+		d100 = change[0].D100
+	}
+
+	changeArray[0] = d1
+	changeArray[1] = d5
+	changeArray[2] = d25
+	changeArray[3] = d100
+
+	return changeArray
+}
+
+//send the request for change.
+func sendRequest(done chan [2]string, denom int, sn string, serverID int) {
+	var responseText [2]string
+
+	changeURL := fmt.Sprintf("https://raida%d.cloudcoin.global/service/show_change?sn=%s&denomination=%d", serverID, sn, denom)
+
+	start := time.Now()
+	response, _ := http.Get(changeURL)
+
+	defer response.Body.Close()
+	body, _ := ioutil.ReadAll(response.Body)
+
+	//	Request := fmt.Sprintf(" RAIDA %d: %v", serverID, changeURL)
+	elapsed := time.Since(start)
+	elapsedString := fmt.Sprintf("%v", elapsed)
+	responseText[0] = string(body)
+	responseText[1] = elapsedString
+	done <- responseText
+}
+
+//read the change and return useable data
+func readChange(returnResponse string) jsonChange {
+	raw := []byte(returnResponse)
+	var change jsonChange
+	_ = json.Unmarshal(raw, &change)
+	return change
+}
+
+//get the intersection of two Arrays
+func intersection(a, b []string) (c []string) {
+	m := make(map[string]bool)
+
+	for _, item := range a {
+		m[item] = true
+	}
+
+	for _, item := range b {
+		if _, ok := m[item]; ok {
+			c = append(c, item)
+		}
+	}
+	return
+}
+
+func removeIndex(s []string, index int) []string {
+	return append(s[:index], s[index+1:]...)
 }
