@@ -1,6 +1,5 @@
 # SKYWALLET PROTOCOL
 
-# SKYWALLET PROTOCOL
 
 The skywallet is a Cloud-Based private ledger built on the RAIDA. Because it is built on the RAIDA, it has data supremacy. 100% uptime. Like the Blockchain, it is pseudo anonymous. Everyone needs to have an account number to use it. People use a CloudCoin to log in. Every CloudCoin can be used as a Skywallet Account. People can have as many SkyWallets as they like. 
 
@@ -44,10 +43,8 @@ The Skywallet protocols can be devided into four different catagories.
 
 # The Trusted Transfer Services 
 
-These services allow one person to pay another without the other person needed to "pown" the coins. This service is the third attempt to achieve this. 
-The first was called "Trusted Transfer." The 2nd called "PayForward". This latest attempt does away with external servers completely and attempts to achieve the 
-same internally. The solution does create new problems: Keys can be lost and stolen. This means the keys become a sentral way of failure just like the 
-private keys of the blockchain. 
+These services allow one person to pay another without the other person needed to "pown" the coins. This solution does create new problems: Keys can be lost and stolen. This means the keys become a central way of failure point just like the 
+private keys of the blockchain. However, we are now working on a key recovery service that should be done by summer 2020. 
 
 [Send](README.md#send)
 
