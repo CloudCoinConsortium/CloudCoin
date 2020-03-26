@@ -1,5 +1,41 @@
 # SKYWALLET PROTOCOL
 
+# SKYWALLET PROTOCOL
+
+The skywallet is a Cloud-Based private ledger built on the RAIDA. Because it is built on the RAIDA, it has data supremacy. 100% uptime. Like the Blockchain, it is pseudo anonymous. Everyone needs to have an account number to use it. People use a CloudCoin to log in. Every CloudCoin can be used as a Skywallet Account. People can have as many SkyWallets as they like. 
+
+The purpose of the Skywallet is:
+1. To allow people to securely store their coins in the Cloud so they are available on any device at any time and anywhere in the world. 
+2. To allow people to receive authentic CloudCoins without file transfer. This is convenient for merchants who will be accepting CloudCoins as payments.
+3. To allow people to send authentic Cloudier without file transfer. This is good for buying things.   
+4. To allow people to have friendly addresses that are custom and easy to remember. 
+5. To make change (break large denominations into smaller ones) within seconds. 
+6. To allow people to store money in their minds. They must remember their wallet address and their debit card number and pin. 
+7. To allow people to have debit cards which can be used at existing payment terminals used in stores. And to make online purchases. 
+8. To allow people to "pay by whisper" so that transaction can be made by simply giving another person a password. 
+9. To allow people to organize their funds into "envelopes" so they can monitor their spending. 
+10. Support Bill Pay services. 
+
+
+Features of the Skywallet:
+1. Usability: Allows us to have online ATM machines that we can use to deposit, withdraw and transfer CloudCoins. Anyone who knows how to use an ATM machine knows how to do this. We can also use debit cards that every one is familiar with. Even your 70 year old grandpa can do it. 
+
+2. Speed: Unless change is needed, depositing, withdrawing and transferring coins takes less than 2 seconds. If you need to break a coin to send the correct change, it will add about 6 seconds to the process. We are working on making this faster. 
+
+3. Availability: The RAIDA is 100% available. We are adding the finishing touches to our CloudCoin Wallet that will make sure SkyWallet funds will always be there when needed. 
+
+4. Fees: No fees! Low Energy Use: Very efficient. 
+
+5. Privacy: Unlike CloudCoin, the Skywallet is not 100% private. Instead it is pseudo private. This means the there are account numbers (similar to the public keys of crypto) for people. However, unlike the Blockchain, this information is no available to the public. Only RAIDA Admins could possibly see it. 
+
+6. Key recovery coming soon. 
+
+7. Addressing: Skywallet using the DNS system to have addresses similar to email addresses. An email address may look like "Bill@Microsoft.com" and a SkyWallet address will look like "Bill.Skwyallet.com" The only difference is the Skywallets have no '@' sign. 
+
+
+## Protocol
+
+
 The Skywallet protocols can be devided into four different catagories. 
 1. Trusted Transfer
 2. Merchante Services
