@@ -53,7 +53,7 @@ if ($password == '9812481556564824824856'){
 
     logpath: A string that shows the path to the log folder where the Transferrer will make log files that can be used in troubleshooting problems. 
 
-    transactionlogpath: A string that shows the path to the transaction log folder. This is where client software can look to see transactions that the Transferrer has completed to show the user.  
+    transactionPath: A string that shows the path to the transaction log folder. This is where client software can look to see transactions that the Transferrer has completed to show the user.  
 
     idpath: To transfer CloudCoin, the Sender must have a ID coin. This is the path to that coin. You will need to mark a coin as an ID coin. Use the CloudCoin Wallet to create sending and receiving Skywallet accounts to make testing easier. 
 
