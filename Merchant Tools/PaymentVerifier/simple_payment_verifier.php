@@ -30,7 +30,7 @@ $total_due = 1;//How many coins the customer should have sent.
   $move_to = "Received_from_".$from; 
 
 //Put the "paymentverifier.exe" program in a place and start it. Note that we use the $total_due that we calculated
-  $command = "C:\xampp\htdocs\paymentverifier.exe -getfrom=\"$invoice\" -payment=$total_due -refundto=$to_sn -logpath=\"$Log_path\" -idpath=\"$Path_to_ID_coin\"  -oldtag=\"$invoice\" -timeout=\"$timeout\" -newtag=\"$move_to\"";
+  $command = "C:\xampp\htdocs\paymentverifier.exe -oldtag=\"$invoice\" -payment=$total_due -refundto=$to_sn -logpath=\"$Log_path\" -idpath=\"$Path_to_ID_coin\"  -timeout=\"$timeout\" -newtag=\"$move_to\"";
 
   $results = exec($command); //This executes the command and puts the results in the results variable. 
 
