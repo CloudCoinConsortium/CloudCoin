@@ -10,7 +10,7 @@ The Transferrer is an execuatble program that can run on Windows, Linux or Mac b
 
 ## Sample usage:
 ```
-transfer.exe -amount=236 -logto="C:\user\merchant\Logs\Transfer" -id=C:\user\merchant\ID\idcoin.stack -receiverID=16777216 -fromTag="generalfund" -tag="From Merchant for Purchase of Shoes" -transactionlogpath=C:\user\merchant\CloudCoin\Skywallet\merchant.Skywallet.cc\
+transfer.exe -amount=236 -logpath="C:\user\merchant\Logs\Transfer" -idpath=C:\user\merchant\ID\idcoin.stack -receiverID=16777216 -fromTag="generalfund" -tag="From Merchant for Purchase of Shoes" -transactionlogpath=C:\user\merchant\CloudCoin\Skywallet\merchant.Skywallet.cc\
 ```
 
 ## Flags
