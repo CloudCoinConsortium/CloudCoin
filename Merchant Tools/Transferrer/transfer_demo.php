@@ -39,7 +39,7 @@ if ($password == '9812481556564824824856'){
 
   
   //Now you can call the transferrer.exe and get its response. 
-  //Download transferrer at: http://raida18.cloudcoin.global/exchange/teller/transferrer.zip
+  //You will need to compile the Transferer using the transferrer.go source code.
   //For possible responses, see https://github.com/worthingtonse/servants/tree/master/Teller/Transfer
   //To see the source code for Transferrer see: https://github.com/worthingtonse/servants/blob/master/Teller/Transfer/transferrer.go
   /*
@@ -47,24 +47,26 @@ if ($password == '9812481556564824824856'){
     fromTag: Every account on the Skywallet has envelopes. These are sub accounts and each envelope has is labeled with a tags.
     A tag is a string that identifies an envelope. This flag specifies which of the sender's envelope/sub account/tag that the coins
     will be transfered out of. Coins are almost alwasy transfered from the "change" envelope which is used as a general fund. 
+    This means that you must create a SkyWallet account. Then send it a bunch of CloudCoins using "change" as the memo. 
 
     amount: An int that tells amount of CloudCoins to be transfered from the sender's account to the receivers account.
 
     receiverID: A string that is aSerial number, IP or Account Name of the receiver. So IDs like 16777216 or 1.255.255.255 or 
     Sean.CloudCoin.global are possible. The transferrer will always convert and ID into a decimal. 
 
-    tag: The Sender is allowed to create an envelope in the Receiver's account. The tag is what that new envelope will be named.
-    This allows the Sender to tell the recever where to check to find their payment. Tags are often random strings that uniquely 
-    identify the senders payment.    
+    tag: The Sender is allowed to create an envelope (memo) in the Receiver's account. The tag is what that new envelope will be named.
+    This allows you the Sender to tell the customer (recever) how to identy their your transfer. Tags are often random strings that 
+    uniquely identify your payment (like an invoice number).    
 
     logpath: A string that shows the path to the log folder where the Transferrer will make log files that can be used in
     troubleshooting problems. 
 
-    transactionPath: A string that shows the path to the transaction log folder. This is where client software can look 
-    to see transactions that the Transferrer has completed to show the user.  
+    transactionPath: A string that shows the path to the transaction log folder. This is where client software such as the 
+    CloudCoin Wallet can look to see transactions the money that has been sent out from your account.  
 
-    idpath: To transfer CloudCoin, the Sender must have a ID coin. This is the path to that coin. You will need to mark a 
-    coin as an ID coin. Use the CloudCoin Wallet to create sending and receiving Skywallet accounts to make testing easier. 
+    idpath: To transfer CloudCoin, you must have a ID coin. The ID coin allows you to prove you own the account. 
+    This is the path to that coin. You will need to mark a coin as an ID coin. 
+    Use the CloudCoin Wallet to create sending and receiving Skywallet accounts to make testing easier. 
 
     timeout: A integer that says how many seconds the Transferer will wait for RAIDA to respond. I recomend about 10 seconds. 
 
