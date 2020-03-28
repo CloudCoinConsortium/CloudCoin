@@ -1,5 +1,8 @@
 # Bill Pay
 ## Distributing CloudCoins in Mass
+
+NOTE: As of March 28, 2020. Bill pay is integrated into the CloudCoin Wallet but it does not follow the published standard. If you need to use this feature, contact CloudCoin@protonmail.com to expedite this service. 
+
 CloudCoin maybe the only currency in the world that can be distributed without fees. The cost of sending Bitcoin and other crypto currencies, to massive amounts of users can be extreemly expensive. For most payment systems, it is less expensive to send cash via the plain old mail than electonically. The only advantage of payment systems over regular mail is the speed, accountability and dependability. With CloudCoin, you can pay thousands of people within minutes and pay no fees. You also have the addition of privacy which is not possible with most payment systems such as PayPal, Western Union, Bank Transfer and others.
 
 If you want to be able to get CloudCoins out to a lot fo people quickly, use the CloudCoin Wallet's Bill Pay.
