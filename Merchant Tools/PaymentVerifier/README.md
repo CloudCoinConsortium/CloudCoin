@@ -14,7 +14,7 @@ return the coins to the sender. The Payment Verifier expects the exact amount. I
 
 ## Sample Usage:
 ```
-paymentVerifier.exe -timeout=5 -oldtag=general_fund_e51c28025eb44caa82c77f85d69fe0f9 -payment=100 -refundto=1371486 -logpath="C:\user\bill\CloudCoin\Skywallet\bill.skywallet.cc" -idpath="C:\cc\Accounts\Change\ID\1.CloudCoin.1.2..stack" 
+paymentVerifier.exe -timeout=5 -oldtag=general_fund_e51c28025eb44caa82c77f85d69fe0f9 -payment=100 -refundto=1371486 -logpath="C:\user\bill\CloudCoin\logs" -idpath="C:\cc\Accounts\Change\ID\1.CloudCoin.1.2..stack" -newtag="verified"
 ```
 
 The Payment Verifier is a command line program written in GO that can be executed by other languages including php, Java, C# and almost all others. The comand line arguments include flags.  
