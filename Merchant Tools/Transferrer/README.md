@@ -1,8 +1,8 @@
 # Transferer
 
-The Transfere moves coins from your account to the account of your customer. 
+The Transferer allows you to send CloudCoins from your your SkyWallet account to the SkyWallet account of your customers. Naturally, it requires that you and your customer have a SkyWallet. 
 
-It assumes that the RAIDA is ready and echoer was checked by the caller. 
+It assumes that the RAIDA is ready and echoer was checked to see that you are connected to the RAIDA. 
 
 The Transferer needs access to the ID key so it can use the account. 
 
