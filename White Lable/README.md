@@ -42,5 +42,8 @@ Suppose you are creating "CrazyCoin", then change the name of the program to Cra
 
 2. Change the config.ini.txt file
 2. Change the assests. 
+![github-large](rename.png)
+![github-large](folders.png)
 ![github-large](default.png)
+![github-large](custom.png)
 
