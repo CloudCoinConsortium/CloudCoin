@@ -1,9 +1,9 @@
-# Branding Instructions for the RAIDA Wallet
+# Creating your own RAIDA Coin: Branding Instructions for the RAIDA Wallet
 
 The RAIDA Wallet, also known as the CloudCoin Wallet, can be branded so that 
 it works as any coin. In other words, the CloudCoin Wallet acts as a white lable coin and is completely brandable. 
 You can create your own coin within a few hours and market it the next day. Your coins will be backed by the 
-value of CloudCoin. 
+value of CloudCoin. When advertising how many units your coin has, it should be fixed at: 1,428,160,512.
 
 ## Tasks that you must perform to create your own coin and brand your wallet:
 
