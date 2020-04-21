@@ -488,7 +488,7 @@ RESPONSE IF ACCOUNT DID NOT LOG IN CORRECTLY
 }
 ```
 
-## View Receipt
+## ViewReceipt  
 
 This allows the sender and receiver of a payment to verify that the receiver received the payment. The sender must use a guid as a memo and must give this guid to the merchant. The merchant then can call View Receipt and see if the total matches the required amount. The merchant can then use the list of coins returned to receive them, transfer them or rename their envelope.
 
@@ -499,34 +499,33 @@ https://raida7.cloudcoin.global/service/view_receipt?account=2&tag=623e88186f3c4
 ```
 PARAMETERS
 
-1. tag: guid used in the memo of the transaction
-2. account: Serila Number of the ID coin that owns the receiving account.
+1. tag: guid used in the memo of the transaction (MUST BE A GUID)
+2. account: Serial Number of the ID coin that owns the receiving account .
 
-SAMPLE RESPONSE
+SAMPLE RESPONSE IF COINS FOUND
+Note: Staus is the total of the coins returned
 ```json
 {
 	"server": "raida18",
-	"status": "success",
-	"message": "The coins are below. Time is in Etc UTC",
-	"total": "252",
-	"coins": [{
-		"sn": "1308799",
-		"created": "2019-08-16 04:42:59"
-	}, {
-		"sn": "1308800",
-		"created": "2019-08-16 04:42:59"
-	}, {
-		"sn": "16458252",
-		"created": "2020-01-31 00:46:47"
-	}],
+	"status": "454",
+	"message": "1308799,1308800,1308868,1308983,14339990,14340140,16458252",
 	"version": "2020-02-13",
-	"time": "2020-04-16 00:26:36"
+	"time": "2020-04-20 23:31:40"
 }
 ```
-
+SAMPLE RESPONSE IF COINS NOT FOUND
+```json
+{
+	"server": "raida18",
+	"status": "0",
+	"message": "",
+	"version": "2020-02-13",
+	"time": "2020-04-20 23:31:40"
+}
+```
+NOTE: You will not that there was not results because the status will be = 0;
 
 ## Receive
-
 
 The Receive service allows many coins to be downloaded from the Sky Wallet at the same time. The Receiver can download all of their
 coins, or just some of their coins. But it must specify the coins it wants to download by serial number. This means 
