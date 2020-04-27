@@ -39,31 +39,25 @@ You must call the "view_receipt" service on 25 RAIDA in parallel. As a simple ru
 REFERENCE
 
 ###### Stadard for ViewReceipt Service
-
 ###### https://github.com/CloudCoinConsortium/CloudCoin/blob/master/SkyWallet%20Protocol/README.md#viewreceipt
 
-Javajs.js API for creating a "RAIDA" class that can access the RAIDA and SkyWallet.
+###### Javajs.js API for creating a "RAIDA" class that can access the RAIDA and SkyWallet.
+###### https://github.com/CloudCoinConsortium/raidajslibrary
 
-https://github.com/CloudCoinConsortium/raidajslibrary
+###### Download the CloudCoin Wallet with RPC (Requires version 3.0.3 or beyond)
+###### http://CloudCoinConsortium.com/use.html
 
-Download the CloudCoin Wallet with RPC (Requires version 3.0.3 or beyond)
+###### Sample Skywallet Store Accepting Coins:
+###### https://pownesium.com/coke_sample_store.php
 
-http://CloudCoinConsortium.com/use.html
+###### Backend of the Store:
+###### https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Merchant%20Tools/PaymentVerifier/sample_store/payment_verifier.php
 
-Sample Skywallet Store Accepting Coins:
+###### Skywallet ATM (All static javascript, html, css using the RAIDA class from RaidaJs.js
+###### http://pownesium.com/atm.php
 
-https://pownesium.com/coke_sample_store.php
-
-Backend of the Store:
-https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Merchant%20Tools/PaymentVerifier/sample_store/payment_verifier.php
-
-Skywallet ATM (All static javascript, html, css using the RAIDA class from RaidaJs.js
-
-http://pownesium.com/atm.php
-
-Tool to create Skywallet ATM Card
-
-http://pownesium.com/debitcard.html
+###### Tool to create Skywallet ATM Card
+###### http://pownesium.com/debitcard.html
 
 # Sending Coins
 
@@ -132,25 +126,20 @@ Your Wallet will automatically make change if needed. You can put your CloudCoin
 Once your server gets your stack file, it can put it on a web page, stored with a link for the customer to download, emailed to the user or even turned into a QR code, png or jpeg file (using the RAIDA class functions in the RaidaJs.js).  
 
 REFERENCE:
-Withdraw one Stack standard
+###### Withdraw one Stack standard
+###### https://github.com/CloudCoinConsortium/CloudBank-V2#withdraw-one-stack-service
 
-https://github.com/CloudCoinConsortium/CloudBank-V2#withdraw-one-stack-service
+###### Sample Withdraw One Stack on a web server using Javascript
+###### https://bank.cloudcoin.global/banking/test_withdraw_one_stack.html
 
-Sample Withdraw One Stack on a web server using Javascript
+###### Sample webpage that creates a jpe from a stack file (Note that the CloudCoin is in the GET variables. 
+###### https://pownesium.com/coke_claims.php?nn=1&sn=1304167&pown=pupppppppuppppppppppppppp&ed=0-2022&an0=2acd1e906917a1a088a25cb35453635a&an1=086f74522bc612dc2b119c6643094da5&an2=f0a48b139d4983c9128b7f064c1f5176&an3=58bac3f0bfc558dfb9ba7ed43f3e5084&an4=90591c58319e8a34d2166de3585ebb82&an5=a99dff2b61b69090d84131da012e5e6d&an6=92218b885b2fa625516112a1a4a3276c&an7=d2994a2d4aa659e7a998a95e0e014d62&an8=2ba775297a55283ba46085877dbd46e1&an9=0c357f93c12e0b88a32c3667beffde63&an10=52fa09a2bd86431e876b0f6088c3f5fd&an11=58f743a11db34f8e2cab88fd47b588fc&an12=6c298b9b0e1e64154bd7b4c96c55bed4&an13=3c788d749abb2ae92748e23191cb4f08&an14=14f9d272385f559eb1dcbb125852156b&an15=ca576b3ab19168c4ac8dd87e52de274b&an16=f054af9c350e12cca1be14328d1e6aec&an17=a23961be33d977433795240a6945a839&an18=9e5e9ee3a4b8438faffb3e95e3a83e5c&an19=d78e171850513fd197d8142cf4f80b18&an20=103a6de638333eefb3b4cd47a313ca45&an21=efabf0011f1901604fe36d468b121958&an22=3a907d76d6b4fdc1250a73f53e5cab0b&an23=49df92630c84c7f4620299376f1931a7&an24=25c75855568f1ba12e7703c041bfe03b&
 
-https://bank.cloudcoin.global/banking/test_withdraw_one_stack.html
+###### Javajs.js API for creating a "RAIDA" class that can access the RAIDA and SkyWallet.
+###### https://github.com/CloudCoinConsortium/raidajslibrary
 
-Sample webpage that creates a jpe from a stack file (Note that the CloudCoin is in the GET variables. 
-
-https://pownesium.com/coke_claims.php?nn=1&sn=1304167&pown=pupppppppuppppppppppppppp&ed=0-2022&an0=2acd1e906917a1a088a25cb35453635a&an1=086f74522bc612dc2b119c6643094da5&an2=f0a48b139d4983c9128b7f064c1f5176&an3=58bac3f0bfc558dfb9ba7ed43f3e5084&an4=90591c58319e8a34d2166de3585ebb82&an5=a99dff2b61b69090d84131da012e5e6d&an6=92218b885b2fa625516112a1a4a3276c&an7=d2994a2d4aa659e7a998a95e0e014d62&an8=2ba775297a55283ba46085877dbd46e1&an9=0c357f93c12e0b88a32c3667beffde63&an10=52fa09a2bd86431e876b0f6088c3f5fd&an11=58f743a11db34f8e2cab88fd47b588fc&an12=6c298b9b0e1e64154bd7b4c96c55bed4&an13=3c788d749abb2ae92748e23191cb4f08&an14=14f9d272385f559eb1dcbb125852156b&an15=ca576b3ab19168c4ac8dd87e52de274b&an16=f054af9c350e12cca1be14328d1e6aec&an17=a23961be33d977433795240a6945a839&an18=9e5e9ee3a4b8438faffb3e95e3a83e5c&an19=d78e171850513fd197d8142cf4f80b18&an20=103a6de638333eefb3b4cd47a313ca45&an21=efabf0011f1901604fe36d468b121958&an22=3a907d76d6b4fdc1250a73f53e5cab0b&an23=49df92630c84c7f4620299376f1931a7&an24=25c75855568f1ba12e7703c041bfe03b&
-
-Javajs.js API for creating a "RAIDA" class that can access the RAIDA and SkyWallet.
-
-https://github.com/CloudCoinConsortium/raidajslibrary
-
-Download the CloudCoin Wallet with RPC (Requires version 3.0.3 or beyond)
-
-http://CloudCoinConsortium.com/use.html
+###### Download the CloudCoin Wallet with RPC (Requires version 3.0.3 or beyond)
+###### http://CloudCoinConsortium.com/use.html
 
 # Other Ways to Send and Receive
 
