@@ -38,9 +38,9 @@ You must call the "view_receipt" service on 25 RAIDA in parallel. As a simple ru
 
 REFERENCE
 
-Stadard for ViewReceipt Service
+###### Stadard for ViewReceipt Service
 
-https://github.com/CloudCoinConsortium/CloudCoin/blob/master/SkyWallet%20Protocol/README.md#viewreceipt
+###### https://github.com/CloudCoinConsortium/CloudCoin/blob/master/SkyWallet%20Protocol/README.md#viewreceipt
 
 Javajs.js API for creating a "RAIDA" class that can access the RAIDA and SkyWallet.
 
