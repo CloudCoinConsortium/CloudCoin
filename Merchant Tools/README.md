@@ -1,4 +1,4 @@
-# Receiving and Sending CloudCoins Programmatically
+# RECEIVING AND SENDING CLOUDCOINS PROGRAMMATICALLY
 
 You can receive and send CloudCoins by either using CloudCoin Wallet or Skywallet. CloudCoin Wallet runs on your desktop or server while Skywallet is in the RAIDA Cloud. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient. Skywallet provides pseudo-privacy that is like crypto currencies. Unlike crypto, Skywallet transactions are not public. This means that the only people who could possibly see your SkyWallet Transactions are RAIDA Administrators. SkyWallet makes sending and receiving payments very convenient. 
 
@@ -54,12 +54,22 @@ Sample Skywallet Store Accepting Coins:
 
 https://pownesium.com/coke_sample_store.php
 
+Backend of the Store:
+https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Merchant%20Tools/PaymentVerifier/sample_store/payment_verifier.php
+
+Skywallet ATM (All static javascript, html, css using the RAIDA class from RaidaJs.js
+
+http://pownesium.com/atm.php
+
+Tool to create Skywallet ATM Card
+
+http://pownesium.com/debitcard.html
 
 # Sending Coins
 
 Your customers may want to download coins from your website. Or they might want to receive them in an email. If they have a Skywallet Account, they may like to have them sent there. You may also want to give them a link that allows the to download their coins. 
 
-The easyist way is to send Coins to your customers is to use CloudCoin Wallet with RPC. Download the CloudCoin Wallet and run it on your desktop computer or server. You will need to enable CloudCoin Wallet RPC (Remote Procedure Calls). This allows your web servers to command your wallet to give it a stack of CloudCoins.You can then put these coins on your website and email the coins to your customers. 
+The easyist way is to send Coins to your customers is to use CloudCoin Wallet with RPC. Download the CloudCoin Wallet and run it on your desktop computer or server. It will run on any platform with a GUI.  You will need to enable CloudCoin Wallet RPC (Remote Procedure Calls). This allows your web servers to command your CloudCoin Wallet to give it a stack of CloudCoins.You can then put these coins on your website and email the coins to your customers. 
 
 SAMPLE REQUEST FOR A STACK OF COINS
 ```
@@ -117,20 +127,30 @@ ek: The password used to decrypt your CloudCoin Wallet. This is needed if you ha
 base64: A memo or note that will be placed in the transaction file on the CloudCoin Wallet. 
 ```
 
-Your Wallet will automatically make change if needed. You can put your CloudCoin Wallet on a server located in a physically secure place (like your home). You can even have lots of CloudCoin Wallets are different machines around the world to mitigate the risk of theft. You can encrypt your Wallet so that the person who is the custodian/administrator of the CloudCoin Wallet does not have the ability to take them. In the future, the CloudCoin Wallet with CloudBank will allow you to configure limits on sending money, restrictions on who can request money, times of day that money can be sent and even if you want manual confirmation.
+Your Wallet will automatically make change if needed. You can put your CloudCoin Wallet on a server located in a physically secure place (like your home). You can even have lots of CloudCoin Wallets on different machines around the world to mitigate the risk of theft and loss. You can encrypt your Wallet so that the person who is the custodian/administrator of the CloudCoin Wallet does not have the ability to rob them. In the future, the CloudCoin Wallet with CloudBank will allow you to configure limits on sending money, restrictions on who can request money, times of day that money can be sent and even if you want manual confirmation.
 
-so that your web server can put them on a web page for easy download. Then your customers can download their coins in stack format over a secure SSL connection provided by HTTPS. 
-
-Sending CloudCoins to customers from you SkyWallet account is very easy if you are doing it manually. You can just open CloudCoin Wallet and send the coins. The easist way to send coins progromatically is by leveraging your CloudCoin Wallet and sending it RPC (Remote Procedure Calls) telling it to send or transfer coins. 
-
-is more complicated because it is up to the account holder to coordinate all the RAIDA. You may first need to make change. Then you will need to get all the serial numbers from all 25 RAIDA and analyse them. This happens very fast but it is better to let an API do this. 
+Once your server gets your stack file, it can put it on a web page, stored with a link for the customer to download, emailed to the user or even turned into a QR code, png or jpeg file (using the RAIDA class functions in the RaidaJs.js).  
 
 REFERENCE:
 Withdraw one Stack standard
+
 https://github.com/CloudCoinConsortium/CloudBank-V2#withdraw-one-stack-service
 
 Sample Withdraw One Stack on a web server using Javascript
+
 https://bank.cloudcoin.global/banking/test_withdraw_one_stack.html
+
+Sample webpage that creates a jpe from a stack file (Note that the CloudCoin is in the GET variables. 
+
+https://pownesium.com/coke_claims.php?nn=1&sn=1304167&pown=pupppppppuppppppppppppppp&ed=0-2022&an0=2acd1e906917a1a088a25cb35453635a&an1=086f74522bc612dc2b119c6643094da5&an2=f0a48b139d4983c9128b7f064c1f5176&an3=58bac3f0bfc558dfb9ba7ed43f3e5084&an4=90591c58319e8a34d2166de3585ebb82&an5=a99dff2b61b69090d84131da012e5e6d&an6=92218b885b2fa625516112a1a4a3276c&an7=d2994a2d4aa659e7a998a95e0e014d62&an8=2ba775297a55283ba46085877dbd46e1&an9=0c357f93c12e0b88a32c3667beffde63&an10=52fa09a2bd86431e876b0f6088c3f5fd&an11=58f743a11db34f8e2cab88fd47b588fc&an12=6c298b9b0e1e64154bd7b4c96c55bed4&an13=3c788d749abb2ae92748e23191cb4f08&an14=14f9d272385f559eb1dcbb125852156b&an15=ca576b3ab19168c4ac8dd87e52de274b&an16=f054af9c350e12cca1be14328d1e6aec&an17=a23961be33d977433795240a6945a839&an18=9e5e9ee3a4b8438faffb3e95e3a83e5c&an19=d78e171850513fd197d8142cf4f80b18&an20=103a6de638333eefb3b4cd47a313ca45&an21=efabf0011f1901604fe36d468b121958&an22=3a907d76d6b4fdc1250a73f53e5cab0b&an23=49df92630c84c7f4620299376f1931a7&an24=25c75855568f1ba12e7703c041bfe03b&
+
+Javajs.js API for creating a "RAIDA" class that can access the RAIDA and SkyWallet.
+
+https://github.com/CloudCoinConsortium/raidajslibrary
+
+Download the CloudCoin Wallet with RPC (Requires version 3.0.3 or beyond)
+
+http://CloudCoinConsortium.com/use.html
 
 # Other Ways to Send and Receive
 
