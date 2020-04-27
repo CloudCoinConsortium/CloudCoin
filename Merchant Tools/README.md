@@ -1,9 +1,9 @@
-# Accepting CloudCoins Automatically
+# Receiving and Sending CloudCoins Programmatically
 
 You can receive and send CloudCoins by either using CloudCoin Wallet or Skywallet. CloudCoin Wallet runs on your desktop or server while Skywallet is in the RAIDA Cloud. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient. Skywallet provides pseudo-privacy that is like crypto currencies. Unlike crypto, Skywallet transactions are not public. This means that the only people who could possibly see your SkyWallet Transactions are RAIDA Administrators. SkyWallet makes sending and receiving payments very convenient. 
 
-## Receiving Payments the Easiest Way
-The easiest way to receive and confirm payment is by having your customers send CloudCoins to your SkyWallet account and then call the "View_Receipt" service to verify that they sent the payment. Your customer can use their CloudBank Wallet, the SkyWallet ATM or your custome web page to send payment using the RaidaJS javascript API. 
+# Receiving And Verifying Payments
+The easiest way to receive and confirm payment is by having your customers send CloudCoins to your SkyWallet account and then call the "View_Receipt" service to verify that they sent the payment. Your customer can use their CloudBank Wallet, the SkyWallet ATM or your custom webpage using our sample store to send payment using the RaidaJS javascript API. 
 
 SAMPLE CALL TO VIEW RECEIPT
 ```
@@ -37,22 +37,25 @@ EVALUATING RAIDA RESPONSES
 You must call the "view_receipt" service on 25 RAIDA in parallel. As a simple rule, you need 20 responses confirming the total to be certain that you received payment. However, if you use "Advanced Grading" you can be safe with 16 positive responses or less.  
 
 REFERENCE
+
 Stadard for ViewReceipt Service
+
 https://github.com/CloudCoinConsortium/CloudCoin/blob/master/SkyWallet%20Protocol/README.md#viewreceipt
 
 Javajs.js API for creating a "RAIDA" class that can access the RAIDA and SkyWallet.
+
 https://github.com/CloudCoinConsortium/raidajslibrary
 
 Download the CloudCoin Wallet with RPC (Requires version 3.0.3 or beyond)
+
 http://CloudCoinConsortium.com/use.html
 
 Sample Skywallet Store Accepting Coins:
+
 https://pownesium.com/coke_sample_store.php
 
 
-
-
-## Sending Coins The Easiest Way
+# Sending Coins
 
 Your customers may want to download coins from your website. Or they might want to receive them in an email. If they have a Skywallet Account, they may like to have them sent there. You may also want to give them a link that allows the to download their coins. 
 
@@ -114,8 +117,6 @@ ek: The password used to decrypt your CloudCoin Wallet. This is needed if you ha
 base64: A memo or note that will be placed in the transaction file on the CloudCoin Wallet. 
 ```
 
-
-
 Your Wallet will automatically make change if needed. You can put your CloudCoin Wallet on a server located in a physically secure place (like your home). You can even have lots of CloudCoin Wallets are different machines around the world to mitigate the risk of theft. You can encrypt your Wallet so that the person who is the custodian/administrator of the CloudCoin Wallet does not have the ability to take them. In the future, the CloudCoin Wallet with CloudBank will allow you to configure limits on sending money, restrictions on who can request money, times of day that money can be sent and even if you want manual confirmation.
 
 so that your web server can put them on a web page for easy download. Then your customers can download their coins in stack format over a secure SSL connection provided by HTTPS. 
@@ -131,7 +132,7 @@ https://github.com/CloudCoinConsortium/CloudBank-V2#withdraw-one-stack-service
 Sample Withdraw One Stack on a web server using Javascript
 https://bank.cloudcoin.global/banking/test_withdraw_one_stack.html
 
-## Other Ways to Send and Receive
+# Other Ways to Send and Receive
 
 ### Skywallet to Skywallet using "Transfer.go"
 If you want to sent CloudCoins directly from your SkyWallet to a customer's SkyWallet you can use our "Transfer.go" program that can be called from any language. However, this "Transfer.go" program is still in Alpha but it may be done by the time you read this.
@@ -148,7 +149,7 @@ You can accept a Skywallet Debit Card in the near future. It will allow a web pa
 ## Other API
 The CloudBank is designed to allow you to do all the things that the CloudCoin Wallet can do through remote procedure calls. We have APIs written in Java, JavaScript, Python, C# and Unity, C++, Unreal Engine, GoDot, Ruby and others. These APIs allow you to control your CloudBank remotly. We also have the RaidaJS API that allows you to access Skywallet via Javascript.  Most of these APIs need some work. If you have need for APIs in these languages, let us know so we can However, they are not well developed. We can schedule them to be improved and ready for use. 
 
-## Contact us If you Need Help
+# Contact us If you Need Help
 Please email Support@CloudCoin.global
 or 
 CloudCoin@Protonmail.com 
