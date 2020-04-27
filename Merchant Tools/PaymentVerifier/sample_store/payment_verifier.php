@@ -14,9 +14,15 @@ CloudCoin Wallet.
 The client will generate an invoice number randomly. The exact amount is required. The payment verifies send the customer a refund immediatly
 if the amount is inccorrect.
 
+GET Request to view receipt that shows the sender sent their payment:
+http://raida11.cloudcoin.global/service/view_receipt?account=2&tag=623e88186f3c4a4694c02230abe72666
+{ "server": "raida18", "total_received": 454, "serial_numbers": "1308799,1308800,1308868,1308983,14339990,14340140,16458252", "version": "2020-02-13", "time": "2020-04-27 01:15:21", "execution_time":0.032294988632202 }
+
 
 Extended GET Request that includes your merchant fields
- https://raida18.cloudcoin.global/service/verify_payment?from=billy@Skywallet.cc&invoice=b26b&total_coins_sent=250&book_88729=1&art_99882=2&product_998823=4
+https://raida11.cloudcoin.global/service/verify_payment?from=billy@Skywallet.cc&invoice=b26b&total_coins_sent=250&book_88729=1&art_99882=2&product_998823=4
+
+Sample Response: 
 
 *The "from" is the account that the requester wants to receive their refund if one is due (like the sender sends the wrong amount).
 *The "Invoice" is a random number that the sender made up so that you could recognize their payment.
@@ -38,6 +44,9 @@ $date = date("Y-m-d H:i:s");
 
 //Set timeout for request to run payment verifier
 $timeout = 5; //5 seconds
+$usingTransferGo = false;
+$usingViewReceipt = true;
+$max_fails = 5;
 
 //Get the manditory GET Variables
 $invoice          = $_GET['invoice'];
@@ -66,7 +75,38 @@ $price_product_998823 = 1;
 //Calculate Total due:
 $total_due = ($book_88719 * $price_book_88719) + ($price_art_99882 * $art_99882) + ($product_998823 * $price_product_998823);
 
+if($usingViewReceipt){
 
+	
+	foreach ($fromserver as $i => $server) {
+        $ch = curl_init("https://raida$i.cloudcoin.global/service/view_receipt?account=$to_sn&tag=$invoice");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        if (PHP_OS_FAMILY === 'Windows' || _DEBUG_) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        }
+        // get response
+        $results[$i] = curl_exec($ch);
+        // check response and return an error if even one fail found
+        if( strpos($results[$i], $total_due) !== false){
+		//Good response. Do nothing
+	}else{ 
+		$failedServers[] = $server; 
+	}    
+        // destroy handle
+        curl_close($ch);
+    }
+
+if (count($failedServers) > $max_fails)
+        header('Location: fail.html');
+    }
+
+header('Location: success.html');
+
+}//end if using view receipt
+
+if($usingTransferGo){
 //Declare the location of your log files. The Paymentverifier.exe program will create a folder called "Log" there and track customer purhase attempts. 
 $Log_path = "C:\\Invoices\\OnlineSales";
 
@@ -109,6 +149,6 @@ else
 		// echo $command;
 	
 }//End if else success
-
+}//end if using transfer.go 
 
 ?>
