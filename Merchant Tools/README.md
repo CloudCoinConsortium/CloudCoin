@@ -54,11 +54,16 @@ REFERENCE
 ###### https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Merchant%20Tools/PaymentVerifier/sample_store/payment_verifier.php
 
 ###### Skywallet ATM (All static javascript, html, css using the RAIDA class from RaidaJs.js
-###### http://pownesium.com/atm.php
+###### http://pownesium.com/atm/
 
 ###### Tool to create Skywallet ATM Card
-###### http://pownesium.com/debitcard.html
+###### http://pownesium.com/atm/debitcard.html
 
+###### PHP Store that accepts CloudCoins as payment
+###### https://github.com/CloudCoinConsortium/PHPDemoOnlineStore
+
+###### Coke Sample Store
+###### https://github.com/CloudCoinConsortium/CokeSampleStore
 # Sending Coins
 
 Your customers may want to download coins from your website. Or they might want to receive them in an email. If they have a Skywallet Account, they may like to have them sent there. You may also want to give them a link that allows the to download their coins. 
@@ -157,6 +162,35 @@ You can accept a Skywallet Debit Card in the near future. It will allow a web pa
 
 ## Other API
 The CloudBank is designed to allow you to do all the things that the CloudCoin Wallet can do through remote procedure calls. We have APIs written in Java, JavaScript, Python, C# and Unity, C++, Unreal Engine, GoDot, Ruby and others. These APIs allow you to control your CloudBank remotly. We also have the RaidaJS API that allows you to access Skywallet via Javascript.  Most of these APIs need some work. If you have need for APIs in these languages, let us know so we can However, they are not well developed. We can schedule them to be improved and ready for use. 
+
+Javascript SDK
+https://github.com/CloudCoinConsortium/raidajslibrary
+
+PHP SDK
+https://github.com/CloudCoinConsortium/CloudBank_PHP_SDK
+
+Python SDK
+https://github.com/CloudCoinConsortium/SDK-Python
+
+C# SDK
+https://github.com/CloudCoinConsortium/CloudCoin-Csharp-SDK
+
+Godot SDK
+https://github.com/CloudCoinConsortium/CloudCoin-GodotEngine-SDK
+
+Go Lang
+https://github.com/CloudCoinConsortium/CloudCoin
+
+Java SDK
+https://github.com/CloudCoinConsortium/CloudCoin-Java-SDK
+
+C++ SDK (Created by Volunteers, untested, disorganized)
+https://github.com/CloudCoinConsortium/CloudCoin-CPP-SDK/blob/master/old/DemoProgram/DemoProgram.cpp
+
+UnrealEngine C++ SDK
+https://github.com/CloudCoinConsortium/CloudCoin-UnrealEngine-SDK
+
+
 
 # Contact us If you Need Help
 Please email Support@CloudCoin.global
