@@ -66,9 +66,9 @@ REFERENCE
 ###### https://github.com/CloudCoinConsortium/CokeSampleStore
 # Sending Coins
 
-Your customers may want to download coins from your website. Or they might want to receive them in an email. If they have a Skywallet Account, they may like to have them sent there. You may also want to give them a link that allows the to download their coins. 
+Your customers may want to download coins from your website. Or they might want to receive coin in their email. If they have a Skywallet Account, they may want to receive coins there. You may also want to give your customers a link that allows them to download their coins. 
 
-The easyist way is to send Coins to your customers is to use CloudCoin Wallet with RPC. Download the CloudCoin Wallet and run it on your desktop computer or server. It will run on any platform with a GUI.  You will need to enable CloudCoin Wallet RPC (Remote Procedure Calls). This allows your web servers to command your CloudCoin Wallet to give it a stack of CloudCoins.You can then put these coins on your website and email the coins to your customers. 
+The easyist way to send Coins to your customers is to use CloudCoin Wallet with RPC. Download the CloudCoin Wallet and run it on your desktop computer or server. The CloudCoin wallet will act as your depository and hold your coins. The CloudCoin Wallet with RPC is written in java and will run on any platform with a GUI.  You will need to enable CloudCoin Wallet RPC (Remote Procedure Calls). This allows your web servers to command your CloudCoin Wallet to give it a stack of CloudCoins. You can then put these coins on your website and email the coins to your customers. 
 
 SAMPLE REQUEST FOR A STACK OF COINS
 ```
