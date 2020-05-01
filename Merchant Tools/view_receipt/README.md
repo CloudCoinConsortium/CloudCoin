@@ -18,7 +18,7 @@ view_receipt.exe -expected_amount=236 -logpath="C:\merchant\receipts\" -guidtag=
 
 ## Output to command line or calling process
 
-If Everything is fine and the payment was received as expected:
+If Everything is fine and the payment was received as expected. Choose any RAIDA number:
 ```
 {
 	"server": "raida18",
