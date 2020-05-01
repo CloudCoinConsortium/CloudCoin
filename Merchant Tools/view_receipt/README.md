@@ -17,11 +17,62 @@ view_receipt.exe -expected_amount=236 -logpath="C:\merchant\receipts\" -guidtag=
 * timeout: A integer that says how many seconds the Transferer will wait for RAIDA to respond. 5 seconds should be good. It takes more time for slower internet connection and larger transferrs.
 
 ## Output to command line or calling process
+
+If Everything is fine and the payment was received as expected:
 ```
 {
 	"server": "raida18",
 	"total_received": 454,
 	"serial_numbers": "1308799,1308800,1308868,1308983,14339990,14340140,16458252",
+	"version": "2020-02-13",
+	"time": "2020-04-20 23:31:40"
+	"execution_time":.023
+}
+```
+If Everything is fine and the payment was received as expected:
+```
+{
+	"server": "raida1",
+	"total_received": 454,
+	"serial_numbers": "1308799,1308800,1308868,1308983,14339990,14340140,16458252",
+	"version": "2020-02-13",
+	"time": "2020-04-20 23:31:40"
+	"execution_time":.023
+}
+```
+
+If something went wrong: 
+```
+{
+	"server": "raida5",
+	"total_received": 0,
+	"serial_numbers": "",
+	"version": "2020-02-13",
+	"time": "2020-04-20 23:31:40"
+	"execution_time":.023
+}
+```
+Log Files
+There will be a differnt log file for every day. The names of the log files will be formatted like:
+```
+"Jan.26.2019.view_receipt.txt"
+```  
+The records inside the log file will be the results of the view_receipt appendend to the end of the file. 
+
+```
+{
+	"server": "raida1",
+	"total_received": 454,
+	"serial_numbers": "1308799,1308800,1308868,1308983,14339990,14340140,16458252",
+	"version": "2020-02-13",
+	"time": "2020-04-20 23:31:40"
+	"execution_time":.023
+}
+
+{
+	"server": "raida5",
+	"total_received": 0,
+	"serial_numbers": "",
 	"version": "2020-02-13",
 	"time": "2020-04-20 23:31:40"
 	"execution_time":.023
