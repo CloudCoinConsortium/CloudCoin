@@ -18,7 +18,7 @@ CVV 5485
 
 * The SN comes from a resolving the SkyWallet name to IP then to decimal. 
 
-* First number must be '9'. Nine means CloudCoin
+* First number must be '9'. Nine means CloudCoin (NOTE: To make it so these card numbers work with Google Card Managers, they can start with the number '4' instead of '9'). 
 
 * The Next two digits are the NN (Network Number) and now it will be 01. 
 
