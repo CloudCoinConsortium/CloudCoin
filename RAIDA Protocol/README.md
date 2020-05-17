@@ -366,76 +366,46 @@ The RAIDA Multi Ticket Protocol allows many tickets to be generated at the same 
 Example POST requesting three tickets
 ```
 Usage: https://RAIDA13.CloudCoin.Global/service/multi_ticket
-nns[]=1&nns[]=1&nns[]=1&
+b=t&
+nn=1&
 sns[]=145895&sns[]=66585&sns[]=16589554&
 ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
 pans[]=c7bea382188d404d8f0efc5969c54c5a&pans[]=75819e4721cb4970a2e2582d7e26318b&pans[]=0a4a8a4014264cbf8c00383ae180a152&
-denomination[]=1&denomination[]=1&denomination[]=1
+dn[]=1&dn[]=1&dn[]=250
 ```
 
 Example Response if all tickets were successful:
 
 ```json
-[
-  {
-  "server": "RAIDA13",
-		"status": "ticket",
-		"sn": "145895",
-		"version": "2018-04-01",
-		"message": "10be9309a4c3f193f1304ffc4344822c10be9309a4c3",
-		"time": "2018-09-05 06:19:34"
-	},
-	{
-		"server": "RAIDA13",
-		"status": "ticket",
-		"sn": "66585",
-		"version": "2018-04-01",
-		"message": "304ffc434482210be9309a4c3f193f1c10be9309a4c3",
-		"time": "2018-09-05 06:19:34"
-	},
-	{
-		"server": "RAIDA13",
-		"status": "ticket",
-		"sn": "16589554",
-		"version": "2018-04-01",
-		"message": "4c3f193f1304f10be9309afc4344822c10be9309a4c3",
-		"time": "2018-09-05 06:19:34"
-	}
-]
+If all the coins were authentic:
+            {
+            	"server": "RAIDA11",
+            	"status": "allpass",
+            	"message": "All the coins were authentic",
+            	"version": "2020-04-13",
+            	"time": "2020-04-18 22:57:55"
+            }
+        
+If all the coins were counterfeit:
+            {
+             	"server": "RAIDA11",
+             	"status": "allfail",
+             	"message": "All the coins were counterfeit",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55"
+             }
+        
+If all the coins were counterfeit:
+             {
+             	"server": "RAIDA11",
+             	"status": "mixed",
+             	"message": "pass,pass,fail",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55"
+             }
 
 ```
-
-Example Response if all tickets failed:
-
-```html
-
-[{
-		"server": "RAIDA13",
-		"status": "fail",
-		"version": "2018-04-01",
-		"message" : "Database: Operation failed. Ticket has not been created.",
-		"time": "2018-09-05 06:19:34"
-	},
-	{
-		"server": "RAIDA13",
-		"status": "fail",
-		"version": "2018-04-01",
-		"message" : "Database: Operation failed. Ticket has not been created.",
-		"time": "2018-09-05 06:19:34"
-	},
-	{
-		"server": "RAIDA13",
-		"status": "fail",
-		"version": "2018-04-01",
-		"message" : "Database: Operation failed. Ticket has not been created.",
-		"time": "2018-09-05 06:19:34"
-	}
-]
-
-```
-
-The last byte of each ticket (returned in the 'message' field) in the response holds the Detection Agent number. This number can be used by RAIDA server to forward the request to the corresponding Detection Agent.
-
+If the status is not allpass, allfail or mixed, it means the call failed. 
 
 ----------------------------------------------
 
