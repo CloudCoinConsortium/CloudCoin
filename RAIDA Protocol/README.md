@@ -289,83 +289,7 @@ The RAIDA Multi Detection Protocol allows many coins to be authenticated at the 
 
 Example **POST** authenticating three coins
 ```
-https://RAIDA0.CloudCoin.Global/service/multi_detect
-  nn=1& \
-  sns[]=1& \
-  sns[]=3& \
-  sns[]=7& \
-  ans[]=9656ab1c988bc5347e5a5d331e3da401& \
-  ans[]=1808b37cd2d72a0e2dd2675e3fb42b02& \
-  ans[]=83492f468a0e4a21cb8b2aa2a94d640& \
-  pans[]=9656ab1c988bc5347e5a5d331e3da401& \
-  pans[]=1808b37cd2d72a0e2dd2675e3fb42b03& \
-  pans[]=83492f468a0e4a21cb8b2aa2a94d6407& \
-  denomination[]=1& \
-  denomination[]=1& \
-  denomination[]=1
-```
-Example response (the second coin failed, the third one has an error in AN):
-```json
-[
-    {
-        "server": "RAIDA0",
-        "status": "pass",
-        "message": "Authentic: Update your file.",
-        "version": "2019-05-02",
-        "time": "2019-05-06 00:19:27"
-    },
-    {
-        "server": "RAIDA0",
-        "status": "fail",
-        "message": "Counterfeit: The unit failed to authenticate on this server.",
-        "version": "2019-05-02",
-        "time": "2019-05-06 00:19:27",
-        "nn": "1",
-        "sn": "3"
-    },
-    {
-        "server": "RAIDA0",
-        "status": "dud",
-        "message": "Parameters: Some or all input parameters are not valid.",
-        "version": "2019-05-02",
-        "time": "2019-05-06 00:30:16"
-    }
-]
-```
-Response if too many coins attached (over 400)
-```json
-[
-    {
-        "server": "RAIDA0",
-        "status": "dud",
-        "message": "Parameters: Too many coins attached.",
-        "version": "2019-05-02",
-        "time": "2019-05-06 00:26:46"
-    }
-]
-```
-Response if input arrays are not the same length
-```json
-[
-    {
-        "server": "RAIDA0",
-        "status": "dud",
-        "message": "Parameters: Input arrays are not the same length.",
-        "version": "2019-05-02",
-        "time": "2019-05-06 00:29:11"
-    }
-]
-```
-
-----------------------------------------------
-
-## RAIDA Multi-Ticket Protocol
-
-The RAIDA Multi Ticket Protocol allows many tickets to be generated at the same time.
-
-Example POST requesting three tickets
-```
-Usage: https://RAIDA13.CloudCoin.Global/service/multi_ticket
+https://RAIDA13.CloudCoin.Global/service/multi_ticket
 b=t&
 nn=1&
 sns[]=145895&sns[]=66585&sns[]=16589554&
@@ -406,6 +330,102 @@ If all the coins were counterfeit:
 
 ```
 If the status is not allpass, allfail or mixed, it means the call failed. 
+
+Response if too many coins attached (over 400)
+```json
+[
+    {
+        "server": "RAIDA0",
+        "status": "dud",
+        "message": "Parameters: Too many coins attached.",
+        "version": "2019-05-02",
+        "time": "2019-05-06 00:26:46"
+    }
+]
+```
+Response if input arrays are not the same length
+```json
+[
+    {
+        "server": "RAIDA0",
+        "status": "dud",
+        "message": "Parameters: Input arrays are not the same length.",
+        "version": "2019-05-02",
+        "time": "2019-05-06 00:29:11"
+    }
+]
+```
+
+----------------------------------------------
+
+## RAIDA Multi-Ticket Protocol
+
+The RAIDA Multi Ticket Protocol allows many tickets to be generated at the same time.
+
+Example POST requesting three tickets
+
+```
+Usage: https://RAIDA13.CloudCoin.Global/service/multi_ticket
+nns[]=1&nns[]=1&nns[]=1&
+sns[]=145895&sns[]=66585&sns[]=16589554&
+ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
+pans[]=c7bea382188d404d8f0efc5969c54c5a&pans[]=75819e4721cb4970a2e2582d7e26318b&pans[]=0a4a8a4014264cbf8c00383ae180a152&
+denomination[]=1&denomination[]=1&denomination[]=1
+Example Response if all tickets were successful:
+
+[
+  {
+  "server": "RAIDA13",
+		"status": "ticket",
+		"sn": "145895",
+		"version": "2018-04-01",
+		"message": "10be9309a4c3f193f1304ffc4344822c10be9309a4c3",
+		"time": "2018-09-05 06:19:34"
+	},
+	{
+		"server": "RAIDA13",
+		"status": "ticket",
+		"sn": "66585",
+		"version": "2018-04-01",
+		"message": "304ffc434482210be9309a4c3f193f1c10be9309a4c3",
+		"time": "2018-09-05 06:19:34"
+	},
+	{
+		"server": "RAIDA13",
+		"status": "ticket",
+		"sn": "16589554",
+		"version": "2018-04-01",
+		"message": "4c3f193f1304f10be9309afc4344822c10be9309a4c3",
+		"time": "2018-09-05 06:19:34"
+	}
+]
+```
+Example Response if all tickets failed:
+```json
+[{
+		"server": "RAIDA13",
+		"status": "fail",
+		"version": "2018-04-01",
+		"message" : "Database: Operation failed. Ticket has not been created.",
+		"time": "2018-09-05 06:19:34"
+	},
+	{
+		"server": "RAIDA13",
+		"status": "fail",
+		"version": "2018-04-01",
+		"message" : "Database: Operation failed. Ticket has not been created.",
+		"time": "2018-09-05 06:19:34"
+	},
+	{
+		"server": "RAIDA13",
+		"status": "fail",
+		"version": "2018-04-01",
+		"message" : "Database: Operation failed. Ticket has not been created.",
+		"time": "2018-09-05 06:19:34"
+	}
+]
+
+```
 
 ----------------------------------------------
 
