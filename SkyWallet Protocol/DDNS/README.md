@@ -19,6 +19,14 @@ https://yourhost.com/ddns.php?nn=1&sn=1358923&raidanumber=2&ticket=1234567890123
 
 ```
 
+EXAMPLE SUCCESS:
+```json
+
+{"status":"success","errors":[],"messages":[],"result":"deleteme7 created"} 
+```
+
+
+
 
 Sample successful Good response: NOTE The status will be true: 
 ```json
