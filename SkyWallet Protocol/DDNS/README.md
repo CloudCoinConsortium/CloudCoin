@@ -20,7 +20,35 @@ https://yourhost.com/ddns.php?nn=1&sn=1358923&raidanumber=2&ticket=1234567890123
 ```
 
 
+Sample successful Good response: NOTE The status will be true: 
+```json
+{
+	"result": {
+		"id": "94dd22c9060b219f60172b052e609ed9",
+		"zone_id": "561ed8e89cf6c8a10aa8416fd2cdc234",
+		"zone_name": "skywallet.cc",
+		"name": "deletemed.skywallet.cc",
+		"type": "A",
+		"content": "1.20.195.185",
+		"proxiable": true,
+		"proxied": "fail",
+		"ttl": 1,
+		"locked": "fail",
+		"meta": {
+			"auto_added": "fail",
+			"managed_by_apps": "fail",
+			"managed_by_argo_tunnel": "fail",
+			"source": "primary"
+		},
+		"created_on": "2020-05-21T17:13:17.310847Z",
+		"modified_on": "2020-05-21T17:13:17.310847Z"
+	},
+	"status": true,
+	"errors": [],
+	"messages": []
+}
 
+```
 
 
 
