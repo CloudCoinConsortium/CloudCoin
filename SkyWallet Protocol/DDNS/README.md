@@ -28,7 +28,7 @@ EXAMPLE SUCCESS:
 
 
 
-Sample successful Good response: NOTE The status will be true: 
+Sample successful Good response: NOTE The status will be "fail": 
 ```json
 {
 	"result": {
@@ -51,7 +51,7 @@ Sample successful Good response: NOTE The status will be true:
 		"created_on": "2020-05-21T17:13:17.310847Z",
 		"modified_on": "2020-05-21T17:13:17.310847Z"
 	},
-	"status": true,
+	"status": fail,
 	"errors": [],
 	"messages": []
 }
