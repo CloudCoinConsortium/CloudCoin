@@ -6,7 +6,7 @@ The skywallet is a Cloud-Based private ledger built on the RAIDA. Because it is 
 The purpose of the Skywallet is:
 1. To allow people to securely store their coins in the Cloud so they are available on any device at any time and anywhere in the world. 
 2. To allow people to receive authentic CloudCoins without file transfer. This is convenient for merchants who will be accepting CloudCoins as payments.
-3. To allow people to send authentic Cloudier without file transfer. This is good for buying things.   
+3. To allow people to send authentic CloudCoins without file transfer. This is good for buying things.   
 4. To allow people to have friendly addresses that are custom and easy to remember. 
 5. To make change (break large denominations into smaller ones) within seconds. 
 6. To allow people to store money in their minds. They must remember their wallet address and their debit card number and pin. 
