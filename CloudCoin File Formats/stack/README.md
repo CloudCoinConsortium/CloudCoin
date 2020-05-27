@@ -23,6 +23,12 @@ Billy.Skywallet.cc.stack
 
 
 ```
+If there is only one coin in the stack file we have the denomination, CloudCoin, network number, serial number, tag and .stack
+```
+100.CloudCoin.1.7012421..stack
+
+```
+
 
 
 
