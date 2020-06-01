@@ -84,7 +84,7 @@ The change services allows one to break notes into smaller ones and consolidate 
 
 [Break](README.md#break)
 
-[BreakInBank](README.md#breakinbank)
+[Break In Bank](README.md#break-in-bank)
 <!--
 [Change](README.md#change)
 -->
