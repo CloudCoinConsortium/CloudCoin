@@ -110,7 +110,7 @@ EXAMPLE POST SENDING THREE COINS TO SN 16225354
     ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
     denomination[]=250&denomination[]=1&denomination[]=250&
     to_sn=16225354&
-    envelope_name=1Z 999 AA1 01 2345 6784
+    tag=1Z 999 AA1 01 2345 6784
 
 ```
 v2
@@ -122,7 +122,7 @@ v2
     ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
     dn[]=250&dn[]=1&dn[]=250&
     to_sn=16225354&
-    envelope_name=1Z 999 AA1 01 2345 6784
+    tag=1Z 999 AA1 01 2345 6784
 ```
 
 EXAMPLE RESPONSE
