@@ -113,8 +113,64 @@ EXAMPLE POST SENDING THREE COINS TO SN 16225354
     envelope_name=1Z 999 AA1 01 2345 6784
 
 ```
+v2
+```
+    https://s0.teleportnow.cc/service/send
+    b=t&
+    nn=1&
+    sns[]=145895&sns[]=66585&sns[]=16589554&
+    ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
+    dn[]=250&dn[]=1&dn[]=250&
+    to_sn=16225354&
+    envelope_name=1Z 999 AA1 01 2345 6784
+```
+
+EXAMPLE RESPONSE
+v2
+```
+
+If all the coins were authentic:
+            {
+            	"server": "RAIDA11",
+            	"status": "allpass",
+            	"message": "All the coins were authentic",
+            	"version": "2020-04-13",
+            	"time": "2020-04-18 22:57:55"
+            }
+        
+If all the coins were counterfeit:
+            {
+             	"server": "RAIDA11",
+             	"status": "allfail",
+             	"message": "All the coins were counterfeit",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55"
+             }
+        
+If all the coins were counterfeit:
+             {
+             	"server": "RAIDA11",
+             	"status": "mixed",
+             	"message": "pass,pass,fail",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55"
+             }
+
+
+
+
+```
+
+
+
 
 RESPONSE IF SUCCESS:
+
+
+
+
+
+
 ```
 [{
   "server":"RAIDA1",
@@ -141,6 +197,8 @@ RESPONSE IF SUCCESS:
   "time":"2016-44-19 7:44:PM"
 }]
 ```
+
+
 
 RESPONSE IF TOO MANY COINS SENT (OVER 400)
 ```
