@@ -105,17 +105,6 @@ rules:
 EXAMPLE POST SENDING THREE COINS TO SN 16225354
 ```
     https://s0.teleportnow.cc/service/send
-    nn=1&
-    sns[]=145895&sns[]=66585&sns[]=16589554&
-    ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
-    denomination[]=250&denomination[]=1&denomination[]=250&
-    to_sn=16225354&
-    tag=1Z 999 AA1 01 2345 6784
-
-```
-v2
-```
-    https://s0.teleportnow.cc/service/send
     b=t&
     nn=1&
     sns[]=145895&sns[]=66585&sns[]=16589554&
@@ -126,9 +115,7 @@ v2
 ```
 
 EXAMPLE RESPONSE
-v2
 ```
-
 If all the coins were authentic:
             {
             	"server": "RAIDA11",
@@ -156,48 +143,7 @@ If all the coins were counterfeit:
              	"time": "2020-04-18 22:57:55"
              }
 
-
-
-
 ```
-
-
-
-
-RESPONSE IF SUCCESS:
-
-
-
-
-
-
-```
-[{
-  "server":"RAIDA1",
-  "status":"pass",
-  "sn":"66585",
-  "nn":"1",
-  "message":"Authentic: 1-unit. Your coins have been sent to the address you specified.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA1",
-  "status":"pass",
-  "sn":"66586",
-  "nn":"1",
-  "message":"Authentic: 1-unit. Your coins have been sent to the address you specified.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA1",
-  "status":"pass",
-  "sn":"16589554",
-  "nn":"1",
-  "message":"Authentic: 250-unit. Your coins have been sent to the address you specified.",
-  "time":"2016-44-19 7:44:PM"
-}]
-```
-
 
 
 RESPONSE IF TOO MANY COINS SENT (OVER 400)
