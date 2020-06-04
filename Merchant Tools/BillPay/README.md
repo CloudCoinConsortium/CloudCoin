@@ -39,6 +39,24 @@ Bill pay will read this file, make some notes in it and then move the file to th
 CSV means comma seperated values. It can be opened in any spreadsheet program such as google sheets and Micorosoft Excel. 
 The mailing list can be located any where on your computer, clouddirves
 
+Sample CSV File: 
+
+```csv
+email, stack, 100, 0,0,0,0,0, payments@comcast.com, January Payment, body=C:\Users\Alexander\Desktop\bill_template.txt, ready
+email, stack, 25, 0,0,0,0,0, employee0092@gmail.com, Paycheck, body=C:\Users\Alexander\Desktop\payroll_template, ready
+email, stack, 1, 0,0,0,0,0, linda@aol.com, For Baby Sitting, body=C:\Users\Alexander\Desktop\thankyou_template.txt, ready
+```
+
+
+Current Format:
+
+| Send Method | Format | Amount | 1 | 5 | 25 | 100 | 250 | To Address | Subject, Memo or FileName | Special Instructions | status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|Protonmail	| stack | 238000 | 0 | 0 | 0 | 0 | 0 | Billy@Protonmail.com	| January Pay. Thank you! |	body=c:\templates\monthlypay.html | Ready|
+
+Future Format:
+
+
 | Send Method | Format | Amount | 1 | 5 | 25 | 100 | 250 | To Address | Subject, Memo or FileName | Special Instructions | status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |Protonmail	| stack | 238000 | 0 | 0 | 0 | 0 | 0 | Billy@Protonmail.com	| January Pay. Thank you! |	body=c:\templates\monthlypay.html | Ready|
