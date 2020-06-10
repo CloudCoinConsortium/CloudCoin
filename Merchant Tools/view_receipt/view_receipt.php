@@ -10,8 +10,8 @@
 */
 
 $timeout = 5; //Amount of times in seconds that the payment verifier will wait for response from the RAIDA.
-$guid = "623e88186f3c4a4694c02230abe72666"; //The CloudCoin Wallet allows the user to specify a memo. This is important and used to identify the sender. 
-$from = 2;//If your payments fail, the coins will be refunded here. So if you want your money back, replace this with your own address. 
+$guid = "623e88186f3c4a4694c02230abe72666"; //this is the GuidTag of the sent coins.
+$from = 2;
 $total_due = 0;
 
 //Declare the location of your log files. The Paymentverifier.exe program will create a folder called "Log" there and track customer purhase attempts. 
@@ -21,7 +21,7 @@ $Log_path = "C:\xampp\htdocs\";
   $Path_to_ID_coin = "C:\xampp\htdocs\1.CloudCoin.1.2..stack";
 
 //Put the "paymentverifier.exe" program in a place and start it. Note that we use the $total_due that we calculated
-  $command = "C:\xampp\htdocs\paymentverifier.exe -guidtag=\"$guid\" -expected_amount=$total_due -account=$from -logpath=\"$Log_path\" -timeout=\"$timeout\"";
+  $command = "C:\xampp\htdocs\view_receipt.exe -guidtag=\"$guid\" -expected_amount=$total_due -account=$from -logpath=\"$Log_path\" -timeout=\"$timeout\"";
 
   $results = exec($command); //This executes the command and puts the results in the results variable. 
 
