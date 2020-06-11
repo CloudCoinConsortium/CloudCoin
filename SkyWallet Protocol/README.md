@@ -195,104 +195,10 @@ RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
 
 ## SendAgain
 
-The Send Again allows the client that has sent a RAIDA a send request but received no respons the ability to try to send again. 
-This will "fix" a coin that has not been fully sent to the RAIDA. The sending parameters are the same but the response is different. Like the Send, there is a pass and a fail but there is also an "sentbefore" response if the coin was already sent within the last hour. 
+The Send Again solves a problem cased when a client sends a send request to the RAIDA but receives no response. Then it becomes uncertain if the coin has been sent or not. This service allows the client that has sent a RAIDA a send request but received no respons the ability to try to send again. But, the send again request must be made within one hour of the original send request. 
 
 
-EXAMPLE POST SENDING THREE COINS TO SN 16225354
-```
-    https://s0.teleportnow.cc/service/send
-    b=t&
-    nn=1&
-    sns[]=145895&sns[]=66585&sns[]=16589554&
-    ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
-    dn[]=250&dn[]=1&dn[]=250&
-    to_sn=16225354&
-    tag=1Z 999 AA1 01 2345 6784
-```
-
-EXAMPLE RESPONSE
-```
-If all the coins were authentic:
-            {
-            	"server": "RAIDA11",
-            	"status": "allpass",
-            	"message": "All the coins were authentic",
-            	"version": "2020-04-13",
-            	"time": "2020-04-18 22:57:55"
-            }
-        
-If all the coins were counterfeit:
-            {
-             	"server": "RAIDA11",
-             	"status": "allfail",
-             	"message": "All the coins were counterfeit",
-             	"version": "2020-04-13",
-             	"time": "2020-04-18 22:57:55"
-             }
-If all the coins were sent previously and already good:
-            {
-             	"server": "RAIDA11",
-             	"status": "allsentbefore",
-             	"message": "All the coins were counterfeit",
-             	"version": "2020-04-13",
-             	"time": "2020-04-18 22:57:55"
-             }
-        
-If all the coins were counterfeit:
-             {
-             	"server": "RAIDA11",
-             	"status": "mixed",
-             	"message": "pass,pass,fail,sentbefore",
-             	"version": "2020-04-13",
-             	"time": "2020-04-18 22:57:55"
-             }
-
-```
-
-
-RESPONSE IF TOO MANY COINS SENT (OVER 400)
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Length: Too many coins attached.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF ARRAY LENGTHS NOT THE SAME
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Length: Arrays not all the same length (nn,sn,an,denominations).",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Parameters: The request requires you to supply the com_broker,
-to_account_name_or_number, total_to_send and change_to_account_name_or_number."
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"sns: no sns can be the same as to_sn"
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-
+This will "fix" a coin that has not been fully sent to the RAIDA. The sending parameters are the same and the response is the same. See the send service for the request and response examples.  
 
 ## ShowEnvelopes
 An Envelope is a grouping of coins usally grouped by a transaction number, purchase order number, memo, account number. 
