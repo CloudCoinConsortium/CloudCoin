@@ -553,81 +553,69 @@ This allows the RAIDA to actaully store coins for people. The Receiver must supp
 They prove that they are the owner by supplying a serial number of a CloudCoin that they own (their account number) and the AN for that serial number. 
 The RAIDA checks its tranfer table and starts giving coin until the amount of coins asked to be downloaded is reached. 
 
-
 This allows CloudCoins to be transfered from person to bank with no powning necessary.
 
 rules: 
 "to_number" must be a number between 1 and 16,777,215 because it is the serial number of a CloudCoin that a user must own in order to retrieve the coins. 
 
-"envelope_name" must not start or end with any white space character and must use only UTF-8 alpha numeric characters. 
+The pang is used as a seed to calculate an AN so that the client does not have to download it. 
+```php
+$seed2 = THIS_NODE_NUMBER.$sn.$pang;
+$pan = md5($seed2);
+
+```
 
 Example POST asking for specific CloudCoins
 ```
 https://s0.teleportnow.cc/service/recieve?
+b=t&
 nn=1&
 sn=1&
 an=1836843d928347fb22c2142b49d772b5&
 pan=1836843d928347fb22c2142b49d772b5&
-denomination=1&
+dn=1&
 sns[]=152658&
 sns[]=9955856&
 sns[]=6652154&
-
+pang=ca1219e1f52b4ca783ada28df55e8d6d
 
 ```
 
 
 
 RESPONSE IF GOOD:
-```
-[{
-  "server":"RAIDA1",
-  "status":"received",
-  "sn":"152658",
-  "nn":"1",
-  "an":"c18889d9028240b796ea2389d0e36219",
-  "message":"Please record the an provided within a CloudCoin file",
-  "time":"2016-44-19 7:44:PM"
-},
+```json
 {
-  "server":"RAIDA1",
-  "status":"received",
-  "sn":"9955856",
-  "nn":"1",
-  "an":"e56507ecd05945d990bf6655546bdeff",
-  "message":"Please record the an provided within a CloudCoin file",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA1",
-  "status":"missing",
-  "sn":"6652154",
-  "nn":"1",
-  "an":"",
-  "message":"Nonexistant: That serial number has not been transfered to the id provided.",
-  "time":"2016-44-19 7:44:PM"
-}]
+	"server":"RAIDA18", 
+	"status":"received",
+	"message":"ANs were created based on the pang you provided.",
+	"time":"2020-06-13 10:49:10",
+	"version":"2020-02-13",
+	"exe_time": .002
+}
+
 ```
 
 RESPONSE IF TOO MANY COINS SENT (OVER 400)
 ```
 {
   "server":"RAIDA1",
-  "status":"dud",
+  "status":"fail",
   "message":"Length: Too many coins recieved.",
   "version":"some version number here",
   "time":"2016-44-19 7:44:PM"
 }
 ```
 
-RESPONSE IF ARRAY LENGTHS NOT THE SAME
+RESPONSE IF SNs WERE NOT FOUND IN THE SKYWALLET
 ```
 {
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Length: Arrays not all the same length (nns,sns,pans,).",
-  "version":"some version number here",
-  "time":"2016-44-19 7:44:PM"
+	"server":"raida18",
+	"status":"fail",
+	"message":"2 coins expected to be found in the Skywallet. But some were not there.",
+	"version":"2020-02-13",
+	"time":"2020-06-13 10:46:17",
+	"ex_time":"0.002"
 }
 ```
 
