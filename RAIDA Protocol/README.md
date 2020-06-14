@@ -306,6 +306,7 @@ If all the coins were authentic:
             	"server": "RAIDA11",
             	"status": "allpass",
             	"message": "All the coins were authentic",
+		"ticket":"0a4a8a4010a4a8a4014264cbf8c00383ae180a152426",
             	"version": "2020-04-13",
             	"time": "2020-04-18 22:57:55"
             }
@@ -319,17 +320,18 @@ If all the coins were counterfeit:
              	"time": "2020-04-18 22:57:55"
              }
         
-If all the coins were counterfeit:
+If some of the coins were counterfeit and some were authentic:
              {
              	"server": "RAIDA11",
              	"status": "mixed",
              	"message": "pass,pass,fail",
+		"ticket":"0a4a8a4010a4a8a4014264cbf8c00383ae180a152426",
              	"version": "2020-04-13",
              	"time": "2020-04-18 22:57:55"
              }
 
 ```
-If the status is not allpass, allfail or mixed, it means the call failed. 
+If the status is not allpass, allfail or mixed, it means the call failed. Note that the ticket can be used for fixing fracked coins. 
 
 Response if too many coins attached (over 400)
 ```json
