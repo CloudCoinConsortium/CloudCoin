@@ -15,8 +15,6 @@ $account = billy.Skywallet.cc; //The senders
 $total_due = 1;
 
 
-//TODO Change the $account into a integer between 1 and 16,777,216
-
 //Declare the location of your log files. The Paymentverifier.exe program will create a folder called "Log" there and track customer purhase attempts. 
 $Log_path = "C:\xampp\htdocs\";
 
