@@ -3,7 +3,7 @@
 You can receive and send CloudCoins by either using CloudCoin Wallet or Skywallet. CloudCoin Wallet runs on your desktop or server while Skywallet is in the RAIDA Cloud. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient. Skywallet provides pseudo-privacy that is like crypto currencies. Unlike crypto, Skywallet transactions are not public. This means that the only people who could possibly see your SkyWallet Transactions are RAIDA Administrators. SkyWallet makes sending and receiving payments very convenient. 
 
 # Receiving And Verifying Payments
-The easiest way to receive and confirm payment is by having your customers send CloudCoins to your SkyWallet account and then call the "View_Receipt" service to verify that they sent the payment. Your customer can use their CloudBank Wallet, the SkyWallet ATM or your custom webpage using our sample store to send payment using the RaidaJS javascript API. 
+The easiest way to receive and confirm payment is by having your customers send CloudCoins to your SkyWallet account and then call the "View_Receipt" service to verify that they sent the payment. Your customers can send coins to your Skywallet using their CloudBank Wallet, the SkyWallet ATM (https://Skywallet.cc) or your custom webpage using our sample store to send payment using the RaidaJS javascript API. 
 
 SAMPLE CALL TO VIEW RECEIPT
 ```
