@@ -2,7 +2,7 @@
 /*Made by Samuel Leary 6/9/2020
   This script shows you how to implement the "view_receipt" executable so that you can accept payments automatically.
 
-  To test this, we will pretent that a customer sent you some CloudCoins with a memo of "623e88186f3c4a4694c02230abe72666".  
+  To test this, we will pretend that a customer sent you some CloudCoins with a memo of "623e88186f3c4a4694c02230abe72666".  
   To test this, send one CloudCoin to your Skywallet. The Payment Verifier will check for 1 CloudCoin by looking for the GUID. 
  
   This assumes that you will put the logs into the root directory of your web server. You also need to put the view_receipta.exe in the 
