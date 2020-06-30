@@ -18,6 +18,8 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 [Multi-Ticket](README.md#raida-multi-ticket-protocol)
 
+[Hints](README.md#raida-hints-protocol)
+
 [Multi-Hints](README.md#raida-multi-hints-protocol)
 
 [Multi Fix](README.md#raida-multi-fix-protocol)
@@ -430,6 +432,31 @@ Example Response if all tickets failed:
 ```
 
 ----------------------------------------------
+
+## RAIDA Hints Protocol
+
+Hints is part of the Kerberos system that allow you to see what serial number is associated with a ticket. I allows you to confirm an identity of a person who is making a request.
+
+After running "Detect" you will receieve a "ticket". This ticket can be used to fix any fracked coins. Send this ticket as the "master_ticet" and you will get all the serial numbers of the coins that were detected in the last go. 
+
+
+Example GET authenticating three coins
+```
+https://RAIDA0.CloudCoin.Global/service/hints?master_ticket=61fd09083302bb3eb8350dfeb1d7bf6c125b13e560bf
+
+```
+The master_ticket is the ticket that the client received from a detect response. 
+
+Example Response if two of the three tickets are failed:
+```html
+16777214,16277215,16777216
+```
+The above response shows the results of one master ticket.
+These are the serial numbers of the coins that match that master ticket. 
+
+
+----------------------------------------------
+
 
 ## RAIDA Multi-Hints Protocol
 
