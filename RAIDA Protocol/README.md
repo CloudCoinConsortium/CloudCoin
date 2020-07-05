@@ -22,7 +22,7 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 [Multi-Hints](README.md#raida-multi-hints-protocol)
 
-[Fix](README.md#raida-multi-fix-protocol)
+[Fix](README.md#raida-fix-protocol)
 
 [Multi Fix](README.md#raida-multi-fix-protocol)
 
@@ -510,13 +510,11 @@ PARAMETERS:
 
 corner: The four RAIDA that are being used from smalles number to highest number.
 
-nn: Network Number. All coins must be on the same network.
-
 pan: All serial numbers will be given the same pan. 
 
 sn[]: Serial Numbers between 1 and 16,777,216 inclusive, to be fixed.
 
-a: The master ticket of the first raida of the corner (going from lowest number to highest number of RAIDA)
+a: The master ticket of the first raida of the corner (going from lowest number to highest number of RAIDA). You get this from the multi-detect request befor.
 
 b: The master ticket of the second raida of the corner 
 
@@ -529,8 +527,7 @@ Example GET authenticating three coins
 ```
 https://RAIDA0.CloudCoin.Global/service/multi_detect
 
-        nn=1&
-        corner=1&
+       		corner=1&
 		pan=9f70f199f0844df2bd6e607620002cbf&
 		a=a4aedc27bf524e3aabf8dbcca686140a8ae06de08934&
 		b=11328c19f7ef4a63a4a56d25f9785c05197b44d4bae1&
