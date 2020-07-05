@@ -22,6 +22,8 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 [Multi-Hints](README.md#raida-multi-hints-protocol)
 
+[Fix](README.md#raida-multi-fix-protocol)
+
 [Multi Fix](README.md#raida-multi-fix-protocol)
 
 [Fix Lost](README.md#raida-fix_lost-service)
@@ -287,7 +289,10 @@ This denotes the so-called 'brief' mode. It means that the response is a single 
 
 ## RAIDA 'Multi-Detect' Service
 
-The RAIDA Multi Detection Protocol allows many coins to be authenticated at the same time.
+The RAIDA Multi Detection Protocol allows many coins to be authenticated at the same time. 
+The multi-detect service also returns a "Master Ticket" that can be used to fix any coins that
+return fracked. This master-ticket must be used within a few minutes. See the fix service to
+know how to use this ticket. 
 
 Example **POST** authenticating three coins
 ```
@@ -489,6 +494,81 @@ The second response shows that the ticket belongs to SN 16777215 and it was made
 
 
 ----------------------------------------------
+
+## RAIDA Fix Protocol
+
+Fix allows you to fix multiple CloudCoin that have been detected in the last minute. Suppose you get a coin and pown it. All RAIDA return "allpass" and a each one provides a master ticket. Except for RAIDA 18. RAIDA 18 returns "allfail".  Now you must fix RAIDA 18. You then find out which RAIDA RAIDA18 trusts. You will need four. There are four groups called "Corners" that RAIDA18 will trust. 
+
+
+![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fixit.jpg)
+
+You choose to fix using RAIDA 18's first corner. That means you require -6,-5, -1 and + 6 which translates to RAIDA12, RAIDA13, RAIDA17 and RAIDA24. 
+You will then send the master tickets from these RAIDA to RAIDA 19. The request calls these servera a, b, c and d. The lowest number RAIDA is a and it assends to the highest number being d. a=12, b=13, c=17 and d=24. The corner that you will use is corner=1. The PAN that you give it will apply to all the coins that you want to fix.
+
+
+PARAMETERS:
+
+corner: The four RAIDA that are being used from smalles number to highest number.
+
+nn: Network Number. All coins must be on the same network.
+
+pan: All serial numbers will be given the same pan. 
+
+sn[]: Serial Numbers between 1 and 16,777,216 inclusive, to be fixed.
+
+a: The master ticket of the first raida of the corner (going from lowest number to highest number of RAIDA)
+
+b: The master ticket of the second raida of the corner 
+
+c: The master ticket of the third raida of the corner 
+
+d: The master ticket of the fourth raida of the corner 
+
+
+Example GET authenticating three coins
+```
+https://RAIDA0.CloudCoin.Global/service/multi_detect
+
+        nn=1&
+        corner=1&
+		pan=9f70f199f0844df2bd6e607620002cbf&
+		a=a4aedc27bf524e3aabf8dbcca686140a8ae06de08934&
+		b=11328c19f7ef4a63a4a56d25f9785c05197b44d4bae1&
+		c=c35bfa217d364cc58d9c0a96a7a256f4822c10be9233&
+		d=48df533f42364308b3a2ce15f1d216e266c649dc656a&
+		sn[]=145895&sn[]=66585&sn[]=16589554
+```
+RESPONSE: If all the coins were authentic
+```
+
+            {
+            	"server": "RAIDA11",
+            	"status": "allpass",
+            	"message": "All the coins were authentic",
+            	"version": "2020-04-13",
+            	"time": "2020-04-18 22:57:55"
+            }
+        
+If all the coins were counterfeit:
+            {
+             	"server": "RAIDA11",
+             	"status": "allfail",
+             	"message": "All the coins were counterfeit",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55"
+             }
+        
+If some of the coins were counterfeit and other authentic:
+             {
+             	"server": "RAIDA11",
+             	"status": "mixed",
+             	"message": "pass,pass,fail",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55"
+             }
+        
+```
+
 
 ## RAIDA Multi Fix Protocol
 
