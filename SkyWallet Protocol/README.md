@@ -1,7 +1,39 @@
-# SKYWALLET PROTOCOL
+CloudCoin
+This repository provides standards and APIs for CloudCoin, RAIDA, and Skywallet
+CloudCoin is a digital currency based on the Theory of Perfect Money. Like Cryptocurrencies, it has Data Supremacy meaning that it cannot be hacked, brought down by governments, or even corrupted by its own creators. CloudCoin gets its Data Supremacy in a way similar to how the DNS System gets its data supremacy. CloudCoins have several unique properties including:
+1.	100% Private. No Accounts, Logins, Usernames, or Public Ledgers that track everything.
+2.	Transacts in seconds. Only requires 25 Clouds to be updated in parallel.
+3.	Globally Scalable. Like the DNS, there is a RAIDA Root Domain and RAIDA subdomains. These domains can handle the entire world's authentication activities.
+4.	100% available. The RAIDA has never gone down since it was created in August 2016.
+5.	Uses over 10,000 times less electricity than Blockchain. CloudCoin just updates databases. No expensive encryption needed.
+6.	No Inflation. The amount of CloudCoins is fixed. Never increases or decreases. Sub Domains handle change and there can be an infinite number of fractions, but these do not create more nominal coins.
+7.	Easy Addressing. Used with SkyWallet or another system, simply use a DNS name for your address such as Sean.Worthington.com
+8.	Loss Prevention. Can be backed up and stored off-site automatically reducing the threat of loss. If you do lose your coins, you can file a lost coin report and get your coins back in 5 years.
+9.	Theft Prevention. You can split your coins up and store them in different locations. This allows you to "not put all your eggs into one basket." This allows you to reduce the risk of theft.
+10.	Data is separated from logic. This means you can do anything with CloudCoins including putting them into software such as accounting systems, banking systems, and our own Sky Wallet.
+11.	Crossover currency. CloudCoins can go from the real world into the virtual world and video games. Then they can be brought out again.
+12.	They can be embedded into digital goods such as jpeg images, mp4s, pdfs, in-game items so that those digital items can be owned and traded.
+RAIDA
+The Redundant Array of Independent Detection Agents is a data structure that runs the new GRS (Global RAIDA System) that authenticates people, digital items, collectibles, and currencies such as CloudCoins. The owner of the CloudCoin can fix any synchronization problems that occur making the RAIDA self-healing. Should any of the RAIDA go down, new RAIDA can be brought in to replace them.
+Sky Wallet
+The Sky Wallet is a private ledger that has Data Supremacy. The Sky Wallet provides a wrapper around CloudCoins to make CloudCoins easier to send, receive store, and make change. The Sky Wallet provides pseudo-anonymous privacy, so it is less private than CloudCoin. But it makes it convenient to use CloudCoins.
+CloudCoin This repository provides standards and APIs for CloudCoin, RAIDA, and Skywallet CloudCoin is a digital currency based on the Theory of Perfect Money. Like Cryptocurrencies, it has Data Supremacy meaning that it cannot be hacked, brought down by governments, or even corrupted by its own creators. CloudCoin gets its Data Supremacy in a way similar to how the DNS System gets its data supremacy. CloudCoins have several unique properties, including:
+1.	100% Private. No Accounts, Logins, Usernames, or Public Ledgers that track everything.
+2.	Transacts in seconds. It only requires 25 Clouds to be updated in parallel.
+3.	Globally Scalable. Like the DNS, there is a RAIDA Root Domain and RAIDA subdomains. These domains can handle the entire world's authentication activities.
+4.	100% available. The RAIDA has never gone down since it was created in August 2016.
+5.	Uses over 10,000 times less electricity than Blockchain. CloudCoin just updates databases. No expensive encryption needed.
+6.	No Inflation. The amount of CloudCoins is fixed. It never increases or decreases. Sub Domains handle change, and there can be an infinite number of fractions, but these do not create more nominal coins.
+7.	Easy Addressing. Used with SkyWallet or other systems, simply use a DNS name for your address such as Sean.Worthington.com
+8.	Loss Prevention. Can be backed up and stored off-site, automatically reducing the threat of loss. If you do lose your coins, you can file a lost coin report and get your coins back in 5 years.
+9.	Theft Prevention. You can split your coins up and store them in different locations. This allows you to "not put all your eggs into one basket." This allows you to reduce the risk of theft.
+10.	Data is separated from logic. This means you can do anything with CloudCoins, including putting them into software such as accounting systems, banking systems, and our own Sky Wallet.
+11.	Crossover currency. CloudCoins can go from the real world into the virtual world and video games. Then they can be brought out again.
+12.	They can be embedded into digital goods such as jpeg .png images, mp4s, pdfs, QR Codes in-game items so that those digital items can be owned and traded. RAIDA The Redundant Array of Independent Detection Agents is a data structure that runs the new GRS (Global RAIDA System) that authenticates people, digital items, collectibles, and currencies such as CloudCoins. The owner of the CloudCoin can fix any synchronization problems that occur, making the RAIDA self-healing. Should any of the RAIDA go down, new RAIDA can be brought in to replace them. Sky Wallet the Sky Wallet is a private ledger that has Data Supremacy. The Sky Wallet provides a wrapper around CloudCoins to make CloudCoins easier to send, receive store, and make change. The Sky Wallet provides pseudo-anonymous privacy, so it is less private than CloudCoin. But it makes it convenient to use CloudCoins.
+	# SKYWALLET PROTOCOL
 
 
-The skywallet is a Cloud-Based private ledger built on the RAIDA. Because it is built on the RAIDA, it has data supremacy. 100% uptime. Like the Blockchain, it is pseudo anonymous. Everyone needs to have an account number to use it. People use a CloudCoin to log in. Every CloudCoin can be used as a Skywallet Account. People can have as many SkyWallets as they like. 
+The skywallet is a Cloud-Based private ledger built on the RAIDA. Because it is built on the RAIDA, it has data supremacy. 100% uptime. Like the Blockchain, it is pseudo-anonymous. Everyone needs to have an account number to use it. People use a CloudCoin to log in. Every CloudCoin can be used as a Skywallet Account. People can have as many SkyWallets as they like. 
 
 The purpose of the Skywallet is:
 1. To allow people to securely store their coins in the Cloud so they are available on any device at any time and anywhere in the world. 
@@ -10,22 +42,22 @@ The purpose of the Skywallet is:
 4. To allow people to have friendly addresses that are custom and easy to remember. 
 5. To make change (break large denominations into smaller ones) within seconds. 
 6. To allow people to store money in their minds. They must remember their wallet address and their debit card number and pin. 
-7. To allow people to have debit cards which can be used at existing payment terminals used in stores. And to make online purchases. 
-8. To allow people to "pay by whisper" so that transaction can be made by simply giving another person a password. 
+7. To allow people to have debit cards that can be used at existing payment terminals used in stores. And to make online purchases. 
+8. To allow people to "pay by whisper" so that transactions can be made by simply giving another person a password. 
 9. To allow people to organize their funds into "envelopes" so they can monitor their spending. 
 10. Support Bill Pay services. 
 
 
 Features of the Skywallet:
-1. Usability: Allows us to have online ATM machines that we can use to deposit, withdraw and transfer CloudCoins. Anyone who knows how to use an ATM machine knows how to do this. We can also use debit cards that every one is familiar with. Even your 70 year old grandpa can do it. 
+1. Usability: Allows us to have online ATM machines that we can use to deposit, withdraw, and transfer CloudCoins. Anyone who knows how to use an ATM machine knows how to do this. We can also use debit cards that everyone is familiar with. Even your 70-year-old grandpa can do it. 
 
-2. Speed: Unless change is needed, depositing, withdrawing and transferring coins takes less than 2 seconds. If you need to break a coin to send the correct change, it will add about 6 seconds to the process. We are working on making this faster. 
+2. Speed: Unless change is needed, depositing, withdrawing, and transferring coins takes less than 2 seconds. If you need to break a coin to send the correct change, it will add about 6 seconds to the process. We are working on making this faster. 
 
 3. Availability: The RAIDA is 100% available. We are adding the finishing touches to our CloudCoin Wallet that will make sure SkyWallet funds will always be there when needed. 
 
 4. Fees: No fees! Low Energy Use: Very efficient. 
 
-5. Privacy: Unlike CloudCoin, the Skywallet is not 100% private. Instead it is pseudo private. This means the there are account numbers (similar to the public keys of crypto) for people. However, unlike the Blockchain, this information is no available to the public. Only RAIDA Admins could possibly see it. 
+5. Privacy: Unlike CloudCoin, the Skywallet is not 100% private. Instead, it is pseudo-private. This means the there are account numbers (similar to the public keys of crypto) for people. However, unlike the Blockchain, this information is no available to the public. Only RAIDA Admins could possibly see it. 
 
 6. Key recovery coming soon. 
 
@@ -35,9 +67,9 @@ Features of the Skywallet:
 ## Protocol
 
 
-The Skywallet protocols can be devided into four different catagories. 
+The Skywallet protocols can be divided into four different categories. 
 1. Trusted Transfer
-2. Merchante Services
+2. Merchant Services
 3. Donation Services
 4. Change Maker Services
 
@@ -98,8 +130,8 @@ The change services allows one to break notes into smaller ones and consolidate 
 
 ## Send
 
-The Send allows many coins to be send from a user's hard drive to a Sky Wallet. 
-This allows CloudCoins to be transfered from person to person with no powning neccessary.
+The Send allows many coins to be sent from a user's hard drive to a Sky Wallet. 
+This allows CloudCoins to be transferred from person to person with no powning necessary.
 
 rules: 
 "to_sn" must be a number between 1 and 16,777,215 because it is the serial number of a CloudCoin that a user must own in order to retrieve the coins. 
@@ -192,16 +224,15 @@ RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
 }
 ```
 
-
 ## SendAgain
 
-The Send Again solves a problem cased when a client sends a send request to the RAIDA but receives no response. Then it becomes uncertain if the coin has been sent or not. This service allows the client that has sent a RAIDA a send request but received no respons the ability to try to send again. But, the send again request must be made within one hour of the original send request. 
+The Send Again solves a problem cased when a client sends a send request to the RAIDA but receives no response. Then it becomes uncertain if the coin has been sent or not. This service allows the client that has sent a RAIDA a send request but received no response the ability to try to send again. But, the send again request must be made within one hour of the original send request. 
 
 
 This will "fix" a coin that has not been fully sent to the RAIDA. The sending parameters are the same and the response is the same. See the send service for the request and response examples.  
 
 ## ShowEnvelopes
-An Envelope is a grouping of coins usally grouped by a transaction number, purchase order number, memo, account number. 
+An Envelope is a grouping of coins usually grouped by a transaction number, purchase order number, memo, account number. 
 For transactions, the seller gives the buyer their account number and an envelope name (which could be a receipt number) so the receiver can 
 determine where the money came from. 
 This service allows the user to see the names of the envelopes that belong to their account id (The serial number of their ID coin).
@@ -272,7 +303,7 @@ RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
 }
 ```
 
-RESPONSE IF ACCOUNT DID NOT LOG IN CORRECTLY
+RESPONSE IF ACCOUNT DID NOT LOG CORRECTLY
 ```
 {
   "server":"RAIDA1",
@@ -1486,3 +1517,8 @@ RESPONSE IF THE TYPE WAS INVALID
   "time":"2016-44-19 7:44:PM"
 }
 ```
+
+
+
+
+	
