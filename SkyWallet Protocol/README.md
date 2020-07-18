@@ -94,6 +94,8 @@ private keys of the blockchain. However, we are now working on a key recovery se
 
 [Rename Tag](README.md#renametag) (RenameEnvelope)
 
+[Fix Transfer](README.md#renametag) (fix_transfer)
+
 
 # Merchant Services
 
@@ -103,14 +105,8 @@ private keys of the blockchain. However, we are now working on a key recovery se
 <!--
 [SendWithChange](README.md#sendwithchange)
 
-[TransferWithChange](README.md#transferwithchange)
-
-[ReceiveWithChange](README.md#receivewithchange)
 -->
-# Donation Services
-Allows the user to donate money to the change system or to the RAIDA itself (to help the RAIDA fund itself).
 
-[DonateToRaida](README.md#donatetoraida)
 
 # The Change Maker Services
 
@@ -126,7 +122,10 @@ The change services allows one to break notes into smaller ones and consolidate 
 -->
 [Exchange](README.md#exchange)
 
+# Donation Services
+Allows the user to donate money to the change system or to the RAIDA itself (to help the RAIDA fund itself).
 
+[DonateToRaida](README.md#donatetoraida)
 
 ## Send
 
@@ -984,7 +983,7 @@ RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
 }
 ```
 
-
+<!--
 
 ## TransferWithChange
 
@@ -1072,9 +1071,9 @@ RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
   "time":"2016-44-19 7:44:PM"
 }
 ```
+-->
 
-
-## ReceiveWithChange
+## fix_transfer
 
 Not implemented yet. Expected to be finnished by Nov 15, 2020. This will look a lot like Receive but with the same extras as SendWithChange. 
 
