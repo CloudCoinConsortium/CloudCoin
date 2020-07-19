@@ -94,7 +94,7 @@ private keys of the blockchain. However, we are now working on a key recovery se
 
 [Rename Tag](README.md#renametag) (RenameEnvelope)
 
-[Fix Transfer](README.md#renametag) (fix_transfer)
+[Fix Transfer](README.md#fix_transfer) (fix_transfer)
 
 
 # Merchant Services
