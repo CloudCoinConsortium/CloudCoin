@@ -574,6 +574,58 @@ SAMPLE RESPONSE IF COINS NOT FOUND
 ```
 NOTE: You will not that there was not results because the total will be = 0;
 
+## Fix_Transfer
+
+The fix_transfer service allows you to fix a raida that is not synced with the other RAIDA. With fix_transfer, you are telling the RAIDA to syncronize with its trusted neighbors. Assuming the neighbours agree, the RAIDA will change its status. You should allways call fix_transfer after issuing any command that results in a fracked Skywallet. This service can be called after send, receive, break, break in bank, show, show_change, and all the services where the client can see un synctonized responses. The client must choose a corner that will be fixable. Or the client can pick a random corner between 1 and 4. 
+
+rules: 
+
+This service is unique because it is "fire and forget". It will not return anything except that it received the request. The client must call a service again to see if it worked. This makes this service a curtessy. 
+
+"sn[]" must be a number between 1 and 16,777,215 because it is the serial number of a CloudCoin that a user must own in order to retrieve the coins. 
+
+
+
+EXAMPLE GET REQUESTING 
+```
+    https://raida11.cloudcoin.global/service/sync/fix_transfer?
+    sn[]=145895&sn[]=66585&sn[]=16589554
+    
+ ```
+
+EXAMPLE RESPONSE (Does not tell you if the work was successful or not)
+```
+            {
+            	"server": "RAIDA11",
+            	"status": "fixing",
+            	"message": "This RAIDA is now trying to fix the issue.",
+            	"version": "2020-04-13",
+            	"time": "2020-04-18 22:57:55"
+            }
+
+```
+
+
+RESPONSE IF TOO MANY COINS SENT (OVER 400)
+```
+{
+  "server":"RAIDA1",
+  "status":"dud",
+  "message":"Length: Too many coins attached.",
+  "time":"2016-44-19 7:44:PM"
+}
+```
+
+RESPONSE IF PARAMETERS WERE NOT SUPPLIED
+```
+{
+  "server":"RAIDA1",
+  "status":"dud",
+  "message":"Parameters: The request requires you to supply the sn[]."
+  "time":"2016-44-19 7:44:PM"
+}
+```
+
 ## Receive
 
 The Receive service allows many coins to be downloaded from the Sky Wallet at the same time. The Receiver can download all of their
@@ -1072,10 +1124,6 @@ RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
 }
 ```
 -->
-
-## fix_transfer
-
-Not implemented yet. Expected to be finnished by Nov 15, 2020. This will look a lot like Receive but with the same extras as SendWithChange. 
 
 
 
