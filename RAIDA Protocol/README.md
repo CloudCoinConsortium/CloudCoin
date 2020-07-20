@@ -503,7 +503,16 @@ Fix allows you to fix multiple CloudCoin that have been multi-detected in the la
 ![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fixit.jpg)
 
 You may start by using RAIDA 18's first corner to fix. That means you require the master tickets returned from multi-detect for RAIDA -6,-5, -1 and + 6 which translates to RAIDA12, RAIDA13, RAIDA17 and RAIDA24. 
-You will then send the master tickets from these RAIDA to RAIDA 18. The request calls these servera a, b, c and d. The lowest number RAIDA is 'a' and it accends to the highest number being 'd'. a=12, b=13, c=17 and d=24. The corner that you will use is corner=1. The PAN that you give it will apply to all the coins that you want to fix. If your fix failes on one corner, you can try the other three corners. Note that the fix service can only be run directly after the multi-detect service. If you have a fracked coins that you do not have a master ticket for, you must use the multi-ticket service to get tickets and then use the multi-fix service to fix them. 
+You will then send the master tickets from these RAIDA to RAIDA 18. The request calls these servera a, b, c and d. The lowest number RAIDA is 'a' and it accends to the highest number being 'd'. a=12, b=13, c=17 and d=24.(note that lowest to highest does not work if the corner numbers wrap around. The corner that you will use is corner=1. The PAN that you give it will apply to all the coins that you want to fix. If your fix failes on one corner, you can try the other three corners. Note that the fix service can only be run directly after the multi-detect service. If you have a fracked coins that you do not have a master ticket for, you must use the multi-ticket service to get tickets and then use the multi-fix service to fix them. 
+
+Exmple of fixing RAIDA 24. Here the numbers wrap around so they are not lowest to highest. 
+
+| Corner | a  | b  | c  | d  |
+|--------|----|----|----|----|
+| 1      | 18 | 19 | 23 | 5  |
+| 2      | 19 | 20 | 0  | 3  |
+| 3      | 3  | 23 | 4  | 20 |
+| 4      | 0  | 4  | 5  | 18 |
 
 
 PARAMETERS:
