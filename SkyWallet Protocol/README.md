@@ -584,46 +584,18 @@ This service is unique because it is "fire and forget". It will not return anyth
 
 "sn[]" must be a number between 1 and 16,777,215 because it is the serial number of a CloudCoin that a user must own in order to retrieve the coins. 
 
-
+The maximum coins you can send are 1000. 
 
 EXAMPLE GET REQUESTING 
 ```
-    https://raida11.cloudcoin.global/service/sync/fix_transfer?
-    sn[]=145895&sn[]=66585&sn[]=16589554
+    https://raida11.cloudcoin.global/service/sync/fix_transfer?sn[]=145895&sn[]=66585&sn[]=16589554&corner=2
     
  ```
 
 EXAMPLE RESPONSE (Does not tell you if the work was successful or not)
 ```
-            {
-            	"server": "RAIDA11",
-            	"status": "fixing",
-            	"message": "This RAIDA is now trying to fix the issue.",
-            	"version": "2020-04-13",
-            	"time": "2020-04-18 22:57:55"
-            }
+    THERE WILL BE NO RESPONSE. THis is a fire and forget protocol. 
 
-```
-
-
-RESPONSE IF TOO MANY COINS SENT (OVER 400)
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Length: Too many coins attached.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF PARAMETERS WERE NOT SUPPLIED
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Parameters: The request requires you to supply the sn[]."
-  "time":"2016-44-19 7:44:PM"
-}
 ```
 
 ## Receive
