@@ -6,7 +6,7 @@ There are many ways to send and receive CloudCoins including by email, https web
 The easiest way to receive, confirm payments and send payments is by using our raida_go program that runs on Linux or Windows. raida_go is a command line application that is called just like caling any terminal program. It has no graphics or visual interface. You simply must provide it with command line arguments. 
 
 ## raida_go Receive. 
-The purpose of recieve is to check to see if your customer has sent CloudCoins to your Skywallet. This has two arguments
+The purpose of receive is to check to see if your customer has sent CloudCoins to your Skywallet. This has two arguments
 1. The command. In this case "receive".
 2. The GUID of the user's payment, supplied by the Skywallet "Point of Sale" html website plugin that you can add to your website.  
 
