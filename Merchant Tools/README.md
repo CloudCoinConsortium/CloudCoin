@@ -3,12 +3,12 @@
 There are many ways to send and receive CloudCoins including by email, https web sites and Skywallet. We suggest using Skywallet but Skywallet has has one drawback: it is psuefo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain. CloudCoin Wallet with CloudBank, on the otherhand, runs on your desktop or server while Skywallet is in the RAIDA Cloud. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient. Skywallet provides pseudo-privacy that is like crypto currencies. Unlike crypto, Skywallet transactions are not public. This means that the only people who could possibly see your SkyWallet Transactions are RAIDA Administrators. SkyWallet makes sending and receiving payments very convenient. 
 
 # Receiving
-The easiest way to receive, confirm payments and send payments is by using our RAIDA_GO program that runs on Linux or Windows. RAIDA_GO is a command line application that is called just like caling any terminal program. It has not graphics or visual interface. You simply must provide it with "flags" AKA command line arguments. 
+The easiest way to receive, confirm payments and send payments is by using our raida_go program that runs on Linux or Windows. raida_go is a command line application that is called just like caling any terminal program. It has no graphics or visual interface. You simply must provide it with command line arguments. 
 
 ## raida_go Receive. 
-The purpose of the payment verifier is to check to see if your customer has sent CloudCoins to your Skywallet. This has two arguments
-1. The command. In this case "verify".
-2. The guid of the user's payment, supplied by the user. 
+The purpose of recieve is to check to see if your customer has sent CloudCoins to your Skywallet. This has two arguments
+1. The command. In this case "receive".
+2. The guid of the user's payment, supplied by the Skywallet "Point of Sale" html website plugin. 
 
 Example of calling this CLI for Windows
 ```dos
