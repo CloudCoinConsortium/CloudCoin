@@ -1,6 +1,6 @@
 # RECEIVING AND SENDING CLOUDCOINS PROGRAMMATICALLY
 
-There are many ways to send and receive CloudCoins including by email, https web sites and Skywallet. We suggest using Skywallet but Skywallet has has one drawback: it is psuefo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain. CloudCoin Wallet with CloudBank, on the otherhand, runs on your desktop or server while Skywallet is in the RAIDA Cloud. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient. Skywallet provides pseudo-privacy that is like crypto currencies. Unlike crypto, Skywallet transactions are not public. This means that the only people who could possibly see your SkyWallet Transactions are RAIDA Administrators. SkyWallet makes sending and receiving payments very convenient. 
+There are many ways to send and receive CloudCoins including by email, https web sites and Skywallet. We suggest using Skywallet but Skywallet has has one drawback: it is pseudo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain. CloudCoin Wallet with CloudBank, on the otherhand, runs on your desktop or server. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient.  Unlike crypto, Skywallet transactions are not public.
 
 # Receiving
 The easiest way to receive, confirm payments and send payments is by using our raida_go program that runs on Linux or Windows. raida_go is a command line application that is called just like caling any terminal program. It has no graphics or visual interface. You simply must provide it with command line arguments. 
@@ -8,7 +8,7 @@ The easiest way to receive, confirm payments and send payments is by using our r
 ## raida_go Receive. 
 The purpose of recieve is to check to see if your customer has sent CloudCoins to your Skywallet. This has two arguments
 1. The command. In this case "receive".
-2. The guid of the user's payment, supplied by the Skywallet "Point of Sale" html website plugin. 
+2. The GUID of the user's payment, supplied by the Skywallet "Point of Sale" html website plugin that you can add to your website.  
 
 Example of calling this CLI for Windows
 ```dos
@@ -32,11 +32,17 @@ Reponse from the raida_go if no coins were received:
 	"amount_verified": 0
 }
 ```
-You will need to give the user your Skywallet address and how many CloudCoins they should send you. Then your customer will need to send your skywallet coins by way the CloudCoin ATM (https://Skywallet.cc).  The ATM allows them to send payments and will generate a GUID that they can copy and paste into your payment system. The ATM is pure HTML, CSS and Javascript so it is possible to itegrate the ATM into your webpage and customize it. Otherwise they paste the GUID into your page and then submit it so that you can verify payment. Once payment is verified your money has been received. 
+Your users will need to use the "Skywallet Point of Sale". This is a pure HTML, CSS and Javascrit plugin that is easy to customize. It is a lot like the Skywallet ATM (https://Skywallet.cc).  The POS allows customers to use their Skywallet Debit card to send payments. The POS will generate a GUID and get the user's Skywallet address. The POS will then send this information to a web service that we have written called "skywallet_pos.php". A sample call is:
+
+```http
+https://yourdomain.com/skywallet_pos.php?from=Sean.CloudCoin.GLobal&guid=2cb825ee32a847d68650617cc6a3862a
+```
+You will then use the GET parameters passed to perform to call the raida_go.exe program.   
+
 
 ## raida_go Send 
 
-
+Comming soon. 
 
 
 and given e  is by having you and your customers send CloudCoins to your SkyWallet account and then call the "View_Receipt" service to verify that they sent the payment. Your customers can send coins to your Skywallet using their CloudBank Wallet, the SkyWallet ATM (https://Skywallet.cc) or your custom webpage using our sample store to send payment using the RaidaJS javascript API. 
