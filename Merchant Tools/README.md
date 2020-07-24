@@ -2,22 +2,22 @@
 
 There are many ways to send and receive CloudCoins including by email, https web sites and Skywallet. We suggest using Skywallet but Skywallet has has one drawback: it is psuefo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain. CloudCoin Wallet with CloudBank, on the otherhand, runs on your desktop or server while Skywallet is in the RAIDA Cloud. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient. Skywallet provides pseudo-privacy that is like crypto currencies. Unlike crypto, Skywallet transactions are not public. This means that the only people who could possibly see your SkyWallet Transactions are RAIDA Administrators. SkyWallet makes sending and receiving payments very convenient. 
 
-# Receiving And Verifying Payments
+# Receiving
 The easiest way to receive, confirm payments and send payments is by using our RAIDA_GO program that runs on Linux or Windows. RAIDA_GO is a command line application that is called just like caling any terminal program. It has not graphics or visual interface. You simply must provide it with "flags" AKA command line arguments. 
 
-## raida_go Verify. 
+## raida_go Receive. 
 The purpose of the payment verifier is to check to see if your customer has sent CloudCoins to your Skywallet. This has two arguments
 1. The command. In this case "verify".
 2. The guid of the user's payment, supplied by the user. 
 
 Example of calling this CLI for Windows
 ```dos
-E:\CloudCoin\raida_go.exe verify 2cb825ee32a847d68650617cc6a3862a
+E:\CloudCoin\raida_go.exe receive 2cb825ee32a847d68650617cc6a3862a
 ```
 
 Example of calling this CLI for Linux
 ```bash
-./CloudCoin/RAIDA_GO.elf 2cb825ee32a847d68650617cc6a3862a
+./CloudCoin/RAIDA_GO.elf receive 2cb825ee32a847d68650617cc6a3862a
 ```
 Reponse from the raida_go if 100 coins were received: 
 ```json
