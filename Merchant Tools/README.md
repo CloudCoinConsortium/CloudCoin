@@ -1,8 +1,70 @@
 # RECEIVING AND SENDING CLOUDCOINS PROGRAMMATICALLY
 
-There are many ways to send and receive CloudCoins including by email, https web sites and Skywallet. We suggest using Skywallet but Skywallet has has one drawback: it is pseudo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain. CloudCoin Wallet with CloudBank, on the otherhand, runs on your desktop or server. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient.  Unlike crypto, Skywallet transactions are not public.
+There are many ways to send and receive CloudCoins including by email, downloading from web sites and Skywallet. We suggest using Skywallet Skywallet because Skywallet may be the easist to implent and most secure. Skywallet has has one drawback: it is pseudo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain. CloudCoin Wallet with CloudBank, on the otherhand, runs on your desktop or server. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient.  Unlike crypto, Skywallet transactions are not public.
 
-# Receiving
+# Receiving CloudCoins via Skywallet
+The major compoents are the: 
+
+1. Skywallet HTML widget
+2. The backend Action Page. 
+3. The raida_go command line program that your backent action page can call. 
+
+## Skywallet HTML widget
+To learn about the HTML widget read: https://github.com/CloudCoinConsortium/POSJS/blob/master/sample/index.html
+This is the minimum HTML widget 
+```html
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <script src="https://cloudcoin.global/assets/posjs.min.v004.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                  
+                        var pos = new POSJS({
+				'timeout':'5000',
+				'action': 'https://yourdomain.com/your_action_page.php', 
+				'merchant_skywallet' : 'Your.skywallet.cc'
+			})
+                         var get_parameters = {}; // Create a get_parameters object to hold GET parameters for your action page.
+                         get_parameters.amount = 100;  // Mandatory GET variable specifies the amount of CloudCoins to be paid.              
+                         get_parameters.customerID = '1554887'; // Optional Merchant Variable customized by you but must be a String. 
+                </script>
+        </head>
+        <body>
+			<img onclick='pos.show(get_parameters)' src='https://cloudcoin.global/assets.paywithcc.001.png' width='100' alt='Pay with Cloud Coin'>
+		
+        </body>
+</html>
+
+```
+## Backend Action Page
+You can use any language such as PHP, Python, Ruby, Java, C# etc. Your language will call the raida_go command line program and this executable will tell you how many CloudCoins the customer sent you. For more information read https://github.com/CloudCoinConsortium/POSJS/blob/master/sample/action.php
+Here is a sample of action.php calling the raida_go executable. 
+
+```php
+<?php
+	$received_from = $_GET['sender_skywallet'];
+	$amount_due = $_GET['amount'];
+	$receipt_guid = $_GET['guid'];
+	$merchantData = $_GET['merchantData'];//this can be customized. 
+
+	$command = "E:/Documents/pos/raida_go.exe receive $receipt_guid"; //This is for Windows 
+	//$command = "./raida_go receive $receipt_guid"; //This is for Linux. 
+	$json_obj = exec($command); //Returns something like: {"amount_verified":100}
+	$arr = json_decode($json_obj, true);
+	$amount_verified = $arr["amount_verified"];
+	echo "The amount that you received is $amount_verified";
+
+?>
+```
+## The raida_go Executable
+ The raida_go executable is a command line program that your action page can call in order to see if your customer has sent you CloudCoins. 
+ This program comes compiled and there is one version of Linux and another for Windows. To learn more about raida_go click https://github.com/CloudCoinConsortium/raidaGo. 
+ To download the programs click here https://cloudcoin.global/asseets/raida_go.zip
+ 
+ 
+ 
+
+We have the Skywallet Wigit that you can plug into your web page to receive CloudCoins. 
 The easiest way to receive, confirm payments and send payments is by using our raida_go program that runs on Linux or Windows. raida_go is a command line application that is called just like caling any terminal program. It has no graphics or visual interface. You simply must provide it with command line arguments. 
 
 ## raida_go Receive. 
