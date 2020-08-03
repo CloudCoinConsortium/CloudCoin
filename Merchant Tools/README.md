@@ -3,13 +3,15 @@
 There are many ways to send and receive CloudCoins including by email, downloading from web sites and Skywallet. We suggest using Skywallet Skywallet because Skywallet may be the easist to implent and most secure. Skywallet has has one drawback: it is pseudo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain. CloudCoin Wallet with CloudBank, on the otherhand, runs on your desktop or server. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient.  Unlike crypto, Skywallet transactions are not public.
 
 # Receiving CloudCoins via Skywallet
-The major compoents are the: 
+You and your users will need to have a Skywallet account with debit card. You can get an account at: https://www.skywallet.cc/debit_card.html
+
+The major components of receiving CloudCoins are: 
 
 1. Skywallet HTML widget
 2. The backend Action Page. 
 3. The raida_go command line program that your backent action page can call. 
 
-## Skywallet HTML widget
+## 1. Skywallet HTML widget
 To learn about the HTML widget read: https://github.com/CloudCoinConsortium/POSJS/blob/master/sample/index.html
 This is the minimum HTML widget 
 ```html
@@ -36,18 +38,19 @@ This is the minimum HTML widget
 </html>
 
 ```
-## Backend Action Page
+## 2. Backend Action Page
 You can use any language such as PHP, Python, Ruby, Java, C# etc. Your language will call the raida_go command line program and this executable will tell you how many CloudCoins the customer sent you. For more information read https://github.com/CloudCoinConsortium/POSJS/blob/master/sample/action.php
 Here is a sample of action.php calling the raida_go executable. 
 
 ```php
 <?php
+	$my_wallet = $_GET['merchant_skywallet'];
 	$received_from = $_GET['sender_skywallet'];
 	$amount_due = $_GET['amount'];
 	$receipt_guid = $_GET['guid'];
 	$merchantData = $_GET['merchantData'];//this can be customized. 
 
-	$command = "E:/Documents/pos/raida_go.exe receive $receipt_guid"; //This is for Windows 
+	$command = "E:/Documents/pos/raida_go.exe receive $receipt_guid $my_wallet"; //This is for Windows 
 	//$command = "./raida_go receive $receipt_guid"; //This is for Linux. 
 	$json_obj = exec($command); //Returns something like: {"amount_verified":100}
 	$arr = json_decode($json_obj, true);
@@ -56,30 +59,20 @@ Here is a sample of action.php calling the raida_go executable.
 
 ?>
 ```
-## The raida_go Executable
+## 3. The raida_go Executable
  The raida_go executable is a command line program that your action page can call in order to see if your customer has sent you CloudCoins. 
  This program comes compiled and there is one version of Linux and another for Windows. To learn more about raida_go click https://github.com/CloudCoinConsortium/raidaGo. 
  To download the programs click here https://cloudcoin.global/asseets/raida_go.zip
  
- 
- 
-
-We have the Skywallet Wigit that you can plug into your web page to receive CloudCoins. 
-The easiest way to receive, confirm payments and send payments is by using our raida_go program that runs on Linux or Windows. raida_go is a command line application that is called just like caling any terminal program. It has no graphics or visual interface. You simply must provide it with command line arguments. 
-
-## raida_go Receive. 
-The purpose of receive is to check to see if your customer has sent CloudCoins to your Skywallet. This has two arguments
-1. The command. In this case "receive".
-2. The GUID of the user's payment, supplied by the Skywallet "Point of Sale" html website plugin that you can add to your website.  
 
 Example of calling this CLI for Windows
 ```dos
-E:\CloudCoin\raida_go.exe receive 2cb825ee32a847d68650617cc6a3862a
+E:\CloudCoin\raida_go.exe receive 2cb825ee32a847d68650617cc6a3862a sean.cloudcoin.global
 ```
 
 Example of calling this CLI for Linux
 ```bash
-./CloudCoin/RAIDA_GO.elf receive 2cb825ee32a847d68650617cc6a3862a
+./CloudCoin/RAIDA_GO.elf receive 2cb825ee32a847d68650617cc6a3862a sean.cloudcoin.global
 ```
 Reponse from the raida_go if 100 coins were received: 
 ```json
@@ -94,25 +87,17 @@ Reponse from the raida_go if no coins were received:
 	"amount_verified": 0
 }
 ```
-Your users will need to use the "Skywallet Point of Sale". This is a pure HTML, CSS and Javascrit plugin that is easy to customize. It is a lot like the Skywallet ATM (https://Skywallet.cc).  The POS allows customers to use their Skywallet Debit card to send payments. The POS will generate a GUID and get the user's Skywallet address. The POS will then send this information to a web service that we have written called "skywallet_pos.php". A sample call is:
 
-```http
-https://yourdomain.com/skywallet_pos.php?from=Sean.CloudCoin.GLobal&guid=2cb825ee32a847d68650617cc6a3862a
+# Sending CloudCoins From Your Skywallet to a Customer's Skywallet
+You can quickly send CloudCoins from your wallet to the Customer's wallet by having your program call the 
+raida_go executable. You will need to specify the "transfer" command, provide the Skywallet address you want to send to and include a memo. 
+
+```bash
+./CloudCoin/RAIDA_GO.elf receive 'Thank you' sean.cloudcoin.global
 ```
-You will then use the GET parameters passed to perform to call the raida_go.exe program.   
 
-
-## raida_go Send 
-
-Comming soon. 
-
-
-and given e  is by having you and your customers send CloudCoins to your SkyWallet account and then call the "View_Receipt" service to verify that they sent the payment. Your customers can send coins to your Skywallet using their CloudBank Wallet, the SkyWallet ATM (https://Skywallet.cc) or your custom webpage using our sample store to send payment using the RaidaJS javascript API. 
-
-
-
-
-
+# Skipping raida_go and Talking Directly to the RAIDA
+This is not recommended because there are 25 of them that should be contacted in parallel and this can be tricky. Also the raida_go program will syncronize your Skywallet account and talking directly to the RAIDA will not. This could cause your Skywallet to become unsyncronized amount all the RAIDA. 
 
 SAMPLE CALL TO VIEW RECEIPT
 ```
