@@ -1,6 +1,6 @@
 # RECEIVING AND SENDING CLOUDCOINS PROGRAMMATICALLY
 
-There are many ways to send and receive CloudCoins including by email, downloading from web sites and Skywallet. We suggest using Skywallet because of its ability to show the sender and the receiver that money was sent and received. It is also simple to implent. Skywallet has has one drawback: it is pseudo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain.  Unlike crypto, Skywallet transactions are not public.
+There are many ways to send and receive CloudCoins including by email, downloading from web sites and Skywallet. We suggest using Skywallet because of its ability to show the sender and the receiver that money was sent and received. It is also simple to implement. Skywallet has one drawback: it is pseudo anonymous in that RAIDA Administrators can see the account numbers and transactions. This is similar to the Blockchain.  Unlike crypto however, Skywallet transactions are not public.
 
 # Receiving CloudCoins via Skywallet
 You and your users will need to have a Skywallet account with debit card. You can get an account at: https://www.skywallet.cc/debit_card.html Skywallet debit cards are scheduled to be included in the CloudCoin Wallet 4.0 due to be released August 24, 2020. 
