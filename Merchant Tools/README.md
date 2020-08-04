@@ -1,26 +1,26 @@
 # RECEIVING AND SENDING CLOUDCOINS PROGRAMMATICALLY
 
-There are many ways to send and receive CloudCoins including by email, downloading from web sites and Skywallet. We suggest using Skywallet Skywallet because Skywallet may be the easist to implent and most secure. Skywallet has has one drawback: it is pseudo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain. CloudCoin Wallet with CloudBank, on the otherhand, runs on your desktop or server. The CloudCoin Wallet provides 100% anonymous transactions but is less convenient.  Unlike crypto, Skywallet transactions are not public.
+There are many ways to send and receive CloudCoins including by email, downloading from web sites and Skywallet. We suggest using Skywallet because of its ability to show the sender and the receiver that money was sent and received. It is also simple to implent. Skywallet has has one drawback: it is pseudo anonymouse and RAIDA Administrators can see the account numbers and transactions of those account numbers. This is simular to the Blockchain.  Unlike crypto, Skywallet transactions are not public.
 
 # Receiving CloudCoins via Skywallet
-You and your users will need to have a Skywallet account with debit card. You can get an account at: https://www.skywallet.cc/debit_card.html
+You and your users will need to have a Skywallet account with debit card. You can get an account at: https://www.skywallet.cc/debit_card.html Skywallet debit cards are scheduled to be included in the CloudCoin Wallet 4.0 due to be released August 24, 2020. 
 
-The major components of receiving CloudCoins are: 
+The major components of receiving CloudCoins via Skywallet are: 
 
 1. Skywallet HTML widget
 2. The backend Action Page. 
-3. The raida_go command line program that your backent action page can call. 
+3. The raida_go command line program that your action page can call. 
 
 ## 1. Skywallet HTML widget
-To learn about the HTML widget read: https://github.com/CloudCoinConsortium/POSJS/blob/master/sample/index.html
-This is the minimum HTML widget 
+To learn about the HTML widget see: https://github.com/CloudCoinConsortium/POSJS/blob/master/sample/index.html
+
+Here is the minimum HTML needed for the widget: 
 ```html
 <!DOCTYPE html>
 <html lang="en">
         <head>
                 <script src="https://cloudcoin.global/assets/posjs.min.v004.js" type="text/javascript"></script>
                 <script type="text/javascript">
-                  
                         var pos = new POSJS({
 				'timeout':'5000',
 				'action': 'https://yourdomain.com/your_action_page.php', 
@@ -32,7 +32,7 @@ This is the minimum HTML widget
                 </script>
         </head>
         <body>
-			<img onclick='pos.show(get_parameters)' src='https://cloudcoin.global/assets.paywithcc.001.png' width='100' alt='Pay with Cloud Coin'>
+	     <img onclick='pos.show(get_parameters)' src='https://cloudcoin.global/assets/paywithcc.001.png' width='100' alt='Pay with Cloud Coin'>
 		
         </body>
 </html>
@@ -40,10 +40,11 @@ This is the minimum HTML widget
 ```
 ## 2. Backend Action Page
 You can use any language such as PHP, Python, Ruby, Java, C# etc. Your language will call the raida_go command line program and this executable will tell you how many CloudCoins the customer sent you. For more information read https://github.com/CloudCoinConsortium/POSJS/blob/master/sample/action.php
-Here is a sample of action.php calling the raida_go executable. 
 
+Here is a very simple example of an action page calling the raida_go executable:
 ```php
 <?php
+	
 	$my_wallet = $_GET['merchant_skywallet'];
 	$received_from = $_GET['sender_skywallet'];
 	$amount_due = $_GET['amount'];
@@ -55,46 +56,54 @@ Here is a sample of action.php calling the raida_go executable.
 	$json_obj = exec($command); //Returns something like: {"amount_verified":100}
 	$arr = json_decode($json_obj, true);
 	$amount_verified = $arr["amount_verified"];
-	echo "The amount that you received is $amount_verified";
+	echo "The amount received in $my_wallet is $amount_verified";
 
 ?>
 ```
 ## 3. The raida_go Executable
  The raida_go executable is a command line program that your action page can call in order to see if your customer has sent you CloudCoins. 
- This program comes compiled and there is one version of Linux and another for Windows. To learn more about raida_go click https://github.com/CloudCoinConsortium/raidaGo. 
- To download the programs click here https://cloudcoin.global/asseets/raida_go.zip
+ This program comes compiled for Linux and Windows in a zip here https://cloudcoin.global/asseets/raida_go.zip. To learn more about raida_go click https://github.com/CloudCoinConsortium/raidaGo. 
  
-
-Example of calling this CLI for Windows
+ 
+Example of calling this CLI for Windows to check how many coins were sent to Skywallet 'Sean.CloudCoin.Global':
 ```dos
 E:\CloudCoin\raida_go.exe receive 2cb825ee32a847d68650617cc6a3862a sean.cloudcoin.global
 ```
-
-Example of calling this CLI for Linux
+Example of the same call for Linux
 ```bash
 ./CloudCoin/RAIDA_GO.elf receive 2cb825ee32a847d68650617cc6a3862a sean.cloudcoin.global
 ```
 Reponse from the raida_go if 100 coins were received: 
 ```json
 {
-	"amount_verified": 100
+  "amount_verified": 100
 }
 ```
 
 Reponse from the raida_go if no coins were received: 
 ```json
 {
-	"amount_verified": 0
+   "amount_verified": 0
 }
 ```
 
 # Sending CloudCoins From Your Skywallet to a Customer's Skywallet
 You can quickly send CloudCoins from your wallet to the Customer's wallet by having your program call the 
-raida_go executable. You will need to specify the "transfer" command, provide the Skywallet address you want to send to and include a memo. 
+raida_go executable' transfer command. You will need to include a memo. These memos can use our memo standard that allows them to show up in your transaction log as well as your customer's transaction log. Note that this technology is being implemented now and is not ready. 
 
 ```bash
-./CloudCoin/RAIDA_GO.elf receive 'Thank you' sean.cloudcoin.global
+./CloudCoin/raida_go send "From sean.cloudcoin.global VGhpcyBpcyBhIGZpbmUgd2F5ICB0byBkbyB0aGluZ3M=" billy.skywallet.cc
 ```
+NOTE: This standard is in flux. This is an ini file that will be converted into base64 and concatenated after the memo. 
+```ini
+from=sean.cloudcoin.global
+to=billy.skywallet.cc
+description=Four pairs of shoes, Socks, 
+transaction_url=https://er.miroch.ru/c/6200c62cc6a94aa39f98894ad0347f35.html
+transaction_img=https://er.miroch.ru/img/6200c62cc6a94aa39f98894ad0347f35.im
+```
+
+
 
 # Skipping raida_go and Talking Directly to the RAIDA
 This is not recommended because there are 25 of them that should be contacted in parallel and this can be tricky. Also the raida_go program will syncronize your Skywallet account and talking directly to the RAIDA will not. This could cause your Skywallet to become unsyncronized amount all the RAIDA. 
