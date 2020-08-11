@@ -88,6 +88,8 @@ private keys of the blockchain. However, we are now working on a key recovery se
 
 [Transfer](README.md#transfer)
 
+[ShowTransferBalance](README.md#showtransferbalance)
+
 [ShowEnvelopes](README.md#showenvelopes)
 
 [ShowCoinsInEnvelope](README.md#showcoinsinenvelope)
@@ -229,6 +231,33 @@ The Send Again solves a problem cased when a client sends a send request to the 
 
 
 This will "fix" a coin that has not been fully sent to the RAIDA. The sending parameters are the same and the response is the same. See the send service for the request and response examples.  
+
+## ShowTransferBalance
+
+Example Request:
+Note: All the parameters here are for the ID coin. 
+```
+https://raida11.cloudcoin.global/service/show_balance?nn=1&sn=848213&an=1FA661CF4FEBCA2DF37A35614BF13A1A&pan=1FA661CF4FEBCA2DF37A35614BF13A1A&denomination=1
+
+```
+
+Sample Response:
+
+```
+{
+	"server": "RAIDA11",
+	"status": "pass",
+	"message": "Includes is the count of 1s, 5s,25s, 100s, 250s, and total balance",
+	"d1": 2206,
+	"d5": 2976,
+	"d25": 2663,
+	"d100": 3001,
+	"d250": 0,
+	"total": 383761,
+	"version": "2020-03-23",
+	"time": "2020-04-02 11:02:37"
+}
+```
 
 ## ShowEnvelopes
 An Envelope is a grouping of coins usually grouped by a transaction number, purchase order number, memo, account number. 
