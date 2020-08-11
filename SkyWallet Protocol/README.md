@@ -237,7 +237,7 @@ This will "fix" a coin that has not been fully sent to the RAIDA. The sending pa
 Example Request:
 Note: All the parameters here are for the ID coin. 
 ```
-https://raida11.cloudcoin.global/service/show_balance?nn=1&sn=848213&an=1FA661CF4FEBCA2DF37A35614BF13A1A&pan=1FA661CF4FEBCA2DF37A35614BF13A1A&denomination=1
+https://raida11.cloudcoin.global/service/show_transfer_balance?nn=1&sn=848213&an=1FA661CF4FEBCA2DF37A35614BF13A1A&pan=1FA661CF4FEBCA2DF37A35614BF13A1A&denomination=1
 
 ```
 
