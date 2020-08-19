@@ -534,7 +534,7 @@ d: The master ticket of the fourth raida of the corner
 
 Example GET authenticating three coins put on several lines for ease of reading
 ```
-https://RAIDA0.CloudCoin.Global/service/multi_detect?
+https://RAIDA0.CloudCoin.Global/service/fix?
        		corner=1&
 		pan=9f70f199f0844df2bd6e607620002cbf&
 		a=a4aedc27bf524e3aabf8dbcca686140a8ae06de08934&
@@ -574,7 +574,7 @@ If some of the coins were counterfeit and other authentic:
         
 ```
 
-
+<!--
 ## RAIDA Multi Fix Protocol
 
 The RAIDA Multi Fix Protocol allows many coins with the same fracked RAIDA# to be fixed using the same "Corner" at the same. All the coins must be on the same network.
@@ -672,7 +672,7 @@ RESPONSE IF ARRAY LENGTHS NOT THE SAME
 }
 ```
 
-
+-->
 ----------------------------------------------
 
 ## RAIDA 'fix_lost' Service
