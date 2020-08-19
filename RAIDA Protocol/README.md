@@ -15,26 +15,28 @@ You will need to send messages to all 25 RAIDA in parallel.
 [Multi-Detect](README.md#raida-multi-detect-service)
 
 #### Synchronizing RAIDA
-
+<!--
 [Multi-Ticket](README.md#raida-multi-ticket-protocol)
-
+-->
 [Hints](README.md#raida-hints-protocol)
-
+<!--
 [Multi-Hints](README.md#raida-multi-hints-protocol)
-
+-->
 [Fix](README.md#raida-fix-protocol)
-
+<!--
 [Multi Fix](README.md#raida-multi-fix-protocol)
-
+-->
 [Fix Lost](README.md#raida-fix_lost-service)
 
 #### Utilities
 
 [Echo](README.md#echo-service)
-
+<!--
 [Echo DA](README.md#echo-da-service)
-
+-->
 [Report Lost](README.md#report-lost) 
+
+[Recover](README.md#recover) 
 
 -----------------------------------------
 
@@ -185,7 +187,7 @@ The subject of the echo response will always be "Up" and the details will always
 The time is in GMT.
 
 ----------------------------------------------
-
+<!--
 ## Echo DA Service
 
 ----------------------------------------------
@@ -238,7 +240,7 @@ Sample Response if the RAIDA does not use Sentinel/DAs:
 }
 ```
 
-
+-->
 ----------------------------------------------
 
 ## RAIDA 'Detect' Service
@@ -286,7 +288,7 @@ This denotes the so-called 'brief' mode. It means that the response is a single 
 
 
 ----------------------------------------------
-
+<!--
 ## RAIDA 'Multi-Detect' Service
 
 The RAIDA Multi Detection Protocol allows many coins to be authenticated at the same time. 
@@ -435,7 +437,7 @@ Example Response if all tickets failed:
 ]
 
 ```
-
+-->
 ----------------------------------------------
 
 ## RAIDA Hints Protocol
@@ -461,7 +463,7 @@ These are the serial numbers of the coins that match that master ticket.
 
 
 ----------------------------------------------
-
+<!--
 
 ## RAIDA Multi-Hints Protocol
 
@@ -494,7 +496,7 @@ The second response shows that the ticket belongs to SN 16777215 and it was made
 
 
 ----------------------------------------------
-
+-->
 ## RAIDA Fix Protocol
 
 Fix allows you to fix multiple CloudCoin that have been multi-detected in the last hour. Suppose you get a coin and pown it. All RAIDA return "allpass" and a each one provides a master ticket. Except for RAIDA 18. RAIDA 18 returns "allfail".  Now you must fix RAIDA 18. You then find out which RAIDA are RAIDA18's trusted neighbours. You will need four. Each RAIDA has four groups of trusted neighbours called "Corners". 
