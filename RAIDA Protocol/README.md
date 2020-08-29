@@ -581,7 +581,7 @@ If some of the coins were counterfeit and other authentic:
 
 The RAIDA Multi Fix Protocol allows many coins with the same fracked RAIDA# to be fixed using the same "Corner" at the same. All the coins must be on the same network.
 
-![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fixit.jpg)
+![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fix2.png)
 
 This protocol only works with the "Four-Fix" protocol in which three trusted raida on one corner and one trusted raida on the oposite corner are required to fix. 
 
