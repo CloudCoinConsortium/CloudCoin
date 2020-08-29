@@ -502,7 +502,7 @@ The second response shows that the ticket belongs to SN 16777215 and it was made
 Fix allows you to fix multiple CloudCoin that have been multi-detected in the last hour. Suppose you get a coin and pown it. All RAIDA return "allpass" and a each one provides a master ticket. Except for RAIDA 18. RAIDA 18 returns "allfail".  Now you must fix RAIDA 18. You then find out which RAIDA are RAIDA18's trusted neighbours. You will need four. Each RAIDA has four groups of trusted neighbours called "Corners". 
 
 
-![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fixit.jpg)
+![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fix2.png)
 
 You may start by using RAIDA 18's first corner to fix. That means you require the master tickets returned from multi-detect for RAIDA -6,-5, -1 and + 6 which translates to RAIDA12, RAIDA13, RAIDA17 and RAIDA24. 
 You will then send the master tickets from these RAIDA to RAIDA 18. The request calls these servera a, b, c and d. The lowest number RAIDA is 'a' and it accends to the highest number being 'd'. a=12, b=13, c=17 and d=24.(note that lowest to highest does not work if the corner numbers wrap around. The corner that you will use is corner=1. The PAN that you give it will apply to all the coins that you want to fix. If your fix failes on one corner, you can try the other three corners. Note that the fix service can only be run directly after the multi-detect service. If you have a fracked coins that you do not have a master ticket for, you must use the multi-ticket service to get tickets and then use the multi-fix service to fix them. 
