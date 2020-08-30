@@ -582,7 +582,7 @@ Note: Use replace the corner with the regex and we add the "e" master ticket.
 ```
 
 https://RAIDA0.CloudCoin.Global/service/fix?
-       		regex=p.....[uenf]...pp.&
+       		regex=p.....0...pp.&
 		pan=9f70f199f0844df2bd6e607620002cbf&
 		a=a4aedc27bf524e3aabf8dbcca686140a8ae06de08934&
 		b=11328c19f7ef4a63a4a56d25f9785c05197b44d4bae1&
