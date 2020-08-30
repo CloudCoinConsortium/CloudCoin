@@ -534,7 +534,7 @@ c: The master ticket of the third raida of the corner
 d: The master ticket of the fourth raida of the corner 
 
 
-Example GET authenticating three coins put on several lines for ease of reading
+Example Fix using corners. GET authenticating three coins put on several lines for ease of reading
 ```
 https://RAIDA0.CloudCoin.Global/service/fix?
        		corner=1&
@@ -575,6 +575,140 @@ If some of the coins were counterfeit and other authentic:
              }
         
 ```
+
+
+Example Fix using 5 touching. 
+Note: Use replace the corner with the regex and we add the "e" master ticket. 
+```
+
+https://RAIDA0.CloudCoin.Global/service/fix?
+       		regex=p.....[uenf]...pp.&
+		pan=9f70f199f0844df2bd6e607620002cbf&
+		a=a4aedc27bf524e3aabf8dbcca686140a8ae06de08934&
+		b=11328c19f7ef4a63a4a56d25f9785c05197b44d4bae1&
+		c=c35bfa217d364cc58d9c0a96a7a256f4822c10be9233&
+		d=48df533f42364308b3a2ce15f1d216e266c649dc656a&
+		e=48df533f42364308b3a2ce15f1d216e266c649dc656a&
+		sn[]=145895&sn[]=66585&sn[]=16589554
+```
+RESPONSE: If all the coins were authentic
+```
+
+            {
+            	"server": "RAIDA11",
+            	"status": "allpass",
+            	"message": "All the coins were authentic",
+            	"version": "2020-04-13",
+            	"time": "2020-04-18 22:57:55"
+            }
+        
+If all the coins were counterfeit:
+            {
+             	"server": "RAIDA11",
+             	"status": "allfail",
+             	"message": "All the coins were counterfeit",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55"
+             }
+        
+If some of the coins were counterfeit and other authentic:
+             {
+             	"server": "RAIDA11",
+             	"status": "mixed",
+             	"message": "pass,pass,fail",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55"
+             }
+        
+```
+Possible Regex values
+```
+1. p.....0...pp.
+2. ..p..p0...pp.
+3. .pp...0p..p..
+4. p.....0p...pp
+
+Boomerrang
+1. p....p0...pppp
+2. ppp..p0...p..
+3. ppp..p0p....p
+4. ..p...0p..ppp
+
+Bowl
+1. pp...p0...pp.
+2. ppp..p0p.....
+3. .pp...0p...pp
+4. .....p0p..ppp
+
+Spaceship
+1. pp....0p..pp.
+2. p.p..p0p...p.
+3. .pp..p0....pp
+4. .p...p0p..p.p
+
+Creeper
+1. ppp...0...p.p
+2. p.p...0p..p.p
+3. p.p...0...ppp
+4. p.p..p0...p.p
+
+Jay
+1. ppp...0...pp.
+2. p.p..p0p....p
+3. .pp...0...ppp
+4. p....p0p..p.p
+
+One
+ppp...0....pp
+..p..p0p..p.p
+pp....0...ppp
+p.p..p0p..p..
+```
+Regex used in programming:
+```
+Corners
+1. p.....[uenf]...pp.
+2. ..p..p[uenf]...pp.
+3. .pp...[uenf]p..p..
+4. p.....[uenf]p...pp
+
+Boomerrang
+1. p....p[uenf]...pppp
+2. ppp..p[uenf]...p..
+3. ppp..p[uenf]p....p
+4. ..p...[uenf]p..ppp
+
+Bowl
+1. pp...p[uenf]...pp.
+2. ppp..p[uenf]p.....
+3. .pp...[uenf]p...pp
+4. .....p[uenf]p..ppp
+
+Spaceship
+1. pp....[uenf]p..pp.
+2. p.p..p[uenf]p...p.
+3. .pp..p[uenf]....pp
+4. .p...p[uenf]p..p.p
+
+Creeper
+1. ppp...[uenf]...p.p
+2. p.p...[uenf]p..p.p
+3. p.p...[uenf]...ppp
+4. p.p..p[uenf]...p.p
+
+Jay
+1. ppp...[uenf]...pp.
+2. p.p..p[uenf]p....p
+3. .pp...[uenf]...ppp
+4. p....p[uenf]p..p.p
+
+One
+ppp...[uenf]....pp
+..p..p[uenf]p..p.p
+pp....[uenf]...ppp
+p.p..p[uenf]p..p..
+```
+
 
 <!--
 ## RAIDA Multi Fix Protocol
