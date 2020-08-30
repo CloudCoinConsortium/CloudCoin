@@ -623,6 +623,7 @@ If some of the coins were counterfeit and other authentic:
 ```
 Possible Regex values
 ```
+Corners
 1. p.....0...pp.
 2. ..p..p0...pp.
 3. .pp...0p..p..
