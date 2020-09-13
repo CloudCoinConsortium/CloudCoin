@@ -122,7 +122,10 @@ The change services allows one to break notes into smaller ones and consolidate 
 <!--
 [Change](README.md#change)
 -->
-[Exchange](README.md#exchange)
+[Join](README.md#join)
+
+[Join In Bank](README.md#join-in-bank)
+
 
 # Donation Services
 Allows the user to donate money to the change system or to the RAIDA itself (to help the RAIDA fund itself).
@@ -1499,7 +1502,7 @@ RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
 -->
 
 
-## Exchange
+## Join
 Not implemented yet. Not on development scheudle. 
 This takes many smaller notes and exchanges them for one big note. 
 The number of notes provided must add up to either 250, 100, 25 or 5.
@@ -1510,7 +1513,7 @@ the server check to see if it has that change. There are five return: 250,100,25
 
 EXAMPLE POST EXCHANGING FOUR COINS TO MAKE A BIGGER 250 NOTE  
 ```
-https://s0.teleportnow.cc/service/exchange?
+https://s0.teleportnow.cc/service/join?
 return=250&
 nns[]=1&nns[]=1&nns[]=1&nns[]=1&
 sns[]=145895&sns[]=66585&sns[]=16589554&sns[]=16589554&
