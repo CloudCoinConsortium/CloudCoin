@@ -1515,10 +1515,13 @@ EXAMPLE POST EXCHANGING FOUR COINS TO MAKE A BIGGER 250 NOTE
 ```
 https://s0.teleportnow.cc/service/join?
 return=250&
-nns[]=1&nns[]=1&nns[]=1&nns[]=1&
-sns[]=145895&sns[]=66585&sns[]=16589554&sns[]=16589554&
-ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&ans[]=f193f1304ffc4344822c10be9309a4c3&
-denomination[]=100&denomination[]=100&denomination[]=25&&denomination[]=25
+change_server=2&
+csn=16777215&
+cpan=f193f1304ffc4344822c10be9309a4c3&
+nn=1&
+sn[]=145895&sn[]=66585&sn[]=16589554&sn[]=16589554&
+an[]=8ae06de0f9ce4917b3309df71570f92c&an[]=b25fc7a548c341c98cefbac35689aff1&an[]=f193f1304ffc4344822c10be9309a4c3&an[]=f193f1304ffc4344822c10be9309a4c3&
+dn[]=100&dn[]=100&dn[]=25&&dn[]=25
 ```
 
 RESPONSE IF GOOD:
