@@ -90,14 +90,13 @@ private keys of the blockchain. However, we are now working on a key recovery se
 
 [ShowTransferBalance](README.md#showtransferbalance)
 
-[ShowEnvelopes](README.md#showenvelopes)
+[Show Tags](README.md#show-tags)
 
-[ShowCoinsInEnvelope](README.md#showcoinsinenvelope)
+[Show Coins With Tags](README.md#show-coins-with-tags)
 
-[Rename Tag](README.md#renametag) (RenameEnvelope)
+[Rename Tag](README.md#rename-tag) 
 
-[Fix Transfer](README.md#fix_transfer) (fix_transfer)
-
+[Fix Transfer](README.md#fix_transfer) 
 
 # Merchant Services
 
@@ -262,7 +261,7 @@ Sample Response:
 }
 ```
 
-## ShowEnvelopes
+## Show Tag
 An Envelope is a grouping of coins usually grouped by a transaction number, purchase order number, memo, account number. 
 For transactions, the seller gives the buyer their account number and an envelope name (which could be a receipt number) so the receiver can 
 determine where the money came from. 
@@ -345,7 +344,7 @@ RESPONSE IF ACCOUNT DID NOT LOG CORRECTLY
 ```
 
 
-## ShowCoinsInEnvelope
+## Show Coins With Tag
 
 This service shows how many coins you have that are in an envelope that you specify. 
 Each coin will be listed so that the person will know what they have. 
