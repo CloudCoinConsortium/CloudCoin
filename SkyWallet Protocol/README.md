@@ -1503,7 +1503,6 @@ RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
 
 
 ## Join
-Not implemented yet. Not on development scheudle. 
 This takes many smaller notes and exchanges them for one big note. 
 The number of notes provided must add up to either 250, 100, 25 or 5.
 This is almost exactly like Receive except that instead of providing authentication, coins are provided instead. 
@@ -1574,5 +1573,60 @@ RESPONSE IF THE TYPE WAS INVALID
 
 
 
+## Join In Bank
 
+This takes many smaller notes in your skywallet and exchanges them for one bigs from a change server. 
+The number of notes provided must add up to either 250, 100, 25 or 5.
+
+The user must specify the big coin that they hope to get in return. This helps
+the server check to see if it has that change. There are five return: 250,100,25 and 5 ( 1 is not a type).
+
+EXAMPLE POST EXCHANGING FOUR COINS TO MAKE A BIGGER 250 NOTE  
+```
+http://localhost/service/join_in_bank.php?
+id_sn=11873692&
+id_an=2d5f9b76d1cd27a57d373459e0eb0189&
+id_pan=2d5f9b76d1cd27a57d373459e0eb0189&
+id_dn=100&
+sn=3000000&
+change_server=2&
+csn[]=1&csn[]=2&csn[]=3&csn[]=4&csn[]=5
+```
+
+RESPONSE IF GOOD:
+```
+{
+  "server":"RAIDA1",
+  "status":"success",
+  "nns":"1",
+  "sns":"14589005",
+  "ans":"6f24bd539ce941feaf4a01b10ac59559",
+  "message":"Exchanged. Record as a CloudCoin.",
+  "time":"2016-44-19 7:44:PM"
+}
+
+```
+
+
+RESPONSE IF JUST ONE OF THE COINS WAS NOT IN THE SKYWALLET:
+```
+{
+  "server":"RAIDA1",
+  "status":"dud",
+  "message":"Coins you claimed were in your account were not. .",
+  "time":"2016-44-19 7:44:PM"
+}
+
+```
+
+
+RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
+```
+{
+  "server":"RAIDA1",
+  "status":"dud",
+  "message":"Parameters. The request requires type, sns[], ans[], nn[], denomination[]"
+  "time":"2016-44-19 7:44:PM"
+}
+```
 	
