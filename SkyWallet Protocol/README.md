@@ -84,8 +84,6 @@ private keys of the blockchain. However, we are now working on a key recovery se
 
 [Receive](README.md#receive)
 
-[ReceiveAgain](README.md#receiveagain)
-
 [Transfer](README.md#transfer)
 
 [ShowTransferBalance](README.md#showtransferbalance)
@@ -631,6 +629,10 @@ EXAMPLE RESPONSE (Does not tell you if the work was successful or not)
 
 ## Receive
 
+NOTE: Only the first five bytes of the AN are needed to receive. This allows you to grant a "Receive Key" so that a person with this key can only
+receive and do some other show functions. They would not be able to transfer. People would also need the second five bytes to be able to 
+get the SNS needed. 
+
 The Receive service allows many coins to be downloaded from the Sky Wallet at the same time. The Receiver can download all of their
 coins, or just some of their coins. But it must specify the coins it wants to download by serial number. This means 
 the client will have to do a "Show" so they can get a list of the serial number that they have.
@@ -654,11 +656,8 @@ Example POST asking for specific CloudCoins
 ```
 https://s0.teleportnow.cc/service/recieve?
 b=t&
-nn=1&
 sn=1&
-an=1836843d928347fb22c2142b49d772b5&
-pan=1836843d928347fb22c2142b49d772b5&
-dn=1&
+an=1836843d920000000000000000000000&
 sns[]=152658&
 sns[]=9955856&
 sns[]=6652154&
