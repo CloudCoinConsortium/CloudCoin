@@ -410,8 +410,16 @@ RESPONSE IF ACCOUNT DID NOT LOG IN CORRECTLY
 
 ## Show
 
-This service shows how many coins you have that belong to you that you have not taken control of yet. 
-Each coin will be listed so that the person will know what they have. 
+This service shows how many coins an account has in the Skywallet. 
+
+It has three modes:
+```
+1. Default: Very data intesive and shows the tag, sn and creation time of all coins. 
+2. Breif mode. Sends serial numbers seperated with commas. b=t
+3. Content mode. Returns information that would be handy to diplay the contents of a Skywallet including
+the number of each denomination. The total value of the coins, The envelopes and how many 
+coins each envelop has. The date of creation of each envelope. 
+```
 
 "tag" must not start or end with any white space character and must use only UTF-8 characters. 
 
@@ -485,6 +493,7 @@ RESPONSE SHOWING THAT THERE ARE TWO COINS OWNED IN THE TRANSFER TABLE:
 ```
 
 
+
 RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
 ```
 {
@@ -503,6 +512,51 @@ RESPONSE IF ACCOUNT DID NOT LOG IN CORRECTLY
   "message":"Login: Authenticity Number was incorrect for the Serial Number .",
   "time":"2016-44-19 7:44:PM"
 }
+```
+
+Example GET in brief mode. 
+```
+https://s0.teleportnow.cc/service/show?b=t&nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1
+```
+
+Example Response for brief mode:
+```
+720869,720870,1310084,1310085,1310086,1310087,131008
+```
+
+Example GET for content mode. 
+```
+https://s0.teleportnow.cc/service/show?content=t&nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1
+```
+Example Response for content mode:
+```json
+{
+	"server": "18",
+	"status": "pass",
+	"message": "Includes is the count of 1s, 5s,25s, 100s, 250s, and total balance",
+	"d1": 1655,
+	"d5": 2043,
+	"d25": 2079,
+	"d100": 3036,
+	"d250": 49,
+	"total": 379795,
+	"version": "2020-02-13",
+	"contents": [{
+		"tag": "change",
+		"created": "1561629156",
+		"amount": "389"
+	}, {
+		"tag": "public_change",
+		"created": "1561627038",
+		"amount": "359358"
+	}, {
+		"tag": "public_change_5s",
+		"created": "1573401150",
+		"amount": "36"
+	}],
+	"time": "Not reported"
+}
+
 ```
 
 
