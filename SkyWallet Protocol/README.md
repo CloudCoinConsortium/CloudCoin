@@ -84,6 +84,8 @@ private keys of the blockchain. However, we are now working on a key recovery se
 
 [Receive](README.md#receive)
 
+[Receive Envelope](README.md#receive-envelope)
+
 [Transfer](README.md#transfer)
 
 [ShowTransferBalance](README.md#showtransferbalance)
@@ -789,6 +791,95 @@ RESPONSE IF THERE WAS A DATABASE ERROR
   "time":"2016-44-19 7:44:PM"
 }
 ```
+
+## Receive Envelope
+
+
+NOTE: Only the first five bytes of the AN are needed to receive. This allows you to grant a "Receive Key" so that a person with this key can only receive and do some other show functions. They would not be able to transfer. People would also need the second five bytes to be able to 
+get the SNS needed. 
+
+The Receive Envelope service allows up to a maximum amount (such as 400 coinst) to all be downloaded at once.  The Receiver can download all of their coins from an envelope by calling the Receive Envelope Script over and over until the status is "done"
+
+The pang is used as a seed to calculate an AN so that the client does not have to download it. 
+```php
+$seed2 = THIS_NODE_NUMBER.$sn.$pang;
+$pan = md5($seed2);
+
+```
+
+Example GET asking for specific Envelope
+```
+https://s0.teleportnow.cc/service/recieve_envelope?
+sn=1&
+an=1836843d920000000000000000000000&
+tag=c52b9df4d8dfa33f0a08bfcabde8f98e&
+pang=ca1219e1f52b4ca783ada28df55e8d6d
+
+```
+
+RESPONSE IF GOOD:
+```json
+{
+	"server":"RAIDA18", 
+	"status":"done",
+	"message":"16777123,32323,232344,5333",
+	"time":"2020-06-13 10:49:10",
+	"version":"2020-02-13",
+	"exe_time": .002
+}
+
+```
+
+RESPONSE IF THERE WERE TOO MANY COINS IN THE ENVELOPE TO RECEIVE THEM ALL (OVER 400)
+```
+{
+	"server":"RAIDA18", 
+	"status":"incomplete",
+	"message":"16777123,32323,232344,....400 coins, 5333",
+	"time":"2020-06-13 10:49:10",
+	"version":"2020-02-13",
+	"exe_time": .042
+}
+```
+
+
+RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
+```
+{
+  "server":"RAIDA1",
+  "status":"dud",
+  "message":"Parameters: The request requires you to supply the id_sn, id_nn, id_ans, nns[]=1, sns[] and pans[] parameters."
+  "version":"some version number here",
+  "time":"2016-44-19 7:44:PM"
+}
+```
+
+RESPONSE IF ACCOUNT DID NOT LOG IN CORRECTLY
+```
+{
+  "server":"RAIDA1",
+  "status":"fail",
+  "message":"Login: Authenticity Number was incorrect for the Serial Number .",
+  "version":"some version number here",
+  "time":"2016-44-19 7:44:PM"
+}
+```
+
+RESPONSE IF THERE WAS A DATABASE ERROR
+```
+{
+  "server":"RAIDA1",
+  "status":"fail",
+  "message":"Database: Operation failed. Your Authenticity Number has been left unchanged.",
+  "version":"some version number here",
+  "time":"2016-44-19 7:44:PM"
+}
+```
+
+
+
+
+
 
 
 ## Transfer
