@@ -170,10 +170,11 @@ Note: Client uses HTTPS and GET method for the echo url located in the service f
 Echo Response Example:
 ```
 {
- "server":"RAIDA0",
- "status":"ready",
- "message":"Execution Time (milliseconds) = 2.3751258850098",
- "time":"2018-03-28 02:14:43"
+	"server": "RAIDA11",
+	"status": "ready",
+	"message": "Execution Time (ms) =0.137",
+	"version": "2020-11-02",
+	"time": "2020-11-13 01:37:28"
 }
 ```
 The execution time is the number of milliseconds that the RAIDA needed to complete a detection request of six loop back coins. This tells us how well the RAIDA is performing internally. 
@@ -499,7 +500,7 @@ The second response shows that the ticket belongs to SN 16777215 and it was made
 -->
 ## RAIDA Fix Protocol
 
-Fix allows you to fix multiple CloudCoin that have been multi-detected in the last hour. Suppose you get a coin and pown it. All RAIDA return "allpass" and a each one provides a master ticket. Except for RAIDA 18. RAIDA 18 returns "allfail".  Now you must fix RAIDA 18. You then find out which RAIDA are RAIDA18's trusted neighbours. You will need four. Each RAIDA has four groups of trusted neighbours called "Corners". 
+Fix allows you to fix many CloudCoins that are fracked at once. You will need to get master tickets from any five of the fracked coin's neighbours.   Suppose you get a coin and pown it. All RAIDA return "allpass" and a each one provides a master ticket. Except for RAIDA 18. RAIDA 18 returns "allfail".  Now you must fix RAIDA 18. You then find out which RAIDA are RAIDA18's trusted neighbours. You will need four. Each RAIDA has four groups of trusted neighbours called "Corners". 
 
 
 ![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fix2.png)
