@@ -62,9 +62,31 @@ PAN for RAIDA24 241677721690145245983651548925 MD5 Hash  8C55ABEAFEDA28A9F875BE8
 ```
 Now you have the PANs. These PANs must be put in the RAIDA by calling a detect service and using the original ANs. 
 
+### Adding Recovery by Mail
+Credit cards can be recovered by email if the an email hash is added to the end of PAN. 
+First, calculate the hash of the email by concatinating the serial number of the coin, the RAIDA number 0 through 24 and the email. 
+Here we have coin serial number 16777200 on RAIDA14 with the email Billy@Someplace.com. 
+We will take the last 8 characters of the PAN and replace it with the first 8 characters of the hash. 
+```php
+    $sn = 16777200;
+    $node_number = 14;
+    $email = strtolower("Billy@SomePlace.com");
+    $seed = $sn . $node_number . $email; // 1677720014billy@Someplace.com
+		$hash = MD5( $seed );//21b289e5492baca352dcce9338fa491d
+    //Get the first 8 characters from the Hash. 
+    $hash_first_8 = substr($hash,0,8); // 21b289e5
+    
+    $pan = "8C55ABEAFEDA28A9F875BE816C7BE1EB";
+    $pan = substr($string, 0, -8); //Removes last 8 = 8C55ABEAFEDA28A9F875BE81
+    $pan = $pan .  $hash_first_8; //8C55ABEAFEDA28A9F875BE8121b289e5
+```
+You will need to ask the user for their recover email every time they want to do a transaction
+
+
 ## Saving the coins to file:
 The Coins can then be saved in a CSV credit Card file. The fields are the PAN-G, Exp. Date, CVV, NN, SN and the QR. (all of them put together in one string that can be used to create a URL for a QR code).
 "Credit Cards 12 11 2019 04 04 12.csv"
+
 
 ### This CSV File cointains one coin or card per line.
 ```
