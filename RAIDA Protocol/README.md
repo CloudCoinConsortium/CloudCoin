@@ -11,7 +11,7 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 [Echo](README.md#echo)
 
-[Multi-Detect](README.md#raida-multi-detect-service)
+[Multi-Detect](README.md#multi-detect)
 
 [Hints](README.md#hints)
 
@@ -171,110 +171,7 @@ The names of the servers on Network 1 will always be one of 25 servers: RAIDA0 t
 The status will always be ready otherwise it will return an error. See General Errors.
 The subject of the echo response will always be "Up" and the details will always be "Detection agent ready to detect authenticity." otherwise it will return an error. See General Errors.
 The time is in GMT.
-
-----------------------------------------------
-<!--
-## Echo DA Service
-
-----------------------------------------------
-
-Sample *GET* request:
-```http
-https://RAIDA11.CloudCoin.Global/service/echo_da?da=3&utr=false. 
-```
-
-The "da" is a number between 1 and 32 (Or perhaps 0 and 31) that represents the Detection Agent Number.
-The "utr" means uptime robot. If it is set to true, then the service will not respond if the Detection Agent is off line. This will allow uptime robot to tell if the service is up or not. 
-
-Responses:
-Server returns a Response Object using JSON that describes the name of the server, the status, a message, and a timestamp:
-
- 
-Sample Response if the DA is up and working:
-```json
-{
- "server":"RAIDA11",
- "da":"3",
- "status":"ready",
- "message":"Execution Time (milliseconds) = 2.3751258850098",
- "time":"2018-03-28 02:14:43"
-}
-```
-Sample Response if the DA is down and does not respond and utr is set to "false":
-```json
-{
- "server":"RAIDA11",
- "da":"3",
- "status":"offline",
- "message":"Execution Time (milliseconds) = 2.3751258850098",
- "time":"2018-03-28 02:14:43"
-}
-```
-Sample Response if the DA is down and does not respond and utr is set to "true":
-```php
-/* There will be no response if utr=true */
-```
-
-Sample Response if the RAIDA does not use Sentinel/DAs:
-```json
-{
- "server":"RAIDA11",
- "da":"3",
- "status":"ready",
- "message":"Execution Time (milliseconds) = 2.3751258850098",
- "time":"2018-03-28 02:14:43"
-}
-```
-
--->
-----------------------------------------------
-
-## RAIDA 'Detect' Service
-
-Detect service authenticates single CloudCoin. In case of success the AN is replaced with PAN which in turn should be replaced in the local CloudCoin file (stack).
-
-Example **GET**
-```
-Usage: https://raida0.cloudcoin.global/service/detect?nn=1&sn=5&an=9902d9609c58bbe237fff9769504b805&pan=9902d9609c58bbe237fff9769504b805&denomination=1
-```
-Response if success
-```json
-{
-    "server": "RAIDA0",
-    "status": "pass",
-    "message": "Authentic: Update your file.",
-    "version": "2019-05-02",
-    "time": "2019-05-05 22:37:13"
-}
-```
-Response if some parameters are incorrect
-```json
-{
-    "server": "RAIDA0",
-    "status": "dud",
-    "message": "Parameters: Some or all input parameters are not valid.",
-    "version": "2019-05-02",
-    "time": "2019-05-06 00:07:56"
-}
-```
-Response if the coin is not authenticated
-```json
-{
-    "server": "RAIDA0",
-    "status": "fail",
-    "message": "Counterfeit: The unit failed to authenticate on this server.",
-    "version": "2019-05-02",
-    "time": "2019-05-06 00:09:31",
-    "nn": "1",
-    "sn": "5"
-}
-```
-For historical reasons the 'detect' service supports the b= parameter (which can be either 't' or 'true').
-This denotes the so-called 'brief' mode. It means that the response is a single word 'pass' or 'fail'.
-
-
-----------------------------------------------
-<!--
+--------------------------------------
 ## RAIDA 'Multi-Detect' Service
 
 The RAIDA Multi Detection Protocol allows many coins to be authenticated at the same time. 
@@ -355,78 +252,8 @@ Response if input arrays are not the same length
 
 ----------------------------------------------
 
-## RAIDA Multi-Ticket Protocol
 
-The RAIDA Multi Ticket Protocol allows many tickets to be generated at the same time.
-
-Example POST requesting three tickets
-
-```
-Usage: https://RAIDA13.CloudCoin.Global/service/multi_ticket
-nns[]=1&nns[]=1&nns[]=1&
-sns[]=145895&sns[]=66585&sns[]=16589554&
-ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
-pans[]=c7bea382188d404d8f0efc5969c54c5a&pans[]=75819e4721cb4970a2e2582d7e26318b&pans[]=0a4a8a4014264cbf8c00383ae180a152&
-denomination[]=1&denomination[]=1&denomination[]=1
-Example Response if all tickets were successful:
-
-[
-  {
-  "server": "RAIDA13",
-		"status": "ticket",
-		"sn": "145895",
-		"version": "2018-04-01",
-		"message": "10be9309a4c3f193f1304ffc4344822c10be9309a4c3",
-		"time": "2018-09-05 06:19:34"
-	},
-	{
-		"server": "RAIDA13",
-		"status": "ticket",
-		"sn": "66585",
-		"version": "2018-04-01",
-		"message": "304ffc434482210be9309a4c3f193f1c10be9309a4c3",
-		"time": "2018-09-05 06:19:34"
-	},
-	{
-		"server": "RAIDA13",
-		"status": "ticket",
-		"sn": "16589554",
-		"version": "2018-04-01",
-		"message": "4c3f193f1304f10be9309afc4344822c10be9309a4c3",
-		"time": "2018-09-05 06:19:34"
-	}
-]
-```
-Example Response if all tickets failed:
-```json
-[{
-		"server": "RAIDA13",
-		"status": "fail",
-		"version": "2018-04-01",
-		"message" : "Database: Operation failed. Ticket has not been created.",
-		"time": "2018-09-05 06:19:34"
-	},
-	{
-		"server": "RAIDA13",
-		"status": "fail",
-		"version": "2018-04-01",
-		"message" : "Database: Operation failed. Ticket has not been created.",
-		"time": "2018-09-05 06:19:34"
-	},
-	{
-		"server": "RAIDA13",
-		"status": "fail",
-		"version": "2018-04-01",
-		"message" : "Database: Operation failed. Ticket has not been created.",
-		"time": "2018-09-05 06:19:34"
-	}
-]
-
-```
--->
-----------------------------------------------
-
-## RAIDA Hints Protocol
+## Hints
 
 Hints is part of the Kerberos system that allow you to see what serial number is associated with a ticket. I allows you to confirm an identity of a person who is making a request.
 
@@ -449,41 +276,8 @@ These are the serial numbers of the coins that match that master ticket.
 
 
 ----------------------------------------------
-<!--
 
-## RAIDA Multi-Hints Protocol
-
-Hints is part of the Kerberos system that allow you to see what serial number is associated with a ticket. I allows you to confirm an identity of a person who is making a request.
-
-Someone gives you a ticket claiming to be SN 2092. You send the ticket to the RAIDA. The RAIDA will response with either
-
-1. The serial number that you can use to check the cliam. e.g. 2092 
-
-2. A ticket not found code: -2
-
-3. A database error code: -3
-
-
-Example POST authenticating three coins
-```
-https://RAIDA0.CloudCoin.Global/service/multi_hints
-rns[]=c8b7a96e7cf1961587977cfb3847b2ba7c7a308a3fd2&rns[]=61fd09083302bb3eb8350dfeb1d7bf6c125b13e560bf&rns[]=dcea173685e387f7007bf2e578917cbdd10750088c29
-```
-The rns are the tickets that the client received from a multi-ticket response. 
-
-Example Response if two of the three tickets are failed:
-```html
-[ -2:9223372036854775807:1, 16777215:232:1, 2092:6447:1]
-```
-The above response shows the results of three tickets.
-The first one shows that the ticket was not found and the time it took was max and the network was 1.
-The second response shows that the ticket belongs to SN 16777215 and it was made 232 milliseconds ago. It was on network 1. 
-
-
-
-----------------------------------------------
--->
-## RAIDA Fix Protocol
+## Fix
 
 Fix allows you to fix many CloudCoins that are fracked at once. You will need to get master tickets from any five of the fracked coin's neighbours.   Suppose you get a coin and pown it. All RAIDA return "allpass" and a each one provides a master ticket. Except for RAIDA 18. RAIDA 18 returns "allfail".  Now you must fix RAIDA 18. You then find out which RAIDA are RAIDA18's trusted neighbours. You will need four. Each RAIDA has four groups of trusted neighbours called "Corners". 
 
@@ -696,109 +490,9 @@ pp....[uenf]...ppp
 p.p..p[uenf]p..p..
 ```
 
-
-<!--
-## RAIDA Multi Fix Protocol
-
-The RAIDA Multi Fix Protocol allows many coins with the same fracked RAIDA# to be fixed using the same "Corner" at the same. All the coins must be on the same network.
-
-![Image of Trusted Servers](https://cloudcoinconsortium.org/images/fix2.png)
-
-This protocol only works with the "Four-Fix" protocol in which three trusted raida on one corner and one trusted raida on the oposite corner are required to fix. 
-
-The client would first scan the fracked folder and find all the CloudCoins that are fracked on RAIDA0.
-
-Then the client would collect multi-tickets from RAIDA0's four trusted servers (using the  fix 4 - not fix 3 - protocol) for corner one. The essential requirement here is that client must generate multi_ticket requests using the same order of SNs across all four servers.
-
-After the fix attempt, the CloudCoin files would be updated. Then RAIDA would be checked again. If there are still fracked coins then the client would try again this time using corner #2. Only after all the Coins are fixed on RAIDA0 or all the corners have been tried, the client move on to RAIDA1. This process would repeat until all 25 RAIDA have been tried. 
-
-Then the process would be reversed as some of the recently fixed RAIDA may be able to aid in fixing others.  
-
-
-Example POST authenticating three coins
-```
-https://RAIDA0.CloudCoin.Global/service/multi_fix
-
-nn[]=1
-
-fromserver1[]=19 
-fromserver2[]=20
-fromserver3[]=24
-fromserver4[]=6
-
-message1[]=cdd8a04b46b2484aa2b02d3d2279216009cf35f63632
-message1[]=4aa2b02d3d2279216009cfcdd8a0835f636324b46b24 
-message1[]=2b02d34aad2279216004b46b24835f6363209cfcdd8a
-
-message2[]=4aa216009cfcdd8a04b46b24835f636322b02d3d2279
-message2[]=3d227924aa2b02d16009cfcdd8a04b46b24835f63632
-message2[]=4aa2b02d16009cfcdd8ad2279224835f6363204b46b3
-
-message3[]=5f63634aa2b02d3d2279216009cfcdd8a04b46b24835
-message3[]=2b02d34aad6009cfcdd8a04b46b24835f63632227921
-message3[]=4aa2b02d3d2279216009cfcdd8a04b46b24835f63632
-
-message4[]=d2272b02d3009cfcdd8a04b46b24835f6363292164aa
-message4[]=a04b46b2d3d22fcdd824835f6363279216009c4aa2b0
-message4[]=fcdd8a04b46b24835f636324aa2b02d3d2279216009c
-
-pans[]=8ae06de0f9ce4917b3309df71570f92c
-pans[]=b25fc7a548c341c98cefbac35689aff1
-pans[]=f193f1304ffc4344822c10be9309a4c3
-```
-
-RESPONSE:
-```
-[{
-  "server":"RAIDA19",
-  "status":"success",
-  "sn":"145895",
-  "nn":"1",
-  "message":"Fixed: Unit's AN was changed to the PAN. Update your AN to the new PAN.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA19",
-  "status":"success",
-  "sn":"66585",
-  "nn":"1",
-  "message":"Fixed: Unit's AN was changed to the PAN. Update your AN to the new PAN.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA19",
-  "status":"error",
-  "sn":"16589554",
-  "nn":"1",
-  "message":"Connection: Could not connect to Server 11.",
-  "time":"2016-44-19 7:44:PM"
-}]
-```
-
-RESPONSE IF TOO MANY COINS SENT (OVER 400)
-```
-{
-  "server":"RAIDA19",
-  "status":"dud",
-  "message":"Length: Too many coins attached.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF ARRAY LENGTHS NOT THE SAME
-```
-{
-  "server":"RAIDA19",
-  "status":"dud",
-  "message":"Length: Arrays not all the same length (nn,sn,an,denominations).",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
--->
 ----------------------------------------------
 
-## RAIDA 'fix_lost' Service
+## Fix Lost
 
 The RAIDA Fix Lost Protocol allows many coins that are considered lost to be found.
 A lost coin is created when a coin is detected but there is no response from the RAIDA. 
@@ -878,3 +572,4 @@ Response if input arrays are not the same length
 ]
 ```
 
+## Recover
