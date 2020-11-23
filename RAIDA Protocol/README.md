@@ -172,7 +172,7 @@ The status will always be ready otherwise it will return an error. See General E
 The subject of the echo response will always be "Up" and the details will always be "Detection agent ready to detect authenticity." otherwise it will return an error. See General Errors.
 The time is in GMT.
 --------------------------------------
-## RAIDA 'Multi-Detect' Service
+## Multi Detect
 
 The RAIDA Multi Detection Protocol allows many coins to be authenticated at the same time. 
 The multi-detect service also returns a "Master Ticket" that can be used to fix any coins that
