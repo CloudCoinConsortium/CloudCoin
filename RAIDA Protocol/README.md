@@ -2,7 +2,6 @@
 
 Explains how to send messages to the Redundant Array of Independent Detection Agents and the responses that can be expected.
 You will need to send messages to all 25 RAIDA in parallel. 
-### Notes: 
 
 [RAIDA Requirments](README.md#raida-requirments)
 
@@ -10,30 +9,16 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 ### Services:
 
-#### Authentication of Coins
+[Echo](README.md#echo)
 
 [Multi-Detect](README.md#raida-multi-detect-service)
 
-#### Synchronizing RAIDA
-<!--
-[Multi-Ticket](README.md#raida-multi-ticket-protocol)
--->
-[Hints](README.md#raida-hints-protocol)
-<!--
-[Multi-Hints](README.md#raida-multi-hints-protocol)
--->
-[Fix](README.md#raida-fix-protocol)
-<!--
-[Multi Fix](README.md#raida-multi-fix-protocol)
--->
-[Fix Lost](README.md#raida-fix_lost-service)
+[Hints](README.md#hints)
 
-#### Utilities
+[Fix](README.md#fix)
 
-[Echo](README.md#echo-service)
-<!--
-[Echo DA](README.md#echo-da-service)
--->
+[Fix Lost](README.md#fix_lost)
+
 [Report Lost](README.md#report-lost) 
 
 [Recover](README.md#recover) 
@@ -152,7 +137,7 @@ Every response has a 'status' field. Generally, three statuses are common and ob
 
 ----------------------------------------------
 
-## Echo Service
+## Echo
 
 ### Purpose:
 The purpose of the echo API is to allow a program (or user) to establish that a RAIDA is ready to detect the authenticity of CloudCoins and how many milliseconds the contact requires.
