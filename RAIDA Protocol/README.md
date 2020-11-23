@@ -17,7 +17,7 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 [Fix](README.md#fix)
 
-[Fix Lost](README.md#fix_lost)
+[Fix Lost](README.md#fix-lost)
 
 [Report Lost](README.md#report-lost) 
 
