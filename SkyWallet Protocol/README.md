@@ -229,7 +229,9 @@ RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
 
 ## SendAgain
 
-The Send Again solves a problem cased when a client sends a send request to the RAIDA but receives no response. Then it becomes uncertain if the coin has been sent or not. This service allows the client that has sent a RAIDA a send request but received no response the ability to try to send again. But, the send again request must be made within one hour of the original send request. 
+The Send Again solves a problem cased when a client sends a send request to the RAIDA but receives no response 'n'. Then it becomes uncertain if the coin has been sent or not. This service allows the client that has sent a RAIDA a send request but received no response the ability to try to send again. But, the send again request must be made within one hour of the original send request. 
+
+So, if you send some coins to a skywallet address and you do not get any response from a RAIDA. Send the same information to "SendAgain" and it may fix the failed send. 
 
 
 This will "fix" a coin that has not been fully sent to the RAIDA. The sending parameters are the same and the response is the same. See the send service for the request and response examples.  
@@ -353,7 +355,7 @@ Each coin will be listed so that the person will know what they have.
 
 Example GET asking to see all the coins they own in the transfer file. 
 ```
-https://s0.teleportnow.cc/service/show_coins_in_envelope?nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1&envelope_name=8rie
+https://raida1.cloudcoin.global/service/show_coins_with_tag?nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1&envelope_name=8rie
 
 ```
 
@@ -416,105 +418,13 @@ This service shows how many coins an account has in the Skywallet.
 
 It has three modes:
 ```
-1. Default: Very data intesive and shows the tag, sn and creation time of all coins. 
-2. Breif mode. Sends serial numbers seperated with commas. b=t
-3. Content mode. Returns information that would be handy to diplay the contents of a Skywallet including
+1. Breif mode. Sends serial numbers seperated with commas. b=t
+2. Content mode. Returns information that would be handy to diplay the contents of a Skywallet including
 the number of each denomination. The total value of the coins, The envelopes and how many 
 coins each envelop has. The date of creation of each envelope. 
 ```
 
 "tag" must not start or end with any white space character and must use only UTF-8 characters. 
-
-Example GET asking to see all the coins they own in the transfer file. 
-```
-https://s0.teleportnow.cc/service/show?nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1
-```
-
-RESPONSE SHOWING THAT THERE ARE TWO COINS OWNED IN THE TRANSFER TABLE:
-```
-{
-    "server": "RAIDA0",
-    "status": "pass",
-    "message": [
-        {
-            "sn": "11",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559780031"
-        },
-        {
-            "sn": "12",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559780326"
-        },
-        {
-            "sn": "13",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559780351"
-        },
-        {
-            "sn": "14",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559780351"
-        },
-        {
-            "sn": "15",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559780351"
-        },
-        {
-            "sn": "16",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559780351"
-        },
-        {
-            "sn": "17",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559784415"
-        },
-        {
-            "sn": "18",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559785124"
-        },
-        {
-            "sn": "19",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559785224"
-        },
-        {
-            "sn": "20",
-            "tag": "q1w2e3r4 asdasda asdasdf",
-            "created": "1559785553"
-        }
-    ],
-    "time": "2019-06-13 05:27:35",
-    "nn": "1",
-    "sn": "21"
-}
-
-```
-
-
-
-RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Parameters: The request requires you to supply the id_sn, id_nn and id_ans parameters."
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF ACCOUNT DID NOT LOG IN CORRECTLY
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"Login: Authenticity Number was incorrect for the Serial Number .",
-  "time":"2016-44-19 7:44:PM"
-}
-```
 
 Example GET in brief mode. 
 ```
@@ -528,7 +438,7 @@ Example Response for brief mode:
 
 Example GET for content mode. 
 ```
-https://s0.teleportnow.cc/service/show?content=t&nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1
+https://raida12.cloudcoin.global/service/show?content=t&nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1
 ```
 Example Response for content mode:
 ```json
@@ -665,21 +575,20 @@ The fix_transfer service allows you to fix a raida that is not synced with the o
 
 rules: 
 
-This service is unique because it is "fire and forget". It will not return anything except that it received the request. The client must call a service again to see if it worked. This makes this service a curtessy. 
-
 "sn[]" must be a number between 1 and 16,777,215 because it is the serial number of a CloudCoin that a user must own in order to retrieve the coins. 
 
-The maximum coins you can send are 1000. 
+The maximum coins you can send are 2000. 
 
-EXAMPLE GET REQUESTING 
+EXAMPLE POST REQUESTING 
 ```
-    https://raida11.cloudcoin.global/service/sync/fix_transfer?sn[]=145895&sn[]=66585&sn[]=16589554&corner=2
+    https://raida11.cloudcoin.global/service/sync/fix_transfer?
+    sn[]=145895&sn[]=66585&sn[]=16589554
     
  ```
 
-EXAMPLE RESPONSE (Does not tell you if the work was successful or not)
+EXAMPLE RESPONSE (You will just receive one word: done)
 ```
-    THERE WILL BE NO RESPONSE. THis is a fire and forget protocol. 
+    done 
 
 ```
 
@@ -710,7 +619,7 @@ $pan = md5($seed2);
 
 Example POST asking for specific CloudCoins
 ```
-https://s0.teleportnow.cc/service/recieve?
+https://raida1.cloudcoin.global/service/recieve?
 b=t&
 sn=1&
 an=1836843d920000000000000000000000&
@@ -810,7 +719,8 @@ $pan = md5($seed2);
 Example GET asking for specific Envelope
 ```
 https://s0.teleportnow.cc/service/recieve_envelope?
-sn=1&
+sn=1655522&
+1n=1&
 an=1836843d920000000000000000000000&
 tag=c52b9df4d8dfa33f0a08bfcabde8f98e&
 pang=ca1219e1f52b4ca783ada28df55e8d6d
@@ -903,33 +813,35 @@ tag=8d0caf3
 ```
 
 
-RESPONSE IF GOOD:
+RESPONSE IF ALL COINS WERE TRANSFERED:
 ```
-[{
-  "server":"RAIDA1",
-  "status":"transfered",
-  "sn":"16777214",
-  "nn":"1",
-  "message":"transfered: This coin has been sent to the address you specified.",
-  "time":"2016-44-19 7:44:PM"
-},
 {
   "server":"RAIDA1",
-  "status":"transfered",
-  "sn":"16777215",
-  "nn":"1",
-  "message":"Authentic: 1-unit. Your coins have been sent to the address you specified.",
+  "status":"allpass",
+  "message":"All coins were transfered.",
   "time":"2016-44-19 7:44:PM"
-},
+}
+```
+RESPONSE IF ALL COINS WERE NOT TRANSFERED:
+```
 {
   "server":"RAIDA1",
-  "status":"fail",
-  "sn":"16777216",
-  "nn":"1",
-  "message":"Nonexistant: The serial Number does not belong to id given.",
+  "status":"allfail",
+  "message":"All coins failed to transfer.",
   "time":"2016-44-19 7:44:PM"
-}]
+}
 ```
+RESPONSE IF SOME COINS WERE TRANSFERED:
+```
+{
+  "server":"RAIDA1",
+  "status":"mixed",
+  "message":"pass,fail,fail,pass,pass",
+  "time":"2016-44-19 7:44:PM"
+}
+
+```
+
 
 RESPONSE IF TOO MANY COINS SENT (OVER 400)
 ```
@@ -983,377 +895,6 @@ RESPONSE IF ACCOUNT DID NOT LOG IN CORRECTLY
   "time":"2016-44-19 7:44:PM"
 }
 ```
-
-## VerifyPayment
-
-Verify Payment allows a merchant to see if a payment was recieved, make sure the correct amount was recieved, move that payment to another envelope and provide change if needed. The merchant must have 
-a special "change" envelope to issue change. 
-
-payment_envelope is the tag that the sender has used when he sent money to the merchant. 
-
-payment_expected is the number of CloudCoins that the sender was suppose to send. The merchant will check to see if the actual payment from the sender was correct. 
-
-return_to_sn is the address that any change or refundes should be sent to. If the sender does not send enough money, they will get their money back at this account. If the
-sender sends too much money then they will get the change back at this account. 
-
-storage_envelope is the place that the senders payment will be moved to. This is done by renaming the envelope. 
-
-Example GET asking to change the name of an tag or envelope. 
-```
-https://s0.teleportnow.cc/service/rename_tag?
----ID COIN---
-nn=1&
-sn=1&
-an=1836843d928347fb22c2142b49d772b5&
-pan=1836843d928347fb22c2142b49d772b5&
-denomination=1&
----Payment Information---
-tag=1Z 999 AA1 01 2345 6784&
-new_tag=6892ed132f8741a6ab1332eb5a4543ec
-total_expected=33
-refund_sn=16555897
-
-
-```
-
-
-RESPONSE IF GOOD WITH NO CHANGE RETURNED:
-```
-{
-  "server":"RAIDA1",
-  "status":"verified",
-  "message":"The coins in the payment envelope are now in the storage envelope. The payment envelope has been removed.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF GOOD WITH CHANGE RETURNED:
-```
-{
-  "server":"RAIDA1",
-  "status":"verified",
-  "message":"The coins in the payment envelope are now in the storage envelope. The payment envelope has been removed. Change was returned.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-
-RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"The request requires you to supply the sn, nn, an, pan, deonomination, payment_envelope, payment_expected, return_to_sn and storage_envelope parameters."
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF ACCOUNT DID NOT LOG IN CORRECTLY
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"Login: Authenticity Number was incorrect for the Serial Number .",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-RESPONSE IF PAYMENT ENVELOPE HAD LESS THAN THE EXPECTED AMOUNT
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"$payment_expected Coins were expected but only $coin_count were supplied",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF PAYMENT ENVELOPE HAD MORE THAN THE EXPECTED AMOUNT AND COULD NOT MAKE CHANGE
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"$payment_expected Coins were expected but $coin_count were supplied. Cannot make change",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-<!--
-## SendWithChange
-This service allows you to send money from your account to another and make change if needed. 
-
-This service requires an account that has a "public_change" envelope. Account SN 2 has a public_change envelope but any account could allow for one. 
-
-The sender sends a note such as 250 to the public change agent. 
-
-The public change agent breaks the 250 as specifeid and sends some to the payee and the rest back to the sender's account as change. 
-
-
-The Send allows many coins to be authenticated at the same time but their PANs are generated by the RAIDA instead of the owner. 
-This allows CloudCoins to be transfered from person to person with no powning necessary.
-
-rules: 
-"to_sn" must be a number between 1 and 16,777,215 because it is the serial number of a CloudCoin that a user must own in order to retrieve the coins. 
-
-"envelope_name" must not start or end with any white space character and must use only UTF-8 characters. All the Characters must be English Alphanumeric. 
-
-
-EXAMPLE POST SENDING THREE COINS TO SN 16225354
-```
-    https://s0.teleportnow.cc/service/send_with_change
-    nn=1&
-    sns[]=145895&sns[]=66585&sns[]=16589554&
-    ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
-    denomination[]=250&denomination[]=1&denomination[]=250&
-    public_change_maker=16225354&
-    send_to_sn=9225362&
-    amount_sent=250
-    payment_required=33
-    payment_envelope=7URE
-    return_to_sn=16555897
-
-```
-
-RESPONSE IF SUCCESS:
-```
-[{
-  "server":"RAIDA1",
-  "status":"pass",
-  "sn":"66585",
-  "nn":"1",
-  "message":"Authentic: 1-unit. Your coins have been sent to the address you specified.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA1",
-  "status":"pass",
-  "sn":"66586",
-  "nn":"1",
-  "message":"Authentic: 1-unit. Your coins have been sent to the address you specified.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA1",
-  "status":"pass",
-  "sn":"16589554",
-  "nn":"1",
-  "message":"Authentic: 250-unit. Your coins have been sent to the address you specified.",
-  "time":"2016-44-19 7:44:PM"
-}]
-```
-
-RESPONSE IF TOO MANY COINS SENT (OVER 400)
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Length: Too many coins attached.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF ARRAY LENGTHS NOT THE SAME
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Length: Arrays not all the same length (nn,sn,an,denominations).",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Parameters: The request requires you to supply the com_broker,
-to_account_name_or_number, total_to_send and change_to_account_name_or_number."
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"sns: no sns can be the same as to_sn"
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-<!--
-
-## TransferWithChange
-
-Example POST asking to transfer 3 CloudCoin notes to user 9225362
-
-
-```
-https://s0.teleportnow.cc/service/receive?
----ID---
-nn=1&
-sn=16777216&
-an=8ae06de0f9ce4917b3309df71570f92c&
-pan=8ae06de0f9ce4917b3309df71570f92c&
-denomination=1&
----Coins to Send---
-nn=1&
-sns[]16777214&
-sns[]8245591&
-sns[]1366648&
----Instructions---
-public_change_maker=16225354&
-send_to_sn=9225362&
-payment_required=251
-payment_envelope=A8UP
-```
-
-RESPONSE IF SUCCESS:
-```
-{
-  "server":"RAIDA1",
-  "status":"transfered",
-  "message":"Your coins have been transfered to the address you specified. Change was returned.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF VALUE OF CLOUDCOINS TRANSFERED IS LESS THAN PAYMENT REQUIRED
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"Transferd coins were less than the coins required.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF CHANGE MAKER IS NOT A CHANGE MAKER
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"change_maker is not a Change Maker.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-
-RESPONSE IF CHANGE SERVER WILL CAN NOT MAKE CHANGE
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"Change maker does not have enough change to make change.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-
-RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED (One for each parameter)
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"The request requires you to supply the payment_envelope parameter."
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF ANY OF THE sns ARE THE SAME AS THE to_sn
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"Attempt to send sns[] cannot be done because it is the user's ID sn"
-  "time":"2016-44-19 7:44:PM"
-}
-```
--->
-
-
-
-## DonateToRAIDA
-Not Implement yet. Not on development schedule.  
-
-This allows people to donate CloudCoins to pay the costs of running the servers. 
-
-People can donate as much as 400 coins. 
-
-There is a folder on the RAIDA called the "Donations" folder. 
-
-Example POST donating three coins to the RAIDA  
-```
-https://s0.teleportnow.cc/service/donate_to_raida
-nns[]=1&nns[]=1&nns[]=1&
-sns[]=145895&sns[]=66585&sns[]=16589554&
-ans[]=8ae06de0f9ce4917b3309df71570f92c&ans[]=b25fc7a548c341c98cefbac35689aff1&ans[]=f193f1304ffc4344822c10be9309a4c3&
-denomination[]=250&denomination[]=1&denomination[]=250&
-
-
-```
-
-RESPONSE:
-```
-[{
-  "server":"RAIDA1",
-  "status":"pass",
-  "sn":"145895",
-  "nn":"1",
-  "message":"Authentic: 1-unit. Your coins have been donated.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA1",
-  "status":"pass",
-  "sn":"66585",
-  "nn":"1",
-  "message":"Authentic: 1-unit. Your coins have been donated.",
-  "time":"2016-44-19 7:44:PM"
-},
-{
-  "server":"RAIDA1",
-  "status":"pass",
-  "sn":"16589554",
-  "nn":"1",
-  "message":"Authentic: 250-unit. Your coins have been donated.",
-  "time":"2016-44-19 7:44:PM"
-}]
-```
-
-RESPONSE IF TOO MANY COINS SENT (OVER 400)
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Length: Too many coins attached.",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF ARRAY LENGTHS NOT THE SAME
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Length: Arrays not all the same length (nn,sn,an,denominations).",
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
-RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
-```
-{
-  "server":"RAIDA1",
-  "status":"dud",
-  "message":"Parameters: The request requires nns[],sns[], ans[] and denomination[]."
-  "time":"2016-44-19 7:44:PM"
-}
-```
-
--->
-
 ## ShowChange
 
 ShowChange service returns the serial numbers of CloudCoins that are the specified account's "public_change" folder.
@@ -1382,7 +923,7 @@ RESPONSE IF THE RESPONSE WAS GOOD:
   "5s":[8230602,8675880,6192311,...show as many as ten ... 15169770],
   "1s":[230602,675880,192311,...show as many as ten ... 15169770],
   "message":"Change:This report shows the serial numbers that are available to make change now.",
-  "version":"some version number here",//Optional 
+  "version":"some version number here",
   "time":"2016-44-19 7:44:PM"
 }
 ```
