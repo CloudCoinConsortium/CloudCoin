@@ -22,7 +22,7 @@ You will need to send messages to all 25 RAIDA in parallel.
 -----------------------------------------
 
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Echo 
+# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Echo 
 ### Purpose:
 The purpose of the echo API is to allow a program (or user) to establish that a RAIDA is ready to detect the authenticity of CloudCoins and how many milliseconds the contact requires.
 
@@ -148,7 +148,7 @@ These are the serial numbers of the coins that match that master ticket.
 
 ----------------------------------------------
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Fix
+# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Fix
 
 Fix allows you to fix many CloudCoins that are fracked at once. You will need to get master tickets from any five of the fracked coin's neighbours.   Suppose you get a coin and pown it. All RAIDA return "allpass" and a each one provides a master ticket. Except for RAIDA 18. RAIDA 18 returns "allfail".  Now you must fix RAIDA 18. You then find out which RAIDA are RAIDA18's trusted neighbours. You will need five that have tickets. 
 
@@ -248,7 +248,7 @@ If some of the coins were counterfeit and other authentic:
  ```       
 ----------------------------------------------
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)  Fix Lost
+# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Fix Lost
 
 The RAIDA Fix Lost Protocol allows many coins that are considered lost to be found.
 A lost coin is created when a coin is detected but there is no response from the RAIDA. 
@@ -328,6 +328,6 @@ Response if input arrays are not the same length
 ]
 ```
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)  Report Lost
+# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Report Lost
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Recover
+# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Recover
