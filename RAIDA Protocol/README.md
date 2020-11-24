@@ -7,7 +7,7 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 [Echo](README.md#echo)
 
-[Multi-Detect](README.md#multi-detect)
+[Multi Detect](README.md#multi-detect)
 
 [Hints](README.md#hints)
 
@@ -48,13 +48,6 @@ Echo Response Example:
 ```
 The execution time is the number of milliseconds that the RAIDA needed to complete a detection request of six loop back coins. This tells us how well the RAIDA is performing internally. 
 
-### Rules:
-The RAIDA may not respond if it is unavailable.
-All Return Objects' key values are case in-sensitive and should be compared accordingly.
-The names of the servers on Network 1 will always be one of 25 servers: RAIDA0 through RAIDA24. Note: server names are case-insensitive and should be compared accordingly.
-The status will always be ready otherwise it will return an error. See General Errors.
-The subject of the echo response will always be "Up" and the details will always be "Detection agent ready to detect authenticity." otherwise it will return an error. See General Errors.
-The time is in GMT.
 --------------------------------------
 # ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Multi Detect
 
@@ -178,7 +171,8 @@ https://RAIDA0.CloudCoin.Global/service/fix?
 The first thing you will need to do is calculate the regex parameter. The regex parameter tells the RAIDA which five of its neighbors you have collected tickets from. Each RAIDA has eight neighbours that it will accept tickets from. Here is a table of the neighbors that a RAIDA will accept tickets from: 
 
 | -6 | -5 | -4 | -1 | 0  | +1 | +4 | +5 | +6 |
-
+|----|----|----|----|----|----|----|----|----|
+|    |    |    |    |    |    |    |    |    |
 
 The zero represnts the ID of the RAIDA being fixed and the other numbers represent the relation of the trusted RAIDA to the fracked RAIDA. Suppose that RAIDA 12 is fracked. Then we will put RAIDA 12 in the zero poistion and we can calculate the trusted neighbors to be: 
 | -6 | -5 | -4 | -1 | 0  | +1 | +4 | +5 | +6 |
@@ -194,7 +188,7 @@ Now we need to collect tickets from five neighbours. Suppose we get the tickets 
 Then we lay this out in serial it looks like this: 
 ```
 regex=p.pp0p..p
-``
+```
 
 Suppose we want to fix a fracked RAIDA 1. Our Neighbours look like this: 
 | -6 | -5 | -4 | -1 | 0  | +1 | +4 | +5 | +6 |
