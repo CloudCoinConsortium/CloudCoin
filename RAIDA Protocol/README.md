@@ -49,7 +49,7 @@ Echo Response Example:
 The execution time is the number of milliseconds that the RAIDA needed to complete a detection request of six loop back coins. This tells us how well the RAIDA is performing internally. 
 
 --------------------------------------
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Multi Detect
+# ![#15f03c](https://via.placeholder.com/15/15f03c/000000?text=+)Multi Detect
 
 The RAIDA Multi Detection Protocol allows many coins to be authenticated at the same time and returns tickets that can be used to fix fracked coins. See the fix service to
 know how to use this ticket. 
@@ -127,7 +127,7 @@ Response if input arrays are not the same length
 
 ----------------------------------------------
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Hints
+# ![#3c15f0](https://via.placeholder.com/15/3c15f0/000000?text=+)Hints
 
 Hints is used to confirm an identity of a person, process or program that owns a CloudCoin. It allows all systems to use the RAIDA as a single signin point.  
 
@@ -148,7 +148,7 @@ These are the serial numbers of the coins that match that master ticket.
 
 ----------------------------------------------
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Fix
+# ![#f0153c](https://via.placeholder.com/15/f0153c/000000?text=+)Fix
 
 Fix allows you to fix many CloudCoins that are fracked at once. You will need to get master tickets from any five of the fracked coin's neighbours.   Suppose you get a coin and pown it. All RAIDA return "allpass" and a each one provides a master ticket. Except for RAIDA 18. RAIDA 18 returns "allfail".  Now you must fix RAIDA 18. You then find out which RAIDA are RAIDA18's trusted neighbours. You will need five that have tickets. 
 
@@ -248,7 +248,7 @@ If some of the coins were counterfeit and other authentic:
  ```       
 ----------------------------------------------
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Fix Lost
+# ![#f0ff15](https://via.placeholder.com/15/f0ff15/000000?text=+)Fix Lost
 
 The RAIDA Fix Lost Protocol allows many coins that are considered lost to be found.
 A lost coin is created when a coin is detected but there is no response from the RAIDA. 
@@ -261,18 +261,18 @@ a status of "Neither"
 Example **POST** authenticating three coins
 ```
 https://RAIDA0.CloudCoin.Global/service/fix_lost
-  nn=1& \
-  sns[]=1& \
-  sns[]=3& \
-  sns[]=7& \
-  ans[]=9656ab1c988bc5347e5a5d331e3da401& \
-  ans[]=1808b37cd2d72a0e2dd2675e3fb42b02& \
-  ans[]=83492f468a0e4a21cb8b2aa2a94d640& \
-  pans[]=9656ab1c988bc5347e5a5d331e3da401& \
-  pans[]=1808b37cd2d72a0e2dd2675e3fb42b03& \
-  pans[]=83492f468a0e4a21cb8b2aa2a94d6407& \
-  denomination[]=1& \
-  denomination[]=1& \
+  nn=1& 
+  sns[]=1& 
+  sns[]=3& 
+  sns[]=7& 
+  ans[]=9656ab1c988bc5347e5a5d331e3da401& 
+  ans[]=1808b37cd2d72a0e2dd2675e3fb42b02& 
+  ans[]=83492f468a0e4a21cb8b2aa2a94d640& 
+  pans[]=9656ab1c988bc5347e5a5d331e3da401& 
+  pans[]=1808b37cd2d72a0e2dd2675e3fb42b03& 
+  pans[]=83492f468a0e4a21cb8b2aa2a94d6407& 
+  denomination[]=1& 
+  denomination[]=1& 
   denomination[]=1
 ```
 Example response (the second coin failed, the third one has an error in AN):
@@ -329,5 +329,64 @@ Response if input arrays are not the same length
 ```
 
 # ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Report Lost
+Tells the RAIDA that the person lost some CloudCoins. Will allow the user to recover them after five years. 
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Recover
+Exmple of a request: 
+```
+https://raida7.cloudcoin.global/service/report_lost?address=Sean@Worthington.net&lost_sn=555&lost_sn=556&date_lost=2019-12-30
+```
+
+# ![#f03c00](https://via.placeholder.com/15/f03c00/000000?text=+)Recover
+Allows people who embedded a hash of their email address into an AN to recover that coin. The ANs will be sent to the user's email.
+
+Example of a call:
+```
+https://raida7.cloudcoin.global/service/recover_by_email
+```
+### PARAMETERS:
+nn: Network Number. All coins must be on the same network.
+sn: Payment Coin Serial Number between 1 and 16,777,216 inclusive
+an: Payment coin Authenticity Number that is a guid without hypends. Lowercase prefered.
+sns[] Array of lost coins.
+email: The email whose hash has been enbedded in the last quarter of the AN.  
+
+Example GET authenticating three coins
+```
+http://localhost/service/lost/recover_by_email?/service/recover_by_email?
+	nn=1&
+	sn=145895&
+	an=8ae06de0f9ce4917b3309df71570f92c&
+	sns[]=145895&sns[]=66585&sns[]=16589554&
+	email=sean@worthington.net&
+	raida=17
+```        
+RESPONSE:
+```
+If all the coins were authentic:
+            {
+				"server":"raida18",
+				"status":"success",
+				"message":"Payment coin was authentic. Your coins may or may not have been recovered. Check the email you specified.",
+				"version":"2020-02-13",
+				"time":"2020-05-10 05:27:09",
+				"ex_time":0.012834787368774414
+			}
+	If all the payment coin was counterfeit:
+            {
+				"server":"raida18",
+				"status":"fail",
+				"message":"Payment Coin was counterfeit ",
+				"version":"2020-02-13",
+				"time":"2020-05-10 04:20:40",
+				"ex_time":0.0022242069244384766
+			}
+        
+	If all the coins were counterfeit:
+             {
+             	"server": "RAIDA11",
+             	"status": "fail",
+             	"message": "missing parameters",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55"
+             }
+```
