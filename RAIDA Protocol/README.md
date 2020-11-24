@@ -49,7 +49,7 @@ Echo Response Example:
 The execution time is the number of milliseconds that the RAIDA needed to complete a detection request of six loop back coins. This tells us how well the RAIDA is performing internally. 
 
 --------------------------------------
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Multi Detect
+# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Multi Detect
 
 The RAIDA Multi Detection Protocol allows many coins to be authenticated at the same time and returns tickets that can be used to fix fracked coins. See the fix service to
 know how to use this ticket. 
@@ -127,7 +127,7 @@ Response if input arrays are not the same length
 
 ----------------------------------------------
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Hints
+# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Hints
 
 Hints is used to confirm an identity of a person, process or program that owns a CloudCoin. It allows all systems to use the RAIDA as a single signin point.  
 
