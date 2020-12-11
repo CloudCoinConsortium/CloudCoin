@@ -56,7 +56,7 @@ know how to use this ticket.
 
 Example **POST** authenticating three coins
 ```
-https://RAIDA13.CloudCoin.Global/service/multi_ticket
+https://RAIDA13.CloudCoin.Global/service/multi_detect
 b=t&
 nn=1&
 sns[]=145895&sns[]=66585&sns[]=16589554&
