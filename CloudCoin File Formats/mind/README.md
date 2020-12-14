@@ -14,7 +14,7 @@ Random number: 452 459 836 515 0000
 
 We will ask the user to give us two passwords that they can remember. We want the passwords to be long and complicated. Minumum of 8 charactes each is good. Let the user have lots of freedom but it is a good idea to see that the passwords are not in the list of 1,000 most used passwords. 
 
-Now we mix the passwords together. The first password's first character is used first and then they are woven together like this: 
+Now we mix the passwords together. The first password's first character is used first and then they are woven together like this: NOTE: text to decimal is done like: https://cryptii.com/pipes/text-decimal
 
 
 ```
