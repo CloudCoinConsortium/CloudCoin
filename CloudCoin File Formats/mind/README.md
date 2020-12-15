@@ -20,7 +20,7 @@ Now we mix the passwords together. The first password's first character is used 
 ```
 Password 1: Million2
 Password 2: BooBooYou
-Weave: MBiololBiooonU2ou
+Weave: Million2BooBooYou
 Decimal: 77 66 105 111 108 111 108 66 105 111 111 111 110 85 50 111 117
 Random number: 776610511110 (First 12 of Decimal)
 ccv: 8111 (13 to 16 of Decimal)
@@ -34,7 +34,7 @@ ccv: 1011 (13 to 16 of Decimal)
 
 Password 1: Football
 Password 2: ChuckBandit3398
-Weave: FCohoutcbkaBlalndit3398
+Weave: FootballChuckBandit3398
 Decimal: 70 67 111 104 111 117 116 99 98 107 97 66 108 97 108 110 100 105 116 51 51 57 56
 Random number: 706711110411 (First 12 of Decimal)
 ccv: 1117 (13 to 16 of Decimal)
