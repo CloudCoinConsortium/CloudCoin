@@ -14,51 +14,26 @@ Random number: 452 459 836 515 0000
 
 We will ask the user to give us two passwords that they can remember. We want the passwords to be long and complicated. Minumum of 8 charactes each is good. Let the user have lots of freedom but it is a good idea to see that the passwords are not in the list of 1,000 most used passwords. 
 
-Now we mix the passwords together. The first password's first character is used first and then they are woven together like this: NOTE: text to decimal is done like: https://cryptii.com/pipes/text-decimal
+Now we concatenate the passwords together. The second password is put on the end of the first password. Then the password text is turned into a decimal number. Conversion to  decimal is done like: https://cryptii.com/pipes/text-decimal
 
 
 ```
 Password 1: Million2
 Password 2: BooBooYou
 Weave: Million2BooBooYou
-Decimal: 77 66 105 111 108 111 108 66 105 111 111 111 110 85 50 111 117
+Decimal: 77 105 108 108 105 111 110 50 66 111 111 66 111 111 89 111 117
 Random number: 776610511110 (First 12 of Decimal)
 ccv: 8111 (13 to 16 of Decimal)
 
-Password 1: OLardy1987
-Password 2: Fink
-Weave: OFLianrkdy1987
-Decimal: 79 70 76 105 97 110 114 107 100 121 49 57 56 55
-Random number: 797076105971 (First 12 of Decimal)
-ccv: 1011 (13 to 16 of Decimal)
-
-Password 1: Football
-Password 2: ChuckBandit3398
-Weave: FootballChuckBandit3398
-Decimal: 70 67 111 104 111 117 116 99 98 107 97 66 108 97 108 110 100 105 116 51 51 57 56
-Random number: 706711110411 (First 12 of Decimal)
-ccv: 1117 (13 to 16 of Decimal)
-
-Password 1: g^8KtDeN
-Password 2: 0Ik$e^RR
-Weave: g0^I8kK$teD^eRNR
-Decimal: 103 48 94 73 56 107 75 36 116 101 68 94 101 82 78 82
-Random number: 103489473561  (First 12 of Decimal)
-Pin/ccv: 0775 (13 to 16 of Decimal)
-```
-
-Now we can use this random number to create a card. 
-
-Example CARD:
-```
-Sean.CloudCoin.Global
-9011 5985 4567 8522
+We add a 901 to the beginning and calculate the last number based on the others. 
+9017 9769 7114 1003
 EXP 09/22
 
 Back of Card:
-CVV 5485
+CVV 1214
 
 ```
+
 
 
 
