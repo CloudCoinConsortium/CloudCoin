@@ -282,6 +282,8 @@ Example response (the second coin failed, the third one has an error in AN):
         "server": "RAIDA0",
         "status": "an",
         "message": "9656ab1c988bc5347e5a5d331e3da401",
+	"nn": "1",
+        "sn": "3"
         "version": "2019-05-02",
         "time": "2019-05-06 00:19:27"
     },
@@ -289,15 +291,18 @@ Example response (the second coin failed, the third one has an error in AN):
         "server": "RAIDA0",
         "status": "pan",
         "message": "1808b37cd2d72a0e2dd2675e3fb42b03",
+	"nn": "1",
+        "sn": "3"
         "version": "2019-05-02",
         "time": "2019-05-06 00:19:27",
-        "nn": "1",
-        "sn": "3"
+
     },
     {
         "server": "RAIDA0",
         "status": "neither",
         "message": "",
+	"nn": "1",
+        "sn": "3"
         "version": "2019-05-02",
         "time": "2019-05-06 00:30:16"
     }
