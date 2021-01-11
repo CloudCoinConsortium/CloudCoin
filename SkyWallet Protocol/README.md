@@ -1054,21 +1054,15 @@ The service will go to the "public_change" envelope for the account spedified an
 EXAMPLE GET SENDS ONE 250 NOTE AND REQUESTS THAT IT IS BROKEN INTO 2 100s and 2 25s. 
 THE COINS TO BE RETURNED ARE SPECIFIED IN THE SNS[] PARAMETERS
 ```
-https://raida7.cloudcoin.global/service/break_in_bank?id_nn=1&id_sn=3939&id_an=98&id_dn=1&nn=1&sn=3000000&dn=5&change_server=2&csn[]=1307917&csn[]=1307918&csn[]=1307939&csn[]=1307952&csn[]=1307953
+https://raida7.cloudcoin.global/service/break_in_bank?id_sn=3939&sn=3000000&dn=5&change_server=2&csn[]=1307917&csn[]=1307918&csn[]=1307939&csn[]=1307952&csn[]=1307953
 
 ```
 
 PARAMETERS
-
-1. id_nn: Network number of the ID coin
-2. id_sn: Serila Number of the ID coin
-3. id_an: Authenticity number of the ID coin
-4. Id_dn: Denomination number of the ID coin
-5. nn: Network number of the coin to be broke
-6. sn: Serila Number of the coin to be broke.
-7. dn: Denomination number of the coin to be broke.
-8. csn[]: Serial Numbers for the coins that will be used as change.
-
+1. id_sn: Serila Number of the ID coin
+2. sn: Serila Number of the coin to be broke.
+3. csn[]: Serial Numbers for the coins that will be used as change.
+4. change_server: The Sn of the account that has a change server that is open to the public. Right now there is one at "2" so use 2 if you do not have another. 
 
 RESPONSE IF SUCCESS BREAKING COIN INTO SEVERAL SMALLER COINS:
 ```
@@ -1081,25 +1075,12 @@ RESPONSE IF SUCCESS BREAKING COIN INTO SEVERAL SMALLER COINS:
  }
 ```
 
-
-RESPONSE IF THE COIN SENT WAS COUNTERFEIT:
-```
-{
-  "server":"RAIDA1",
-  "status":"fail",
-  "message":"Counterfeit: The Unit you sent sent was counterfeit.",
-  "time":"2016-44-19 7:44:PM"
-}
-
-```
-
-
 RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
 ```
 {
   "server":"RAIDA1",
   "status":"error",
-  "message":"Parameters: The request requires parameters such as nn,sn, an, denomination and sns[] but thery were not supplied,"
+  "message":"Parameters: The request requires parameters such as sn, change_server and  cns[] but thery were not supplied,"
   "time":"2016-44-19 7:44:PM"
 }
 ```
