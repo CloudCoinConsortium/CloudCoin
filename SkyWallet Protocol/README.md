@@ -797,15 +797,10 @@ RESPONSE IF THERE WAS A DATABASE ERROR
 Example POST asking to transfer 3 CloudCoin notes to user 16225354
 ```
 https://s0.teleportnow.cc/service/receive?
-nn=1&
 sn=16777216&
 an=8ae06de0f9ce4917b3309df71570f92c&
 pan=8ae06de0f9ce4917b3309df71570f92c&
-denomination=1&
 to_sn=16225354&
-nns[]=1&
-nns[]=1&
-nns[]=1&
 sns[]16777214&
 sns[]16777215&
 sns[]16777216&
