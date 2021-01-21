@@ -70,7 +70,7 @@ Here is a sample JSON file with two CloudCoins in it:
 ```
 IMPORTANT NOTE: You must treat this format with precision. You must have the white space exactly the same. You must have everything in the same order. You must use the same quotation marks, even around things you may think are numbers. 
 
-With Carraiga retrns and tabs
+With white spaces:
 ```
 {¶
 →"cloudcoin":∙[{¶
