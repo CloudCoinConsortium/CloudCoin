@@ -8,11 +8,13 @@ a CloudCoin that looks like the familiar Credit Card and can be used to access a
 
 # Generating a Random Seed
 
-We need to generate a 16 digit random number using the user's two passwords as a seed. 
+We need to generate a 16 digit hash number using the user's two passwords as a seed. Or we can use the users 16 character password as a seed. 
 
-Random number: 452 459 836 515 0000
+Sample Hash number: 452 459 836 515 0000
 
 We will ask the user to give us two passwords that they can remember. We want the passwords to be long and complicated. Minumum of 8 charactes each is good. Let the user have lots of freedom but it is a good idea to see that the passwords are not in the list of 1,000 most used passwords. 
+
+Or, we can just as the user for a sixteen character password. 
 
 Now we concatenate the passwords together. The second password is put on the end of the first password. Then the password text is turned into a decimal number. Conversion to  decimal is done like: https://cryptii.com/pipes/text-decimal
 
@@ -20,11 +22,10 @@ Now we concatenate the passwords together. The second password is put on the end
 ```
 Password 1: Million2
 Password 2: BooBooYou
-Weave: Million2BooBooYou
+Weave: Million2BooBooYou (or replace this with a 16 or longer character password).
 Decimal: 77 105 108 108 105 111 110 50 66 111 111 66 111 111 89 111 117
-Random number: 776610511110 (First 12 of Decimal)
+Decimal number: 776610511110 (First 12 of Decimal)
 ccv: 8111 (13 to 16 of Decimal)
-
 We add a 901 to the beginning and calculate the last number based on the others. 
 9017 9769 7114 1003
 EXP 09/22
