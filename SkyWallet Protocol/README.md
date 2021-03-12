@@ -125,6 +125,23 @@ The change services allows one to break notes into smaller ones and consolidate 
 
 [Join In Bank](README.md#join-in-bank)
 
+# Statement Services
+
+[Statement Create](README.md#statement-create)
+
+[Statment Read](README.md#statement-read)
+
+[Statement Update](README.md#statement-update)
+
+[Statement Delete](README.md#statement-delete)
+
+[Statement Unread](README.md#statement-unread)
+
+[Statement Mark As Unread](README.md#statement-mark-as-unread)
+
+[Statement Sync](README.md#statement-sync)
+
+[Show Statement](README.md#show-statment)
 
 # Donation Services
 Allows the user to donate money to the change system or to the RAIDA itself (to help the RAIDA fund itself).
@@ -1289,4 +1306,113 @@ RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
   "time":"2016-44-19 7:44:PM"
 }
 ```
-	
+
+# Statment Services
+
+dds a message to the group messages.
+
+### Statement Format
+Each Statement is one row/line in a transaction record and has to be formated in a precise way.
+The stement will be converted into Base64 and striped on the RAIDA by the client. 
+All the fields are optional.
+The file standard is TOML. 
+
+Here is an example:
+```
+
+[buyer]
+firstName=""
+lastName=""
+phone=""
+physical_address=""
+wallet_address=""
+img=""
+urls=["",""]
+     
+
+
+[seller]
+seller =""
+firstName=""
+lastName=""
+phone=""
+physical_address=""
+wallet_address=""
+img=""
+urls=["",""]
+
+
+[order]
+order_id=""
+order_date =1979-05-27T07:32:00-08:00 
+
+[order_products]
+serialNumber = ["","",""]
+image_url = ["","",""]
+price = ["","",""]
+each = ["","",""]
+total_price = 232
+logo_urls = ["","",""]
+names = ["","",""]
+description  = ["","",""]
+color = ["","",""]
+condition = ["","",""]
+brand = ["","",""]
+manufacturer = ["","",""]
+material = ["","",""]
+model = ["","",""]
+mpn = ["","",""]
+pattern = ["","",""]
+productionDate = ["","",""]
+realeasDate = ["","",""]
+size = ["","",""]
+weight = ["","",""]
+url = ["","",""]
+identifier = ["","",""]
+rating = ["","",""]
+expense_category = ["","",""]
+```
+There are tags that must be included. Here is a list of the tags
+
+### Sample GET Request to create a message for a  group:
+Note that the meta_mirror and meta_mirror2 are not require. 
+```
+https://r2.r23.us/service/mail/message_create?group_id=1154885D1BD74D61891705778AAE1943&message_id&
+&bytes=459  //Size of the stripe in bytes
+&version=0 //The version of the format. Zero is the first. Used to allow changes in the format with backward compatibility
+&compression   //Tiny int 0-255. 0 means no compression
+&encryption    //Tiny int 0-255. 0 means no encryption
+&raid //Tiny int 0-255. 110 is the default. one strip and two mirrors. 
+&stripe=aG9seXNoaXQl&
+mirror=lzIGlzIGZ1Y2tpB0aG&
+mirror2=F0bWFuLiBtpbmcgZ3JlYXRl
+
+```
+### Sample Response:
+  
+```
+{
+	"server": "RAIDA11",
+	"status": "Success",
+	"message": "Your message was added to the specified group chat",
+	"version": "2020-11-02",
+	"time": "2020-11-13 01:37:28"
+}
+```
+
+
+## Statement Create
+
+## Statment Read
+
+## Statement Update
+
+## Statement Delete
+
+## Statement Unread
+
+## Statement Mark As Unread
+
+## Statement Sync
+
+## Show Statement
