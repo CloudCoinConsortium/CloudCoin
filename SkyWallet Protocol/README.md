@@ -1311,7 +1311,7 @@ RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
 
 # Statment Services
 
-## Statement Create
+## Create
 Creates a new transaction record on the RAIDA.
 
 ### Statement Format
@@ -1438,7 +1438,7 @@ https://raida0.raida.tech/service/statment/select?group_id=9154885d1bd74d6189170
 	"created": "2020-12-15 07:22:49"
 }]
 ```
-## Statement Update
+## Update
 Overwrites a statement. 
 
 ### Sample Request to overwrite :
@@ -1457,7 +1457,7 @@ https://r2.r23.us/service/statment/update?statement_id=1154885D1BD74D61891705778
 }
 
 ```
-## Statement Delete
+## Delete
 
 Deletes rows in the statements table. 
 
@@ -1483,7 +1483,7 @@ https://r2.r23.us/service/t/statment/delete?sn=16777215&an=0f0d129e90b544eea1577
 ```
 
 
-## Statement Unread
+## Unread
 Tells you if you have some statements that you have not looked at yet. Can tell you if you have received a new payment. 
 
 
@@ -1497,7 +1497,7 @@ https://r2.r23.us/service/statement/unread?sn=16777215&an=62DC79C8B9B740C0BA6C4B
 95193265D44A42B99365D5770CF8A67C,481C01873B994D0AA8A2AF7C0F04414E,1568DBD7B19341F483B030B689C5A468,736CAC23D6A74304A444FA21634C228D,017F813B3B5F4E76951892715FEA25F8
 ```
 
-## Statement Mark As Unread
+## Mark As Unread
 Marks a statement as not seen
 
 ### Sample Request to mark as unread :
@@ -1516,7 +1516,7 @@ https://r2.r23.us/service/statement/mark_as_not_read?sn=16777215&an=62DC79C8B9B7
 }
 ```
 
-## Statement Sync Add
+## Sync Add
 Syncronizes Statements that are not syncronized
 ### Sample Request to automatically add :
 ```
@@ -1528,7 +1528,7 @@ https://r2.r23.us/service/statement/sync?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD
 working
 ```
 
-## Statement Sync Delete
+## Sync Delete
 Syncronizes Statements that are not syncronized
 ### Sample Request to delete:
 ```
