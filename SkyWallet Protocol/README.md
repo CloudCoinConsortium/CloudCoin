@@ -143,7 +143,7 @@ The change services allows one to break notes into smaller ones and consolidate 
 
 [Sync Delete](README.md#sync-delete)
 
-[Show Statement](README.md#show-statment)
+[Show Statements](README.md#show-statments)
 
 # Donation Services
 Allows the user to donate money to the change system or to the RAIDA itself (to help the RAIDA fund itself).
