@@ -1309,7 +1309,8 @@ RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
 
 # Statment Services
 
-dds a message to the group messages.
+## Statement Create
+Creates a new transaction record on the RAIDA.
 
 ### Statement Format
 Each Statement is one row/line in a transaction record and has to be formated in a precise way.
@@ -1319,6 +1320,10 @@ The file standard is TOML.
 
 Here is an example:
 ```
+[head]
+amount_in = 3223
+amount_out = 0
+running_balance = 77676
 
 [buyer]
 firstName=""
@@ -1374,12 +1379,10 @@ expense_category = ["","",""]
 ```
 There are tags that must be included. Here is a list of the tags
 
-### Sample GET Request to create a message for a  group:
+### Sample GET Request to create a statment:
 Note that the meta_mirror and meta_mirror2 are not require. 
 ```
-https://r2.r23.us/service/mail/message_create?group_id=1154885D1BD74D61891705778AAE1943&message_id&
-&bytes=459  //Size of the stripe in bytes
-&version=0 //The version of the format. Zero is the first. Used to allow changes in the format with backward compatibility
+https://r2.r23.us/service/t/statement_create?statement_id=1154885D1BD74D61891705778AAE1943
 &compression   //Tiny int 0-255. 0 means no compression
 &encryption    //Tiny int 0-255. 0 means no encryption
 &raid //Tiny int 0-255. 110 is the default. one strip and two mirrors. 
@@ -1394,25 +1397,133 @@ mirror2=F0bWFuLiBtpbmcgZ3JlYXRl
 {
 	"server": "RAIDA11",
 	"status": "Success",
-	"message": "Your message was added to the specified group chat",
+	"message": "Your statment was added",
 	"version": "2020-11-02",
 	"time": "2020-11-13 01:37:28"
 }
 ```
 
 
-## Statement Create
-
 ## Statment Read
+Allows the user to read statements. The user can specify how many rows they want to download. 
 
+
+```
+start_date=2020-12-07 07:22:49
+start_date=2099-12-12 00:00:00 //2099 will get us to now
+```
+
+The Get parameter can specify just to get the stripe or the stripes, mirror and mirror2.
+```
+return=stripe  //Just get the stripe database
+return=all //Get Stripe, Mirror and Mirror 2
+```
+### Sample Request to read the last 100 rows of messages
+```
+https://raida0.raida.tech/service/t/statment_select?group_id=9154885d1bd74d61891705778aae1943&rows=100&start_date=2099-12-12%2000:00:00&return=stripe
+
+```
+### Sample Response:
+  
+```
+ [{
+	"statment_id": "ECEF912464C14D0EA7EB231F399EAB6F",
+	"stripe": "aG9seXNoaXQl",
+	"created": "2020-12-21 07:22:49"
+}, {
+	"statment_id": "ECEF912454C14D0EA7EB231F399EAB6F",
+	"stripe": "aG9seXNoaXQl",
+	"created": "2020-12-15 07:22:49"
+}]
+```
 ## Statement Update
+Overwrites a statement. 
 
+### Sample Request to overwrite :
+```
+https://r2.r23.us/service/t/statment_update?statement_id=1154885D1BD74D61891705778AAE1943&&stripe=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror2=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s
+
+```
+### Sample Response:
+```
+{
+	"server": "RAIDA11",
+	"status": "Success",
+	"message": "Your row was overwritten.",
+	"version": "2020-11-02",
+	"time": "2020-11-13 01:37:28"
+}
+
+```
 ## Statement Delete
 
+Deletes a message. 
+
+### Sample Request to delete :
+```
+https://r2.r23.us/service/t/statment_delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&statement_id[]=1154885D1BD74D61891705778AAE1943&statement_id[]=1154885D1BD74D61891705778AAE1943
+
+```
+### Sample Request to delete ALL:
+```
+https://r2.r23.us/service/t/statment_delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&all=true
+
+```
+### Sample Response:
+```
+{
+	"server": "RAIDA11",
+	"status": "Success",
+	"message": "Your rows were deleted.",
+	"version": "2020-11-02",
+	"time": "2020-11-13 01:37:28"
+}
+```
+
+
 ## Statement Unread
+Tells you if you have some statements that you have not looked at yet. Can tell you if you have received a new payment. 
+
+
+### Sample Request to see unread messages :
+```
+https://r2.r23.us/service/t/statement_unread?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF
+
+```
+### Sample Response:
+```
+95193265D44A42B99365D5770CF8A67C,481C01873B994D0AA8A2AF7C0F04414E,1568DBD7B19341F483B030B689C5A468,736CAC23D6A74304A444FA21634C228D,017F813B3B5F4E76951892715FEA25F8
+```
 
 ## Statement Mark As Unread
+Marks a statement as not seen
+
+### Sample Request to mark as unread :
+```
+https://r2.r23.us/service/t/mark_as_not_read?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
+
+```
+### Sample Response:
+```
+{
+	"server":"RAIDA11",
+	"status":"Success",
+	"message":"Rows marked unread.",
+	"version":"2020-11-02",
+	"time":"2020-11-13 01:37:28"
+}
+```
 
 ## Statement Sync
+Syncronizes Statements that are not syncronized
+### Sample Request to mark as unread :
+```
+https://r2.r23.us/service/t/statement_sync?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
+
+```
+### Sample Response:
+```
+working
+```
 
 ## Show Statement
