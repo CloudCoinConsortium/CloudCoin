@@ -127,19 +127,21 @@ The change services allows one to break notes into smaller ones and consolidate 
 
 # Statement Services
 
-[Statement Create](README.md#statement-create)
+[Create](README.md#create)
 
-[Statment Read](README.md#statement-read)
+[Read](README.md#read)
 
-[Statement Update](README.md#statement-update)
+[Update](README.md#update)
 
-[Statement Delete](README.md#statement-delete)
+[Delete](README.md#delete)
 
-[Statement Unread](README.md#statement-unread)
+[Unread](README.md#unread)
 
-[Statement Mark As Unread](README.md#statement-mark-as-unread)
+[Mark As Unread](README.md#mark-as-unread)
 
-[Statement Sync](README.md#statement-sync)
+[Sync Add](README.md#sync-add)
+
+[Sync Delete](README.md#sync-delete)
 
 [Show Statement](README.md#show-statment)
 
@@ -1382,7 +1384,7 @@ There are tags that must be included. Here is a list of the tags
 ### Sample GET Request to create a statment:
 Note that the meta_mirror and meta_mirror2 are not require. 
 ```
-https://r2.r23.us/service/t/statement_create?statement_id=1154885D1BD74D61891705778AAE1943
+https://r2.r23.us/service/statement/create?statement_id=1154885D1BD74D61891705778AAE1943
 &compression   //Tiny int 0-255. 0 means no compression
 &encryption    //Tiny int 0-255. 0 means no encryption
 &raid //Tiny int 0-255. 110 is the default. one strip and two mirrors. 
@@ -1420,7 +1422,7 @@ return=all //Get Stripe, Mirror and Mirror 2
 ```
 ### Sample Request to read the last 100 rows of messages
 ```
-https://raida0.raida.tech/service/t/statment_select?group_id=9154885d1bd74d61891705778aae1943&rows=100&start_date=2099-12-12%2000:00:00&return=stripe
+https://raida0.raida.tech/service/statment/select?group_id=9154885d1bd74d61891705778aae1943&rows=100&start_date=2099-12-12%2000:00:00&return=stripe
 
 ```
 ### Sample Response:
@@ -1441,7 +1443,7 @@ Overwrites a statement.
 
 ### Sample Request to overwrite :
 ```
-https://r2.r23.us/service/t/statment_update?statement_id=1154885D1BD74D61891705778AAE1943&&stripe=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror2=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s
+https://r2.r23.us/service/statment/update?statement_id=1154885D1BD74D61891705778AAE1943&&stripe=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror2=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s
 
 ```
 ### Sample Response:
@@ -1457,16 +1459,16 @@ https://r2.r23.us/service/t/statment_update?statement_id=1154885D1BD74D618917057
 ```
 ## Statement Delete
 
-Deletes a message. 
+Deletes rows in the statements table. 
 
 ### Sample Request to delete :
 ```
-https://r2.r23.us/service/t/statment_delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&statement_id[]=1154885D1BD74D61891705778AAE1943&statement_id[]=1154885D1BD74D61891705778AAE1943
+https://r2.r23.us/service/statment/delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&statement_id[]=1154885D1BD74D61891705778AAE1943&statement_id[]=1154885D1BD74D61891705778AAE1943
 
 ```
 ### Sample Request to delete ALL:
 ```
-https://r2.r23.us/service/t/statment_delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&all=true
+https://r2.r23.us/service/t/statment/delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&all=true
 
 ```
 ### Sample Response:
@@ -1487,7 +1489,7 @@ Tells you if you have some statements that you have not looked at yet. Can tell 
 
 ### Sample Request to see unread messages :
 ```
-https://r2.r23.us/service/t/statement_unread?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF
+https://r2.r23.us/service/statement/unread?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF
 
 ```
 ### Sample Response:
@@ -1500,7 +1502,7 @@ Marks a statement as not seen
 
 ### Sample Request to mark as unread :
 ```
-https://r2.r23.us/service/t/mark_as_not_read?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
+https://r2.r23.us/service/statement/mark_as_not_read?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
 
 ```
 ### Sample Response:
@@ -1514,11 +1516,11 @@ https://r2.r23.us/service/t/mark_as_not_read?sn=16777215&an=62DC79C8B9B740C0BA6C
 }
 ```
 
-## Statement Sync
+## Statement Sync Add
 Syncronizes Statements that are not syncronized
-### Sample Request to mark as unread :
+### Sample Request to automatically add :
 ```
-https://r2.r23.us/service/t/statement_sync?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
+https://r2.r23.us/service/statement/sync?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
 
 ```
 ### Sample Response:
@@ -1526,4 +1528,28 @@ https://r2.r23.us/service/t/statement_sync?sn=16777215&an=62DC79C8B9B740C0BA6C4B
 working
 ```
 
+## Statement Sync Delete
+Syncronizes Statements that are not syncronized
+### Sample Request to delete:
+```
+https://r2.r23.us/service/statement/sync?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
+
+```
+### Sample Response:
+```
+working
+```
 ## Show Statement
+Allows one RAIDA to request info from neighbours
+
+### Sample Request
+```
+https://raida0.raida.tech/service/mail/sync/show_statements?guid[]=009e3875b48b7e1909fb00dd5341a3ea&password=asfsftshierkt
+
+```
+### Sample Response:
+```
+009e3875b48b7e1909fb00dd5341a3ea,V2UgbG92ZS,B0byBnbyB0byB0aGU,gZ3ltIGFuZCB3b3Jrb3V,0,0,110<br>
+```
+This is the statement guid, stripe, mirror, second mirror, compression, encryption and raid. 
+
