@@ -1311,6 +1311,19 @@ RESPONSE IF SOME PARAMETERS WERE NOT SUPPLIED
 
 # Statment Services
 
+```sql
+Statements table:
+
+statement_id binary(16)
+stripe varchar(3000)
+mirror varchar(3000)
+mirror2 varchar(3000)
+compression tinyint(3) 
+encryption tinyint(3) 
+raid tinyint(3) 
+created timestamp
+```
+
 ## Create
 Creates a new transaction record on the RAIDA.
 
@@ -1321,7 +1334,7 @@ All the fields are optional.
 The file standard is TOML. 
 
 Here is an example:
-```
+```TOML
 [head]
 amount_in = 3223
 amount_out = 0
@@ -1395,7 +1408,7 @@ mirror2=F0bWFuLiBtpbmcgZ3JlYXRl
 ```
 ### Sample Response:
   
-```
+```json
 {
 	"server": "RAIDA11",
 	"status": "Success",
@@ -1421,13 +1434,13 @@ return=stripe  //Just get the stripe database
 return=all //Get Stripe, Mirror and Mirror 2
 ```
 ### Sample Request to read the last 100 rows of messages
-```
+```http
 https://raida0.raida.tech/service/statment/select?group_id=9154885d1bd74d61891705778aae1943&rows=100&start_date=2099-12-12%2000:00:00&return=stripe
 
 ```
 ### Sample Response:
   
-```
+```json
  [{
 	"statment_id": "ECEF912464C14D0EA7EB231F399EAB6F",
 	"stripe": "aG9seXNoaXQl",
