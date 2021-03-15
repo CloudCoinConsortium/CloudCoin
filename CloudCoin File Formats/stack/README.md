@@ -30,7 +30,7 @@ If there is only one coin in the stack file we have the denomination, CloudCoin,
 ```
 
 
-
+IMPORTANT: When creating an application that imports CloudCoin Stack files, you should ignor the parameters 'ed', 'aoid' and 'pown'. These parameters are for use inside the program but may not be there or maybe wrong. Theses parameters should not be imported. If you try to import them, you will fail with some coins. 
 
 NOTE: It is ok to Capitalize in the stack file. 
 
