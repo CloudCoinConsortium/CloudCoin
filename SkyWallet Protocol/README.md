@@ -1645,19 +1645,17 @@ Call the "error_log" service if a RAIDA has a problem
 
 
 ### TRANSFER
-================
-Preparing for Send 
-1. Using the standard Skywallet service prep
+================ 
+1. Use the standard Skywallet service prep
 
-Sending the Coin
+Transfering the Coin
 1. Use Make Change procedure
 2. Call the show service and then the show_envelopes service to get the sn of the coin you want to transfer
 3. Find commen coins 
-4. Send the Coins to the Skywallet's "Send" service.
+4. Transfer the Coins to the Skywallet's "transfer" service.
 
 Aftermath 
-1. Grade the coins based on the reponse.
-2. If there was not response from the RAIDA, use the "send_again" service. 
+1. Grade the coins based on the reponse. 
 2. If the coins were counterfeit tell the user. 
 3. If the coins had some fracks but were not counterfeit, call the Sync_Transfer service to fix those fracks.  
 4. Show the user the receipt. 
@@ -1669,10 +1667,7 @@ Call the "error_log" service if a RAIDA has a problem
 
 ### BREAK IN BANK
 ==================
-Preparing for Send 
 1. Using the standard Skywallet service prep
-
-Breaking in Bank the Coin
 2. Call the show service and then the show_envelopes service to get the sn of the coin you want to transfer
 3. Find commen coins 
 
