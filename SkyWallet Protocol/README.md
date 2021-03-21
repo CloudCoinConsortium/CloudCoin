@@ -150,6 +150,10 @@ Allows the user to donate money to the change system or to the RAIDA itself (to 
 
 [DonateToRaida](README.md#donatetoraida)
 
+# Client Use of Services to ensure sync of RAIDA
+
+[Best Practices](README.md#best-practices)
+
 ## Send
 
 The Send allows many coins to be sent from a user's hard drive to a Sky Wallet. 
@@ -1565,4 +1569,133 @@ https://raida0.raida.tech/service/mail/sync/show_statements?guid[]=009e3875b48b7
 009e3875b48b7e1909fb00dd5341a3ea,V2UgbG92ZS,B0byBnbyB0byB0aGU,gZ3ltIGFuZCB3b3Jrb3V,0,0,110<br>
 ```
 This is the statement guid, stripe, mirror, second mirror, compression, encryption and raid. 
+
+## Best Practices
+
+
+### SOFTWARE LOGIN
+=============
+1. After the user enters their password Run Detect on the ID Coin
+2. If the Detect returns fracked coins, Fix the fracks. 
+3. Call the Balance Service
+
+
+### BALANCE
+=============
+1. Call the balance service
+2. Show the balance. 
+3. If the balances of all the RAIDA are not the same, tell the user that their SKywallet is not synced. Ask them if they want to sync their Skywallet. 
+4. If they want to sync their Skywallet, call "show coins". 
+5. Anyalize the results of show coins and call 
+
+### STANDARD SKYWALLET CALL PREPERATION
+=================
+1. If Echo has not been performed in the last hour, Echo the RAIDA. 
+2. If the software just performed Echo, Show the user the status of the RAIDA using status bar (after each echo).
+3. If more than 4 RAIDA cannot be contacted, tell the user that too many RAIDA cannot be contacted. but allow the user to override. 
+3. If Detect has not been performed in the past hour, Detect the ID Coin. 
+4. If the ID Coin is fracked, Fix it. There is no need to save the coin or make any changes to the coin as the coin corrects the RAIDA.
+5. If the ID Coin does not fix, warn the user, but allow the user to override. 
+
+### MAKE CHANGE
+==============
+1. Call show_change with using public change server SN 2.
+2. Note any sns that are on a few or sn that are on many but missing from a few. Call fix_transfer on these
+3. Call Break in bank (See below)
+
+
+### SEND
+==============
+Preparing for Send 
+1. Using the standard Skywallet service prep
+
+Sending the Coin
+1. Read the coin file and unpack the file. 
+2. Send the Coins to the Skywallet's "Send" service.
+
+Aftermath 
+1. Grade the coins based on the reponse.
+2. If there was not response from the RAIDA, use the "send_again" service. 
+2. If the coins were counterfeit tell the user. 
+3. If the coins had some fracks but were not counterfeit, call the Sync_Transfer service to fix those fracks.  
+4. Show the user the receipt. 
+
+Future: 
+Call the "transaction_log" service and record the transaction
+Call the "error_log" service if a RAIDA has a problem
+
+### RECEIVE
+================
+Preparing to receive
+1. Using the standard Skywallet service prep
+
+Receiving the Coins
+1. Use Make Change procedure
+2. Call the Receive Service.
+3. If some of the RAIDA did not respond, Fix Fracked Coins.
+
+Aftermath 
+1. Grade the coins based on the reponse.
+3. If the coins had some fracks but were not counterfeit, call the Sync_Transfer service to fix those fracks in the transfer table too.  
+4. Show the user the receipt. 
+
+Future: 
+Call the "transaction_log" service and record the transaction
+Call the "error_log" service if a RAIDA has a problem
+
+
+### TRANSFER
+================
+Preparing for Send 
+1. Using the standard Skywallet service prep
+
+Sending the Coin
+1. Use Make Change procedure
+2. Call the show service and then the show_envelopes service to get the sn of the coin you want to transfer
+3. Find commen coins 
+4. Send the Coins to the Skywallet's "Send" service.
+
+Aftermath 
+1. Grade the coins based on the reponse.
+2. If there was not response from the RAIDA, use the "send_again" service. 
+2. If the coins were counterfeit tell the user. 
+3. If the coins had some fracks but were not counterfeit, call the Sync_Transfer service to fix those fracks.  
+4. Show the user the receipt. 
+
+Future: 
+Call the "transaction_log" service and record the transaction
+Call the "error_log" service if a RAIDA has a problem
+
+
+### BREAK IN BANK
+==================
+Preparing for Send 
+1. Using the standard Skywallet service prep
+
+Breaking in Bank the Coin
+2. Call the show service and then the show_envelopes service to get the sn of the coin you want to transfer
+3. Find commen coins 
+
+
+Aftermath 
+1. Grade the coins based on the reponse.
+2. Call the Sync_Transfer service to fix any RAIDA That failed. .  
+
+
+Future: 
+Call the "error_log" service if a RAIDA has a problem
+
+
+
+### SHOW BALANCE
+==================
+1. Call Show Balance
+2. Fix fracks on any fails of authentication
+3. If there are balances that do not line up ask the person if they want to sync. 
+
+
+
+
+
+
 
