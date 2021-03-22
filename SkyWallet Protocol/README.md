@@ -1579,6 +1579,11 @@ This is the statement guid, stripe, mirror, second mirror, compression, encrypti
 2. Call the Balance Service
 
 
+### Filed Call Caller
+1. Looks in storage
+2. Tells user that there were some calls left over from last session. 
+3. Calling them now. 
+
 ### BALANCE
 =============
 NOTE: The process of checking the balance also sees if there are enough RAIDA up and running and if the Skywallet is out of sync. 
@@ -1602,7 +1607,7 @@ NOTE: The process of checking the balance also sees if there are enough RAIDA up
 4. Tell the user that program is "Making Change..."
 5. Call show_change with using public change server SN 2.
 6. Call Break in bank (See below) with coins that are in common.
-7. If there are too many no-replies, Record calls that failed. Send these to a failed calls server?
+7. If there are too many no-replies, Record calls that failed. Send these to a failed Call storage.
 8. Call fix_transfer on coins in the show change that are not syncronized.
 9. Report all RAIDA errors to the errors.cloudcoin.global/report_error.php service. 
 
@@ -1612,19 +1617,21 @@ NOTE: The process of checking the balance also sees if there are enough RAIDA up
 
 Sending the Coin
 Note: Coins are being sent from the users hard drive to their Skywallet (Deposit). 
-1. Check the last status of the RAIDA 
-2. Note RAIDA that are not responding 'n' and should not be contacted.
-3. Evaluate if there are enough RAIDA to "Send". Warn user if not. 
-4. Tell the user coins are being Deposited
-5. Read the coin file and unpack the file.
-6. Break the coins into batches so that no more than 400 notes are sent at one time. 
-7. Send the Coins to the Skywallet's "Send" service in batches.
-8. Show the progess of the send to the user. 
-9. If there are no-replies from the RAIDA. Use the "Send Again" service using smaller batches of 100 notes. Tell the user it has lost contact with some of the RAIDA and not to close the browser. Loop Send Again until enough RAIDA respond. 
-10. If the coins had some fracks but were not counterfeit, call the Sync_Transfer service to fix those fracks. 
-11. Create a receipt. Tell the user the results
-12. If there are many no-replyes even after calling send again, call the cannot be fixed with sync_transfer send those to a "Failed Calls Server"
-13. Report all RAIDA errors to the errors.cloudcoin.global/report_error.php service. 
+1. Read the coin file and unpack the file.
+2. Divide the coins in batches. Call detect. 
+3. If Detect fails fix fracked. 
+4. Check the last status of the RAIDA 
+5. Note RAIDA that are not responding 'n' and should not be contacted.
+6. Evaluate if there are enough RAIDA to "Send". Warn user if not. 
+7. Tell the user coins are being Deposited
+9. Break the coins into batches so that no more than 400 notes are sent at one time. 
+10. Send the Coins to the Skywallet's "Send" service in batches.
+11. Show the progess of the send to the user. 
+12. If there are no-replies from the RAIDA. Use the "Send Again" service using smaller batches of 100 notes. Tell the user it has lost contact with some of the RAIDA and not to close the browser. Loop Send Again until enough RAIDA respond. 
+13. If the coins had some fracks but were not counterfeit, call the Sync_Transfer service to fix those fracks. 
+14. Create a receipt. Tell the user the results
+15. If there are many no-replyes even after calling send again, call the cannot be fixed with sync_transfer send the failed Call storage
+16. Report all RAIDA errors to the errors.cloudcoin.global/report_error.php service. 
 
 Future: 
 Call the "transaction_log" service and record the transaction
@@ -1640,10 +1647,8 @@ Aftermath
 1. Grade the coins based on the reponse.
 3. If the coins had some fracks but were not counterfeit, call the Sync_Transfer service to fix those fracks in the transfer table too.  
 4. Show the user the receipt. 
-
-Future: 
-Call the "transaction_log" service and record the transaction
-Call the "error_log" service if a RAIDA has a problem
+5. Call the "transaction_log" service and record the transaction
+6. Call the "error_log" service if a RAIDA has a problem
 
 
 ### TRANSFER
