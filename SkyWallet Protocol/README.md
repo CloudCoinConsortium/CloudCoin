@@ -1598,6 +1598,9 @@ NOTE: The process of checking the balance also sees if there are enough RAIDA up
 9. Call sync_transfer service (fire and forget) in batches of 400. Show the user that the syncs are happening like 400/3000 coins synced. 
 10. Store the results of the balance. Show a pown="pppppnppppnpppppnppp" so that any RAIDA that are 'n' can be skipped next time. 
 11. Report all RAIDA errors to the errors.cloudcoin.global/report_error.php service. 
+12. Check to see if there are coins that still need to be sent. "We found some coins that have not finished depositing. Depositing them now"
+13. Check to see if there are coins that still need to be received. "We found some coins that have not finished Witdrawing. Withdrawing now." 
+14. Check to see if there are any coins in that still need to be transfered. "We found some cons that have not finished transfering. Transfering now."
 
 ### MAKE CHANGE
 ==============
