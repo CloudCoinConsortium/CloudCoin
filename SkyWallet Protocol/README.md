@@ -1576,61 +1576,63 @@ This is the statement guid, stripe, mirror, second mirror, compression, encrypti
 ### SOFTWARE LOGIN
 =============
 1. After the user enters their password Run Detect on the ID Coin
-2. If the Detect returns fracked coins, Fix the fracks. 
-3. Call the Balance Service
+2. Call the Balance Service
 
 
 ### BALANCE
 =============
+NOTE: The process of checking the balance also sees if there are enough RAIDA up and running and if the Skywallet is out of sync. 
 1. Call the balance service
 2. Show the balance. 
-3. If the balances of all the RAIDA are not the same, tell the user that their SKywallet is not synced. Ask them if they want to sync their Skywallet. 
-4. If they want to sync their Skywallet, call "show coins". 
-5. Anyalize the results of show coins and call 
-
-### STANDARD SKYWALLET CALL PREPERATION
-=================
-1. If Echo has not been performed in the last hour, Echo the RAIDA. 
-2. If the software just performed Echo, Show the user the status of the RAIDA using status bar (after each echo).
-3. If more than 4 RAIDA cannot be contacted, tell the user that too many RAIDA cannot be contacted. but allow the user to override. 
-3. If Detect has not been performed in the past hour, Detect the ID Coin. 
-4. If the ID Coin is fracked, Fix it. There is no need to save the coin or make any changes to the coin as the coin corrects the RAIDA.
-5. If the ID Coin does not fix, warn the user, but allow the user to override. 
+3. Show which RAIDA were contacted using the RAIDA Bar with missing RAIDA showing in red, good ones in green and gray when being checked. 
+4. If some of the RAIDA fail authentication then fix fracked. 
+5. If too many RAIDA fail authentication then tell the user that the connection has been lost with the RAIDA. 
+6. If the balances of all the RAIDA are not the same, tell the user that their SKywallet is not synced. Ask them if they want to sync their Skywallet. 
+7. If they want to sync their Skywallet, call "show coins". 
+8. Anyalize the results of show coins and see which coins are not syncronized
+9. Call sync_transfer service (fire and forget) in batches of 400. Show the user that the syncs are happening like 400/3000 coins synced. 
+10. Store the results of the balance. Show a pown="pppppnppppnpppppnppp" so that any RAIDA that are 'n' can be skipped next time. 
+11. Report all RAIDA errors to the errors.cloudcoin.global/report_error.php service. 
 
 ### MAKE CHANGE
 ==============
-1. Call show_change with using public change server SN 2.
-2. Note any sns that are on a few or sn that are on many but missing from a few. Call fix_transfer on these
-3. Call Break in bank (See below)
+1. Check the last status of the RAIDA
+2. Note RAIDA that are not responding 'n' and should not be contacted.
+3. Evaulate if there are enough RAIDA to Make Change.   
+4. Tell the user that program is "Making Change..."
+5. Call show_change with using public change server SN 2.
+6. Call Break in bank (See below) with coins that are in common.
+7. If there are too many no-replies, Record calls that failed. Send these to a failed calls server?
+8. Call fix_transfer on coins in the show change that are not syncronized.
+9. Report all RAIDA errors to the errors.cloudcoin.global/report_error.php service. 
 
 
 ### SEND
 ==============
-Preparing for Send 
-1. Using the standard Skywallet service prep
 
 Sending the Coin
-1. Read the coin file and unpack the file. 
-2. Send the Coins to the Skywallet's "Send" service.
-
-Aftermath 
-1. Grade the coins based on the reponse.
-2. If there was not response from the RAIDA, use the "send_again" service. 
-2. If the coins were counterfeit tell the user. 
-3. If the coins had some fracks but were not counterfeit, call the Sync_Transfer service to fix those fracks.  
-4. Show the user the receipt. 
+Note: Coins are being sent from the users hard drive to their Skywallet (Deposit). 
+1. Check the last status of the RAIDA 
+2. Note RAIDA that are not responding 'n' and should not be contacted.
+3. Evaluate if there are enough RAIDA to "Send". Warn user if not. 
+4. Tell the user coins are being Deposited
+5. Read the coin file and unpack the file.
+6. Break the coins into batches so that no more than 400 notes are sent at one time. 
+7. Send the Coins to the Skywallet's "Send" service in batches.
+8. Show the progess of the send to the user. 
+9. If there are no-replies from the RAIDA. Use the "Send Again" service using smaller batches of 100 notes. Tell the user it has lost contact with some of the RAIDA and not to close the browser. Loop Send Again until enough RAIDA respond. 
+10. If the coins had some fracks but were not counterfeit, call the Sync_Transfer service to fix those fracks. 
+11. Create a receipt. Tell the user the results
+12. If there are many no-replyes even after calling send again, call the cannot be fixed with sync_transfer send those to a "Failed Calls Server"
+13. Report all RAIDA errors to the errors.cloudcoin.global/report_error.php service. 
 
 Future: 
 Call the "transaction_log" service and record the transaction
-Call the "error_log" service if a RAIDA has a problem
 
 ### RECEIVE
 ================
-Preparing to receive
-1. Using the standard Skywallet service prep
 
-Receiving the Coins
-1. Use Make Change procedure
+1. Use Make Change procedure if needed
 2. Call the Receive Service.
 3. If some of the RAIDA did not respond, Fix Fracked Coins.
 
