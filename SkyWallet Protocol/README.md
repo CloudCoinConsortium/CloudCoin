@@ -193,8 +193,8 @@ data="2020-Oct-21 01:46pm"
 added=5025
 removed=0
 balance=45623
-guid=68C40AD8456164CC40DB5623E369D80E
-from=Billy.Skywallet.cc
+guid="68C40AD8456164CC40DB5623E369D80E"
+from="Billy.Skywallet.cc"
 ```
 
 ### Optional
