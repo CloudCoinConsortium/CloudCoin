@@ -161,11 +161,11 @@ Allows the user to donate money to the change system or to the RAIDA itself (to 
 The goal is to create a memo system that will provide privacy and at the same time allow for each transaction to be recorded. 
 
 Memo Structure: 
-```
+```html
 memo<id>guid<0>stripe<1>mirror<2>mirro2
 ```
 Sample Memo:
-```
+```html
 For Work Done<id>f5567f51344746f79da78a1b067d49fa<0>ZnJvbT1pZm9<1>uOS5za3l3YW<2>xsZXQuY2M=
 ```
 The memo has five different parts seperated by four seperators. 
