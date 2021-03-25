@@ -80,6 +80,8 @@ private keys of the blockchain. However, we are now working on a key recovery se
 
 [Send](README.md#send)
 
+[Memo Standard](README.md#memo)
+
 [SendAgain](README.md#sendagain)
 
 [Receive](README.md#receive)
@@ -153,6 +155,100 @@ Allows the user to donate money to the change system or to the RAIDA itself (to 
 # Client Use of Services to ensure sync of RAIDA
 
 [Best Practices](README.md#best-practices)
+
+## Memo Standard
+
+The goal is to create a memo system that will provide privacy and at the same time allow for each transaction to be recorded. 
+
+The memo has five different parts seperated by four seperators. 
+```
+1. Memo
+2. Transaction ID
+3. Base64 Stripe
+4. Base64 Mirror
+5. Base64 Mirror2
+```
+The Sperators are:
+```
+1. <id>
+2. <0>
+3. <1>
+4. <2>
+```
+
+memo<id>guid<0>stripe<1>mirror<2>mirro2
+
+Sample:
+```
+For Work Done<id>f5567f51344746f79da78a1b067d49fa<0>ZnJvbT1pZm9<1>uOS5za3l3YW<2>xsZXQuY2M=
+```
+
+Stripe Format. This will be devided into 25 parts and copied two times on severs -3 and -6
+
+### Mandatory: 
+```TOML
+[general]
+memo="write something here"
+data="2020-Oct-21 01:46pm"
+added=5025
+removed=0
+balance=45623
+guid=68C40AD8456164CC40DB5623E369D80E
+from=Billy.Skywallet.cc
+```
+
+### Optional
+```toml
+[from]
+firstName=""
+lastName=""
+phone=""
+physical_address=""
+wallet_address=""
+img=""
+urls=["",""]
+     
+[to ]
+seller =""
+firstName=""
+lastName=""
+phone=""
+physical_address=""
+wallet_address=""
+img=""
+urls=["",""]
+
+[order]
+order_id=""
+order_date =1979-05-27T07:32:00-08:00 
+
+[order_products]
+serialNumber = ["","",""]
+image_url = ["","",""]
+price = ["","",""]
+each = ["","",""]
+total_price = 232
+logo_urls = ["","",""]
+names = ["","",""]
+description  = ["","",""]
+color = ["","",""]
+condition = ["","",""]
+brand = ["","",""]
+manufacturer = ["","",""]
+material = ["","",""]
+model = ["","",""]
+mpn = ["","",""]
+pattern = ["","",""]
+productionDate = ["","",""]
+realeasDate = ["","",""]
+size = ["","",""]
+weight = ["","",""]
+url = ["","",""]
+identifier = ["","",""]
+rating = ["","",""]
+expense_category = ["","",""]
+```
+
 
 ## Send
 
