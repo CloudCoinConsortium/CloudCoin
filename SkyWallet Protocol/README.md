@@ -78,9 +78,9 @@ The Skywallet protocols can be divided into four different categories.
 These services allow one person to pay another without the other person needed to "pown" the coins. This solution does create new problems: Keys can be lost and stolen. This means the keys become a central way of failure point just like the 
 private keys of the blockchain. However, we are now working on a key recovery service that should be done by summer 2020. 
 
-[Send](README.md#send)
+[Memo Standard](README.md#memo-standard)
 
-[Memo Standard](README.md#memo)
+[Send](README.md#send)
 
 [SendAgain](README.md#sendagain)
 
@@ -160,6 +160,14 @@ Allows the user to donate money to the change system or to the RAIDA itself (to 
 
 The goal is to create a memo system that will provide privacy and at the same time allow for each transaction to be recorded. 
 
+Memo Structure: 
+```
+memo<id>guid<0>stripe<1>mirror<2>mirro2
+```
+Sample Memo:
+```
+For Work Done<id>f5567f51344746f79da78a1b067d49fa<0>ZnJvbT1pZm9<1>uOS5za3l3YW<2>xsZXQuY2M=
+```
 The memo has five different parts seperated by four seperators. 
 ```
 1. Memo
@@ -174,13 +182,6 @@ The Sperators are:
 2. <0>
 3. <1>
 4. <2>
-```
-
-memo<id>guid<0>stripe<1>mirror<2>mirro2
-
-Sample:
-```
-For Work Done<id>f5567f51344746f79da78a1b067d49fa<0>ZnJvbT1pZm9<1>uOS5za3l3YW<2>xsZXQuY2M=
 ```
 
 Stripe Format. This will be devided into 25 parts and copied two times on severs -3 and -6
