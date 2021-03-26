@@ -189,7 +189,7 @@ Stripe Format. This will be devided into 25 parts and copied two times on severs
 ### Mandatory: 
 ```TOML
 [general]
-memo="write something here"
+description="write something here"
 date="2020-Oct-21 01:46pm"
 amount=1000
 guid="68C40AD8456164CC40DB5623E369D80E"
