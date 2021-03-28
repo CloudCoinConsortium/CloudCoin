@@ -829,8 +829,9 @@ RESPONSE IF THERE WAS A DATABASE ERROR
 ## Receive Envelope
 
 
-NOTE: Only the first five bytes of the AN are needed to receive. This allows you to grant a "Receive Key" so that a person with this key can only receive and do some other show functions. They would not be able to transfer. People would also need the second five bytes to be able to 
-get the SNS needed. 
+NOTE: Only the first 12 bytes of the AN (24 hex numbers of 32) are needed to receive. This allows you to grant a "Receive Key" so that a person with this key can only receive and do some other show functions. They would not be able to transfer. People would also need the second five bytes to be able to get the SNS needed.
+
+The service asks for a "tag". This service will return any coin who has an envelope that cointains the tag: LIKE '%tag%'.
 
 The Receive Envelope service allows up to a maximum amount (such as 400 coinst) to all be downloaded at once.  The Receiver can download all of their coins from an envelope by calling the Receive Envelope Script over and over until the status is "done"
 
