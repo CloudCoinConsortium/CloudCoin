@@ -1535,7 +1535,7 @@ return=all //Get Stripe, Mirror and Mirror 2
 ```
 ### Sample Request to read the last 100 rows of messages
 ```http
-https://raida0.raida.tech/service/statment/read?sn=8873&an=9154885d1bd74d61891705778aae1943&rows=100&start_date=2099-12-12%2000:00:00&return=stripe
+https://raida11.cloudcoin.global/service/statements/read?sn=8873&an=9154885d1bd74d61891705778aae1943&rows=100&start_date=2099-12-12%2000:00:00&return=stripe
 
 ```
 ### Sample Response:
@@ -1556,7 +1556,7 @@ Overwrites a statement.
 
 ### Sample Request to overwrite :
 ```
-https://r2.r23.us/service/statment/update?statement_id=1154885D1BD74D61891705778AAE1943&&stripe=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror2=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s
+https://raida11.cloudcoin.global/service/statementsupdate?statement_id=1154885D1BD74D61891705778AAE1943&&stripe=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror2=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s
 
 ```
 ### Sample Response:
@@ -1576,7 +1576,7 @@ Deletes rows in the statements table.
 
 ### Sample Request to delete :
 ```
-https://r2.r23.us/service/statment/delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&statement_id[]=1154885D1BD74D61891705778AAE1943&statement_id[]=1154885D1BD74D61891705778AAE1943
+https://raida11.cloudcoin.global/service/statements/delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&statement_id[]=1154885D1BD74D61891705778AAE1943&statement_id[]=1154885D1BD74D61891705778AAE1943
 
 ```
 ### Sample Request to delete ALL:
@@ -1602,7 +1602,7 @@ Tells you if you have some statements that you have not looked at yet. Can tell 
 
 ### Sample Request to see unread messages :
 ```
-https://r2.r23.us/service/statement/unread?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF
+https://raida11.cloudcoin.global/service/statements/unread?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF
 
 ```
 ### Sample Response:
@@ -1615,7 +1615,7 @@ Marks a statement as not seen
 
 ### Sample Request to mark as unread :
 ```
-https://r2.r23.us/service/statement/mark_as_not_read?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
+https://raida11.cloudcoin.global/service/statements/mark_as_not_read?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
 
 ```
 ### Sample Response:
@@ -1633,7 +1633,7 @@ https://r2.r23.us/service/statement/mark_as_not_read?sn=16777215&an=62DC79C8B9B7
 Syncronizes Statements that are not syncronized
 ### Sample Request to automatically add :
 ```
-https://r2.r23.us/service/statement/sync?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
+https://raida11.cloudcoin.global/service/statements/sync?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
 
 ```
 ### Sample Response:
@@ -1645,7 +1645,7 @@ working
 Syncronizes Statements that are not syncronized
 ### Sample Request to delete:
 ```
-https://r2.r23.us/service/statement/sync?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
+https://raida11.cloudcoin.global/service/statements/sync?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
 
 ```
 ### Sample Response:
@@ -1657,7 +1657,7 @@ Allows one RAIDA to request info from neighbours
 
 ### Sample Request
 ```
-https://raida0.raida.tech/service/mail/sync/show_statements?guid[]=009e3875b48b7e1909fb00dd5341a3ea&password=asfsftshierkt
+https://raida11.cloudcoin.global/service/statements/sync/show_statements?guid[]=009e3875b48b7e1909fb00dd5341a3ea&password=asfsftshierkt
 
 ```
 ### Sample Response:
