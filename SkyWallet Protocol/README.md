@@ -137,10 +137,6 @@ The change services allows one to break notes into smaller ones and consolidate 
 
 [Delete](README.md#delete)
 
-[Unread](README.md#unread)
-
-[Mark As Unread](README.md#mark-as-unread)
-
 [Sync Add](README.md#sync-add)
 
 [Sync Delete](README.md#sync-delete)
@@ -1553,24 +1549,8 @@ https://raida11.cloudcoin.global/service/statements/read?sn=8873&an=9154885d1bd7
 }]
 ```
 ## Update
-Overwrites a statement. 
+To update a transaction record, you must delete it and recreate it. 
 
-### Sample Request to overwrite :
-```
-https://raida11.cloudcoin.global/service/statementsupdate?statement_id=1154885D1BD74D61891705778AAE1943&&stripe=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s&mirror2=eXNoaXQgYm0aGlzIGlF0bWFuLiBaG9s
-
-```
-### Sample Response:
-```
-{
-	"server": "RAIDA11",
-	"status": "Success",
-	"message": "Your row was overwritten.",
-	"version": "2020-11-02",
-	"time": "2020-11-13 01:37:28"
-}
-
-```
 ## Delete
 
 Deletes rows in the statements table. 
@@ -1596,39 +1576,6 @@ https://r2.r23.us/service/t/statment/delete?sn=16777215&an=0f0d129e90b544eea1577
 }
 ```
 
-
-## Unread
-Tells you if you have some statements that you have not looked at yet. Can tell you if you have received a new payment. 
-
-
-### Sample Request to see unread messages :
-```
-https://raida11.cloudcoin.global/service/statements/unread?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF
-
-```
-### Sample Response:
-```
-95193265D44A42B99365D5770CF8A67C,481C01873B994D0AA8A2AF7C0F04414E,1568DBD7B19341F483B030B689C5A468,736CAC23D6A74304A444FA21634C228D,017F813B3B5F4E76951892715FEA25F8
-```
-
-## Mark As Unread
-Marks a statement as not seen
-
-### Sample Request to mark as unread :
-```
-https://raida11.cloudcoin.global/service/statements/mark_as_not_read?sn=16777215&an=62DC79C8B9B740C0BA6C4BCD740B14AF&statement_id[]=95193265D44A42B99365D5770CF8A67C&statement_id[]=62DC79C8B9B740C0BA6C4BCD740B14AF
-
-```
-### Sample Response:
-```
-{
-	"server":"RAIDA11",
-	"status":"Success",
-	"message":"Rows marked unread.",
-	"version":"2020-11-02",
-	"time":"2020-11-13 01:37:28"
-}
-```
 
 ## Sync Add
 Syncronizes Statements that are not syncronized
