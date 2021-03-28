@@ -1557,12 +1557,12 @@ Deletes rows in the statements table.
 
 ### Sample Request to delete :
 ```
-https://raida11.cloudcoin.global/service/statements/delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&statement_id[]=1154885D1BD74D61891705778AAE1943&statement_id[]=1154885D1BD74D61891705778AAE1943
+https://raida11.cloudcoin.global/service/statements/delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&statement_id=1154885D1BD74D61891705778AAE1943
 
 ```
 ### Sample Request to delete ALL:
 ```
-https://r2.r23.us/service/t/statment/delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03&all=true
+https://r2.r23.us/service/t/statment/delete?sn=16777215&an=0f0d129e90b544eea157727bcb314f03
 
 ```
 ### Sample Response:
