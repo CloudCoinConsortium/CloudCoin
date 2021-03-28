@@ -1503,13 +1503,7 @@ There are tags that must be included. Here is a list of the tags
 ### Sample GET Request to create a statment:
 Note that the meta_mirror and meta_mirror2 are not require. 
 ```
-https://r2.r23.us/service/statement/create?statement_id=1154885D1BD74D61891705778AAE1943
-&compression   //Tiny int 0-255. 0 means no compression
-&encryption    //Tiny int 0-255. 0 means no encryption
-&raid //Tiny int 0-255. 110 is the default. one strip and two mirrors. 
-&stripe=aG9seXNoaXQl&
-mirror=lzIGlzIGZ1Y2tpB0aG&
-mirror2=F0bWFuLiBtpbmcgZ3JlYXRl
+https://r2.r23.us/service/statement/create?transaction_id=1154885D1BD74D61891705778AAE1943&account_sn=99834&account_an=6f24bd539ce941feaf4a01b10ac59559&stripe=aG9seXNoaXQl&mirror=lzIGlzIGZ1Y2tpB0aG&mirror2=F0bWFuLiBtpbmcgZ3JlYXRl
 
 ```
 ### Sample Response:
@@ -1518,7 +1512,7 @@ mirror2=F0bWFuLiBtpbmcgZ3JlYXRl
 {
 	"server": "RAIDA11",
 	"status": "Success",
-	"message": "Your statment was added",
+	"message": "Your transaction record was added",
 	"version": "2020-11-02",
 	"time": "2020-11-13 01:37:28"
 }
