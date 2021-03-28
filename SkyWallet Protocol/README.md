@@ -1535,7 +1535,7 @@ return=all //Get Stripe, Mirror and Mirror 2
 ```
 ### Sample Request to read the last 100 rows of messages
 ```http
-https://raida0.raida.tech/service/statment/select?group_id=9154885d1bd74d61891705778aae1943&rows=100&start_date=2099-12-12%2000:00:00&return=stripe
+https://raida0.raida.tech/service/statment/read?sn=8873&an=9154885d1bd74d61891705778aae1943&rows=100&start_date=2099-12-12%2000:00:00&return=stripe
 
 ```
 ### Sample Response:
