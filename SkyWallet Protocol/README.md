@@ -158,13 +158,13 @@ The goal is to create a memo system that will provide privacy and at the same ti
 
 Memo Structure: 
 ```html
-memo<id>guid<0>stripe<1>mirror<2>mirro2
+memo•id•guid•0•stripe•1•mirror•2•mirro2
 ```
 Sample Memo:
 ```html
-For Work Done<id>f5567f51344746f79da78a1b067d49fa<0>ZnJvbT1pZm9<1>uOS5za3l3YW<2>xsZXQuY2M=
+For Work Done•id•f5567f51344746f79da78a1b067d49fa•0•ZnJvbT1pZm9•1•uOS5za3l3YW•2•xsZXQuY2M=
 ```
-The memo has five different parts seperated by four seperators. 
+The memo has five different parts seperated by four seperators. The seperators are an 'alt 7' alt code character. 
 ```
 1. Memo
 2. Transaction ID
@@ -174,10 +174,10 @@ The memo has five different parts seperated by four seperators.
 ```
 The Sperators are:
 ```html
-1. <id>
-2. <0>
-3. <1>
-4. <2>
+1. •id•
+2. •0•
+3. •1•
+4. •2•
 ```
 
 Stripe Format. This will be devided into 25 parts and copied two times on severs -3 and -6
