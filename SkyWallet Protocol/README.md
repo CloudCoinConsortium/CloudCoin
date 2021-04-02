@@ -701,17 +701,26 @@ This allows the sender and receiver of a payment to verify the reciept. The send
 SAMPLE CALL
 
 ```http
-https://raida7.cloudcoin.global/service/view_receipt?
-verify_payment?sn=1&an=1836843d928347fb22c2142b49d772b5&old_tag=1Z%20999%20AA1%2001%202345%206784&new_tag=6892ed132f8741a6ab1332eb5a4543ec
-&statment=private*id*f5567f51344746f79da78a1b067d49fa*0*ZnJvbT1pZm9*1*uOS5za3l3YW*2*xsZXQuY2M=
- 
+https://raida7.cloudcoin.global/service/verify_payment?
+sn=1
+&an=1836843d928347fb22c2142b49d772b5&
+memo_contains=68C40AD8456164CC40DB5623E369D80E&
+new_memo=received*id*f5567f51344746f79da78a1b067d49fa*0*ZnJvbT1pZm9*1*uOS5za3l3YW*2*xsZXQuY2M=
+transaction_id=1154885D1BD74D61891705778AAE1943&
+stripe=aG9seXNoaXQZ3JlYXl&
+mirror=lzIGlzIGZ1Y2tpB0aG&
+mirror2=F0bWFuLiBtpbmcgRl
 ```
+
 PARAMETERS
 1. sn is the Serial Number of the Accout where payment was received
 2. an is the Authenticity number to authenticate permission to verify payment. 
-3. old_tag: guid used in the memo of the transaction (MUST BE A GUID)
-4. new_tag: the guid that will replace the old tag. 
-5. statement: The statment that will be recorded (optional). If included you must use the memo standard above with five differant parts and four seperators. 
+3. memo_contains: The guid that the sender says is in their memo (MUST BE A GUID)
+4. new_memo: The memo that will replace the existing one. Must use the memo standard above with five differant parts and four seperators. 
+5. transaction_id: A GUID the client creates. The same guid is sent to all RAIDA to sync. 
+6. stripe: 1/25th of the statement written using the Statement Format and coded in base64 
+7. mirror: The stripe of the RAIDA that is +3 from this one.
+8. mirror2: The stipe of the RAIDA thatis +6 from this one. 
 
 SAMPLE RESPONSE IF COINS FOUND
 
