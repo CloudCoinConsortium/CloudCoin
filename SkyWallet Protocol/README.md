@@ -702,9 +702,9 @@ SAMPLE CALL
 
 ```http
 https://raida7.cloudcoin.global/service/verify_payment?
-sn=1
+account=1
 &an=1836843d928347fb22c2142b49d772b5&
-memo_contains=68C40AD8456164CC40DB5623E369D80E&
+tag=68C40AD8456164CC40DB5623E369D80E&
 new_memo=received*id*f5567f51344746f79da78a1b067d49fa*0*ZnJvbT1pZm9*1*uOS5za3l3YW*2*xsZXQuY2M=
 ```
 
