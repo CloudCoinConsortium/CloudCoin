@@ -660,12 +660,12 @@ This allows the sender and receiver of a payment to verify that the receiver rec
 SAMPLE CALL
 
 ```http
-https://raida7.cloudcoin.global/service/view_receipt?account=2&tag=623e88186f3c4a4694c02230abe72666
+https://raida7.cloudcoin.global/service/view_receipt?owner=2&tag=623e88186f3c4a4694c02230abe72666
 ```
 PARAMETERS
 
 1. tag: guid used in the memo of the transaction (MUST BE A GUID)
-2. account: Serial Number of the ID coin that owns the receiving account .
+2. owner: Serial Number of the ID coin that owns the receiving account .
 
 SAMPLE RESPONSE IF COINS FOUND
 
@@ -702,14 +702,14 @@ SAMPLE CALL
 
 ```http
 https://raida7.cloudcoin.global/service/verify_payment?
-account=1
+owner=1
 &an=1836843d928347fb22c2142b49d772b5&
 tag=68C40AD8456164CC40DB5623E369D80E&
 new_memo=received*id*f5567f51344746f79da78a1b067d49fa*0*ZnJvbT1pZm9*1*uOS5za3l3YW*2*xsZXQuY2M=
 ```
 
 PARAMETERS
-1. sn is the Serial Number of the Accout where payment was received
+1. owner is the Serial Number of the Accout where payment was received
 2. an is the Authenticity number to authenticate permission to verify payment. 
 3. memo_contains: The guid that the sender says is in their memo (MUST BE A GUID)
 4. new_memo: The memo that will replace the existing one. Must use the memo standard above with five differant parts and four seperators. 
