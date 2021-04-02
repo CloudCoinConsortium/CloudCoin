@@ -92,13 +92,15 @@ private keys of the blockchain. However, we are now working on a key recovery se
 
 [ShowTransferBalance](README.md#showtransferbalance)
 
-[Show Tags](README.md#show-tags)
+[Show](README.md#show)
 
-[Show Coins With Tags](README.md#show-coins-with-tags)
+[Show Tags](README.md#showtags)
 
-[Rename Tag](README.md#rename-tag) 
+[Show Coins With Tags](README.md#showcoinswithtags)
 
-[Fix Transfer](README.md#fix_transfer) 
+[Rename Tag](README.md#renametag) 
+
+[Fix Transfer](README.md#fixtransfer) 
 
 # Merchant Services
 
@@ -384,7 +386,7 @@ Sample Response:
 }
 ```
 
-## Show Tag
+## ShowTags
 An Envelope is a grouping of coins usually grouped by a transaction number, purchase order number, memo, account number. 
 For transactions, the seller gives the buyer their account number and an envelope name (which could be a receipt number) so the receiver can 
 determine where the money came from. 
@@ -467,7 +469,7 @@ RESPONSE IF ACCOUNT DID NOT LOG CORRECTLY
 ```
 
 
-## Show Coins With Tag
+## ShowCoinsWithTags
 
 This service shows how many coins you have that are in an envelope that you specify. 
 Each coin will be listed so that the person will know what they have. 
@@ -690,7 +692,7 @@ SAMPLE RESPONSE IF COINS NOT FOUND
 ```
 NOTE: You will not that there was not results because the total will be = 0;
 
-## Fix_Transfer
+## FixTransfer
 
 The fix_transfer service allows you to fix a raida that is not synced with the other RAIDA. With fix_transfer, you are telling the RAIDA to syncronize with its trusted neighbors. Assuming the neighbours agree, the RAIDA will change its status. You should allways call fix_transfer after issuing any command that results in a fracked Skywallet. This service can be called after send, receive, break, break in bank, show, show_change, and all the services where the client can see un synctonized responses. The client must choose a corner that will be fixable. Or the client can pick a random corner between 1 and 4. 
 
