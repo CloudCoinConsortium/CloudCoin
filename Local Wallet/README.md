@@ -12,7 +12,7 @@ change ownership, place good coins in a protected folder and fix coins that are 
 The folder structure is the backbone of the Local Wallet and we would like to keep it the same forever. 
 
 Here is the folder structure:
-```java
+```html
 Program Name //sample name: "CloudCoin Wallet"
 │   global.config
 │
