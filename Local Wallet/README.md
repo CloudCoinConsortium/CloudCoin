@@ -182,12 +182,12 @@ This software is provided as is with all faults, defects, errors, and without wa
 CloudCoin Consortium. 			
 
 ```
-
+3. The program should never delete coin files, only move them to places like Imported and Trash. 
 3. All files in the bank folder and the fracked folder should use the nameing standard of a single coin.
 4. The files in the folders should be formatted. http://cloudcoinconsortium.org/standards.html#JSON_File
 5. The files in the "Lost" folder may cointian the "PAN" array. 
 
-Echo RAIDA
+### Echo RAIDA
 1. The program should show the status of the RAIDA and let the person know if there are not enough RAIDA to operate. The colors are: Grey: Unchecked or in the process of checking connectivity. Green: Connected to the RAIDA. Red: Unable to connect to the RAIDA. You can test this by going to your host file and adding a record. The location in Windows;
 ```File
 C:\Windows\System32\Drivers\etc\hosts
@@ -204,25 +204,91 @@ You can test this by adding the following records to you host file:
 127.0.0.1 raida13.cloudcoin.global
 127.0.0.1 raida14.cloudcoin.global
 127.0.0.1 raida15.cloudcoin.global
-
 ```
 
-SHOW BALANCE
-1. The balance is the coins in the bank added to the coins in the fracked folder. 
-   2. 
+### SHOW COINS
+Show coins is a command that returns how many coins are in the program. 
+1. The balance is the sum of the coins in the "Bank", "Vault" and "Fracked" folders. To test this, put some properly named CloudCoins in to the Bank and Fracked folder and Vault folders see if their sum is displayed.  
+2. Some programs may also show the number of coins in the Limbo folder but not as authentic coins that are owned. Some programs show Fracked coins but should make it clear that they are authentic. 
 
-DEPOSIT / IMPORT
-1. Import the same coin 
-2. Import coin that is missing pown, aoid, and ed (Should still work)
-3. Import coin that has quotes around the "1" network number or one that has no quotes. 
-4. Import coin with bad formatting in stack file. 
-5. Import coin that is in a jpeg
-6. Import coin that is a PNG.
-7. Import coin that is an ID coin if Skywallat.
-8. Files are in a zip file and must be unzipped to work.
-9. After the coin is unpacked, the files should be moved from where they are and put in the Imported folder. 
-10. What if they try to import them two times? File should overwrite the last one that was there. 
-11. Deposit 2000 CloudCoin Notes. (Large amounts)
+### SHOW FOLDERS
+If this feature is enabled, it should show the location of the following: 
+1. The root program file.
+2. The Logs folder (in the root) that tracks all activites.
+3. The account folder (of the active account)
+4. The Templates folder of the active account.
+5. ID folder for Skywallet ID Coins
+
+
+### DEPOSIT / IMPORT
+This is the process of changing the coins ANs to new PANs thus authenticaing and powning (password owning) them in the process. 
+1. Import the same coin. When you import the same coin, the program should check the Bank, Fracked, Limbo, Vault and ID folder. If they are in one of those folders, the user should be told that the coin was already in the "--" folder and that it was moved to Trash. You should find the coin in the Trash Folder. This process should be very fast because with the exception of the ID coins, only the file name has to be read.  
+2. Only files with the following extensions should be allowed to be imported: .stack, .png, .jpeg, .zip. All other file formats should be ignored. Test this by brining in other file formats.
+3. Zipped files should be unzipped. Then if they have files within them that are not.stack, .png, or .jpeg, those files should be ignored. 
+5. .stack files should be able to be imported using four different formats, The old format, new format, compact format, jumbled format and the oops format (when developers do not follow standard). You can copy and past these into a file and import them to see if they work. You just need to give them a different serial number. They will all be counterfeit but that is not what we are testing. 
+
+#### MAIN FORMAT
+```javascript
+{
+	"cloudcoin": [{
+		"nn": "1",
+		"sn": "16776215",
+		"an": [
+			"be0f94e584584d85ab86c301b8f1906d", "1e539633bc974bf88ebaeb7fd23279d7", "d735e4d16ff54eda8019e1a59ad33032", "b394553ff4e94f78a5f4c04df4102a20", "85b8f6956deb4dc28bc40b192ef5b0bc",
+			"6775856024a14d10af30181477f8957a", "31274a1103c7406fb0f60736604f23b6", "6eb2c9bfb21e484b89f35c8124a8f3c0", "407b9d6b0b034b23b1d160d7da96a8ae", "2dbf38c2b1834287aed0fdcf4ba32274",
+			"4da74b2a8c784731826716dd36296271", "0fe3fb2ded9648eeae64bdcf29abdf15", "01bdfe3b43b74b618c5db44e6b2febb6", "e0bdf8a1b2eb4174bcca6fda0c3609a1", "c8636145d53d42008c84432872816d4c",
+			"f5258cb2cd2f4afca333bc7cd64f01eb", "c89eb2da6897489db2581d0b17d4d959", "89d5dba265c84a488106840a79316940", "8dba35338678464a9ef9a1686cd500af", "0a39da32d43546009147127443793297",
+			"109a745bb88946a3ac9720bc8f9fee66", "a56933d0ab01400d93782c4eba0c6849", "ef6025e09f88499fb0490edf7ae21eba", "6014a91a938f449cb8f72658e0b9d61e", "cb64b024fe8c47d19d3fcc5c797fa0b3"
+		],
+		"pown": "ppeppppppfppppppnpppupppp",
+		"ed": "9-2021",
+		"aoid": []
+	}
+}
+
+```
+#### Compact Standard
+```javascript
+{"cloudcoin":[
+{"nn":"1",
+"sn":"16777213","an":[
+"be0f94e584584d85ab86c301b8f1906d","1e539633bc974bf88ebaeb7fd23279d7","d735e4d16ff54eda8019e1a59ad33032","b394553ff4e94f78a5f4c04df4102a20","85b8f6956deb4dc28bc40b192ef5b0bc","6775856024a14d10af30181477f8957a","31274a1103c7406fb0f60736604f23b6","6eb2c9bfb21e484b89f35c8124a8f3c0","407b9d6b0b034b23b1d160d7da96a8ae","2dbf38c2b1834287aed0fdcf4ba32274","4da74b2a8c784731826716dd36296271","0fe3fb2ded9648eeae64bdcf29abdf15","01bdfe3b43b74b618c5db44e6b2febb6","e0bdf8a1b2eb4174bcca6fda0c3609a1","c8636145d53d42008c84432872816d4c","f5258cb2cd2f4afca333bc7cd64f01eb","c89eb2da6897489db2581d0b17d4d959","89d5dba265c84a488106840a79316940","8dba35338678464a9ef9a1686cd500af","0a39da32d43546009147127443793297","109a745bb88946a3ac9720bc8f9fee66","a56933d0ab01400d93782c4eba0c6849","ef6025e09f88499fb0490edf7ae21eba","6014a91a938f449cb8f72658e0b9d61e","cb64b024fe8c47d19d3fcc5c797fa0b3"],
+"pown":"ppeppppppfppppppnpppupppp",
+"ed":"9-2021","aoid":[]}
+]}
+```
+#### Old Standard
+```javascript
+{"cloudcoin":[
+{"nn":"1",
+"sn":"16777213","an":[
+"be0f94e584584d85ab86c301b8f1906d","1e539633bc974bf88ebaeb7fd23279d7","d735e4d16ff54eda8019e1a59ad33032","b394553ff4e94f78a5f4c04df4102a20","85b8f6956deb4dc28bc40b192ef5b0bc","6775856024a14d10af30181477f8957a","31274a1103c7406fb0f60736604f23b6","6eb2c9bfb21e484b89f35c8124a8f3c0","407b9d6b0b034b23b1d160d7da96a8ae","2dbf38c2b1834287aed0fdcf4ba32274","4da74b2a8c784731826716dd36296271","0fe3fb2ded9648eeae64bdcf29abdf15","01bdfe3b43b74b618c5db44e6b2febb6","e0bdf8a1b2eb4174bcca6fda0c3609a1","c8636145d53d42008c84432872816d4c","f5258cb2cd2f4afca333bc7cd64f01eb","c89eb2da6897489db2581d0b17d4d959","89d5dba265c84a488106840a79316940","8dba35338678464a9ef9a1686cd500af","0a39da32d43546009147127443793297","109a745bb88946a3ac9720bc8f9fee66","a56933d0ab01400d93782c4eba0c6849","ef6025e09f88499fb0490edf7ae21eba","6014a91a938f449cb8f72658e0b9d61e","cb64b024fe8c47d19d3fcc5c797fa0b3"]}
+]}
+```
+#### Jumbled Version (The elements are in a different order)
+```javascript
+{"cloudcoin":[
+{"sn":"16777213","an":[
+"be0f94e584584d85ab86c301b8f1906d","1e539633bc974bf88ebaeb7fd23279d7","d735e4d16ff54eda8019e1a59ad33032","b394553ff4e94f78a5f4c04df4102a20","85b8f6956deb4dc28bc40b192ef5b0bc","6775856024a14d10af30181477f8957a","31274a1103c7406fb0f60736604f23b6","6eb2c9bfb21e484b89f35c8124a8f3c0","407b9d6b0b034b23b1d160d7da96a8ae","2dbf38c2b1834287aed0fdcf4ba32274","4da74b2a8c784731826716dd36296271","0fe3fb2ded9648eeae64bdcf29abdf15","01bdfe3b43b74b618c5db44e6b2febb6","e0bdf8a1b2eb4174bcca6fda0c3609a1","c8636145d53d42008c84432872816d4c","f5258cb2cd2f4afca333bc7cd64f01eb","c89eb2da6897489db2581d0b17d4d959","89d5dba265c84a488106840a79316940","8dba35338678464a9ef9a1686cd500af","0a39da32d43546009147127443793297","109a745bb88946a3ac9720bc8f9fee66","a56933d0ab01400d93782c4eba0c6849","ef6025e09f88499fb0490edf7ae21eba","6014a91a938f449cb8f72658e0b9d61e","cb64b024fe8c47d19d3fcc5c797fa0b3"],
+"nn":"1"}
+]}
+```
+#### Oops Version (The programmer did not notice that the network number and serial number have quotation marks around them)
+```javascript
+{"cloudcoin":[
+{"nn":"1",
+"sn":16777213,an:[
+"be0f94e584584d85ab86c301b8f1906d","1e539633bc974bf88ebaeb7fd23279d7","d735e4d16ff54eda8019e1a59ad33032","b394553ff4e94f78a5f4c04df4102a20","85b8f6956deb4dc28bc40b192ef5b0bc","6775856024a14d10af30181477f8957a","31274a1103c7406fb0f60736604f23b6","6eb2c9bfb21e484b89f35c8124a8f3c0","407b9d6b0b034b23b1d160d7da96a8ae","2dbf38c2b1834287aed0fdcf4ba32274","4da74b2a8c784731826716dd36296271","0fe3fb2ded9648eeae64bdcf29abdf15","01bdfe3b43b74b618c5db44e6b2febb6","e0bdf8a1b2eb4174bcca6fda0c3609a1","c8636145d53d42008c84432872816d4c","f5258cb2cd2f4afca333bc7cd64f01eb","c89eb2da6897489db2581d0b17d4d959","89d5dba265c84a488106840a79316940","8dba35338678464a9ef9a1686cd500af","0a39da32d43546009147127443793297","109a745bb88946a3ac9720bc8f9fee66","a56933d0ab01400d93782c4eba0c6849","ef6025e09f88499fb0490edf7ae21eba","6014a91a938f449cb8f72658e0b9d61e","cb64b024fe8c47d19d3fcc5c797fa0b3"]}
+]}
+```
+8. Import coin that is in a jpeg
+9. Import coin that is a PNG.
+10. Import coin that is an ID coin if Skywallats are received. If the program can go and get CloudCoins from a Skywallet, put the Skywallet coin into the ID folder and then try to import a copy of this coin. The program should not allow it. 
+13. After the coin is unpacked, the files should be moved from where they are and put in the Imported folder. 
+14. What if they try to import them two times? File should overwrite the last one that was there in the Imported folder.  
+15. Deposit 2000 CloudCoin Notes. (Large amounts). 
+16. After the deposit, the user should be shown a result that show how many coins were authentic, counterfiet, Limbo and sometime fracked. Users should also be able to see details somewhere in something called "Receipts". The Receipts should show each coin and what the outcome was including the pown which will look something like "pppppppppfppppppppupppp".
+17. If the coin has 13 or more passes, it is authentic. If a coin has 13 or more fails, it is counterfeit. Otherwise, the coin is in Limbo. You can go into a stack file and change the numbers of the ANs and that will cause the coin to become fracked on that RAIDA.  
 
 FIX
 
