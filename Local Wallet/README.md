@@ -352,7 +352,17 @@ Instead of all the notes being in one stack file, there should be one stack file
 4. Coins that are exported should be able to import again.
 
 
-
+### LIST SERIALS
+This lists all the serial numbers of coins in a specified folder. 
+1. Serial Number file format is .csv with the serail number and the denomination like this:
+```csv
+16777214,250
+16777215,250
+16777216,250
+```
+2. The program should be able to read all the serial numbers in a stack file. 
+3. The program should be able to unzip files and then read all the serial numbers in the files within those files. 
+4. Only .PNG, .stack and .zip file extensions should be looked at. All other extensions should be ignored.  
 
 ### FIX
 
