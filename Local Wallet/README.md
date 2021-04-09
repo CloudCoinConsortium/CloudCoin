@@ -86,8 +86,10 @@ Program Name //sample name: "CloudCoin Wallet"
 ├───Downloads
 ├───EmailTemplates
 ├───ID
+│   └───sean4.skywallet.cc
 │       sean4.skywallet.cc.png //Sample ID Coin for a Skywallet account
-│
+│       15587724.config //serial number of the ID coin contains hash of password
+│       transaction.txt //Transaction log
 ├───Logs
 │   │   main.log
 │   │   sentcoins.csv
@@ -167,7 +169,7 @@ before the RAIDA can respond. Coins and become "Fracked" (out of sync) when some
 thing the coin is counterfeit. Here is how we have figured out how to test. The program could crash or lose electricity before the tasks
 are completed. 
 
-CONFIG FILE
+CONFIG FILE (Ignore this for now)
 1. How many RAIDA need to be good to authenticate
 2. How many seconds to wait to authenticate
 
@@ -281,6 +283,34 @@ This is the process of changing the coins ANs to new PANs thus authenticaing and
 "be0f94e584584d85ab86c301b8f1906d","1e539633bc974bf88ebaeb7fd23279d7","d735e4d16ff54eda8019e1a59ad33032","b394553ff4e94f78a5f4c04df4102a20","85b8f6956deb4dc28bc40b192ef5b0bc","6775856024a14d10af30181477f8957a","31274a1103c7406fb0f60736604f23b6","6eb2c9bfb21e484b89f35c8124a8f3c0","407b9d6b0b034b23b1d160d7da96a8ae","2dbf38c2b1834287aed0fdcf4ba32274","4da74b2a8c784731826716dd36296271","0fe3fb2ded9648eeae64bdcf29abdf15","01bdfe3b43b74b618c5db44e6b2febb6","e0bdf8a1b2eb4174bcca6fda0c3609a1","c8636145d53d42008c84432872816d4c","f5258cb2cd2f4afca333bc7cd64f01eb","c89eb2da6897489db2581d0b17d4d959","89d5dba265c84a488106840a79316940","8dba35338678464a9ef9a1686cd500af","0a39da32d43546009147127443793297","109a745bb88946a3ac9720bc8f9fee66","a56933d0ab01400d93782c4eba0c6849","ef6025e09f88499fb0490edf7ae21eba","6014a91a938f449cb8f72658e0b9d61e","cb64b024fe8c47d19d3fcc5c797fa0b3"]}
 ]}
 ```
+#### LIMBO / LOST FORMAT
+```javascript
+{
+	"cloudcoin": [{
+		"nn": "1",
+		"sn": "16776215",
+		"an": [
+			"be0f94e584584d85ab86c301b8f1906d", "1e539633bc974bf88ebaeb7fd23279d7", "d735e4d16ff54eda8019e1a59ad33032", "b394553ff4e94f78a5f4c04df4102a20", "85b8f6956deb4dc28bc40b192ef5b0bc",
+			"6775856024a14d10af30181477f8957a", "31274a1103c7406fb0f60736604f23b6", "6eb2c9bfb21e484b89f35c8124a8f3c0", "407b9d6b0b034b23b1d160d7da96a8ae", "2dbf38c2b1834287aed0fdcf4ba32274",
+			"4da74b2a8c784731826716dd36296271", "0fe3fb2ded9648eeae64bdcf29abdf15", "01bdfe3b43b74b618c5db44e6b2febb6", "e0bdf8a1b2eb4174bcca6fda0c3609a1", "c8636145d53d42008c84432872816d4c",
+			"f5258cb2cd2f4afca333bc7cd64f01eb", "c89eb2da6897489db2581d0b17d4d959", "89d5dba265c84a488106840a79316940", "8dba35338678464a9ef9a1686cd500af", "0a39da32d43546009147127443793297",
+			"109a745bb88946a3ac9720bc8f9fee66", "a56933d0ab01400d93782c4eba0c6849", "ef6025e09f88499fb0490edf7ae21eba", "6014a91a938f449cb8f72658e0b9d61e", "cb64b024fe8c47d19d3fcc5c797fa0b3"
+		],
+		"pan": [
+			"be0f94e584584d85ab86c301b8f1906d", "1e539633bc974bf88ebaeb7fd23279d7", "d735e4d16ff54eda8019e1a59ad33032", "b394553ff4e94f78a5f4c04df4102a20", "85b8f6956deb4dc28bc40b192ef5b0bc",
+			"6775856024a14d10af30181477f8957a", "31274a1103c7406fb0f60736604f23b6", "6eb2c9bfb21e484b89f35c8124a8f3c0", "407b9d6b0b034b23b1d160d7da96a8ae", "2dbf38c2b1834287aed0fdcf4ba32274",
+			"4da74b2a8c784731826716dd36296271", "0fe3fb2ded9648eeae64bdcf29abdf15", "01bdfe3b43b74b618c5db44e6b2febb6", "e0bdf8a1b2eb4174bcca6fda0c3609a1", "c8636145d53d42008c84432872816d4c",
+			"f5258cb2cd2f4afca333bc7cd64f01eb", "c89eb2da6897489db2581d0b17d4d959", "89d5dba265c84a488106840a79316940", "8dba35338678464a9ef9a1686cd500af", "0a39da32d43546009147127443793297",
+			"109a745bb88946a3ac9720bc8f9fee66", "a56933d0ab01400d93782c4eba0c6849", "ef6025e09f88499fb0490edf7ae21eba", "6014a91a938f449cb8f72658e0b9d61e", "cb64b024fe8c47d19d3fcc5c797fa0b3"
+		],
+		"pown": "ppeppppppfppppppnpppupppp",
+		"ed": "9-2021",
+		"aoid": []
+	}
+}
+
+```
+
 8. Import coin that is in a jpeg
 9. Import coin that is a PNG.
 10. Import coin that is an ID coin if Skywallats are received. If the program can go and get CloudCoins from a Skywallet, put the Skywallet coin into the ID folder and then try to import a copy of this coin. The program should not allow it. 
