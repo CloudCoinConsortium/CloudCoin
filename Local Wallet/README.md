@@ -189,7 +189,7 @@ CloudCoin Consortium.
 4. The files in the folders should be formatted. http://cloudcoinconsortium.org/standards.html#JSON_File
 5. The files in the "Lost" folder may cointian the "PAN" array. 
 
-### Echo RAIDA
+### ECHO RAIDA
 1. The program should show the status of the RAIDA and let the person know if there are not enough RAIDA to operate. The colors are: Grey: Unchecked or in the process of checking connectivity. Green: Connected to the RAIDA. Red: Unable to connect to the RAIDA. You can test this by going to your host file and adding a record. The location in Windows;
 ```File
 C:\Windows\System32\Drivers\etc\hosts
@@ -212,6 +212,7 @@ You can test this by adding the following records to you host file:
 Show coins is a command that returns how many coins are in the program. 
 1. The balance is the sum of the coins in the "Bank", "Vault" and "Fracked" folders. To test this, put some properly named CloudCoins in to the Bank and Fracked folder and Vault folders see if their sum is displayed.  
 2. Some programs may also show the number of coins in the Limbo folder but not as authentic coins that are owned. Some programs show Fracked coins but should make it clear that they are authentic. 
+3. Show Coins should never try to track the coins in RAM. Instead, everytime the ShowCoins is called, the folders should be checked. To test this remove one of the stack files in the Bank folder and call the show coins again. See if the balance has changed accourdinly. 
 
 ### SHOW FOLDERS
 If this feature is enabled, it should show the location of the following: 
@@ -320,16 +321,38 @@ This is the process of changing the coins ANs to new PANs thus authenticaing and
 16. After the deposit, the user should be shown a result that show how many coins were authentic, counterfiet, Limbo and sometime fracked. Users should also be able to see details somewhere in something called "Receipts". The Receipts should show each coin and what the outcome was including the pown which will look something like "pppppppppfppppppppupppp".
 17. If the coin has 13 or more passes, it is authentic. If a coin has 13 or more fails, it is counterfeit. Otherwise, the coin is in Limbo. You can go into a stack file and change the numbers of the ANs and that will cause the coin to become fracked on that RAIDA.  
 
-FIX
 
-WITHDRAW
-1. The coins in the bank folder should be withdrawn before the coins in the fracked folder.
-2. The withdraw options should be PNG, Stack and Single Stacks put in a zip file. 
+### WITHDRAW
+
+1. When withdrawing coins, the program should take the coins from the Bank or Vault folder first and only take from the Fracked folder if the Bank and Vault are empty. This by putting coins in the Bank and Fracked folder. withdraw one note and see if it comes from the Bank or Fracked.  
+
+2. When withdrawing, copy of the coins removed should be put in the "Exported" folder. 
+3. Sometime, coins are withdrawn by sending Email or by Uploading to a Skywallet (Send). Coins sent by email should be placed in the EMAIL folder. Coins Sent to a Skywallet should be placed in the "Sent" folder. 
+
+Users should have three choices of withdraw:
+1. Stack file
+2. PNG
+3. Single Stack Files zipped together
+
+#### Stack Files
+1. No more than 3000 notes per stack file. Try to withdraw more. 
+2. Formatted using the Main Format above. Open the file using a text editor. Note that all the white spaces (tabs, spaces and line breaks) should be exactly the same. See file formatting: https://github.com/CloudCoinConsortium/CloudCoin/tree/master/CloudCoin%20File%20Formats/stack#stack-files 
+3. Named using the naming convention for many coins if there is more than one note in the stack. If there is only one coin in the stack then it should use the single not naming convention. See file formating above. 
+4. You should be able to import this coin back into the software and into other CloudCoin Wallets. 
+
+#### PNG format
+1. The standard PNG template should be used: https://github.com/CloudCoinConsortium/CloudCoin/tree/master/CloudCoin%20File%20Formats/png You can open the PNG file with a text editor to check this. (NOTE: The PNG template is under development at the time of this writing.)
+Should have the writing on the front showing how many coin are in the PNG.
+
+#### Single Stack Files zipped togehter
+Instead of all the notes being in one stack file, there should be one stack file for every coin. The tag of these stack files should be a random guid so that their names cannot be guessed. The coins should be all zipped together in one file. 
+
+
 3. If a person enters the world "Random" into the tag, the program should generate a random number for the tags.
 4. Coins that are exported should be able to import again.
-5. Import the coins into the old desktop (CloudCoin Wallet)
-6. Import the coins 
 
 
 
+
+### FIX
 
