@@ -13,6 +13,8 @@ You will need to send messages to all 25 RAIDA in parallel.
 
 [Fix](README.md#fix)
 
+[Super Fix](README.md#super-fix)
+
 [Fix Lost](README.md#fix-lost)
 
 [Report Lost](README.md#report-lost) 
@@ -249,7 +251,83 @@ If some of the coins were counterfeit and other authentic:
              }
  ```       
 ----------------------------------------------
+# ![#f0156c](https://via.placeholder.com/15/f0156c/000000?text=+)Super Fix
+Super Fix is slow and takes as much as 10 seconds per coin per RAIDA. It should
+be used on to fix RAIDA that are difficult such as when there are five in a row
+of fracked coins. Because the RAIDA does not have enough neighbours to provide 
+tickets, the Super Fix and be used. Super Fix calls on 13 RAIDA to provide 
+tickets. This is the majority. When calling, all of the RAIDA and their 
+tickets are sent. If a ticket for a RAIDA was not sent, then the word
+"false" is put their instead. 
 
+Example GET Request for two Coins to be fixed:
+```
+https://raida7.cloudcoin.global/service/super_fix?
+r[]=false&
+r[]=false&
+r[]=4d6c1e0a48014eed9a0450a028afdbbeaaaaaaaaaaaa&
+r[]=false&
+r[]=4d6c1e0a48014eed9a0450a028afdbbeaaaaaaaaaaaa&
+r[]=4d6c1e0a48014eed9a0450a028afdbbeaaaaaaaaaaaa&
+r[]=false&
+r[]=d77a352e5c87dac1a943fcd2607cccf9aecd64fed23d&
+r[]=4d6c1e0a48014eed9a0450a028afdbbeaaaaaaaaaaaa&
+r[]=d77a352e5c87dac1a943fcd2607cccf9aecd64fed23d&
+r[]=d77a352e5c87dac1a943fcd2607cccf9aecd64fed23d&
+r[]=d77a352e5c87dac1a943fcd2607cccf9aecd64fed23d&
+r[]=d77a352e5c87dac1a943fcd2607cccf9aecd64fed23d& 
+r[]=false&
+r[]=d77a352e5c87dac1a943fcd2607cccf9aecd64fed23d&
+r[]=d77a352e5c87dac1a943fcd2607cccf9aecd64fed23d&
+r[]=d77a352e5c87dac1a943fcd2607cccf9aecd64fed23d&
+r[]=false&
+r[]=false&
+r[]=false&
+r[]=d77a352e5c87dac1a943fcd2607cccf9aecd64fed23d&
+r[]=false&
+r[]=false&
+r[]=false&
+r[]=false&
+pan[]=23b9f31761b4c73b7294572c079aa656&
+pan[]=23b9f31761b4c73b7294572c079aa656&
+sn[]=6565&
+sn[]=343343
+```
+
+
+RESPONSE: If all the coins were authentic
+```
+
+            {
+            	"server": "RAIDA11",
+            	"status": "allpass",
+            	"message": "All the coins were authentic",
+            	"version": "2020-04-13",
+            	"time": "2020-04-18 22:57:55",
+		"ex_time":"8.577"
+            }
+        
+If all the coins were counterfeit:
+            {
+             	"server": "RAIDA11",
+             	"status": "allfail",
+             	"message": "All the coins were counterfeit",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55",
+		"ex_time":"8.577"
+             }
+        
+If some of the coins were counterfeit and other authentic:
+             {
+             	"server": "RAIDA11",
+             	"status": "mixed",
+             	"message": "pass,pass,fail",
+             	"version": "2020-04-13",
+             	"time": "2020-04-18 22:57:55",
+		"ex_time":"8.577"
+             }
+ ```       
+-----------------------------------------
 # ![#f0ff15](https://via.placeholder.com/15/f0ff15/000000?text=+)Fix Lost
 
 The RAIDA Fix Lost Protocol allows many coins that are considered lost to be found.
