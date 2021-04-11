@@ -252,13 +252,10 @@ If some of the coins were counterfeit and other authentic:
  ```       
 ----------------------------------------------
 # ![#f0156c](https://via.placeholder.com/15/f0156c/000000?text=+)Super Fix
-Super Fix is slow and takes as much as 10 seconds per coin per RAIDA. It should
-be used on to fix RAIDA that are difficult such as when there are five in a row
-of fracked coins. Because the RAIDA does not have enough neighbours to provide 
-tickets, the Super Fix and be used. Super Fix calls on 13 RAIDA to provide 
-tickets. This is the majority. When calling, all of the RAIDA and their 
-tickets are sent. If a ticket for a RAIDA was not sent, then the word
-"false" is put their instead. 
+Super Fix can fix many coins at once. But, it is slow and takes as much as 10 seconds per RAIDA. Super Fix should
+only be used on coins that cannot be fixed by other fixes. Such as when a coin has five fracks in a row. Super Fix requires 13 tickets or more from any RAIDA. This is the majority. When calling, all of 25 RAIDA have an index in the r[] array sent.
+If a ticket for a RAIDA is not sent, then the word
+"false" in their array index. 
 
 Example GET Request for two Coins to be fixed:
 ```
@@ -288,10 +285,11 @@ r[]=false&
 r[]=false&
 r[]=false&
 r[]=false&
-pan[]=23b9f31761b4c73b7294572c079aa656&
-pan[]=23b9f31761b4c73b7294572c079aa656&
 sn[]=6565&
 sn[]=343343
+pan[]=4c73b7294572c079aa65623b9f31761b&
+pan[]=23b9f31761b4c73b7294572c079aa656&
+
 ```
 
 
