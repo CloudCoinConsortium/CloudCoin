@@ -176,6 +176,7 @@ CONFIG FILE (Ignore this for now)
 ### GENERAL
 1. The program should have the excact file structure as specified above.
 2. The program should have a disclaimer when starting: 
+### Disclaimer
 ```
 CloudCoin Founders Edition 
 Version: April 9 2020 
