@@ -36,7 +36,7 @@ NOTE: It is ok to Capitalize in the stack file.
 
 Many CloudCoins can be stored in one text file as JSON (Java Script Object Notation).
 
-Here is a sample JSON file with two CloudCoins in it:
+## Standard Stack File Format
 ```
 {
 	"cloudcoin": [{
@@ -83,7 +83,7 @@ NOTE: This format below allows the CloudCoin stack files to be 999 bytes with a 
 
 
 ```
-Here is another whay to write it that improves readability but takes 1071 bytes per note:
+## Standard CloudCoin Stack File Format including White Space
 ```
 {¶
 →"cloudcoin":∙[{¶
