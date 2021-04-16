@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21.031" height="23.269" viewBox="0 0 21.031 23.269">
+  <g id="drop-card" transform="translate(-0.5 0)" opacity="0.63">
+    <path id="Path_9" data-name="Path 9" d="M18.511,0H3.521a3.02,3.02,0,0,0-.336,6.022V22.6a.671.671,0,0,0,.671.671H18.175a.671.671,0,0,0,.671-.671V6.022A3.02,3.02,0,0,0,18.511,0ZM17.5,21.926H4.528V3.8H5.87V7.16a.671.671,0,1,0,1.342,0V3.8h7.607V7.16a.671.671,0,1,0,1.342,0V3.8H17.5ZM19.7,4.207a1.666,1.666,0,0,1-.851.458V3.132a.671.671,0,0,0-.671-.671H3.856a.671.671,0,0,0-.671.671V4.665a1.678,1.678,0,0,1,.336-3.323H18.511A1.678,1.678,0,0,1,19.7,4.207Zm0,0" fill="#fff"/>
+    <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(6.89 12.168)" fill="none" stroke="#fff" stroke-width="1.5">
+      <circle cx="4" cy="4" r="4" stroke="none"/>
+      <circle cx="4" cy="4" r="3.25" fill="none"/>
+    </g>
+  </g>
+</svg>

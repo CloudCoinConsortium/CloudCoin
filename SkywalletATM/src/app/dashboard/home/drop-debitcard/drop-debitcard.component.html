@@ -1,0 +1,29 @@
+<div class="middleWrap debitDropWrap">
+  <ng-container *ngIf="showNormal">
+    <div class="debitDropInner">
+        <div class="custom-dropzone" ngx-dropzone [multiple]="false" [accept]="'image/*'" (change)="onSelect($event)">
+            <ngx-dropzone-label>
+                <div>
+                    <h2 class="dropZoneLabel">Drop image here</h2>
+                </div>
+            </ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+
+            </ngx-dropzone-image-preview>
+        </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="showError">
+    <ng-lottie  height="100px" [options]="errorOptions" (animationCreated)="animationCreated($event)"></ng-lottie>
+    <div class="text-center" style="color:#ffffff;margin-bottom: 10px">{{errorMessage}}</div>
+    <div class="text-center">
+      <button class="customBtn" (click)="hideErrorMessage()"><fa-icon icon="arrow-left"></fa-icon></button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="showLoader">
+    <div class="text-center">
+      <ng-lottie  height="150px" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+    </div>
+  </ng-container>
+
+</div>

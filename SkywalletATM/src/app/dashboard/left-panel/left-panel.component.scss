@@ -1,0 +1,109 @@
+.logodiv {
+    padding: 20px;
+    background-color: #181818;
+    a{
+        display: block;
+        text-align: center;
+        img {
+            height: 75px;
+        }
+    }
+}
+
+.menudiv {
+    margin-top: 20px;
+    .heading {
+        font-size: 16px;
+        color: #989898;
+        font-weight: bold;
+        margin: 0 0 10px;
+        padding-left: 20px;
+    }
+    a {
+        padding: 12px 30px;
+        color: #fff;
+        opacity: 0.6;
+        display: block;
+        font-size: 15px;
+        transition: all 0.1s ease;
+        &:hover {
+            opacity: 1;
+        }
+        &.active {
+            opacity: 1;
+        }
+    }
+    .orBreaker {
+        padding: 10px 20px;
+        margin: 10px 0;
+        text-align: center;
+        color: #fff;
+        opacity: 0.6;
+        span {
+            position: relative;
+            &::before {
+                content: "";
+                position: absolute;
+                left: 23px;
+                top: 50%;
+                width: 140px;
+                height: 1px;
+                background-color: rgb(255 255 255 / 50%);
+            }
+            &::after {
+                content: '';
+                content: "";
+                position: absolute;
+                right: 23px;
+                top: 50%;
+                width: 140px;
+                height: 1px;
+                background-color: rgb(255 255 255 / 50%);
+            }
+        }
+    }
+}
+
+
+
+.raidaServersWrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    bottom: 5%;
+    .raidaSmLogo {
+        width: 100px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        @media (max-width: 1600px) {
+            margin-bottom: 5px;
+        }
+    }
+    .rserverholder {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 75%;
+        margin-bottom: 5px;
+        @media (max-width: 1600px) {
+            width: 80%;
+        }
+        .rServerItem {
+            width: 6px;
+            height: 20px;
+            border-radius: 10px;
+            // display: inline-block;
+            background-color: #f00;
+            // margin-left: 5px;
+            @media (max-width: 1600px) {
+                width: 5px;
+            }
+            @media (max-width: 1400px) {
+                width: 4px;
+            }
+        }
+    }
+}

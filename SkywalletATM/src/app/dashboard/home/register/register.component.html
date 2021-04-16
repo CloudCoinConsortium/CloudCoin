@@ -1,0 +1,96 @@
+<div class="middleWrap">
+  <div class="middleWrapIn">
+    <ng-container *ngIf="showNormal">
+      <form (ngSubmit)="register()">
+      <h2 class="subInnerHeader">Get Skywallet</h2>
+      <div class="formField">
+        <label>Wallet Name (Letters and Numbers Only)</label>
+        <input #autofocus type="text" placeholder="username.skywallet.cc" name="walletName" [(ngModel)]="walletName">
+      </div>
+      <div class="formField">
+        <label>Your Email</label>
+        <input type="email" placeholder="username@domain.com" name="walletEmail" [(ngModel)]="walletEmail">
+      </div>
+      <div class="formField">
+        <label>Password (min 8 characters) </label>
+        <input type="password" placeholder="test123#"  name="walletPin" [(ngModel)]="walletPin">
+      </div>
+
+      <div class="formField">
+        <label>One CloudCoin is required for registration</label>
+        <input
+          style="display: none"
+          type="file" (change)="onFileChanged($event)"
+          #fileInput>
+        <button type="button" class="customBtn" (click)="fileInput.click()">{{buttonText}}</button>
+      </div>
+      <div class="formField">
+
+        <label for="agree1" class="customCheckboxWrap">I understand that if I lose my SkyWallet Card number or PIN number
+          that my account cannot be recovered for five years (unless I use the SkyWallet ATM to backup my number before I lose them)
+          <input type="checkbox" name="agree1" #agree1 [checked]="agreed1" (change)="agreed1 = !agreed1" id="agree1" type="checkbox"
+          data-toggle="toggle">
+          <span class="checkmarkCheck"></span>
+        </label>
+
+        <!-- <input style="width: auto;display: inline" #agree1 [checked]="agreed1" (change)="agreed1 = !agreed1" id="agree1" type="checkbox"
+              data-toggle="toggle">
+        <label for="agree1" style="display:inline;"> I understand that if I lose my SkyWallet Card number or PIN number
+          that my account cannot be recovered
+          for five years (unless I use the SkyWallet ATM to backup my number before I lose them)</label> -->
+
+      </div>
+      <div class="formField">
+
+        <label for="agree2" class="customCheckboxWrap">I understand that it costs one coin to create this SkyWallet and my
+          coin will be spent to create this SkyWallet.
+          <input type="checkbox" name="agree2" #agree2  [checked]="agreed2" (change)="agreed2 = !agreed2" id="agree2" type="checkbox"
+          data-toggle="toggle">
+          <span class="checkmarkCheck"></span>
+        </label>
+
+        <!-- <input style="width: auto; display: inline" #agree2 [checked]="agreed2" (change)="agreed2 = !agreed2" id="agree2" type="checkbox"
+              data-toggle="toggle">
+        <label for="agree2" style="display: inline"> I understand that it costs one coin to create this SkyWallet and my
+          coin will be spent to create this
+          SkyWallet.</label> -->
+      </div>
+      <div class="text-center">
+        <button class="customBtn" (click)="register()" [disabled]="!agreed1 || !agreed2">Register</button>
+      </div>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="showError">
+      <ng-lottie height="100px" [options]="errorOptions" (animationCreated)="animationCreated($event)"></ng-lottie>
+      <div class="text-center" class="errorMsg">{{errorMessage}}</div>
+      <div class="text-center">
+        <button class="customBtn" (click)="hideErrorMessage()">
+          <fa-icon icon="arrow-left"></fa-icon>
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="showLoader">
+      <div class="text-center">
+        <ng-lottie height="150px" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+        <span style="color:#ffffff"> {{progressMessage}}</span>
+      </div>
+    </ng-container>
+    <div class="text-center" *ngIf="complete">
+      <span class="subInnerHeader"><fa-icon icon="check"></fa-icon>
+        {{completeMessage}}</span>
+      <div class="text-center">
+        <button class="customBtn" style="margin-top: 10px" (click)="downloadImage()">
+          <fa-icon icon="cloud-download-alt"></fa-icon>
+          Download Your Skywallet Debit Card
+        </button>
+        <p class="simpletextWhite">You can login to your SkyWallet account by -</p>
+        <ul style="color:#ffffff;text-align: left">
+          <li>Uploading this card (drop debit card image)</li>
+          <li>Manually typing in debit card details</li>
+          <li>Using the username/password</li>
+        </ul>
+      </div>
+      <a href="javascript:;" (click)="downloadImage()"><img [src]="cardImage" width="90%"/></a>
+    </div>
+  </div>
+</div>

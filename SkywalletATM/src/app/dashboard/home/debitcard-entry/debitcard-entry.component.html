@@ -1,0 +1,50 @@
+<div class="middleWrap">
+  <div class="middleWrapIn">
+    <ng-container *ngIf="showNormal">
+      <form  (ngSubmit)="login()">
+      <h2 class="subInnerHeader">Enter debit card details here</h2>
+      <div class="formField">
+          <label>SkyWallet Address</label>
+          <input #autofocus type="text" name="walletName" [(ngModel)]="walletName"
+                placeholder="username.skywallet.cc">
+      </div>
+      <div class="flexDiv">
+          <div class="widthHalf">
+              <div class="formField">
+                  <label>Debit Card Number</label>
+                  <input type="text" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" mask="0000 0000 0000 0000"
+                        [(ngModel)]="cardNumber">
+              </div>
+          </div>
+          <div class="widthSemiHalf">
+              <div class="formField">
+                  <label>Expiry Date</label>
+                  <input type="text" name="expiryDate" placeholder="MM / YY" mask="M0/00" [leadZeroDateTime]="true" [(ngModel)]="expiryDate">
+              </div>
+          </div>
+          <div class="widthSemiHalf">
+              <div class="formField">
+                  <label>CVV</label>
+                  <input type="text" placeholder="XXXXXXXXXXXX" name="cvv2"  [(ngModel)]="cvv2">
+              </div>
+          </div>
+      </div>
+      <div class="text-center">
+          <button class="customBtn" (click)="login()">Submit</button>
+      </div>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="showError">
+      <ng-lottie  height="100px" [options]="errorOptions" (animationCreated)="animationCreated($event)"></ng-lottie>
+      <div class="text-center" style="color:#ffffff;margin-bottom: 10px">{{errorMessage}}</div>
+      <div class="text-center">
+        <button class="customBtn" (click)="hideErrorMessage()"><fa-icon icon="arrow-left"></fa-icon></button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="showLoader">
+      <div class="text-center">
+        <ng-lottie  height="150px" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+      </div>
+    </ng-container>
+  </div>
+</div>

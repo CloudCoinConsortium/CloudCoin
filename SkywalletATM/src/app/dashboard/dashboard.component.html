@@ -1,0 +1,8 @@
+<div class="leftPanelWrapper" *ngIf="leftBarShow">
+    <a href="javascript:;" class="closeLeftBarCaller" (click)="sideBarCollapse()"><img src="assets/arrow.svg" alt=""></a>
+    <app-left-panel></app-left-panel>
+</div>
+<div class="righBodyWrapper">
+    <a href="javascript:;" class="leftPanelCaller" (click)="sideBarCaller()"><img src="assets/menu.svg" alt=""></a>
+    <router-outlet></router-outlet>
+</div>

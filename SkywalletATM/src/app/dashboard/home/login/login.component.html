@@ -1,0 +1,35 @@
+<div class="middleWrap">
+  <div class="middleWrapIn">
+    <ng-container *ngIf="showNormal"> <h2 class="subInnerHeader">Login</h2>
+      <form (ngSubmit)="login()">
+      <div class="formField">
+          <label>SkyWallet Address</label>
+          <input #autofocus type="text" placeholder="username.skywallet.cc" name="userName" [(ngModel)]="userName">
+      </div>
+      <div class="formField">
+          <label>Password</label>
+          <input type="password" placeholder="Password" name="password" [(ngModel)]="password">
+      </div>
+      <div class="gap20"></div>
+      <div class="text-center">
+          <button class="customBtn" (click)="login()">Submit</button>
+      </div>
+      </form>
+    </ng-container>
+
+    <ng-container *ngIf="showError">
+      <ng-lottie  height="100px" [options]="errorOptions" (animationCreated)="animationCreated($event)"></ng-lottie>
+      <div class="text-center" style="color:#ffffff;margin-bottom: 10px">{{errorMessage}}</div>
+      <div class="text-center">
+        <button class="customBtn" (click)="hideErrorMessage()"><fa-icon icon="arrow-left"></fa-icon></button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="showLoader">
+      <div class="text-center">
+        <ng-lottie  height="150px" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+      </div>
+    </ng-container>
+  </div>
+
+
+</div>

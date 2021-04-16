@@ -1,0 +1,31 @@
+<div class="middleWrap">
+  <div class="middleWrapIn">
+    <ng-container *ngIf="showNormal">
+      <form (ngSubmit)="withdraw()">
+        <h2 class="subInnerHeader">Withdraw</h2>
+      <div class="formField">
+        <label>Enter Amount to withdraw</label>
+        <input #autofocus name="amount" type="text" placeholder="XX" [(ngModel)]="amount">
+      </div>
+      <div class="text-center">
+        <button class="customBtn" (click)="withdraw()">Withdraw</button>
+      </div>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="showError">
+      <ng-lottie height="100px" [options]="errorOptions" (animationCreated)="animationCreated($event)"></ng-lottie>
+      <div class="text-center" style="color:#ffffff;margin-bottom: 10px">{{errorMessage}}</div>
+      <div class="text-center">
+        <button class="customBtn" (click)="hideErrorMessage()">
+          <fa-icon icon="arrow-left"></fa-icon>
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="showLoader">
+      <div class="text-center subInnerHeader">
+        <ng-lottie height="150px" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+        <span style="color:#ffffff">Fetching CloudCoin..</span>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.welcomeMsg {
+    font-size: 40px;
+    color: #fff;
+    margin-bottom: 20px;
+    margin-top: 0;
+    line-height: 45px;
+    text-align: center;
+    text-transform: uppercase;
+    @media screen and (max-width: 992px) {
+        font-size: 24px;
+        margin-bottom: 8px;
+        line-height: 30px;
+    }
+    @media screen and (max-width: 576px) {
+        font-size: 20px;
+        line-height: 26px;
+    }
+}
+.subwelcomeMsg {
+    font-size: 20px;
+    color: #fff;
+    margin: 0;
+    line-height: 25px;
+    text-align: center;
+    @media screen and (max-width: 992px) {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    @media screen and (max-width: 576px) {
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+.welcoemWrap {
+    min-height: 45vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .customBtn {
+        @media screen and (max-width: 768px) {
+            margin-top: 10px;
+        }
+    }
+}

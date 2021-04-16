@@ -1,0 +1,64 @@
+<div class="middleWrap">
+  <div class="middleWrapIn">
+    <ng-container *ngIf="showNormal"><h2 class="subInnerHeader">Transfer</h2>
+      <form (ngSubmit)="transfer()">
+      <p class="formSubheading">Used for transfering CloudCoin to individual Skywallet. Use Pay option to send payment to merchant accounts</p>
+      <div class="flexDiv">
+        <div class="widthHalf">
+          <div class="formField">
+            <label>To SkyWallet Address</label>
+            <input type="text" #autofocus [(ngModel)]="to" name="to" placeholder="john.skywallet.cc">
+          </div>
+        </div>
+        <div class="widthHalf">
+          <div class="formField">
+            <label *ngIf="opinions>1" style="color:#FF7777" tooltip="{{balanceBreakup}}"><fa-icon icon="exclamation-circle"></fa-icon> Amount (Balance:{{balanceString}} CC) <button class="smallButton" (click)="checkBalance()"> <fa-icon icon="sync"></fa-icon></button></label>
+            <label *ngIf="opinions===1" >Amount (Balance:{{balanceString}} CC)</label>
+            <input type="text" placeholder="" name="amount" [(ngModel)]="amount">
+          </div>
+        </div>
+      </div>
+      <div class="flexDiv">
+        <div class="widthHalf">
+          <div class="formField">
+            <label>Memo</label>
+            <input type="text" placeholder="" name="memo" [(ngModel)]="memo">
+          </div>
+        </div>
+        <div class="widthHalf">
+          <div class="text-left">
+            <button class="customBtn" (click)="transfer()">Transfer</button>
+          </div>
+        </div>
+      </div>
+      </form>
+
+
+    </ng-container>
+    <ng-container *ngIf="showError">
+      <ng-lottie height="100px" [options]="errorOptions" (animationCreated)="animationCreated($event)"></ng-lottie>
+      <div class="text-center" style="color:#ffffff;margin-bottom: 10px">{{errorMessage}}</div>
+      <div class="text-center">
+        <button class="customBtn" (click)="hideErrorMessage()">
+          <fa-icon icon="arrow-left"></fa-icon>
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="showLoader">
+      <div class="text-center">
+        <ng-lottie height="150px" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+        <span style="color:#ffffff">Transferring..</span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="balanceLoader">
+      <div class="text-center">
+        <ng-lottie height="150px" [options]="loadingOptions" (animationCreated)="animationCreated($event)"></ng-lottie>
+        <span style="color:#ffffff">{{loadingMessage}}</span>
+      </div>
+    </ng-container>
+
+    <div class="text-center subInnerHeader" *ngIf="complete">
+      <fa-icon icon="check"></fa-icon> Transfer Complete
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="middleWrap welcoemWrap">
+  <ng-container *ngIf="showNormal"> <div class="welcoemInner">
+   <h3 *ngIf="skywallet" class="welcomeMsg" >  <span style="font-size:18px"><fa-icon icon="credit-card"></fa-icon> {{skywallet}}</span></h3><br>
+        <h2 class="welcomeMsg">Balance</h2>
+    <h2 *ngIf="opinions>1" class="welcomeMsg" tooltip="{{balanceBreakup}}"> <span style="color:#FF7777"><fa-icon icon="exclamation-circle"></fa-icon> {{balanceString}} CC</span></h2>
+    <h2 *ngIf="opinions===1" class="welcomeMsg"> <span>{{balanceString}} CC</span></h2>
+
+    <br>
+    </div>
+
+  <div class="text-center">
+    <button class="customBtn" (click)="checkBalance()"> <fa-icon icon="sync"></fa-icon></button>
+  </div>
+  </ng-container>
+
+  <ng-container *ngIf="showError">
+    <ng-lottie  height="100px" [options]="errorOptions" (animationCreated)="animationCreated($event)"></ng-lottie>
+    <div class="text-center" style="color:#ffffff;margin-bottom: 10px">{{errorMessage}}</div>
+    <div class="text-center">
+      <button class="customBtn" (click)="hideErrorMessage()"><fa-icon icon="arrow-left"></fa-icon></button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="showLoader">
+    <div class="text-center">
+      <ng-lottie  height="150px" [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+      <span style="color:#ffffff">{{loadingMessage}}</span>
+    </div>
+  </ng-container>
+
+</div>

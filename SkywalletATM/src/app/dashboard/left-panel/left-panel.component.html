@@ -1,0 +1,64 @@
+<div class="leftBarInner">
+    <div class="logodiv">
+        <a href="javascript:;"><img src="assets/sky-logo.svg" alt=""></a>
+    </div>
+    <div class="menudiv">
+        <a href="javascript:;" routerLink="/drop-debit" *ngIf="!isLoggedIn" (click)="fireEvent()" class="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Drop Debit Card Image</a>
+        <a href="javascript:;" routerLink="/card-entry" *ngIf="!isLoggedIn" (click)="fireEvent()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Enter Debit Card details</a>
+        <a href="javascript:;" routerLink="/login" *ngIf="!isLoggedIn" (click)="fireEvent()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Username password</a>
+        <a href="javascript:;" routerLink="/register" *ngIf="!isLoggedIn" (click)="fireEvent()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Get Skywallet</a>
+        <a href="javascript:;" routerLink="/raida-mail" *ngIf="!isLoggedIn" (click)="fireEvent()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">Raida Mail</a>
+        <a href="javascript:;" routerLink="/balance" *ngIf="isLoggedIn" (click)="fireEvent()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Check Balance</a>
+        <a href="javascript:;" routerLink="/deposit" *ngIf="isLoggedIn" (click)="fireEvent()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}">Deposit</a>
+        <a href="javascript:;" routerLink="/withdraw" *ngIf="isLoggedIn" (click)="fireEvent()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Withdraw</a>
+        <a href="javascript:;" routerLink="/transfer" *ngIf="isLoggedIn" (click)="fireEvent()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Transfer</a>
+        <a href="javascript:;" routerLink="/payment" *ngIf="isLoggedIn" (click)="fireEvent()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}">Payment</a>
+        <a href="javascript:;" *ngIf="isLoggedIn"  (click)="logout()">Logout</a>
+    </div>
+
+
+    <div class="raidaServersWrap">
+        <img src="assets/raida-logo.svg" alt="raida logo" class="raidaSmLogo">
+        <div class="rserverholder">
+            <ng-container *ngFor="let number of [].constructor(serverNumber) ;let i= index">
+              <div class="rServerItem" [(ngModel)]="serverResponseList[i]" [ngStyle]="{'background-color':serverResponseList[i].status=='ready'?'#25CF5D':'#FF3C2D'}" tooltip="Server {{serverResponseList[i].server}} is {{serverResponseList[i].status=='ready'?'Live':'Down'}}" placement="top"></div>
+            </ng-container>
+            <!-- <div class="rServerItem" style="background-color: #25CF5D;"></div>
+            <div class="rServerItem" style="background-color: #FF3C2D;"></div>
+            <div class="rServerItem" style="background-color: #FFC654;"></div>
+            <div class="rServerItem" style="background-color: #555375;"></div>
+            <div class="rServerItem" style="background-color: #25CF5D;"></div>
+            <div class="rServerItem" style="background-color: #555375;"></div>
+            <div class="rServerItem" style="background-color: #FF3C2D;"></div>
+            <div class="rServerItem" style="background-color: #FFC654;"></div>
+            <div class="rServerItem" style="background-color: #555375;"></div>
+            <div class="rServerItem" style="background-color: #25CF5D;"></div>
+            <div class="rServerItem" style="background-color: #555375;"></div>
+            <div class="rServerItem" style="background-color: #FF3C2D;"></div>
+            <div class="rServerItem" style="background-color: #FFC654;"></div>
+            <div class="rServerItem" style="background-color: #555375;"></div>
+            <div class="rServerItem" style="background-color: #25CF5D;"></div>
+            <div class="rServerItem" style="background-color: #555375;"></div>
+            <div class="rServerItem" style="background-color: #FF3C2D;"></div>
+            <div class="rServerItem" style="background-color: #FFC654;"></div>
+            <div class="rServerItem" style="background-color: #555375;"></div>
+            <div class="rServerItem" style="background-color: #25CF5D;"></div>
+            <div class="rServerItem" style="background-color: #555375;"></div>
+            <div class="rServerItem" style="background-color: #FF3C2D;"></div>
+            <div class="rServerItem" style="background-color: #FFC654;"></div>
+            <div class="rServerItem" style="background-color: #555375;"></div> -->
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,11 @@
+<div class="middleWrap welcoemWrap">
+    <div class="welcoemInner"  *ngIf="!authCheck">
+        <h2 class="welcomeMsg">Switch to RAIDAmail</h2>
+        <a href="javascript:;" class="customBtn" href="https://raidamail.com/" target="_blank">Click Here</a>
+        <!-- <p class="subwelcomeMsg">Please choose your login method</p>  -->
+    </div>
+    <div class="authchekInner" *ngIf="authCheck">
+        <h4>Please login to access this tab</h4>
+        <a href="javascript:;" class="customBtn" routerLink="/login">Login</a>
+    </div>
+</div>

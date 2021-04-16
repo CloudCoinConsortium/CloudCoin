@@ -1,0 +1,189 @@
+<img src="assets/sky-logo.svg" alt="" class="dashLogo">
+<div class="displayscreenWrapper">
+    <div class="dispLeftBar">
+
+      <a href="javascript:;" *ngIf="!isLoggedIn" routerLink="/drop-debit" class="selectorArow" title="Drop Debit Card Image"
+           routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}"><img src="assets/arrow-right.svg" alt=""></a>
+
+        <a href="javascript:;" *ngIf="!isLoggedIn" routerLink="/card-entry" class="selectorArow" title="Enter Debit Card details"
+           routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><img src="assets/arrow-right.svg"
+                                                                                    alt=""></a>
+
+      <a href="javascript:;" *ngIf="!isLoggedIn" routerLink="/login" class="selectorArow" title="Username password"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><img src="assets/arrow-right.svg" alt=""></a>
+
+
+
+      <a href="javascript:;" *ngIf="isLoggedIn" routerLink="/balance" class="selectorArow" title="Drop Debit Card Image"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}"><img src="assets/arrow-right.svg" alt=""></a>
+
+      <a href="javascript:;" *ngIf="isLoggedIn" routerLink="/deposit" class="selectorArow" title="Enter Debit Card details"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><img src="assets/arrow-right.svg"
+                                                                                  alt=""></a>
+
+      <a href="javascript:;" *ngIf="isLoggedIn" class="selectorArow" routerLink="/withdraw" title="Withdraw"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><img src="assets/arrow-right.svg" alt="">
+      </a>
+
+
+
+
+        <!-- <a href="javascript:;" class="selectorArow"><img src="assets/arrow-right.svg" alt=""></a>
+        <a href="javascript:;" class="selectorArow"><img src="assets/arrow-right.svg" alt=""></a> -->
+    </div>
+    <div class="dispMiddleBar">
+        <div class="dispMiddleBarInner">
+            <div class="leftBarMenuNameWrap">
+                <a href="javascript:;" routerLink="/drop-debit"  *ngIf="!isLoggedIn">Drop Debit Card Image</a>
+                <a href="javascript:;" routerLink="/card-entry" *ngIf="!isLoggedIn">Enter Debit Card details</a>
+
+              <a href="javascript:;" routerLink="/login" *ngIf="!isLoggedIn">Username password</a>
+                <a href="javascript:;" routerLink="/balance" *ngIf="isLoggedIn">Check Balance</a>
+                <a href="javascript:;" routerLink="/deposit" *ngIf="isLoggedIn">Deposit</a>
+                <a href="javascript:;" routerLink="/withdraw" *ngIf="isLoggedIn">Withdraw</a>
+
+            </div>
+            <div class="midleBarScreenWrap">
+                <router-outlet></router-outlet>
+            </div>
+            <div class="rightBarMenuNameWrap">
+
+                <a href="javascript:;" routerLink="/register" *ngIf="!isLoggedIn">Get Skywallet</a>
+              <a href="javascript:;" routerLink="/raida-mail" *ngIf="!isLoggedIn">Raida Mail</a>
+
+              <a href="javascript:;" routerLink="/transfer"  *ngIf="isLoggedIn">Transfer</a>
+              <a href="javascript:;" routerLink="/payment" *ngIf="isLoggedIn">Payment</a>
+              <a href="javascript:;" *ngIf="isLoggedIn"  (click)="logout()">Logout</a>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="dispRightBar">
+
+
+        <a href="javascript:;" *ngIf="!isLoggedIn" routerLink="/register" class="selectorArow" title="Get Skywallet"
+           routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><img src="assets/arrow-left.svg" alt=""></a>
+      <a href="javascript:;"  *ngIf="!isLoggedIn" routerLink="/raida-mail" class="selectorArow" title="Get RaidaMail"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><img src="assets/arrow-left.svg" alt=""></a>
+      <a href="javascript:;"  *ngIf="!isLoggedIn"  title=""
+         class="selectorArow disable"><img src="assets/arrow-left.svg" alt=""></a>
+
+
+
+
+      <a href="javascript:;" *ngIf="isLoggedIn" routerLink="/transfer" class="selectorArow" title="Transfer"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}"><img src="assets/arrow-left.svg" alt=""></a>
+
+      <a href="javascript:;" *ngIf="isLoggedIn" routerLink="/payment" class="selectorArow" title="Payment"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}"><img src="assets/arrow-left.svg" alt=""></a>
+
+      <a href="javascript:;"  *ngIf="isLoggedIn" (click)="logout()" title="Logout"
+         class="selectorArow disable"><img src="assets/arrow-left.svg" alt=""></a>
+
+
+        <!-- <a href="javascript:;" class="selectorArow"><img src="assets/arrow-left.svg" alt=""></a>
+        <a href="javascript:;" class="selectorArow"><img src="assets/arrow-left.svg" alt=""></a> -->
+    </div>
+</div>
+<div class="gap20"></div>
+<div class="dsplscreenBottomwrapper">
+    <div class="calcDiv">
+        <div class="calcNumber">
+            <a href="javascript:;">1</a>
+            <a href="javascript:;">2</a>
+            <a href="javascript:;">3</a>
+            <a href="javascript:;">4</a>
+            <a href="javascript:;">5</a>
+            <a href="javascript:;">6</a>
+            <a href="javascript:;">7</a>
+            <a href="javascript:;">8</a>
+            <a href="javascript:;">9</a>
+            <a href="javascript:;">.</a>
+            <a href="javascript:;">0</a>
+            <a href="javascript:;">#</a>
+        </div>
+        <div class="calcButton">
+            <a href="javascript:;" class="redBtn iconInBtn"><img src="assets/close.svg" alt=""> <span> CLEAR</span></a>
+            <a href="javascript:;" class="yellowBtn iconInBtn"><img src="assets/arrow-left-black.svg" alt=""> <span> CANCEL</span></a>
+            <a href="javascript:;" class="whiteBtn iconInBtn"></a>
+            <a href="javascript:;" class="greenBtn iconInBtn"><img src="assets/tick.svg" alt=""> <span> ENTER</span></a>
+        </div>
+    </div>
+    <div class="cardSlotDiv">
+        <div class="raidaServersWrap raidaServersWrapInHome">
+            <img src="assets/raida-logo.svg" alt="raida logo" class="raidaSmLogo">
+            <div class="rserverholder">
+                  <ng-container *ngFor="let number of [].constructor(serverNumber) ;let i= index">
+                    <div class="rServerItem" [(ngModel)]="serverResponseList[i]" [ngStyle]="{'background-color':serverResponseList[i].status=='ready'?'#25CF5D':'#FF3C2D'}" tooltip="Server {{serverResponseList[i].server}} is {{serverResponseList[i].status=='ready'?'Live':'Down'}}" placement="top"></div>
+                  </ng-container>
+            </div>
+        </div>
+        <div class="cardSlotHolder">
+            <div class="cardSlotChannel">
+                <div class="cardSlotChannelBox"></div>
+            </div>
+            <div class="slotNamebox"><img src="assets/withdrawal.svg" alt=""><span>Withdraw slot</span></div>
+        </div>
+       <!-- <div class="cardSlotHolder">
+            <div class="cardSlotChannel cardSlotDrop">
+                <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+                    <ngx-dropzone-label>
+                        <div>
+                            <h2 class="dropZoneLabel">Drop image here</h2>
+                        </div>
+                    </ngx-dropzone-label>
+
+                </div>
+
+            </div>
+
+            <div class="debitDropImgName" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </div>
+            <div class="slotNamebox"><img src="assets/drop-card.svg" alt=""><span>Drop debit card image</span></div>
+        </div> -->
+    </div>
+</div>
+<div class="dashboardBottomPart">
+    <a href="javascript:;" class="btmFooterLink" (click)="toggleDiscModal()">Disclaimer</a>
+    <a href="javascript:;" class="btmFooterLink" (click)="toggleSupportModal()">Support</a>
+    <!-- <div class="raidaServersWrap raidaServersWrapInHome">
+        <img src="assets/raida-logo.svg" alt="raida logo" class="raidaSmLogo">
+        <div class="rserverholder">
+              <ng-container *ngFor="let number of [].constructor(serverNumber) ;let i= index">
+                <div class="rServerItem" [(ngModel)]="serverResponseList[i]" [ngStyle]="{'background-color':serverResponseList[i].status=='ready'?'#25CF5D':'#FF3C2D'}" tooltip="Server {{serverResponseList[i].server}} is {{serverResponseList[i].status=='ready'?'Live':'Down'}}" placement="top"></div>
+              </ng-container>
+        </div>
+    </div> -->
+</div>
+
+<div class="modalWrapper disclaimerModal" *ngIf="isDiscModalShow">
+    <div class="modalOverlay" (click)="toggleDiscModal()"></div>
+    <div class="modalBody">
+        <div class="closeModalWraper" (click)="toggleDiscModal()"><img src="assets/close.svg" alt=""></div>
+        <div class="modalInner">
+            <h2 class="subInnerHeader">Disclaimer</h2>
+            <p class="modalDesc">The Skywallet ATM is used to store and transfer CloudCoins. This software is provided as is with all faults, defects, errors, and without warranty of any kind.
+            <br>This software is provided for free from the CloudCoin Consortium.</p>
+        </div>
+    </div>
+</div>
+<div class="modalWrapper supportModal" *ngIf="isSupportModalShow">
+    <div class="modalOverlay" (click)="toggleSupportModal()"></div>
+    <div class="modalBody">
+        <div class="closeModalWraper" (click)="toggleSupportModal()"><img src="assets/close.svg" alt=""></div>
+        <div class="modalInner">
+            <h2 class="subInnerHeader">Support</h2>
+            <div class="modalDescWraper">
+                <a href="javascript:;" class="modalDescLink"><img src="assets/maps-and-flags.svg" class="modLinkImg" alt=""><span>PO Box 3644, Gillette, Wyoming 82717-3644</span></a>
+                <a href="mailto:support@cloudcoin.global" class="modalDescLink"><img src="assets/arroba.svg" class="modLinkImg" alt=""><span>support@cloudcoin.global</span></a>
+                <a href="callto:+1 (530) 562-4608" class="modalDescLink"><img src="assets/telephone.svg" class="modLinkImg" alt=""><span>+1 (530) 562-4608</span></a>
+            </div>
+        </div>
+    </div>
+</div>

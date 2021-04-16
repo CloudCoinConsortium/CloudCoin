@@ -1,0 +1,21 @@
+.custom-dropzone {
+    background-color: #002856 !important;
+    border: 2px dashed #4b637d !important;
+}
+.dropZoneLabel {
+    color: rgba(255,255,255,0.5) !important;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+ngx-dropzone-label {
+    color: #fff !important;
+}
+
+.debitDropWrap {
+    min-height: 45vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: initial;
+}
