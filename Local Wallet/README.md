@@ -191,6 +191,18 @@ CloudCoin Consortium.
 5. The files in the "Lost" folder may cointian the "PAN" array. 
 
 ### ECHO RAIDA
+The Echo system allows the user to check the reachability of the RAIDA. The RAIDA may become unreachable if the user if offline, low bandwidth, blocked by work rounters or sudden loss of connection. 
+
+Feature | Explanation 
+-------- | ----------
+Indicators | There should be a way for the user to see that the program is able to reach the RAIDA
+Echo on Start | The program should echo when the program starts so the user knows the reachability of the RAIDA
+Manual Echo | The user should be able to echo the RAIDA manually so that they can check if conditions have changed
+Auto Echo | For mobile apps, it may be desirable to echo the RAIDA before a pown is attempted.
+Echo Report | The Echo Report shows the location of each RAIDA, the network latency and the internal execution time of the RAIDA. 
+Warning | The Program should warn the user if more than four RAIDA are unreachable and perhaps stop functioning. 
+
+
 1. The program should show the status of the RAIDA and let the person know if there are not enough RAIDA to operate. The colors are: Grey: Unchecked or in the process of checking connectivity. Green: Connected to the RAIDA. Red: Unable to connect to the RAIDA. You can test this by going to your host file and adding a record. The location in Windows;
 ```File
 C:\Windows\System32\Drivers\etc\hosts
