@@ -202,8 +202,9 @@ Auto Echo | For mobile apps, it may be desirable to echo the RAIDA before a pown
 Echo Report | The Echo Report shows the location of each RAIDA, the network latency and the internal execution time of the RAIDA. 
 Warning | The Program should warn the user if more than four RAIDA are unreachable and perhaps stop functioning. 
 
+TESTING FEATURES: 
 
-1. The program should show the status of the RAIDA and let the person know if there are not enough RAIDA to operate. The colors are: Grey: Unchecked or in the process of checking connectivity. Green: Connected to the RAIDA. Red: Unable to connect to the RAIDA. You can test this by going to your host file and adding a record. The location in Windows;
+The program should show the status of the RAIDA and let the person know if there are not enough RAIDA to operate. The colors are: Grey: Unchecked or in the process of checking connectivity. Green: Connected to the RAIDA. Red: Unable to connect to the RAIDA. You can test this by going to your host file and adding a record. The location in Windows;
 ```File
 C:\Windows\System32\Drivers\etc\hosts
 ```
@@ -223,21 +224,44 @@ You can test this by adding the following records to you host file:
 
 ### SHOW COINS
 Show coins is a command that returns how many coins are in the program. 
+Feature | Explanation 
+-------- | ----------
+Balance | Shows the Total authentic coins in the system including thouse who are fracked and encrypted.
+
+TESTING FEATURES: 
+
 1. The balance is the sum of the coins in the "Bank", "Vault" and "Fracked" folders. To test this, put some properly named CloudCoins in to the Bank and Fracked folder and Vault folders see if their sum is displayed.  
 2. Some programs may also show the number of coins in the Limbo folder but not as authentic coins that are owned. Some programs show Fracked coins but should make it clear that they are authentic. 
 3. Show Coins should never try to track the coins in RAM. Instead, everytime the ShowCoins is called, the folders should be checked. To test this remove one of the stack files in the Bank folder and call the show coins again. See if the balance has changed accourdinly. 
 
 ### SHOW FOLDERS
-If this feature is enabled, it should show the location of the following: 
-1. The root program file.
-2. The Logs folder (in the root) that tracks all activites.
-3. The account folder (of the active account)
-4. The Templates folder of the active account.
-5. ID folder for Skywallet ID Coins
+This features allows users to quickly find important folders and file within the program. 
 
+Feature | Explanation 
+-------- | ----------
+Root | This is the root file of the program
+Logs | This is the folder were all the log files are kept
+Accounts | This is the folder where all the user accounts are kept
+Templates | This is a folder where jpgs, pngs are kept to store CloudCoins in. 
+ID | This is the folder to hold PNG cards for Skywallet and other apps
 
-### DEPOSIT / IMPORT
+### POWN
 This is the process of changing the coins ANs to new PANs thus authenticaing and powning (password owning) them in the process. 
+
+Feature | Explanation 
+-------- | ----------
+Warning |  If the user tries to pown coins when there are not enough RAIDA, the program shoud warn the people. 
+File Restrictions | The program should only accept zip, stack, png and jpeg file types. 
+Unpack | The program should remove all coins from their files and place them individually in there own stack files in the suspect folder. 
+Move to Imported | Files that are being imported should be moved from their current location and placed in the "Imported" folder. 
+Email Recover | Users should have the option of embedding email recovery into their powning. 
+Encryption | Users have the option to store their coins encrypted using the programs own encryption. (optional)
+Pass Level | At least 13 RAIDA must pass a coin before it can be considered authentic. This can be ajusted up to 20.
+Import Protection | Coin should not be able to import twice. 
+ID Coin Protection | User should not be able to import one of their ID coins. 
+Internal Naming Convention | Coins that are stored in the program should use the standard naming convention of stack files. 
+Four Types of Stack Files | There are four types of stack file formats that should be accepted (See below)
+
 1. Import the same coin. When you import the same coin, the program should check the Bank, Fracked, Limbo, Vault and ID folder. If they are in one of those folders, the user should be told that the coin was already in the "--" folder and that it was moved to Trash. You should find the coin in the Trash Folder. This process should be very fast because with the exception of the ID coins, only the file name has to be read.  
 2. Only files with the following extensions should be allowed to be imported: .stack, .png, .jpeg, .zip. All other file formats should be ignored. Test this by brining in other file formats.
 3. Zipped files should be unzipped. Then if they have files within them that are not.stack, .png, or .jpeg, those files should be ignored. 
@@ -336,6 +360,12 @@ This is the process of changing the coins ANs to new PANs thus authenticaing and
 
 
 ### WITHDRAW
+
+Feature | Explanation 
+-------- | ----------
+Share | For mobile apps, the user should be able to share them via email, skype or any social app the phone has on it. 
+Export one in stack | Exporst a single not in one stack file. 
+
 
 1. When withdrawing coins, the program should take the coins from the Bank or Vault folder first and only take from the Fracked folder if the Bank and Vault are empty. This by putting coins in the Bank and Fracked folder. withdraw one note and see if it comes from the Bank or Fracked.  
 
