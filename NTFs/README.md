@@ -56,7 +56,20 @@ Any protocol that is under 1000, will have its mirrors and stripes sycned. If yo
 
 Protocol Number | Description
 ---|---
-0 | There is no compression or encryption. The data is stiped, mirrored and then mirrored again. The stripe will be on RAIDA n, the mirror on RAIDA n-3 and the second mirror on RAIDA n-6.
+0 | There is no compression or encryption. The data is stiped, mirrored and then mirrored again. The stripe will be on RAIDA n, the mirror on RAIDA n-3 and the second mirror on RAIDA n-6. 
+
+### Protocol 0 
+The Protocol 0 only requires two fields: the file name and the data. 
+Code before it is turned into base64:
+```
+file_name = "Fun in the Sun.png"
+data = here there is a byte array of binary code. 
+```
+
+
+````
+
+
 
 ## Services
 There are three services
