@@ -52,6 +52,7 @@ Note Size | Max Amount of Stripe Data that can be stored | Stripe Data Per RAIDA
 The user may store their data any way that they like and there may be standards that develop over time. The user can specify the standard with a number called the
 Storage Protocol.
 The standard handles compression, RAID, encryption, file formatting and how to extract meta data. Now there is only one standard. 
+Any protocol that is under 1000, will have its mirrors and stripes sycned. If you don't want this use a higher number than 1000. 
 
 Protocol Number | Description
 ---|---
