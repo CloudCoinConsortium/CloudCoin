@@ -56,6 +56,7 @@ Any protocol that is under 1000, will have its mirrors and stripes sycned. If yo
 
 Protocol Number | Description
 ---|---
+-1| Deleted. This means that the data that was in the NFT has been deleted. Now it is impossible to put new data there. 
 0 | There is no compression or encryption. The data is stiped, mirrored and then mirrored again. The stripe will be on RAIDA n, the mirror on RAIDA n-3 and the second mirror on RAIDA n-6. 
 
 ### Protocol 0 
