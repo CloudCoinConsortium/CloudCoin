@@ -3,4 +3,6 @@ PNG files can hold many CloudCoins. When put in a PNG that looks like a credit c
 
 PNG files have "chuncks" that can be looked at seperatly by programs. We put a stack file in json format in the second chunk. 
 
-![PNG Format](pngformat.png)
+Please look at this for the standard:
+
+https://github.com/CloudCoinConsortium/PNG_Console
