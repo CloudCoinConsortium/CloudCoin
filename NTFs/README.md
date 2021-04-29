@@ -77,7 +77,18 @@ Sample Response
 ```
 
 
+## Delete NFT
+Deletes all the data in an NFT but not the record 
+So the coin can never be used again for an NFT unless 
+?
 
+Sample Request 
+
+HTTPS://Raida0.Cloudcoin.global/service/NFT/delete?sn=677&an=afbb46743568964cf
+
+Sample Response 
+
+Success
 
 
 
