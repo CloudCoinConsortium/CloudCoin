@@ -76,18 +76,18 @@ Note that nn, denomination are not needed and are being phased out. PAN is not n
 to be detected at once. 
 
 Sample Reqsponse:
-```
+```json
 {
-			"server":"raida9",
-			"status":"pass",
-			"message": "The attached data belongs to the token",
-   "storage_protocol": 0,
-			"stripe":"b3ZpcG9pd2VyO2xtZ",
-			"mirror":"Um5wro7urS7LbunvC",
-   "mirror2":"mpsO2VqcmxrZWpyIH",
-			"time":"2019-11-08 05:56:32",
-   "ex_time":"8.577"
-		}
+	"server":"raida9",
+	"status":"pass",
+	"message": "The attached data belongs to the token", 
+	"storage_protocol": 0,
+	"stripe":"b3ZpcG9pd2VyO2xtZ",
+	"mirror":"Um5wro7urS7LbunvC",
+	"mirror2":"mpsO2VqcmxrZWpyIH",
+	"time":"2019-11-08 05:56:32",
+   	"ex_time":"8.577"
+}
 
 ```
 
@@ -117,7 +117,7 @@ So the coin can never be used again for an NFT but does allow the owner to get r
 
 Sample GET Request 
 ```
-HTTPS://Raida0.Cloudcoin.global/service/NFT/delete?sn=677&an=afbb46743568964cf
+https://Raida0.Cloudcoin.global/service/nft/delete?sn=677&an=afbb46743568964cf
 ```
 Sample Response 
 ```
