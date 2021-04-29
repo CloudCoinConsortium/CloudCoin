@@ -63,7 +63,7 @@ The Protocol 0 only requires two fields: the file name and the data.
 Code before it is turned into base64:
 ```
 file_name = "Fun in the Sun.png"
-data = mpsO2VqcmxrZWpyIH
+data = "psO2VqcmxrZWpyIH"
 ```
 
 
