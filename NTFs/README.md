@@ -43,9 +43,9 @@ The larger the CloudCoin, the more data can store.
 Note Size | Max Amount of Stripe Data that can be stored | Stripe Data Per RAIDA
 ------|-----------------|----
 250 | 5 MB | 200 KB
-100 | 2 MB| 200 KB
- 25 | 500 KB| 100 KB
- 5 | 250 KB| 25 KB
+100 | 2 MB| 80 KB
+ 25 | 500 KB| 20 KB
+ 5 | 250 KB| 10 KB
 1 | 50 KB| 2 KB
 
 ## Storage Protocols
