@@ -12,6 +12,7 @@ mysql> describe nft;
 | Field        | Type          | Null | Key | Default           | Extra                       |
 +--------------+---------------+------+-----+-------------------+-----------------------------+
 | sn           | int(11)       | NO   | PRI | NULL              |                             |
+| protocol     | int(11)       | YES  |     | NULL              |                             |
 | stripe       | text          | YES  |     | NULL              |                             |
 | mirror       | text          | YES  |     | NULL              |                             |
 | mirror2      | text          | YES  |     | NULL              |                             |
@@ -53,7 +54,7 @@ to be detected at once.
 
 Sample Reqsponse:
 ```
-The program will respond with a stream of binbary bytes. I guess like a request to download a file. 
+
 
 ZGZkc2ZkZmRzZnNkZg==
 ```
@@ -73,7 +74,7 @@ mirror2=
 
 Sample Response
 ```
-
+Success
 ```
 
 
@@ -83,13 +84,13 @@ So the coin can never be used again for an NFT unless
 ?
 
 Sample Request 
-
+```
 HTTPS://Raida0.Cloudcoin.global/service/NFT/delete?sn=677&an=afbb46743568964cf
-
+```
 Sample Response 
-
+```
 Success
-
+```
 
 
 
