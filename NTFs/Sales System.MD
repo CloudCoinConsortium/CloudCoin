@@ -8,9 +8,6 @@ The Sales site will consist of the following Components:
 
 3. A modified Skywallet ATM (Celebrium Wallet) that will allow people to see their NFTs. 
 
-NFT Sales Site Phase 2. To begin immeditaly after completion of phase 1. 
-
-The addition of a "Consignment" page to the Celebrum site that allows people to upload their NFTs and name their price. The can use the "Create NFT" page to immeditaly put their NFTs on the market. 
 
 
 ## Phase 1 Details
@@ -21,7 +18,10 @@ Upon loading, the php page will check the NFT folder where all the NFTs will be 
 "Victoria Worthington.1000.stack"  
  "Victoria Worthington.description.txt"
  "Victoria Worthington.download.jpg"
+ "Victoria Worthington.consignment.txt
  ```
+ 
+ 
 It could be that people want to make many copies of their NFT like a limited series of 100. Then they would have to name them "Victoria Worthington 1.1000.stack"
 
 Users would see the NFTs. If the NFTs were not images but media files such as MP3s or PDFs, people could download them and listen or look. 
@@ -35,7 +35,12 @@ The user goes to the Create NFT page. They see the following except nicer and wi
 For phase one we will use the existing Skywallet. 
 We will add a button to the SKywallet that says "Safe Deposit Box". If the click on that, they will see a list of all the NFTs in there. If the click on an NFT, they can see or download the media of that NFT. 
 
-## Phase 2 "Consignment" page.
+# Phase 2 "Consignment" page.
+NFT Sales Site Phase 2. To begin immeditaly after completion of phase 1. 
+
+The addition of a "Consignment" page to the Celebrum site that allows people to upload their NFTs and name their price. The can use the "Create NFT" page to immeditaly put their NFTs on the market. 
+
+
 People go to the Consignment page and can upload their NFTs with their price in CC or in $$ and description. 
 These are placed in the NFT folder. 
 
