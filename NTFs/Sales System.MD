@@ -2,27 +2,31 @@
 
 The Sales site will consist of the following Components:
 
-1. A modified "Buy Page" that will be put on "Celebrium.com"
+1. A modified "Buy Page" (https://CloudCoin.raidatech.com) that will be put on https://Celebrium.com
 
 2. A "Create NFT" page that will also located on Celebrium.com
 
 3. A modified Skywallet ATM (Celebrium Wallet) that will allow people to see their NFTs. 
 
 
-
 ## Phase 1 Details
 
 1. Modified buy page. 
-Upon loading, the php page will check the NFT folder where all the NFTs will be place. NFTs are just stack files but with a different naming conention. The naming convention for the NFTs will be the name of the NFT, the price of the NFT and the .stack extention. So if I have a NFT jpeg called "Victoria Worthington" that is forsale for $1,000, then three files will be created called:
+Upon loading, the php page will check the NFT folder where all the NFTs will be kept. NFTs are just stack files but with a different naming convention. The naming convention for the NFTs will be the name of the NFT, the price of the NFT and a random number to stop guessers and a .stack extention. So if I have a NFT jpeg called "Victoria Worthington" that is forsale for $1,000, then three files will be created called:
 ```
-"Victoria Worthington.1000.stack"  
- "Victoria Worthington.description.txt"
- "Victoria Worthington.download.jpg"
- "Victoria Worthington.consignment.txt
+"Victoria Worthington.1000.jHYt^7uT.stack"  //Contains the CloudCoin SN and AN data. 
+ "Victoria Worthington.description.txt" //Used to describe the NFT on the home page gallary
+ "Victoria Worthington.download.jpg"  //Is the actual file downloaded from the RAIDA so that the customer can view/download it. 
+ "Victoria Worthington.consignment.txt //The details of the seller of the NFT and information about the sale when it sells (like who bought it). 
  ```
+ There will be a "completed orders" folder. This folder will have a folder for every sale like:
+ ```
+ 2021 04 30 17:24 billy@something.net PayPal
+ ```
+ The format of the folder will be the datatime and then the email of the purchaser and payment system. When a sale is made all the files associated with the solf NFTs will be moved into this folder. 
  
- 
-It could be that people want to make many copies of their NFT like a limited series of 100. Then they would have to name them "Victoria Worthington 1.1000.stack"
+### Further Naming rules.  
+It could be that people want to make many copies of their NFT like a limited series of 100. Then they would have to name them "Victoria Worthington 1.1000.stack" and have each one numbered differenly. 
 
 Users would see the NFTs. If the NFTs were not images but media files such as MP3s or PDFs, people could download them and listen or look. 
 
