@@ -57,7 +57,8 @@ Any protocol that is under 1000, will have its mirrors and stripes sycned. If yo
 Protocol Number | Description
 ---|---
 -1| Deleted. This means that the data that was in the NFT has been deleted. Now it is impossible to put new data there. 
-0 | There is no compression or encryption. The data is striped, mirrored and then mirrored again. The stripe will be on RAIDA n, the mirror on RAIDA n-3 and the second mirror on RAIDA n-6. The data that is stored is broken into two parts that are seperated by an asterik * The first part is the meta data formatted in TOML and encoded in base64. The second part is the file data encoded using base64.  
+0 | There is no compression or encryption. The data is striped, mirrored and then mirrored again. The stripe will be on RAIDA n, the mirror on RAIDA n-3 and the second mirror on RAIDA n-6. The data that is stored is broken into two parts that are seperated by an asterik * The first part is the meta data formatted in TOML and encoded in base64. The second part is the file data encoded using base64.  Sample ZmlsZV9uYW1lPUdvbmUgV0l0aCB0aGUgV2luZA==*SXQncyBhIGdyZWF0IG1vdmVp
+1| Includes Proof.Same as protocol 0 but has a base64 image that is used as a proof. Sample: ZmlsZV9uYW1lPUdvbmUgV0l0aCB0aGUgV2luZA==*SXQncyBhIGdyZWF0IG1vdmVp*SW1hZ2Ugb2YgbWU= where the third and last part is the proof image. 
 
 ### Protocol 0 Meta Data
 The Protocol 0 only requires one field: the file name.
