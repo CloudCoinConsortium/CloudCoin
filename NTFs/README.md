@@ -65,8 +65,15 @@ The Protocol 0 only requires one field: the file name.
 ```
 file_name = "Fun in the Sun.png"
 ```
-
-
+### Protocol 1 Meta Data
+The Protocol 1 requires two fields: the file name and the proof name.
+```
+file_name = "Fun in the Sun.png"
+proof_name = "SeanProffFirstNFT.jpg"
+```
+```
+![](SeanProofFirstNFT.jpg)
+```
 ## Services
 There are three services
 
