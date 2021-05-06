@@ -185,8 +185,9 @@ The Sperators are:
 ### Stripe Format
 
 This will be devided into 25 parts and copied two times on severs -3 and -6
+
 Stripe | Mirror  | Mirror 2
----|---|---|---
+---|---|---
 0|3 | 6
 1|4 | 7
 2|5 | 8
