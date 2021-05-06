@@ -182,7 +182,38 @@ The Sperators are:
 4. *2*
 ```
 
-Stripe Format. This will be devided into 25 parts and copied two times on severs -3 and -6
+### Stripe Format
+
+This will be devided into 25 parts and copied two times on severs -3 and -6
+Stripe | Mirror  | Mirror 2
+---|---|---|---
+0|3 | 6
+1|4 | 7
+2|5 | 8
+3|6 | 9
+4|7 | 10
+5|8 | 11
+6 |9 | 12
+7 |10 | 13
+8 |11 | 14
+9| 12 | 15
+10| 13 | 16
+11| 14 | 17
+12 | 15 | 18
+13|16 | 19
+14|17 | 20
+15|18 | 21
+16|19 | 22
+17|20 | 23
+18|21 | 24
+19|22 | 0
+20|23 | 1
+21|24 | 2
+22|0 | 3
+23|1 | 4
+24|2 | 5
+
+
 
 ### Mandatory: 
 ```TOML
