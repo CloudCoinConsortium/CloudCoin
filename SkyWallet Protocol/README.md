@@ -166,6 +166,13 @@ Sample Memo:
 ```html
 For Work Done*id*f5567f51344746f79da78a1b067d49fa*0*ZnJvbT1pZm9*1*uOS5za3l3YW*2*xsZXQuY2M=
 ```
+After Padding:
+The memo will then have '-' minus signs added to the end so that the memo can be divided perfectly into 25 stripes.
+Note that the memo is divided byte by byte and not in 1/25s of the total bytes. Dividing it byte by byte makes it impossible to read or disern anything about the memo. 
+```html
+For Work Done*id*f5567f51344746f79da78a1b067d49fa*0*ZnJvbT1pZm9*1*uOS5za3l3YW*2*xsZXQuY2M=
+```
+
 The memo has five different parts seperated by four seperators. The seperators are an 'alt 7' alt code character. 
 ```
 1. Memo
