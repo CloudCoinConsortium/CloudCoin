@@ -19,7 +19,8 @@ Services
 [Delete](README.md#delete)
 
 Mass NFT Upload 
-[NFT Upload](README.md#nft-upload)
+
+[Mass NFT Upload](README.md#mass-nft-upload)
 
 ## NFTs SQL
 ```
