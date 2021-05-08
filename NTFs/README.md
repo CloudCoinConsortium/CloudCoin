@@ -18,6 +18,8 @@ Services
 
 [Delete](README.md#delete)
 
+Mass NFT Upload 
+[NFT Upload](README.md#nft-upload)
 
 ## NFTs SQL
 ```
@@ -141,6 +143,37 @@ Sample Response
 Success
 ```
 
+# Mass NFT Upload
 
+This is a protocol for uploading many NFTs at once. All of the files that are needed are first placed in a default folder. 
+Then all the names of the files are placed in a CSV file. 
+The Program will be given the csv and will look in the default location for the files. Then, one by one the files will be uploaded. 
+A report is returned.
 
+Example Table:
 
+CloudCoin File |NFT File | Proof File (Optional
+----------|---------|------------
+250.CloudCoin.1.1478526.stack | Art1.png | Art_proof.jpg
+250.CloudCoin.1.1478526.stack | Art2.png | Art_proof.jpg
+250.CloudCoin.1.1478526.stack | Art3.png | Art_proof.jpg
+250.CloudCoin.1.1478526.stack | Contract.pdf | Contract_proof.jpg
+250.CloudCoin.1.1478526.stack | game.exe | game_proof.jpg
+ 
+Example csv file:
+```csv
+250.CloudCoin.1.1478526.stack, Art1.png, Art_proof.jpg
+250.CloudCoin.1.1478526.stack, Art2.png, Art_proof.jpg
+250.CloudCoin.1.1478526.stack, Art3.png, Art_proof.jpg
+250.CloudCoin.1.1478526.stack, Contract.pdf, Contract_proof.jpg
+250.CloudCoin.1.1478526.stack, game.exe, game_proof.jpg
+
+```
+Example Report Returned to the user:
+```
+Attempting 250.CloudCoin.1.1478526.stack, Art1.png, Art_proof.jpg. SUCCESS
+Attempting 250.CloudCoin.1.1478526.stack, Art2.png, Art_proof.jpg. ALL PASS EXCEPT RAIDA 5
+Attempting 250.CloudCoin.1.1478526.stack | Art3.png | Art_proof.jpg ALL PASS
+Attempting 250.CloudCoin.1.1478526.stack | Contract.pdf | Contract_proof.jpg ALL PASS EXCEPT RAIDA 5, 13
+Attempting 250.CloudCoin.1.1478526.stack | game.exe | game_proof.jpg ERROR
+```
