@@ -436,12 +436,10 @@ email: The email whose hash has been enbedded in the last quarter of the AN.
 Example GET authenticating three coins
 ```
 http://localhost/service/lost/recover_by_email?/service/recover_by_email?
-	nn=1&
 	sn=145895&
 	an=8ae06de0f9ce4917b3309df71570f92c&
 	sns[]=145895&sns[]=66585&sns[]=16589554&
 	email=sean@worthington.net&
-	raida=17
 ```        
 RESPONSE:
 ```
