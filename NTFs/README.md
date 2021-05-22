@@ -11,6 +11,7 @@ WARNING: If an NTFs is not authenticated at least once per five years, it will b
 [Storage Protocols](README.md#storage-protocols)
 
 Services
+
 [has_nft](README.md#has_nft)
 
 [Read](README.md#read)
@@ -79,7 +80,9 @@ proof_name = "SeanProffFirstNFT.jpg"
 ![](SeanProofFirstNFT.jpg)
 
 ## Services
+
 There are four services
+
 0. has_nft
 1. Read
 2. Insert
@@ -87,6 +90,7 @@ There are four services
 
 
 ## has_nft
+
 has_nft takes an array of Serial numbers and an array of authentication numbers. It returns a comma seperated value file. 
 Sample GET Call:
 ```
