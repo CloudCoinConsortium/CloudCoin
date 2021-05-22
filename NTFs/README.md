@@ -11,6 +11,7 @@ WARNING: If an NTFs is not authenticated at least once per five years, it will b
 [Storage Protocols](README.md#storage-protocols)
 
 Services
+[has_nft](README.md#has_nft)
 
 [Read](README.md#read)
 
@@ -78,11 +79,25 @@ proof_name = "SeanProffFirstNFT.jpg"
 ![](SeanProofFirstNFT.jpg)
 
 ## Services
-There are three services
-
+There are four services
+0. has_nft
 1. Read
 2. Insert
 3. Delete
+
+
+## has_nft
+has_nft takes an array of Serial numbers and an array of authentication numbers. It returns a comma seperated value file. 
+Sample GET Call:
+```
+https://raida11.cloudcoin.global/service/nft/has_nft?sn[]=14729186&an[]=C8E01BCA9A22FA0250DCC65C3DBC76E1&sn[]=1&an[]=50378FA6A36D9498D90C09D2608DA63E
+
+```
+Sample Reponse: 
+```
+true,false
+
+```
 
 ## Read
 
