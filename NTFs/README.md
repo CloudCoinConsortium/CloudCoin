@@ -65,6 +65,13 @@ Protocol Number | Description
 0 | There is no compression or encryption. The data is striped, mirrored and then mirrored again. The stripe will be on RAIDA n, the mirror on RAIDA n-3 and the second mirror on RAIDA n-6. The data that is stored is broken into two parts that are seperated by an asterik * The first part is the meta data formatted in TOML and encoded in base64. The second part is the file data encoded using base64.  Sample ZmlsZV9uYW1lPUdvbmUgV0l0aCB0aGUgV2luZA==*SXQncyBhIGdyZWF0IG1vdmVp
 1| Includes Proof.Same as protocol 0 but has a base64 image that is used as a proof. Sample: ZmlsZV9uYW1lPUdvbmUgV0l0aCB0aGUgV2luZA==*SXQncyBhIGdyZWF0IG1vdmVp*SW1hZ2Ugb2YgbWU= where the third and last part is the proof image. 
 
+### NFT Files Naming Convention
+
+There will be a title with spaces replaced with hyphens. Then a random number. Then the ".stack" extention. Replace all special characters from title name with a tilda.
+```
+My-Dog-Shyla~.8787843773.nft
+
+```
 ### Protocol 0 Meta Data
 The Protocol 0 only requires one field: the file name.
 ```
