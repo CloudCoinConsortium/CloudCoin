@@ -18,6 +18,8 @@ Services
 
 [Insert](README.md#insert)
 
+[Insert](README.md#insert-many)
+
 [Delete](README.md#delete)
 
 Mass NFT Upload 
@@ -145,6 +147,7 @@ Sample POST Request:
 ```
 https://raida0.cloudcoin.global/service/ntf/insert?
 sn=8867&
+protocol=0& //This is for future use Now it is zero
 an=9dfa64eb6c774635b5ac3e643e8100f1
 stripe=b3ZpcG9pd2VyO2xtZ
 mirror=Um5wro7urS7LbunvC
@@ -156,6 +159,25 @@ Sample Response
 Success
 ```
 
+## Insert Many
+
+Sample POST Request: 
+```
+https://raida0.cloudcoin.global/service/ntf/insert?
+sn[]=8867&
+an[]=9dfa64eb6c774635b5ac3e643e8100f1
+sn[]=8888&
+an[]=6c774635b5ac3e643e8100f19dfa64eb
+protocol=0& //This is for future use Now it is zero
+stripe=b3ZpcG9pd2VyO2xtZ
+mirror=Um5wro7urS7LbunvC
+mirror2=mpsO2VqcmxrZWpyIH
+```
+
+Sample Response
+```
+Success
+```
 
 ## Delete
 Deletes all the data in an NFT but not the record 
