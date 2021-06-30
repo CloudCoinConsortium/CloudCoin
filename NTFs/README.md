@@ -18,7 +18,7 @@ Services
 
 [Insert](README.md#insert)
 
-[Insert](README.md#insert-many)
+[Insert Many](README.md#insert-many)
 
 [Delete](README.md#delete)
 
