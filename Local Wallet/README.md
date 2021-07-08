@@ -161,6 +161,9 @@ Program Name //sample name: "CloudCoin Wallet"
 
 ## Functionality Standards
 
+![Flow Process](https://github.com/CloudCoinConsortium/CloudCoin/blob/master/Local%20Wallet/Servant%20Model%20v5.png?raw=true)
+
+Servant Model v5.png
 
 ## Testing Standards
 Testing is very difficult with CloudCoin Applications because of the astonomical combinations of things that can and will go wrong. 
