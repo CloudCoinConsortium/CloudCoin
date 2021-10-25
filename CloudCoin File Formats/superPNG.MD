@@ -36,5 +36,5 @@ Serial Number | 3 | Integer | The ID for one coin.
 POWN | 13 | Iteger | Bytes converted to String || This will be hexidecimal characters. Each byte has two hex characters. The length of the string will be 26. Used to identify the transaction.
 Authenticity Numbers | An array 25 16 byte numbers | bytes converted bo  String of hex characers | The secret passwords embedded in the coin. 
 
-![png](https://github.com/CloudCoinConsortium/CloudCoin/blob/master/CloudCoin%20File%20Formats/png.png)
+![png](https://github.com/CloudCoinConsortium/CloudCoin/blob/master/CloudCoin%20File%20Formats/PNG2.png)
 
