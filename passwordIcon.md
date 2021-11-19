@@ -1,6 +1,6 @@
 Number | Color | Character | Verb | Place | Thing | Verb | Event
 ---|---|---|---|---|---|---|---
-1 | #CC0000 | Minitar | Swimming | Pyramid | Bottle | Kicked | Explosion 
+1 | #CC0000 | Minotaur | Swimming | Pyramid | Bottle | Kicked | Explosion 
 2 | #FF4500 | Doctor | Running | River | Rabbit | Spit on | Solar Eclipse 
 3 | #FFD700 | Athlete | Walking | Mountain | Skull | Looked at | Meteor Shower | 
 4| #808000 | Business Man | Eating | Eiffel Tower | watermellon | Touched | Blizzard 
