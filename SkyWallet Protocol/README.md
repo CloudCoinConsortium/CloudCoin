@@ -598,6 +598,19 @@ Example Response for brief mode:
 720869,720870,1310084,1310085,1310086,1310087,131008
 ```
 
+Page Mode: 
+Page mode allows the client to only receive 4000 records. Page 1 returns the first 4K records. Page 2 returns the second 4000 records and so on. 
+You can tell if there are more pages if the request returns 4000 records. 
+
+Example GET in Page mode. 
+```
+https://s0.teleportnow.cc/service/show?page=1&t&nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1
+```
+Example Response for brief mode:
+```
+720869,720870,1310084,1310085,1310086,1310087,131008
+```
+
 Example GET for content mode. 
 ```
 https://raida12.cloudcoin.global/service/show?content=t&nn=1&sn=1&an=1836843d928347fb22c2142b49d772b5&pan=1836843d928347fb22c2142b49d772b5&denomination=1
