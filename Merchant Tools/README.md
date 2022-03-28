@@ -1,5 +1,7 @@
 # RECEIVING AND SENDING CLOUDCOINS PROGRAMMATICALLY
 
+# NOTE: THIS IS FOR THE ORIGINAL CLOUDCOIN AND NOT FOR THE NEWEST VERSION. YOU SHOULD NOT USE THIS 
+
 There are many ways to send and receive CloudCoins including by email, downloading from web sites and Skywallet. We suggest using Skywallet because of its ability to show the sender and the receiver that money was sent and received. It is also simple to implement. Skywallet has one drawback: it is pseudo anonymous in that RAIDA Administrators can see the account numbers and transactions. This is similar to the Blockchain.  Unlike crypto however, Skywallet transactions are not public.
 
 # Receiving CloudCoins via Skywallet
